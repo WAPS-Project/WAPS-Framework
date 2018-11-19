@@ -1,4 +1,7 @@
 /* This is where your root vars get defined */
  :root {
-   
+   --main-font:;
+   --main-font-color:;
+   --main-color:;
+   --seccond-color:;
  }

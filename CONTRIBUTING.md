@@ -3,4 +3,5 @@ Dieser soll der Klasse helfen, sich schneller mit dem Thema auseinander zu setze
 Dabei ist strickt auf die Kommentierung des Codes zu achten, er muss auch für absolute Anfänger verständlich sein.
 Die Mitarbei steht jedem Klassenmitglied offen, vorgabe ist aber übersichtlichen Code zu schreiben, d.h. 
 Freiräume, sauberer Syntax, Kommentare, schreiben der Dokumentation als MD
-// Es wird nicht auf dem Master Branch gearbeitet, Ergebnisse werdennur in diesen gemergt!!!
+
+# Es wird nicht auf dem Master Branch gearbeitet, Ergebnisse werden nur in diesen gemergt!!!

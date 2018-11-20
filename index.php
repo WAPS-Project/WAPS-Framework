@@ -12,11 +12,17 @@ require 'tools.php';
 include 'head.php';                                                             // adding the page head
 
 ?>
+<body>
 <div class='main' id='pageName' />
 <?php
 
-include $mainContend;                                                         //adding the main contend
+include 'header.php';                                                           //adding the header
 
+include $mainContend;                                                           //adding the main contend
+?>
+</body>
+
+<?php
 include 'footer.php';                                                           // adding the footer
 
 

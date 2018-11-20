@@ -1,6 +1,6 @@
 <?php
                                                                                 //This is the place, where the contend is
-
+require 'tools.php';
 
 
  ?>
@@ -11,8 +11,18 @@
 
 include 'head.php';                                                             // adding the page head
 
-//include $mainContend;                                                         //adding the main contend
+?>
+<body>
+<div class='main' id='pageName' />
+<?php
 
+include 'header.php';                                                           //adding the header
+
+include $mainContend;                                                           //adding the main contend
+?>
+</body>
+
+<?php
 include 'footer.php';                                                           // adding the footer
 
 

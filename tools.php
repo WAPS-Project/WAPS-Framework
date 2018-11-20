@@ -1,0 +1,6 @@
+<?php
+
+$mainContend = 'main.php';
+
+
+ ?>

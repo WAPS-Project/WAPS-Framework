@@ -8,6 +8,7 @@
   <script src="js/jquery-3.3.1.min.js"></script> <!-- Adding JQuery -->
   <script src="js/popper.min.js"></script> <!-- Adding Popper.js Framework -->
   <script src="js/bootstrap.min.js"></script> <!-- Adding Bootstrap Framework -->
+  <script src="js/tools.js"></script> <!-- Adding scripts -->
   <link rel="stylesheet" href="css/bootstrap.min.css" >
   <link rel="stylesheet" href="css/font.css"> <!-- Adding Font CSS -->
   <link rel="stylesheet" href="css/root.css"> <!-- Adding ROOT CSS -->

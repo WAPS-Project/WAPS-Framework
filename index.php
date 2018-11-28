@@ -1,5 +1,4 @@
-<?php
-                                                                                //This is the place, where the contend is
+<?php                                                                                //This is the place, where the contend is
 require 'tools.php';
 
 
@@ -19,14 +18,10 @@ include 'head.php';                                                             
 include 'header.php';                                                           //adding the header
 
 include $mainContend;                                                           //adding the main contend
+    
+include 'footer.php';  
 ?>
 </body>
-
-<?php
-include 'footer.php';                                                           // adding the footer
-
-
-?>
 
 
 

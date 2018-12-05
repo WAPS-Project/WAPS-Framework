@@ -1,4 +1,4 @@
-//This is the first page 
+<?php //This is the first page ?>
 
 <?php
 require 'tools.php';

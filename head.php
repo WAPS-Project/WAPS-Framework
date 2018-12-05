@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="shortcut icon" href="img/fav.ico">
-  <title>Web Application PHP</title>
+  <title>Web Application PHP <?php echo ' - '. $pagename; ?></title>
   <script src="js/jquery-3.3.1.min.js"></script> <!-- Adding JQuery -->
   <script src="js/popper.min.js"></script> <!-- Adding Popper.js Framework -->
   <script src="js/bootstrap.min.js"></script> <!-- Adding Bootstrap Framework -->

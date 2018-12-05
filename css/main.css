@@ -5,6 +5,7 @@
 .footer {
     background-color: var(--main-color);
     position: fixed;
+    text-align: center;
     height: 2.5rem;
     font-size: 1.5rem;
     padding: -0px;

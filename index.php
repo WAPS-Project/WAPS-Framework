@@ -1,4 +1,6 @@
-<?php                                                                                //This is the place, where the contend is
+//This is the first page 
+
+<?php
 require 'tools.php';
 $pagename = "Home";
 
@@ -17,8 +19,8 @@ include 'head.php';                                                             
 include 'header.php';                                                           //adding the header
 
 include $mainContend;                                                           //adding the main contend
-    
-include 'footer.php';  
+
+include 'footer.php';
 ?>
 </body>
 

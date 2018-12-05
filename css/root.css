@@ -2,9 +2,11 @@
  :root {
    --main-font:;
    --main-font-color:black;
-   --main-color:lightgrey;
+   --main-font-color-hover:darkgrey;
+   --main-color:#f8f9fa!important;
    --seccond-color:grey;
    --background-color: white;
+   --background-color-content: lightgrey;
    --background-image:;
    --logo-image:;
  }

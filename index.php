@@ -1,6 +1,6 @@
 <?php                                                                                //This is the place, where the contend is
 require 'tools.php';
-
+$pagename = "Home";
 
  ?>
 <!DOCTYPE html>
@@ -12,7 +12,6 @@ include 'head.php';                                                             
 
 ?>
 <body>
-<div class='main' id='pageName' />
 <?php
 
 include 'header.php';                                                           //adding the header

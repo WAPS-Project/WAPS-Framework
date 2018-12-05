@@ -1,12 +1,45 @@
 /* Head */
+
+.navbar {
+    position:fixed !important;
+    width: 100%;
+}
+
+.logo {
+    margin-right: 1rem;
+}
+
+a {
+    color: var(--main-font-color);
+}
+
+a:hover {
+    color: var(--main-font-color-hover);
+}
+
 /* Body */
+
+
+.content {
+    margin-left: 10em;
+    margin-right: 10em;
+    min-height:  140rem;
+    padding-top: 8rem;
+    background-color: var(--background-color-content)
+}
+
+.title {
+    margin-left: 3rem;
+}
+
 /* Footer */
 
 .footer {
     background-color: var(--main-color);
     position: fixed;
+    text-align: center;
     height: 2.5rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding: -0px;
     bottom: 0;
     left: 0;

@@ -18,7 +18,11 @@ include 'header.php';
 ?>
  
 <div class="content">
+<<<<<<< HEAD
     <h1 class="title"><?php echo $pagename ?></h1>
+=======
+    <h1 title><?php echo $pagename ?></h1>
+>>>>>>> bleeding
 </div>
   
 <?php

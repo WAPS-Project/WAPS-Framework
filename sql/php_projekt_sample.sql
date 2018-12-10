@@ -22,7 +22,7 @@ CREATE TABLE produkte (
   PRIMARY KEY (PRID)
 );
 
--- --------------------------------------------------------
+
 
 --
 -- Tabellenstruktur für Tabelle `user`
@@ -30,7 +30,17 @@ CREATE TABLE produkte (
 
 CREATE TABLE `user` (
   UID int(11) NOT NULL,
-  user text CHARACTER SET utf8 NOT NULL,
+  username text CHARACTER SET utf8 NOT NULL,
+  passcode text CHARACTER SET utf8 NOT NULL,
   rank text CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (UID)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Einfügen des Admin Acounts
+--
+
+INSERT INTO user (UID, username, passcode, rank)
+VALUES (1, "Admin", "passwort", "Admin");

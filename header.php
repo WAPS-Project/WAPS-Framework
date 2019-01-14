@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <img src="img/fav.svg" alt="logo" class="logo">
-  <a class="navbar-brand" href="#">Seitentitel | <[<?php echo $pagename; ?>]></a>
+  <a class="navbar-brand" href="#">Seitentitel | [<?php echo $pagename; ?>]</a>
   <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">

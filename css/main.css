@@ -6,19 +6,20 @@
   h1, h2, h3{
       font-family: var(--main-uschrift-font);
       width: 100%;
+      padding:3%;
     }
     h1{
-      font-size: 3rem;
-      margin: auto;
-
-    }
-    h2{
       font-size: 2rem;
       margin: auto;
 
     }
+    h2{
+      font-size: 1rem;
+      margin: auto;
+
+    }
     h3{
-      font-size:1em;
+      font-size:0.5em;
 
     }
 
@@ -26,10 +27,9 @@
       margin:0;
       padding:3% ;
       width: 100%;
-
       font-family: var(--main-font);
       color: var(--main-font-color);
-      font-size: 3em;
+      font-size: 1.2em;
     }
 
   .navbar {
@@ -76,15 +76,17 @@
 
 
   .content {
-      margin-left: 5em;
-      margin-right: 5em;
+      margin-left: 2em;
+      margin-right: 2em;
       min-height:  42rem;
       padding-top: 8rem;
-      background-color: var(--background-color-content)
+      padding-left: 1.5rem;
+      padding-bottom: 3rem;
+      background-color: var(--background-color-content);
   }
 
   .title {
-      margin-left: 3rem;
+      
   }
 
   /* Footer */
@@ -154,6 +156,7 @@
   h1, h2, h3{
       font-family: var(--main-uschrift-font);
       width: 100%;
+      padding: 3rem;
     }
     h1{
       font-size: 3rem;
@@ -172,12 +175,12 @@
 
     p{
       margin:0;
-      padding:3% ;
+      padding:3rem ;
       width: 100%;
 
       font-family: var(--main-font);
       color: var(--main-font-color);
-      font-size: 3em;
+      font-size: 1.3em;
     }
 
   .navbar {
@@ -228,11 +231,11 @@
       margin-right: 10em;
       min-height:  42rem;
       padding-top: 8rem;
+      padding-bottom: 3rem;
       background-color: var(--background-color-content)
   }
 
   .title {
-      margin-left: 3rem;
   }
 
   /* Footer */
@@ -450,6 +453,10 @@
     transition: all 0.5s;
     text-rendering: geometricPrecision;
   }
+    
+    .navbar-brand {
+        font-size: 3rem;
+    }
 
   .dropdown-submenu {
     position: relative;
@@ -467,6 +474,7 @@
       margin-right: 5em;
       min-height: 70rem;
       padding-top: 17rem;
+      padding-bottom: 7rem;
       background-color: var(--background-color-content);
   }
 

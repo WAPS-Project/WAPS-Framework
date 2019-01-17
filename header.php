@@ -1,3 +1,12 @@
+<?php   // Hier deffinieren wir unseren
+        // Page Header, also unter anderem unser
+        // Menue
+
+
+ ?>
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <img src="img/fav.svg" alt="logo" class="logo">
   <a class="navbar-brand" href="#">Seitentitel | [<?php echo $pagename; ?>]</a>

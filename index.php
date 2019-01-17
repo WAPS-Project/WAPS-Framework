@@ -1,4 +1,6 @@
-<?php //This is the first page ?>
+<?php // Der index ist die erste Seite der Website,
+      // die geladen wird!
+      ?>
 
 <?php
 require 'tools.php';

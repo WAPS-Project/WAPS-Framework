@@ -1,1 +1,187 @@
-/*This is where you define your fonts */
+/* An dieser stelle, werden die Fonts eingebunden und definiert */
+
+/* Einbinden der Font Libre_Barcode */
+
+@font-face { font-family: 'Libre_Barcode';
+             src: url('../font/Libre_Barcode_128_Text/LibreBarcode128Text-Regular.ttf') format('truetype');
+             font-style: regular; }
+
+/* Einbinden der Font Staatliches */
+
+@font-face { font-family: 'Staatliches';
+             src: url('../font/Staatliches/Staatliches-Regular.ttf') format('truetype');
+             font-style: regular; }
+
+/* Einbinden der Font Merriweather */
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-Regular.ttf') format('truetype');
+             font-style: regular; }
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-Black.ttf') format('truetype');
+             font-style: Black; }
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-BlackItalic.ttf') format('truetype');
+             font-style: BlackItalic;
+}
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-Bold.ttf') format('truetype');
+             font-style: Bold;
+}
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-BoldItalic.ttf') format('truetype');
+             font-style: BoldItalic;
+}
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-Italic.ttf') format('truetype');
+             font-style: italic;
+}
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-Light.ttf') format('truetype');
+             font-style: light;
+}
+
+@font-face { font-family: 'Merriweather';
+             src: url('../font/Merriweather/Merriweather-LightItalic.ttf') format('truetype');
+             font-style: LightItalic;
+}
+
+/* Einbinden der Font Raleway */
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-Regular.ttf') format('truetype');
+             font-style: regular;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-Black.ttf') format('truetype');
+             font-style: Black;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-BlackItalic.ttf') format('truetype');
+             font-style: BlackItalic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-Bold.ttf') format('truetype');
+             font-style: Bold;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-BoldItalic.ttf') format('truetype');
+             font-style: BoldItalic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-ExtraBold.ttf') format('truetype');
+             font-style: ExtraBold;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-ExtraBoldItalic.ttf') format('truetype');
+             font-style: ExtraBoldItalic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-Light.ttf') format('truetype');
+             font-style: light;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-ExtraLight.ttf') format('truetype');
+             font-style: ExtraLight;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-ExtraLightItalic.ttf') format('truetype');
+             font-style: ExtraLightItalic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-Italic.ttf') format('truetype');
+             font-style: Italic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-LightItalic.ttf') format('truetype');
+             font-style: LightItalic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-Medium.ttf') format('truetype');
+             font-style: Medium;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-MediumItalic.ttf') format('truetype');
+             font-style: MediumItalic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-SemiBold.ttf') format('truetype');
+             font-style: SemiBold;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-SemiBoldItalic.ttf') format('truetype');
+             font-style: SemiBoldItalic;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-Thin.ttf') format('truetype');
+             font-style: Thin;
+}
+
+@font-face { font-family: 'Raleway';
+             src: url('../font/Raleway/Raleway-ThinItalic.ttf') format('truetype');
+             font-style: ThinItalic;
+}
+
+/* Einbinden der Font Ubuntu */
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+             font-style: regular;
+}
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
+             font-style: Bold;
+}
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-BoldItalic.ttf') format('truetype');
+             font-style: BoldItalic;
+}
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-Italic.ttf') format('truetype');
+             font-style: italic;
+}
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-Light.ttf') format('truetype');
+             font-style: Light;
+}
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-LightItalic.ttf') format('truetype');
+             font-style: LightItalic;
+}
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-Medium.ttf') format('truetype');
+             font-style: Medium;
+}
+
+@font-face { font-family: 'Ubuntu';
+             src: url('../font/Ubuntu/Ubuntu-MediumItalic.ttf') format('truetype');
+             font-style: MediumItalic;
+}

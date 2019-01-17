@@ -1,6 +1,6 @@
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form
+      // Benutzername und Passwort vom Formular gesendet
 
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']);
@@ -12,7 +12,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
       $count = mysqli_num_rows($result);
 
-      // If result matched $myusername and $mypassword, table row must be 1 row
+      // Wenn das Ergebnis mit $myusername und $mypassword übereinstimmt,
+      // muss die Tabellenzeile 1 sein
 
       if($count == 1) {
          session_register("myusername");

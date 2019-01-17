@@ -1,6 +1,6 @@
 <?php
 require 'tools.php';
-$pagename = "Impressum";//#####Here you define your Page Name######
+$pagename = "Impressum";//##### Hier wird der Seitentitel definiert ######
 
 ?>
 <!DOCTYPE html>

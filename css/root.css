@@ -1,9 +1,9 @@
-/* This is where your root vars get defined */
+/* Hier werden die ROOT CSS Variablen definiert */
  :root {
-   --main-font:;
+   --main-font:'Ubuntu', 'Staatliches';
    --main-font-color:black;
    --main-font-color-hover:darkgrey;
-   --main-uschrift-font:Arial;
+   --main-uschrift-font:'Ubuntu', Arial;
    --main-color:#f8f9fa!important;
    --main-menue-background-color:;
    --seccond-color:grey;

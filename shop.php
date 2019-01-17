@@ -1,6 +1,6 @@
 <?php
 require 'tools.php';
-$pagename = "Shop";//#####Here you define your Page Name######
+$pagename = "Shop";//##### Hier wird der Seitentitel definiert ######
 
 ?>
 <!DOCTYPE html>

@@ -4,6 +4,6 @@ function pageChanger(page) {
 
   pageClass.classList.remove();
 
-  $('pageName').classList.add(page);
+  pageClass.classList.add(page);
 
 }

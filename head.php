@@ -1,4 +1,8 @@
-<?php // This is our page Head, here we define our Links, Title and charset  ?>
+<?php // Hier definieren wir unseren
+      // Page Head, wo unter anderem das Charset
+      // und der Titel definiert werden
+
+  ?>
 
 
 <head>

@@ -5,6 +5,8 @@
 
   h1, h2, h3{
       font-family: var(--main-uschrift-font);
+      font-style: regular;
+      font-weight: regular;
       width: 100%;
       padding:3%;
     }
@@ -28,6 +30,8 @@
       padding:3% ;
       width: 100%;
       font-family: var(--main-font);
+      font-style: regular;
+      font-weight: regular;
       color: var(--main-font-color);
       font-size: 1.2em;
     }
@@ -86,7 +90,7 @@
   }
 
   .title {
-      
+
   }
 
   /* Footer */
@@ -356,6 +360,11 @@
       border-color: none;
     }
 
+    .navbar-toggler:focus {
+      border-color: var(--seccond-color);
+      border-style: solid;
+    }
+
     .navbar-toggler-icon {
       width: 7rem;
       height: 7rem;
@@ -453,7 +462,7 @@
     transition: all 0.5s;
     text-rendering: geometricPrecision;
   }
-    
+
     .navbar-brand {
         font-size: 3rem;
     }

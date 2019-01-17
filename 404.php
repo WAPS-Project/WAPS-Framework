@@ -21,7 +21,7 @@ include 'header.php';
 
     <h1 class="title"><?php echo $pagename ?></h1>
 
-    <h3>Der von dir gesuchte Inhalt konnte nicht aufgefunden werden</h3>
+    <h3>Der von dir gesuchte Inhalt konnte nicht aufgefunden werden!</h3>
 
 </div>
 

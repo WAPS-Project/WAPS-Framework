@@ -9,7 +9,7 @@
 $DBHOST         = 'localhost';
 
 //Hier wird die Datenbank Eingetragen
-$DBNAME         = 'php_projekt_sample';
+$DBNAME         = 'php_webapp_sample';
 
 //Hier wird der Datenbank Nutzername Eingetragen
 $DBUSER         = 'root';

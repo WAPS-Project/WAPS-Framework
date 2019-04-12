@@ -45,8 +45,14 @@
     public function NameValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
-        return "Home";
+        return "home";
       }
+    }
+
+    public function PageList($path)
+    {
+      $pages = scandir($path);
+      
     }
 
 

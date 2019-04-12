@@ -11,7 +11,8 @@ include 'core/header.php';                                                      
 <div class="content">
     <h1 class="title"><?php echo $pagename ?></h1>
     <?php if ($pagepath != "page/home.page.php") {
-            include $pagepath;
+            //include $pagepath;
+            var_dump($pagepath);
           }
 
           else {

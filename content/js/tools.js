@@ -1,15 +1,22 @@
 // Hier können JavaScript Functionen und Klassen definiert werden
 
-var xhr = new XMLHttpRequest();
 
- function pushJS(call) {
+ function pushJS(ID, pages) {
 
-  xhr.open("POST", "core/head.php", true);
+   for (var i = 0; i < pages.length; i++) {
 
-  xhr.onreadystatechange = console.log('push');
+     $(pageID + i).click(function () {
+       $.post("core/navigation.php"),
+       {
+         pagename: "ID"
 
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+       },
+       function(data, status){
+         alert("Data: " + data + "\nStatus: " + status);
+       }
+     })
+   }
 
-  xhr.send("pagename=" + escape(call.value));
+
 
 }

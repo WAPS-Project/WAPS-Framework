@@ -7,9 +7,6 @@
 
 <head>
   <?php require 'config/main.config.php';
-  $_SE = new SearchEngine;
-  $pagepath = $_SE -> PageValidation($_SE -> PostChecker('pagepath'));
-  $pagename = $_SE -> NameValidation($_SE -> PostChecker('pagename'));
   ?>
   <meta charset="<?php echo $charset ?>">
   <link rel="shortcut icon" href="content/img/fav.ico">

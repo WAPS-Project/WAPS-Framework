@@ -4,6 +4,8 @@
 
 require 'core/database.php';
 
+require 'core/navigation.php';
+
 
 
 

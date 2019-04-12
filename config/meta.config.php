@@ -1,0 +1,5 @@
+<?php
+
+$charset = "utf8";
+
+ ?>

@@ -1,28 +1,28 @@
-<?php // Der index ist die erste Seite der Website,
-      // die geladen wird!
-      ?>
 
-<?php
-require 'tools.php';
-$pagename = "Home";
-
- ?>
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
-
 <?php
-
-include 'head.php';                                                             // adding the page head
-
+include 'core/head.php';                                                             // adding the page head
 ?>
 <body>
 <?php
+include 'core/header.php';                                                           //adding the header
+?>
+<div class="content">
+    <h1 class="title"><?php echo $pagename ?></h1>
+    <?php if ($pagepath != "page/home.page.php") {
+            //include $pagepath;
+            var_dump($pagepath);
+          }
 
-include 'header.php';                                                           //adding the header
+          else {
+            include 'page/home.page.php';
+          }
 
-include $mainContend;                                                           //adding the main contend
-
-include 'footer.php';
+    ?>
+</div>
+<?php
+include 'core/footer.php';
 ?>
 </body>
 

@@ -1,5 +1,5 @@
 <?php
-require_once ('konfiguration.php');
+require_once ('config/db.config.php');
 $db_link = mysqli_connect (
                      MYSQL_HOST,
                      MYSQL_BENUTZER,
@@ -11,7 +11,7 @@ mysqli_set_charset($db_link, 'utf8');
 
 if ( $db_link )
 {
-    echo "<script> console.log('connection done') </script>";
+    echo "<script> console.log('database connection done') </script>";
 }
 else
 {

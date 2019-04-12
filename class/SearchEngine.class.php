@@ -57,38 +57,49 @@
 					$f = explode($file, ".");
 					$filename = $f[0];
 					if ($f[1] == "php"){
-						return $filetype = "php";
+						$filetype = "php";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "js"){
-					 return $filetype = "js";
+					 $filetype = "js";
+						$filelist['file'][$filename . "." . $filetype];
 					}
 					elseif ($f[1] == "css"){
-						return $filetype = "css";
+						$filetype = "css";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "jpg"){
-						return $filetype = "jpg";
+						$filetype = "jpg";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "png"){
-						return $filetype = "png";
+						$filetype = "png";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "svg"){
-						return $filetype = "svg";
+						$filetype = "svg";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "obj"){
-						return $filetype = "obj";
+						$filetype = "obj";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "gif"){
-						return $filetype = "gif";
+						$filetype = "gif";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "json"){
-						return $filetype = "json";
+						$filetype = "json";
+						$filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "class"){
 						if ($f[2] == "php" ){
-							return $filetype = "class.php";
+							$filetype = "class.php";
+							$filelist['class'][$filename . "." . $filetype];
 							}
 						elseif ($f[2] == "js"){
-						return $filetype = "class.js";
+						$filetype = "class.js";
+						$filelist['class'][$filename . "." . $filetype];
 						}
 						else {
 							return "ERROR No valid class";
@@ -96,7 +107,8 @@
 						}
 					elseif ($f[1] == "page"){
 						if ($f[2] == "php"){
-							return $filetype = "page.php";
+							$filetype = "page.php";
+							$filelist['page'][$filename . "." . $filetype];
 							}
 						else {
 							return "ERROR No valid Page";
@@ -110,6 +122,8 @@
 					
 					
 			}
+			
+			return $filelist;
       
     }
 

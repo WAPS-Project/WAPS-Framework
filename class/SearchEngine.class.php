@@ -52,6 +52,7 @@
     public function FileVerification($path)
     {
       $files = scandir($path);
+			$filelist = array('class' => array(), 'page' => array(), 'file' => array());
 			foreach ($files as $file){
 					$f = explode($file, ".");
 					$filename = $f[0];
@@ -97,13 +98,17 @@
 						if ($f[2] == "php"){
 							return $filetype = "page.php";
 							}
-						else{
+						else {
 							return "ERROR No valid Page";
 						}
 						}
 					else {
 						return "ERROR Not a valid File";
 					}
+					
+					return $filelist;
+					
+					
 			}
       
     }

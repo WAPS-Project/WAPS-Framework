@@ -49,9 +49,62 @@
       }
     }
 
-    public function PageList($path)
+    public function FileVerification($path)
     {
-      $pages = scandir($path);
+      $files = scandir($path);
+			foreach ($files as $file){
+					$f = explode($file, ".");
+					$filename = $f[0];
+					if ($f[1] == "php"){
+						return $filetype = "php";
+						}
+					elseif ($f[1] == "js"){
+					 return $filetype = "js";
+					}
+					elseif ($f[1] == "css"){
+						return $filetype = "css";
+						}
+					elseif ($f[1] == "jpg"){
+						return $filetype = "jpg";
+						}
+					elseif ($f[1] == "png"){
+						return $filetype = "png";
+						}
+					elseif ($f[1] == "svg"){
+						return $filetype = "svg";
+						}
+					elseif ($f[1] == "obj"){
+						return $filetype = "obj";
+						}
+					elseif ($f[1] == "gif"){
+						return $filetype = "gif";
+						}
+					elseif ($f[1] == "json"){
+						return $filetype = "json";
+						}
+					elseif ($f[1] == "class"){
+						if ($f[2] == "php" ){
+							return $filetype = "class.php";
+							}
+						elseif ($f[2] == "js"){
+						return $filetype = "class.js";
+						}
+						else {
+							return "ERROR No valid class";
+						}
+						}
+					elseif ($f[1] == "page"){
+						if ($f[2] == "php"){
+							return $filetype = "page.php";
+							}
+						else{
+							return "ERROR No valid Page";
+						}
+						}
+					else {
+						return "ERROR Not a valid File";
+					}
+			}
       
     }
 

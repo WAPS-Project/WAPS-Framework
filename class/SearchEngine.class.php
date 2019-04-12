@@ -49,82 +49,84 @@
       }
     }
 
-    public function FileVerification($path)
+    public function FileValidation($path)
     {
       $files = scandir($path);
-			$filelist = array('class' => array(), 'page' => array(), 'file' => array());
-			foreach ($files as $file){
-					$f = explode($file, ".");
+      //var_dump($files);
+
+      foreach ($files as $file) {
+        if ($file == "." || $file == "..") {
+          echon "Pann ";
+        }
+        
+      }
+
+
+			//$filelist = array('class' => array(), 'page' => array(), 'file' => array());
+			/*foreach ($files as $file){
+        if ($file == "." || $file == "..") {
+          return;
+        }
+        else {
+          $f = explode($file, ".");
 					$filename = $f[0];
+
 					if ($f[1] == "php"){
 						$filetype = "php";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "js"){
 					 $filetype = "js";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 					}
 					elseif ($f[1] == "css"){
 						$filetype = "css";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "jpg"){
 						$filetype = "jpg";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "png"){
 						$filetype = "png";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "svg"){
 						$filetype = "svg";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "obj"){
 						$filetype = "obj";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "gif"){
 						$filetype = "gif";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "json"){
 						$filetype = "json";
-						$filelist['file'][$filename . "." . $filetype];
+						return $filelist['file'][$filename . "." . $filetype];
 						}
 					elseif ($f[1] == "class"){
 						if ($f[2] == "php" ){
 							$filetype = "class.php";
-							$filelist['class'][$filename . "." . $filetype];
+							return $filelist['class'][$filename . "." . $filetype];
 							}
 						elseif ($f[2] == "js"){
 						$filetype = "class.js";
-						$filelist['class'][$filename . "." . $filetype];
+						return $filelist['class'][$filename . "." . $filetype];
 						}
-						else {
-							return "ERROR No valid class";
-						}
+            return $filelist;
 						}
 					elseif ($f[1] == "page"){
 						if ($f[2] == "php"){
 							$filetype = "page.php";
-							$filelist['page'][$filename . "." . $filetype];
+							return $filelist['page'][$filename . "." . $filetype];
 							}
-						else {
-							return "ERROR No valid Page";
 						}
-						}
-					else {
-						return "ERROR Not a valid File";
-					}
-					
-					return $filelist;
-					
-					
-			}
-			
-			return $filelist;
-      
+        }
+			}*/
+
     }
 
 

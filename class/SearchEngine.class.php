@@ -35,7 +35,7 @@
     public function PageValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
-        return "page/home.page.php";
+        return "page/Home.page.php";
       }
       else {
         return "page/" . $pagename . ".page.php";
@@ -45,7 +45,10 @@
     public function NameValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
-        return "home";
+        return "Home";
+      }
+      else {
+        return $pagename;
       }
     }
 
@@ -55,74 +58,21 @@
       $count = count($files);
       //var_dump($count);
 
-      while ($i <= $count) {
-        $filelist = array('class' => array(), 'page' => array(), 'file' => array());
+        $i = 0;
 
-  			foreach ($files as $file){
+        $filelist = array('page' => array());
+        foreach ($files as $file) {
           if ($file == "." || $file == "..") {
             continue;
           }
-          else {
-            $f = explode(".", $file);
-  					$filename = $f[0];
-
-  					if ($f[1] == "php"){
-  						$filetype = "php";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "js"){
-  					 $filetype = "js";
-  					      $filelist['file'][$path . $filename . "." . $filetype];
-  					}
-  					elseif ($f[1] == "css"){
-  						$filetype = "css";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "jpg"){
-  						$filetype = "jpg";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "png"){
-  						$filetype = "png";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "svg"){
-  						$filetype = "svg";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "obj"){
-  						$filetype = "obj";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "gif"){
-  						$filetype = "gif";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "json"){
-  						$filetype = "json";
-  						      $filelist['file'][$path . $filename . "." . $filetype];
-  						}
-  					elseif ($f[1] == "class"){
-  						if ($f[2] == "php" ){
-  							$filetype = "class.php";
-  							       $filelist['class'][$path . $filename . "." . $filetype];
-  							}
-  						elseif ($f[2] == "js"){
-  						$filetype = "class.js";
-  						      $filelist['class'][$path . $filename . "." . $filetype];
-  						          }
-  						}
-  					elseif ($f[1] == "page"){
-  						if ($f[2] == "php"){
-  							$filetype = "page.php";
-  							       $filelist['page'][$path . $filename . "." . $filetype];
-  							}
-  						}
+          elseif ($file == NULL) {
+            die("Es ist ein Fehler aufgetreten!");
           }
-  			}
-      }
-
-
+          else {
+            $filelist["page"][$i] = $path . $file;
+          }
+          $i++;
+        }
 
       return $filelist;
 
@@ -171,6 +121,7 @@
 
 
     }
+
 
 
   }

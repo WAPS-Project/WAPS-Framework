@@ -9,10 +9,9 @@ include 'core/head.php';                                                        
 include 'core/header.php';                                                           //adding the header
 ?>
 <div class="content">
-    <h1 class="title"><?php echo $pagename ?></h1>
+    <h1 class="titleDoc"><?php echo $pagename ?></h1>
     <?php if ($pagepath != "page/home.page.php") {
-            //include $pagepath;
-            var_dump($pagepath);
+            include $pagepath;
           }
 
           else {

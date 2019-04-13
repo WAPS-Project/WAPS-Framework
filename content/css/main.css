@@ -104,7 +104,7 @@
       background-color: var(--background-color-content);
   }
 
-  .title {
+  .titleDoc {
 
   }
 
@@ -269,7 +269,7 @@
       background-color: var(--background-color-content)
   }
 
-  .title {
+  .titleDoc {
   }
 
   /* Footer */
@@ -532,7 +532,7 @@
       background-color: var(--background-color-content);
   }
 
-  .title {
+  .titleDoc {
       margin-left: 3rem;
   }
 

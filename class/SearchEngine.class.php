@@ -32,100 +32,49 @@
       };
     }
 
-    public function PageValidation($pagepath)
+    public function PageValidation($pagename)
     {
-      if ($pagepath == "NO ENTRY") {
-        return "page/home.page.php";
+      if ($pagename == "NO ENTRY") {
+        return "page/Home.page.php";
       }
       else {
-        return "page/" . $pagepath . ".page.php";
+        return "page/" . $pagename . ".page.php";
       }
     }
 
     public function NameValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
-        return "home";
+        return "Home";
+      }
+      else {
+        return $pagename;
       }
     }
 
     public function FileValidation($path)
     {
       $files = scandir($path);
-      //var_dump($files);
+      $count = count($files);
+      //var_dump($count);
 
-      foreach ($files as $file) {
-        if ($file == "." || $file == "..") {
-          echon "Pann ";
+        $i = 0;
+
+        $filelist = array('page' => array());
+        foreach ($files as $file) {
+          if ($file == "." || $file == "..") {
+            continue;
+          }
+          elseif ($file == NULL) {
+            die("Es ist ein Fehler aufgetreten!");
+          }
+          else {
+            $filelist["page"][$i] = $path . $file;
+          }
+          $i++;
         }
-        
-      }
 
-
-			//$filelist = array('class' => array(), 'page' => array(), 'file' => array());
-			/*foreach ($files as $file){
-        if ($file == "." || $file == "..") {
-          return;
-        }
-        else {
-          $f = explode($file, ".");
-					$filename = $f[0];
-
-					if ($f[1] == "php"){
-						$filetype = "php";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "js"){
-					 $filetype = "js";
-						return $filelist['file'][$filename . "." . $filetype];
-					}
-					elseif ($f[1] == "css"){
-						$filetype = "css";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "jpg"){
-						$filetype = "jpg";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "png"){
-						$filetype = "png";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "svg"){
-						$filetype = "svg";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "obj"){
-						$filetype = "obj";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "gif"){
-						$filetype = "gif";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "json"){
-						$filetype = "json";
-						return $filelist['file'][$filename . "." . $filetype];
-						}
-					elseif ($f[1] == "class"){
-						if ($f[2] == "php" ){
-							$filetype = "class.php";
-							return $filelist['class'][$filename . "." . $filetype];
-							}
-						elseif ($f[2] == "js"){
-						$filetype = "class.js";
-						return $filelist['class'][$filename . "." . $filetype];
-						}
-            return $filelist;
-						}
-					elseif ($f[1] == "page"){
-						if ($f[2] == "php"){
-							$filetype = "page.php";
-							return $filelist['page'][$filename . "." . $filetype];
-							}
-						}
-        }
-			}*/
+      return $filelist;
 
     }
 
@@ -172,6 +121,7 @@
 
 
     }
+
 
 
   }

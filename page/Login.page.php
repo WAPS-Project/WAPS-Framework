@@ -2,16 +2,15 @@
 
 $lg = "page/Lg.page.php";
 $rg = "page/Pg.page.php";
-$lchoice = "page/Lchoice.page.php"
+$lchoice = "page/Lchoice.page.php";
+$st = $_SE -> GetChecker("st");
 
 
-$usr = new AccountUsage
-
-if ($_SE -> GetChecker($_GET["st"]) == "login") {
+if ($st == "login") {
   include $lg;
 }
 
-elseif ($_SE -> GetChecker($_GET["st"]) == "register") {
+elseif ($st == "register") {
   include $rg;
 }
 

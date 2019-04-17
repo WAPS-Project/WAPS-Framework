@@ -6,7 +6,7 @@ class AccountUsage extends SearchEngine
 {
 
 
-  public function LoginUser()
+  public function LoginUser($db)
   {
     if($_SERVER["REQUEST_METHOD"] == "POST") {
           // Benutzername und Passwort vom Formular gesendet
@@ -14,9 +14,9 @@ class AccountUsage extends SearchEngine
           $myUsername = mysqli_real_escape_string($db,$_POST['username']);
           $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-          $sql = "SELECT UID FROM User WHERE username = '$myUsername' and passcode = '$mypassword'";
-          $result = mysqli_query($db_link, $sql);
-          $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+          $sql = "SELECT UID.user FROM user, password WHERE username = '$myUsername' and password = '$mypassword' LEFT JOIN password ON UID.user = UID.password";
+          $result = mysqli_query($db, $sql);
+          $row = mysqli_fetch_array($result);
           $active = $row['active'];
 
           $count = mysqli_num_rows($result);

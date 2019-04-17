@@ -11,10 +11,10 @@ class AccountUsage extends SearchEngine
     if($_SERVER["REQUEST_METHOD"] == "POST") {
           // Benutzername und Passwort vom Formular gesendet
 
-          $myUsername = mysqli_real_escape_string($db,$_POST['Username']);
+          $myUsername = mysqli_real_escape_string($db,$_POST['username']);
           $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-          $sql = "SELECT UID FROM User WHERE Username = '$myUsername' and passcode = '$mypassword'";
+          $sql = "SELECT UID FROM User WHERE username = '$myUsername' and passcode = '$mypassword'";
           $result = mysqli_query($db_link, $sql);
           $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
           $active = $row['active'];
@@ -28,7 +28,7 @@ class AccountUsage extends SearchEngine
              session_register("myUsername");
              $_SESSION['login_User'] = $myUsername;
 
-             header("location: welcome.php");
+             header("location: core/welcome.php");
           }else {
              $error = "Your Login Name or Password is invalid";
           }
@@ -36,10 +36,10 @@ class AccountUsage extends SearchEngine
   }
 
 
-  public function AddUser($link, $Username, $firstname, $seccondname, $age, $password, $check)
+  public function AddUser($link, $username, $firstname, $seccondname, $age, $password, $check)
   {
 
-    $queryUSID = "SELECT MAX(USID) from Users;";
+    $queryUSID = "SELECT MAX(USID) from users;";
 
     if ($check == "on") {
 
@@ -69,7 +69,7 @@ class AccountUsage extends SearchEngine
           $USID = $obj[0] + 1;
           //var_dump($USID);
 
-          $query ="INSERT INTO Users ( Username, Firstname, Lastname, GENID, AID ) VALUES ( '" . $Username . "', '" . $firstname . "', '" . $seccondname . "', 1, " . $ageID . ");";
+          $query ="INSERT INTO users ( username, firstname, lastname, AID ) VALUES ( '" . $username . "', '" . $firstname . "', '" . $seccondname . $ageID . ");";
 
           $query2= "INSERT INTO passw ( PSSWD, USID) VALUES ( '" . $password . "', " . $USID . ");";
 

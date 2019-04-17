@@ -39,7 +39,8 @@ class AccountUsage extends SearchEngine
   public function AddUser($link, $username, $firstname, $seccondname, $age, $password, $check)
   {
 
-    $queryUSID = "SELECT MAX(USID) from users;";
+    $queryUSID = "SELECT MAX(UID) AS 'ID' FROM user";
+    //var_dump($queryUSID);
 
     if ($check == "on") {
 
@@ -64,20 +65,19 @@ class AccountUsage extends SearchEngine
       }
 
       if ($result = mysqli_query($link, $queryUSID)) {
-        while ($obj = mysqli_fetch_array($result)) {
+        while ($obj = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+          var_dump($obj);
+          $USID = $obj['ID'];
 
-          $USID = $obj[0] + 1;
-          //var_dump($USID);
+          $query ="INSERT INTO user ( username, firstname, lastname, userrank, AID ) VALUES (  '$username' , '$firstname', '$seccondname', 'User', $ageID );";
+          var_dump($query);
+          $query2= "INSERT INTO password ( password, UID) VALUES ( '$password', $USID);";
+          var_dump($query2);
+          //$uname = mysqli_query($link, $query);
+          //$upw = mysqli_query($link, $query2);
 
-          $query ="INSERT INTO users ( username, firstname, lastname, AID ) VALUES ( '" . $username . "', '" . $firstname . "', '" . $seccondname . $ageID . ");";
 
-          $query2= "INSERT INTO passw ( PSSWD, USID) VALUES ( '" . $password . "', " . $USID . ");";
-
-          $uname = mysqli_query($link, $query);
-          $upw = mysqli_query($link, $query2);
-
-        }
-
+          }
 
 
 

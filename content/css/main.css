@@ -333,48 +333,100 @@ a:hover {
     right: 0; } }
 
 @media only screen and (min-device-width: 20em) and (max-device-width: 40em) {
-  .formular {
-    font-size: 3rem;
-    width: 100%;
-    /* Breite des Formulars */
-    padding: 1.25rem;
-    color: black;
-    margin-left: auto;
-    margin-right: auto; } }
+  .formular .input {
+    font-size: 4.5em;
+    height: auto;
+    width: 90%;
+    padding-left: 0.5em;
+    margin-left: 0.5em; }
+  .formular .form-text {
+    font-size: 2em; }
+  .formular .label {
+    font-size: 3em;
+    padding-left: 1em;
+    text-decoration: underline; }
+  .formular .label-small {
+    font-size: 2.5em;
+    padding-left: 1em; }
+  .formular small {
+    padding-left: 1.5em;
+    font-size: 1.5em; }
+  .formular .button {
+    font-size: 4em;
+    border-radius: 0.3em;
+    padding: 0.3em;
+    margin-left: 0.7em; }
+  .formular .check {
+    margin-left: 1em;
+    display: block;
+    position: static;
+    width: 80px;
+    height: 80px; } }
 @media only screen and (min-device-width: 40em) {
-  .formular {
-    font-size: 3rem;
-    width: 100%;
-    /* Breite des Formulars */
-    padding: 1.25rem;
-    color: black;
-    margin-left: auto;
-    margin-right: auto; } }
+  .formular .input {
+    font-size: 1.5em;
+    height: auto;
+    width: 60%;
+    padding-left: 0.5em;
+    margin-left: 1.5em; }
+  .formular .form-text {
+    font-size: 2em; }
+  .formular .label {
+    font-size: 1.5em;
+    padding-left: 1.5em;
+    text-decoration: underline; }
+  .formular .label-small {
+    font-size: 1em;
+    padding-left: 0.5em; }
+  .formular small {
+    padding-left: 0.5em;
+    font-size: 1em; }
+  .formular .button {
+    font-size: 1em;
+    border-radius: 0.3em;
+    padding: 0.3em;
+    margin-left: 0.7em; }
+  .formular .check {
+    margin-left: 1em;
+    display: flex;
+    position: static;
+    width: 30px;
+    height: 30px; } }
 @media only screen and (min-width: 1000px) {
-  .formular {
-    font-size: 3rem;
-    width: 100%;
-    /* Breite des Formulars */
-    padding: 1.25rem;
-    color: black;
-    margin-left: auto;
-    margin-right: auto; } }
-.formular div {
-  text-align: center;
-  width: 100%; }
-  .formular div input {
-    box-shadow: inset 5px 1px 11px grey;
-    width: 80%;
-    height: 5rem;
-    font-size: 2.5rem; }
-.formular .label {
-  display: block;
-  color: var(--main-font-color);
-  cursor: pointer;
-  /* Mauszeiger wird zur Hand */
-  font-family: var(--main-font);
-  font-size: 4.5rem;
-  text-rendering: geometricPrecision; }
+  .formular .input {
+    font-size: 1.5em;
+    height: auto;
+    width: 60%;
+    padding-left: 0.5em;
+    margin-left: 2em; }
+  .formular .form-text {
+    font-size: 2em; }
+  .formular .label {
+    font-size: 1.5em;
+    padding-left: 2em;
+    text-decoration: underline; }
+  .formular .label-small {
+    font-size: 1em;
+    padding-left: 2em; }
+  .formular small {
+    padding-left: 2em; }
+  .formular .button {
+    font-size: 1.5em;
+    border-radius: 0.3em;
+    padding: 0.3em;
+    margin-left: 2em; }
+  .formular .check {
+    margin-left: 2em;
+    display: flex;
+    position: static;
+    width: 30px;
+    height: 30px; } }
+
+.login {
+  display: flex;
+  padding-top: 2em; }
+  .login .formular .button {
+    display: inline-flex; }
 
 input#nachricht,
 textarea {

@@ -65,7 +65,7 @@ class AccountUsage extends SearchEngine
       }
 
       if ($result = mysqli_query($link, $queryUSID)) {
-        while ($obj = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ($obj = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
           var_dump($obj);
           $USID = $obj['ID'];
 

@@ -2,7 +2,7 @@
 /**
  *
  */
-class AccountUsage extends SearchEngine
+class AccountUsage
 {
 
 
@@ -36,11 +36,18 @@ class AccountUsage extends SearchEngine
   }
 
 
-  public function AddUser($link, $username, $firstname, $seccondname, $age, $password, $check)
-  {
+  public function AddUser($db_link) {
 
-    $queryUSID = "SELECT MAX(UID) AS 'ID' FROM user";
-    //var_dump($queryUSID);
+    $__SE = new SearchEngine;
+
+    $username = $__SE -> PostChecker("username");
+    $firstname = $__SE -> PostChecker("firstName");
+    $seccondname = $__SE -> PostChecker("lastName");
+    $age = $__SE -> PostChecker("age");
+    $password = $__SE -> PostChecker("pw");
+    $check = $__SE -> PostChecker("check");
+
+
 
     if ($check == "on") {
 
@@ -64,26 +71,36 @@ class AccountUsage extends SearchEngine
         $ageID = 1;
       }
 
-      if ($result = mysqli_query($link, $queryUSID)) {
-        if ($obj = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+      $queryUSID = "SELECT UID AS 'ID' FROM user ORDER BY 'ID' DESC LIMIT 1;";
+
+
+      if ($rslt = mysqli_query($db_link, $queryUSID)) {
+
+        var_dump($rslt);
+
+        while ($obj = mysqli_fetch_array($rslt)) {
           var_dump($obj);
-          $USID = $obj['ID'];
+          $USID = $obj[0] + 1;
+
 
           $query ="INSERT INTO user ( username, firstname, lastname, userrank, AID ) VALUES (  '$username' , '$firstname', '$seccondname', 'User', $ageID );";
           var_dump($query);
           $query2= "INSERT INTO password ( password, UID) VALUES ( '$password', $USID);";
           var_dump($query2);
-          //$uname = mysqli_query($link, $query);
-          //$upw = mysqli_query($link, $query2);
+          //$uname = mysqli_query($db_link, $query);
+          //$upw = mysqli_query($db_link, $query2);
+
 
 
           }
 
 
 
+
       }
 
-
+      mysqli_free_result($rslt);
 
     }
 

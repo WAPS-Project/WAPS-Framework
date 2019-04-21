@@ -112,11 +112,9 @@
             printf ("<figure class='product_galerie' > <a href='%s' target='_selfe'><img src=%s class='img_galerie' ><figcaption>%s</figcaption></a></figure>", $array_link, $array_img, $array_name);
           }
 
-          /* free result set */
-          mysqli_free_result($result);
 
         }
-        mysqli_close($link);
+        mysqli_free_result($result);
       }
 
 

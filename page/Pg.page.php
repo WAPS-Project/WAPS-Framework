@@ -28,14 +28,6 @@
 </form>
 
 <?php
-$seg = new SearchEngine;
-$acc = new AccountUsage;
-$uname_proof = $seg -> PostChecker("username");
-$fname_proof = $seg -> PostChecker("firstName");
-$lname_proof = $seg -> PostChecker("lastName");
-$age_proof = $seg -> PostChecker("age");
-$pw_proof = $seg -> PostChecker("pw");
-$check_proof = $seg -> PostChecker("check");
-$acc -> AddUser($db_link, $uname_proof, $fname_proof, $lname_proof, $age_proof, $pw_proof, $check_proof);
+$_USR -> AddUser($db_link);
 //var_dump($addusr);
  ?>

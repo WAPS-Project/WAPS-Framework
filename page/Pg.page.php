@@ -1,5 +1,9 @@
 <form class="formular" method="post">
   <div class="form-group">
+    <label class="label" for="username">E-Mail</label>
+    <input type="email" name="email" class="form-control input" id="InputEmail" aria-describedby="eMail" placeholder="Enter Email" required>
+  </div>
+  <div class="form-group">
     <label class="label" for="username">Username</label>
     <input type="text" name="username" class="form-control input" id="InputUsername" aria-describedby="userName" placeholder="Enter Username" required>
   </div>

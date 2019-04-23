@@ -8,31 +8,42 @@ class AccountUsage
 
   public function LoginUser($db)
   {
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-          // Benutzername und Passwort vom Formular gesendet
 
-          $myUsername = mysqli_real_escape_string($db,$_POST['username']);
-          $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+    $__SE = new SearchEngine;
 
-          $sql = "SELECT UID.user FROM user, password WHERE username = '$myUsername' and password = '$mypassword' LEFT JOIN password ON UID.user = UID.password";
-          $result = mysqli_query($db, $sql);
-          $row = mysqli_fetch_array($result);
-          $active = $row['active'];
+    $myUsername = $__SE -> PostChecker("username");
+    $mypassword = $__SE -> PostChecker("password");
 
-          $count = mysqli_num_rows($result);
+    $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID;";
 
-          // Wenn das Ergebnis mit $myUsername und $mypassword übereinstimmt,
-          // muss die Tabellenzeile 1 sein
 
-          if($count == 1) {
-             session_register("myUsername");
-             $_SESSION['login_User'] = $myUsername;
 
-             header("location: core/welcome.php");
-          }else {
-             $error = "Your Login Name or Password is invalid";
-          }
-       }
+    if ($result = mysqli_query($db, $queryCheck)) {
+
+      while ($rarray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+        //var_dump($rarray);
+
+
+
+
+      }
+    }
+
+
+    /*if($count == 1) {
+       session_register("myUsername");
+       $_SESSION['login_User'] = $myUsername;
+
+       header("location: core/welcome.php");
+    }
+
+    else {
+       $error = "Your Login Name or Password is invalid";
+    }
+    */
+
+
   }
 
 
@@ -43,11 +54,11 @@ class AccountUsage
     $username = $__SE -> PostChecker("username");
     $firstname = $__SE -> PostChecker("firstName");
     $seccondname = $__SE -> PostChecker("lastName");
+    $email = $__SE -> PostChecker("email");
     $age = $__SE -> PostChecker("age");
     $password = $__SE -> PostChecker("pw");
     $check = $__SE -> PostChecker("check");
-
-
+    $pwsave =  password_hash($password, PASSWORD_DEFAULT);
 
     if ($check == "on") {
 
@@ -72,24 +83,26 @@ class AccountUsage
       }
 
 
-      $queryUSID = "SELECT UID AS 'ID' FROM user ORDER BY 'ID' DESC LIMIT 1;";
+      //$queryUSID = "SELECT `UID` AS 'ID' FROM `usr` ORDER BY 'ID' DESC LIMIT 1;";
+      $queryUSID = "SELECT MAX(UID) AS 'ID' FROM usr;";
 
+      //var_dump($queryUSID);
 
       if ($rslt = mysqli_query($db_link, $queryUSID)) {
 
-        var_dump($rslt);
+        //var_dump($rslt);
 
         while ($obj = mysqli_fetch_array($rslt)) {
-          var_dump($obj);
-          $USID = $obj[0] + 1;
+          //var_dump($obj);
+          $USID = $obj["ID"] + 1;
 
 
-          $query ="INSERT INTO user ( username, firstname, lastname, userrank, AID ) VALUES (  '$username' , '$firstname', '$seccondname', 'User', $ageID );";
-          var_dump($query);
-          $query2= "INSERT INTO password ( password, UID) VALUES ( '$password', $USID);";
-          var_dump($query2);
-          //$uname = mysqli_query($db_link, $query);
-          //$upw = mysqli_query($db_link, $query2);
+          $query ="INSERT INTO usr ( username, firstname, lastname, email, userrank, AID ) VALUES (  '$username' , '$firstname', '$seccondname', '$email', 'User', $ageID );";
+          //var_dump($query);
+          $query2= "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwsave', $USID);";
+          //var_dump($query2);
+          $uname = mysqli_query($db_link, $query);
+          $upw = mysqli_query($db_link, $query2);
 
 
 
@@ -100,7 +113,6 @@ class AccountUsage
 
       }
 
-      mysqli_free_result($rslt);
 
     }
 

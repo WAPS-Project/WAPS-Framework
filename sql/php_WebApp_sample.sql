@@ -3,10 +3,6 @@ CREATE DATABASE IF NOT EXISTS `php_webapp_sample` /*!40100 DEFAULT CHARACTER SET
 USE `php_webapp_sample`;
 
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
@@ -25,11 +21,12 @@ CREATE TABLE fsk_table (
 -- Tabellenstruktur für Tabelle `user`
 --
 
-CREATE TABLE user (
+CREATE TABLE usr (
   UID int(11) NOT NULL auto_increment,
   username text CHARACTER SET utf8 NOT NULL,
   firstname text CHARACTER SET utf8 NOT NULL,
   lastname text CHARACTER SET utf8 NOT NULL,
+	email text CHARACTER SET utf8 NOT NULL,
   userrank text CHARACTER SET utf8 NOT NULL,
   AID int(5) NOT NULL,
   PRIMARY KEY (UID),
@@ -42,12 +39,12 @@ CREATE TABLE user (
 -- Tabellenstruktur für Tabelle `user`
 --
 
-CREATE TABLE password (
+CREATE TABLE passwd (
   PWID int(11) NOT NULL auto_increment,
   UID int(11) NOT NULL,
-  password varchar(999) NOT NULL,
+  passwort text(256) NOT NULL,
   PRIMARY KEY (PWID),
-  CONSTRAINT FK_UID FOREIGN KEY (UID) REFERENCES user(UID)
+  CONSTRAINT FK_UID FOREIGN KEY (UID) REFERENCES usr(UID)
 );
 
 
@@ -73,12 +70,20 @@ VALUES
 -- Einfügen des Admin Acounts
 --
 
-INSERT INTO user (UID, username, firstname, lastname, userrank, AID)
-VALUES (1, "Admin", "Admin" , "Admin", "Admin", 5);
+INSERT INTO usr (UID, username, firstname, lastname, email, userrank, AID)
+VALUES (1, "Admin", "Admin" , "Admin", 'admin@email.de', "Admin", 5),
+(2, "Tester1", "Tester1", "Tester1", 'test1@email.de', "User", 1),
+(3, "Tester2", "Tester2", "Tester2", 'test2@email.de', "User", 2),
+(4, "Tester3", "Tester3", "Tester3", 'test3@email.de', "User", 3)
+;
 
 --
 -- Einfügen des Admin Passworts
 --
 
-INSERT INTO password (PWID, UID, password)
-VALUES (1, 1, "d927z6&&hf239_kc#so9");
+INSERT INTO passwd (PWID, UID, passwort)
+VALUES (1, 1, "$2y$10$BtaQ1/t3pcDlT1kRb8j79eeSGpW0QINqG6vEtwvvKk17o1ASn7vaq"),
+(2, 2, "Test1"),
+(3, 3, "Test2"),
+(4, 4, "Test3")
+;

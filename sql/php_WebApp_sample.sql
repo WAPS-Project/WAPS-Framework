@@ -26,7 +26,7 @@ CREATE TABLE usr (
   username text CHARACTER SET utf8 NOT NULL,
   firstname text CHARACTER SET utf8 NOT NULL,
   lastname text CHARACTER SET utf8 NOT NULL,
-	email text CHARACTER SET utf8 NOT NULL,
+  email text CHARACTER SET utf8 NOT NULL,
   userrank text CHARACTER SET utf8 NOT NULL,
   AID int(5) NOT NULL,
   PRIMARY KEY (UID),
@@ -72,9 +72,7 @@ VALUES
 
 INSERT INTO usr (UID, username, firstname, lastname, email, userrank, AID)
 VALUES (1, "Admin", "Admin" , "Admin", 'admin@email.de', "Admin", 5),
-(2, "Tester1", "Tester1", "Tester1", 'test1@email.de', "User", 1),
-(3, "Tester2", "Tester2", "Tester2", 'test2@email.de', "User", 2),
-(4, "Tester3", "Tester3", "Tester3", 'test3@email.de', "User", 3)
+(2, "Tester1", "Tester1", "Tester1", 'test1@email.de', "User", 1)
 ;
 
 --
@@ -83,7 +81,5 @@ VALUES (1, "Admin", "Admin" , "Admin", 'admin@email.de', "Admin", 5),
 
 INSERT INTO passwd (PWID, UID, passwort)
 VALUES (1, 1, "$2y$10$BtaQ1/t3pcDlT1kRb8j79eeSGpW0QINqG6vEtwvvKk17o1ASn7vaq"),
-(2, 2, "Test1"),
-(3, 3, "Test2"),
-(4, 4, "Test3")
+(2, 2, "$2y$10$BFL5Qd.ETHD9KvADTQ3o8OHbXBvLJJJSzmvFkS8P76.bPrYz4mrQ6")
 ;

@@ -14,21 +14,29 @@ class AccountUsage
     $myUsername = $__SE -> PostChecker("username");
     $mypassword = $__SE -> PostChecker("password");
 
-    $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID;";
-
+    $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
 
 
     if ($result = mysqli_query($db, $queryCheck)) {
 
       while ($rarray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
-        //var_dump($rarray);
+        $trust = password_verify($mypassword, $rarray["passwort"]);
 
+        if($trust == true) {
+           session_start();
+           $_SESSION['login_User'] = $myUsername;
+           echo "Welcome";
+        }
 
+        else {
+           $error = "Your Login Name or Password is invalid";
+        }
 
 
       }
     }
+
 
 
     /*if($count == 1) {

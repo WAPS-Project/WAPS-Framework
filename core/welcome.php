@@ -1,3 +1,3 @@
 <?php
-echo "<script> alert('Herzlich Willkommen $username')";
+echo "<script> alert('Herzlich Willkommen Nutzer')";
  ?>

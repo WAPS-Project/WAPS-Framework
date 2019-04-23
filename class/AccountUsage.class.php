@@ -2,44 +2,71 @@
 /**
  *
  */
-class AccountUsage extends SearchEngine
+class AccountUsage
 {
 
 
-  public function LoginUser()
+  public function LoginUser($db)
   {
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-          // Benutzername und Passwort vom Formular gesendet
 
-          $myUsername = mysqli_real_escape_string($db,$_POST['Username']);
-          $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+    $__SE = new SearchEngine;
 
-          $sql = "SELECT UID FROM User WHERE Username = '$myUsername' and passcode = '$mypassword'";
-          $result = mysqli_query($db_link, $sql);
-          $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-          $active = $row['active'];
+    $myUsername = $__SE -> PostChecker("username");
+    $mypassword = $__SE -> PostChecker("password");
 
-          $count = mysqli_num_rows($result);
+    $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
 
-          // Wenn das Ergebnis mit $myUsername und $mypassword übereinstimmt,
-          // muss die Tabellenzeile 1 sein
 
-          if($count == 1) {
-             session_register("myUsername");
-             $_SESSION['login_User'] = $myUsername;
+    if ($result = mysqli_query($db, $queryCheck)) {
 
-             header("location: welcome.php");
-          }else {
-             $error = "Your Login Name or Password is invalid";
-          }
-       }
+      while ($rarray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+        $trust = password_verify($mypassword, $rarray["passwort"]);
+
+        if($trust == true) {
+           session_start();
+           $_SESSION['login_User'] = $myUsername;
+           echo "Welcome";
+        }
+
+        else {
+           $error = "Your Login Name or Password is invalid";
+        }
+
+
+      }
+    }
+
+
+
+    /*if($count == 1) {
+       session_register("myUsername");
+       $_SESSION['login_User'] = $myUsername;
+
+       header("location: core/welcome.php");
+    }
+
+    else {
+       $error = "Your Login Name or Password is invalid";
+    }
+    */
+
+
   }
 
 
-  public function AddUser($link, $Username, $firstname, $seccondname, $age, $password, $check)
-  {
+  public function AddUser($db_link) {
 
-    $queryUSID = "SELECT MAX(USID) from Users;";
+    $__SE = new SearchEngine;
+
+    $username = $__SE -> PostChecker("username");
+    $firstname = $__SE -> PostChecker("firstName");
+    $seccondname = $__SE -> PostChecker("lastName");
+    $email = $__SE -> PostChecker("email");
+    $age = $__SE -> PostChecker("age");
+    $password = $__SE -> PostChecker("pw");
+    $check = $__SE -> PostChecker("check");
+    $pwsave =  password_hash($password, PASSWORD_DEFAULT);
 
     if ($check == "on") {
 
@@ -63,26 +90,36 @@ class AccountUsage extends SearchEngine
         $ageID = 1;
       }
 
-      if ($result = mysqli_query($link, $queryUSID)) {
-        while ($obj = mysqli_fetch_array($result)) {
 
-          $USID = $obj[0] + 1;
-          //var_dump($USID);
+      //$queryUSID = "SELECT `UID` AS 'ID' FROM `usr` ORDER BY 'ID' DESC LIMIT 1;";
+      $queryUSID = "SELECT MAX(UID) AS 'ID' FROM usr;";
 
-          $query ="INSERT INTO Users ( Username, Firstname, Lastname, GENID, AID ) VALUES ( '" . $Username . "', '" . $firstname . "', '" . $seccondname . "', 1, " . $ageID . ");";
+      //var_dump($queryUSID);
 
-          $query2= "INSERT INTO passw ( PSSWD, USID) VALUES ( '" . $password . "', " . $USID . ");";
+      if ($rslt = mysqli_query($db_link, $queryUSID)) {
 
-          $uname = mysqli_query($link, $query);
-          $upw = mysqli_query($link, $query2);
+        //var_dump($rslt);
 
-        }
+        while ($obj = mysqli_fetch_array($rslt)) {
+          //var_dump($obj);
+          $USID = $obj["ID"] + 1;
+
+
+          $query ="INSERT INTO usr ( username, firstname, lastname, email, userrank, AID ) VALUES (  '$username' , '$firstname', '$seccondname', '$email', 'User', $ageID );";
+          //var_dump($query);
+          $query2= "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwsave', $USID);";
+          //var_dump($query2);
+          $uname = mysqli_query($db_link, $query);
+          $upw = mysqli_query($db_link, $query2);
+
+
+
+          }
 
 
 
 
       }
-
 
 
     }

@@ -1,5 +1,5 @@
 # Webshop_PHP_Sample
 
-### This is a Sample for a PHP Web Shop.
+### This is a Sample for a PHP WebApp.
 
-        Its only for the purpose of learning, its not for copy and paste!
+It is created to be the used ase base for future Projects

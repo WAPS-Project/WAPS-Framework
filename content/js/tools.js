@@ -47,6 +47,54 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
 
 
 
+
+
+
+
+function anfrage_abschicken(ip)
+{
+	// Browserkompatibles Request-Objekt erzeugen:
+	r = null;
+
+	if(window.XMLHttpRequest)
+	{
+		r = new XMLHttpRequest();
+	}
+	else if(window.ActiveXObject)
+	{
+		try
+		{
+			r = new ActiveXObject('Msxml2.XMLHTTP');
+		}
+		catch(e1)
+		{
+			try
+			{
+				r = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+			catch(e2)
+			{
+				document.getElementsByClassName('status').innerHTML =
+				"Request nicht möglich.";
+			}
+		}
+	}
+
+	// Wenn Request-Objekt vorhanden, dann Anfrage senden:
+	if(r != null)
+	{
+
+		// HTTP-POST
+		r.open('POST', 'index.php', true);
+		r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		r.send('ip='+ip);
+
+		window.document.getElementsByClassName('status').innerHTML = 'Request gesendet.';
+	}
+}
+
+
+
 getUserIP(function(ip) {
-  console.log(ip);
+  anfrage_abschicken(ip);
 })

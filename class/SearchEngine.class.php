@@ -123,8 +123,15 @@
 
     public static function IPpush($ip, $link)
     {
-      $query = "INSERT INTO iplogg ( IP ) VALUES ('$ip');";
+
+      $timestamp = date('H:i:s');
+      $date = date('Y-j-d');
+
+      $query = "INSERT INTO iplogg ( IP, TS, DT ) VALUES ('$ip', '$timestamp', '$date');";
       $injc = mysqli_query($link, $query);
+
+
+
     }
 
 

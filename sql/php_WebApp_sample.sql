@@ -12,7 +12,9 @@ USE `php_webapp_sample`;
 
 CREATE TABLE iplogg (
 	IPID int NOT NULL AUTO_INCREMENT,
-	IP int NOT NULL,
+	IP VARCHAR(999),
+	TS TIME,
+	DT DATE,
 	PRIMARY KEY (IPID)
 );
 

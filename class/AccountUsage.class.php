@@ -6,13 +6,13 @@ class AccountUsage
 {
 
 
-  public function LoginUser($db)
+  public static function LoginUser($db)
   {
 
     $__SE = new SearchEngine;
 
-    $myUsername = $__SE -> PostChecker("username");
-    $mypassword = $__SE -> PostChecker("password");
+    $myUsername = $__SE::PostChecker("username");
+    $mypassword = $__SE::PostChecker("password");
 
     $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
 
@@ -55,17 +55,17 @@ class AccountUsage
   }
 
 
-  public function AddUser($db_link) {
+  public static function AddUser($db_link) {
 
     $__SE = new SearchEngine;
 
-    $username = $__SE -> PostChecker("username");
-    $firstname = $__SE -> PostChecker("firstName");
-    $seccondname = $__SE -> PostChecker("lastName");
-    $email = $__SE -> PostChecker("email");
-    $age = $__SE -> PostChecker("age");
-    $password = $__SE -> PostChecker("pw");
-    $check = $__SE -> PostChecker("check");
+    $username = $__SE::PostChecker("username");
+    $firstname = $__SE::PostChecker("firstName");
+    $seccondname = $__SE::PostChecker("lastName");
+    $email = $__SE::PostChecker("email");
+    $age = $__SE::PostChecker("age");
+    $password = $__SE::PostChecker("pw");
+    $check = $__SE::PostChecker("check");
     $pwsave =  password_hash($password, PASSWORD_DEFAULT);
 
     if ($check == "on") {

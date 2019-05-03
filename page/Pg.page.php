@@ -32,6 +32,6 @@
 </form>
 
 <?php
-$_USR -> AddUser($db_link);
+$_USR::AddUser($db_link);
 //var_dump($addusr);
  ?>

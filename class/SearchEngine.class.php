@@ -6,7 +6,7 @@
   {
 
 
-    public function GetChecker($prf)
+    public static function GetChecker($prf)
     {
 
 
@@ -19,7 +19,7 @@
       };
     }
 
-    public function PostChecker($prf)
+    public static function PostChecker($prf)
     {
 
 
@@ -32,7 +32,7 @@
       };
     }
 
-    public function PageValidation($pagename)
+    public static function PageValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
         return "page/Home.page.php";
@@ -42,7 +42,7 @@
       }
     }
 
-    public function NameValidation($pagename)
+    public static function NameValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
         return "Home";
@@ -52,7 +52,7 @@
       }
     }
 
-    public function FileValidation($path)
+    public static function FileValidation($path)
     {
       $files = scandir($path);
       $count = count($files);
@@ -80,7 +80,7 @@
 
 
 
-    public function SearchQuest($searchglobal, $link)
+    public static function SearchQuest($searchglobal, $link)
     {
       $words = explode(" ", $searchglobal);
       $wordlist = implode(", ", $words);
@@ -94,7 +94,7 @@
     }
 
 
-    public function FormSearch($type, $name, $check, $link)
+    public static function FormSearch($type, $name, $check, $link)
     {
 
 
@@ -116,6 +116,20 @@
         }
         mysqli_free_result($result);
       }
+
+
+    }
+
+
+    public static function IPpush($ip, $link)
+    {
+
+      $timestamp = date('H:i:s');
+      $date = date('Y-j-d');
+
+      $query = "INSERT INTO iplogg ( IP, TS, DT ) VALUES ('$ip', '$timestamp', '$date');";
+      $injc = mysqli_query($link, $query);
+
 
 
     }

@@ -1,17 +1,29 @@
+
+//importing the
 @import "font";
 @import "root";
 
+
+
+//doing the mediaquery response
+
 @mixin respond-to($media)   {
   @if $media == handhelds {
-    @media only screen and (min-device-width: 20em) and (max-device-width: 40em) { @content; }
+    @media only screen and (max-device-width: 40rem) { @content; }
   }
   @else if $media == medium-screens {
-    @media only screen and (min-device-width: 40em) { @content; }
+    @media only screen and (min-device-width: 40rem) { @content; }
   }
   @else if $media == wide-screens {
     @media only screen and (min-width: 1000px) { @content; }
   }
 }
+
+
+//importing class CSS
+@import "galery";
+
+
 
 
 
@@ -21,17 +33,15 @@ h1,h2,h3 {
   @include respond-to(handhelds) {
     width: 100%;
     margin: auto;
-    font-size: 6em;
+    font-size: 6rem;
   }
   @include respond-to(medium-screens) {
     margin: auto;
-    padding-left: 1em;
   }
   @include respond-to(wide-screens){
     width: 100%;
-    padding-left: 3.7rem;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     margin: auto;
   }
 }
@@ -75,31 +85,28 @@ h1,h2,h3 {
 p {
   @include respond-to(handhelds){
     margin:0;
-    padding-left: 1.3em;
-    padding-top: 1em;
+    padding-top: 1rem;
     width: 100%;
     font-family: $main-font;
     color: $main-font-color;
-    font-size: 2.5em;
+    font-size: 2.5rem;
   }
   @include respond-to(medium-screens){
     margin:0;
-    padding-left: 2em;
     width: 100%;
     font-family: $main-font;
     font-style: regular;
     font-weight: regular;
     color: $main-font-color;
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
   @include respond-to(wide-screens){
     margin:0;
     padding-top: 0.5rem;
-    padding-left: 3em;
     width: 100%;
     font-family: $main-font;
     color: $main-font-color;
-    font-size: 1.3em;
+    font-size: 1.3rem;
   }
 }
 
@@ -155,7 +162,7 @@ p {
         border-color: darkgray;
         overflow: hidden;
         min-width: 50px;
-        font-size: 4em;
+        font-size: 4rem;
       }
 
       a {
@@ -176,7 +183,7 @@ p {
 
 .navbar-brand {
   @include respond-to(handhelds){
-    font-size: 4em;
+    font-size: 4rem;
   }
 }
 
@@ -214,20 +221,20 @@ p {
 
   input {
     @include respond-to(handhelds){
-      font-size: 3em;
-      margin-left: 1em;
-      margin-top: 1em;
+      font-size: 3rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
       border-radius: 0.5rem;
       border-width: 0.2rem;
-      height: 2em;
+      height: 2rem;
     }
   }
 
   button {
     @include respond-to(handhelds){
-      font-size: 3em!important;
-      margin-left: 1em!important;
-      margin-top: 1em!important;
+      font-size: 3rem!important;
+      margin-left: 1rem!important;
+      margin-top: 1rem!important;
       border-radius: 0.5rem;
       border-width: 0.2rem;
     }
@@ -264,7 +271,7 @@ a:hover {
   position: fixed;
 }
 
-.navbar-item:hover {
+.navbar-itrem:hover {
   transform: scale(1.05);
   transition: all 0.5s;
   text-rendering: geometricPrecision;
@@ -281,25 +288,27 @@ a:hover {
 }
 
 .content {
+  padding-left: 2rem;
+  padding-right: 2rem;
   @include respond-to(handhelds){
-    margin-left: 5em;
-    margin-right: 5em;
+    margin-left: 5rem;
+    margin-right: 5rem;
     min-height: 100rem;
     padding-top: 25rem;
     padding-bottom: 7rem;
     background-color: $background-color-content;
   }
   @include respond-to(medium-screens){
-    margin-left: 2em;
-    margin-right: 2em;
-    min-height:  42em;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    min-height:  42rem;
     padding-top: 8rem;
-    padding-bottom: 3em;
+    padding-bottom: 3rem;
     background-color: $background-color-content;
   }
   @include respond-to(wide-screens){
-    margin-left: 10em;
-    margin-right: 10em;
+    margin-left: 10rem;
+    margin-right: 10rem;
     min-height:  50rem;
     padding-top: 8rem;
     padding-bottom: 3rem;
@@ -309,7 +318,7 @@ a:hover {
 
 .titleDoc {
   @include respond-to(handhelds){
-    margin-left: 3rem;
+    margin-left: 1rem;
   }
 }
 
@@ -352,36 +361,32 @@ a:hover {
 .formular {
   @include respond-to(handhelds){
     .input {
-      font-size: 4.5em;
+      font-size: 4.5rem;
       height: auto;
       width: 90%;
-      padding-left: 0.5em;
-      margin-left: 0.5em;
+      margin-left: 0.5rem;
     }
     .form-text {
-      font-size: 2em;
+      font-size: 2rem;
     }
     .label {
-      font-size: 3em;
-      padding-left: 1em;
+      font-size: 3rem;
       text-decoration: underline;
     }
     .label-small {
-      font-size: 2.5em;
-      padding-left: 1em;
+      font-size: 2.5rem;
     }
     small {
-      padding-left: 1.5em;
-      font-size: 1.5em;
+      font-size: 1.5rem;
     }
     .button {
-      font-size: 4em;
-      border-radius: 0.3em;
-      padding: 0.3em;
-      margin-left: 0.7em;
+      font-size: 4rem;
+      border-radius: 0.3rem;
+      padding: 0.3rem;
+      margin-left: 0.7rem;
     }
     .check {
-      margin-left: 1em;
+      margin-left: 1rem;
       display: block;
       position:static;
       width: 80px;
@@ -390,36 +395,32 @@ a:hover {
   }
   @include respond-to(medium-screens){
     .input {
-      font-size: 1.5em;
+      font-size: 1.5rem;
       height: auto;
       width: 60%;
-      padding-left: 0.5em;
-      margin-left: 1.5em;
+      margin-left: 1.5rem;
     }
     .form-text {
-      font-size: 2em;
+      font-size: 2rem;
     }
     .label {
-      font-size: 1.5em;
-      padding-left: 1.5em;
+      font-size: 1.5rem;
       text-decoration: underline;
     }
     .label-small {
-      font-size: 1em;
-      padding-left: 0.5em;
+      font-size: 1rem;
     }
     small {
-      padding-left: 0.5em;
-      font-size: 1em;
+      font-size: 1rem;
     }
     .button {
-      font-size: 1em;
-      border-radius: 0.3em;
-      padding: 0.3em;
-      margin-left: 0.7em;
+      font-size: 1rem;
+      border-radius: 0.3rem;
+      padding: 0.3rem;
+      margin-left: 0.7rem;
     }
     .check {
-      margin-left: 1em;
+      margin-left: 1rem;
       display: flex;
       position: static;
       width: 30px;
@@ -428,35 +429,31 @@ a:hover {
   }
   @include respond-to(wide-screens){
     .input {
-      font-size: 1.5em;
+      font-size: 1.5rem;
       height: auto;
       width: 60%;
-      padding-left: 0.5em;
-      margin-left: 2em;
+      margin-left: 2rem;
     }
     .form-text {
-      font-size: 2em;
+      font-size: 2rem;
     }
     .label {
-      font-size: 1.5em;
-      padding-left: 2em;
+      font-size: 1.5rem;
       text-decoration: underline;
     }
     .label-small {
-      font-size: 1em;
-      padding-left: 2em;
+      font-size: 1rem;
     }
     small {
-      padding-left: 2em;
     }
     .button {
-      font-size: 1.5em;
-      border-radius: 0.3em;
-      padding: 0.3em;
-      margin-left: 2em;
+      font-size: 1.5rem;
+      border-radius: 0.3rem;
+      padding: 0.3rem;
+      margin-left: 2rem;
     }
     .check {
-      margin-left: 2em;
+      margin-left: 2rem;
       display: flex;
       position: static;
       width: 30px;
@@ -469,7 +466,7 @@ a:hover {
 
 .login {
   display: flex;
-  padding-top: 2em;
+  padding-top: 2rem;
   .formular {
     .button {
       display: inline-flex;

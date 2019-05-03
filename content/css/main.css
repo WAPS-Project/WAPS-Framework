@@ -209,7 +209,14 @@ h1, h2, h3 {
   .search {
     width: 100%;
     display: flex;
-    height: auto; } }
+    height: auto; }
+    .search input {
+      font-size: 3rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
+      border-radius: 0.5rem;
+      border-width: 0.2rem;
+      height: auto; } }
 @media only screen and (max-device-width: 40rem) {
   .search input {
     font-size: 3rem;
@@ -217,7 +224,7 @@ h1, h2, h3 {
     margin-top: 1rem;
     border-radius: 0.5rem;
     border-width: 0.2rem;
-    height: 2rem; } }
+    height: auto; } }
 @media only screen and (max-device-width: 40rem) {
   .search button {
     font-size: 3rem !important;

@@ -6,6 +6,15 @@ USE `php_webapp_sample`;
 
 -- --------------------------------------------------------
 
+--
+-- Tabellenstruktur für Tabelle `iplogg`
+--
+
+CREATE TABLE iplogg (
+	IPID int NOT NULL AUTO_INCREMENT,
+	IP int NOT NULL,
+	PRIMARY KEY (IPID)
+);
 
 --
 -- Tabellenstruktur für Tabelle `FSK_Table`

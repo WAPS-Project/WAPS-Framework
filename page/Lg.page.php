@@ -14,4 +14,4 @@
   </div>
   <button type="submit" class="btn btn-primary button">Bestätigen</button>
 </form>
-<?php $_USR -> LoginUser($db_link); ?>
+<?php $_USR::LoginUser($db_link); ?>

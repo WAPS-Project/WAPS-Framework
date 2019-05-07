@@ -121,13 +121,15 @@
     }
 
 
-    public static function IPpush($ip, $link)
+    public static function IPpush($cip, $link)
     {
 
       $timestamp = date('H:i:s');
-      $date = date('Y-j-d');
+      $date = date('Y-m-d');
+      $pip = $_SERVER['REMOTE_ADDR'];
+      $info = $_SERVER['HTTP_USER_AGENT'];
 
-      $query = "INSERT INTO iplogg ( IP, TS, DT ) VALUES ('$ip', '$timestamp', '$date');";
+      $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$cip', '$timestamp', '$date');";
       $injc = mysqli_query($link, $query);
 
 

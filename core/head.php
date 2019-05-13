@@ -9,6 +9,10 @@
   <?php require 'config/main.config.php';
   ?>
   <meta charset="<?php echo $charset ?>">
+  <meta name="description" content="<?php echo $description ?>">
+  <meta name="keywords" content="<?php echo $keywords ?>">
+  <meta name="author" content="<?php echo $author ?>">
+  <meta http-equiv="refresh" content="<?php echo $refresh ?>">
   <link rel="shortcut icon" href="content/img/fav.png">
   <title>Web Application PHP <?php echo ' - '. $pagename; ?></title>
   <?php include 'core/scripts.php'; ?>

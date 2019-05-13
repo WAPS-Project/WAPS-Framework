@@ -1,6 +1,6 @@
-
+<?php require 'config/meta.config.php'; ?>
 <!DOCTYPE html>
-<html lang="de" dir="ltr">
+<html lang="<?php echo  $language ?>" dir="ltr">
 <?php
 include 'core/head.php';                                                             // adding the page head
 ?>

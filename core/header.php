@@ -22,10 +22,7 @@
         <?php $indexname2 = "Example"; ?>
         <a class="nav-link <?php if ($pagename == $indexname2) {echo 'active';}?> " href="index.php?pagename=Example" >Example <?php if ($pagename == $indexname2) {echo "<span class='sr-only'>(current)</span>";}?></a>
       </li>
-      <li class="nav-item">
-        <?php $indexname3 = "Login"; ?>
-        <a class="nav-link <?php if ($pagename == $indexname3) {echo 'active';}?> " href="index.php?pagename=Login" >Login/Registrieren <?php if ($pagename == $indexname3) {echo "<span class='sr-only'>(current)</span>";}?></a>
-      </li>
+      <?php $_USR::UserWelcome(); ?>
     </ul>
     </form>
     <form class="form-inline my-2 my-lg-0 search">

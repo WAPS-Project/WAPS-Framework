@@ -32,6 +32,55 @@
       };
     }
 
+    public static function FileTypeChecker($path)
+    {
+      $files = scandir($path);
+
+      foreach ($files as $file) {
+        if ($file == "." || $file == "..") {
+          continue;
+        }
+        elseif ($file == NULL) {
+          die("Es ist ein Fehler aufgetreten!");
+        }
+        else {
+          $farray = explode(".", $file);
+            $keyname = $farray[0];
+            $keytype = $farray[1];
+
+
+            try {
+              $filetype = $farray[2];
+            } catch (\Exception $e) {
+            }
+
+            if ($keytype != "php" || $keytype != "js") {
+              if ($keytype == "class" && $filetype == "php") {
+                echo "</br>Data: Name = $keyname , Type = $keytype";
+              }
+
+              elseif ($keytype == "page" && $filetype == "php") {
+                echo "</br>Data: Name = $keyname , Type = $keytype";
+              }
+
+              elseif ($keytype == "config" && $filetype == "php") {
+                echo "</br>Data: Name = $keyname , Type = $keytype";
+              }
+
+              else {
+                throw new Exception("ERROR J1: $file is not a valid Page, Config or Class file, please check your input!");
+              }
+            }
+            else {
+              throw new Exception("ERROR J0: $file is not a valid file, please check your input!");
+            }
+        }
+
+      }
+      return;
+
+    }
+
     public static function PageValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
@@ -135,6 +184,7 @@
 
 
     }
+
 
 
 

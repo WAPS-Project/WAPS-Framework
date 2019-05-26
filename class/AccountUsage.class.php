@@ -26,7 +26,6 @@ class AccountUsage
         if($trust == true) {
            session_start();
            $_SESSION['login_User'] = $myUsername;
-           echo "Welcome";
         }
 
         else {
@@ -39,19 +38,18 @@ class AccountUsage
 
 
 
-    /*if($count == 1) {
-       session_register("myUsername");
-       $_SESSION['login_User'] = $myUsername;
+  }
 
-       header("location: core/welcome.php");
+  public static function UserWelcome() {
+
+    if (isset($_SESSION['login_User'])) {
+      $username = $_SESSION['login_User'];
+      echo "<p id= 'greetings'>Herzlich Willkommen $username</p>";
     }
 
     else {
-       $error = "Your Login Name or Password is invalid";
+      echo "<button class=\"btn btn-secondary button\"><a href=\"index.php?pagename=Login\" >Login/Registration</a></button>";
     }
-    */
-
-
   }
 
 

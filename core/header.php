@@ -16,11 +16,11 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <?php $indexname1 = "Home"; ?>
-        <a class="nav-link <?php if ($pagename == $indexname1) {echo 'active';}?>" href="index.php?pagename=Home" >Home <?php if ($pagename == $indexname1) {echo "<span class='sr-only'>(current)</span>";}?></a>
+        <a class="nav-link<?php if ($pagename == $indexname1) {echo ' active';}?>" href="index.php?pagename=Home" >Home <?php if ($pagename == $indexname1) {echo "<span class='sr-only'>(current)</span>";}?></a>
       </li>
       <li class="nav-item">
         <?php $indexname2 = "Example"; ?>
-        <a class="nav-link <?php if ($pagename == $indexname2) {echo 'active';}?> " href="index.php?pagename=Example" >Example <?php if ($pagename == $indexname2) {echo "<span class='sr-only'>(current)</span>";}?></a>
+        <a class="nav-link<?php if ($pagename == $indexname2) {echo ' active';}?>" href="index.php?pagename=Example" >Example <?php if ($pagename == $indexname2) {echo "<span class='sr-only'>(current)</span>";}?></a>
       </li>
       <?php $_USR::UserWelcome(); ?>
     </ul>

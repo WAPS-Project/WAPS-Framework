@@ -186,8 +186,23 @@
     }
 
 
-    public static function GetURLInterpreter()
+    public function GetURLInterpreter()
     {
+
+      $url = $_SERVER["REQUEST_URI"];
+      $url = explode("/", $url);
+      $page = $url[1];
+
+
+      if ($page == "") {
+        return "Home";
+      }
+
+      else {
+        return $page;
+      }
+
+
       
     }
 

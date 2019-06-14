@@ -5,6 +5,6 @@
 
 <footer class="footer">
 &copy;example <?php echo date("Y"); ?>
-<a href="index.php?pagename=Impressum"> Impressum</a>
+<a href="/Impressum"> Impressum</a>
 <div class="status"></div>
 </footer>

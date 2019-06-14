@@ -81,6 +81,27 @@
 
     }
 
+    public static function ListChecker($path, $sure)
+    {
+      $files = scandir($path);
+      foreach ($files as $file) {
+        $mash = explode(".", $file);
+        $name = $mash[0];
+        if ($name == $sure) {
+          return $sure;
+          break;
+        }
+
+        else {
+          continue;
+        }
+
+      }
+
+      throw new Exception("Error Processing Request", 404);
+      
+    }
+
     public static function PageValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {

@@ -91,6 +91,17 @@
       }
     }
 
+    public static function HomeValidation($name)
+    {
+      if ($name != "") {
+        return $name;
+      }
+
+      else {
+        return "Home";
+      }
+    }
+
     public static function NameValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {

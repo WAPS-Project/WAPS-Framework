@@ -32,7 +32,7 @@
       };
     }
 
-    public static function FileTypeChecker($path)
+    public static function FileTypeChecker($path, $type)
     {
       $files = scandir($path);
 
@@ -235,7 +235,12 @@
       $url = explode("/", $url);
       $page = $url[1];
 
-      if ($page == "") {
+      if (isset($url[2])) {
+        $pagesub = $url[2];
+        return "Error_404";
+      }
+
+      elseif ($page == "") {
         return "Home";
       }
 

@@ -24,12 +24,14 @@ class AccountUsage
         $trust = password_verify($mypassword, $rarray["passwort"]);
 
         if($trust == true) {
-           session_start();
+          session_start(); 
            $_SESSION['login_User'] = $myUsername;
+           echo("<script> alert('Läuft')</script>");
         }
 
         else {
            $error = "Your Login Name or Password is invalid";
+           echo $error;
         }
 
 
@@ -40,15 +42,28 @@ class AccountUsage
 
   }
 
+
   public static function UserWelcome() {
+
+    $__SE = new SearchEngine;
 
     if (isset($_SESSION['login_User'])) {
       $username = $_SESSION['login_User'];
-      echo "<p id= 'greetings'>Herzlich Willkommen $username</p>";
+      echo "<form method= \"post\"  id= \"userlogin\">";
+      echo "<label id= \"greetings\">Herzlich Willkommen $username</label>";
+      echo "<button id= \"logout\" type=\"submit\" class=\"btn btn-secondary button logging-btn\" name= \"logout\" value= \"TRUE\">Logout</button>";
+      echo "</form>";
     }
 
     else {
-      echo "<button class=\"btn btn-secondary button\"><a href=\"/Login\" >Login/Registration</a></button>";
+      echo "<button class=\"btn btn-secondary button logging-btn\"><a href=\"/Login\" >Login/Registration</a></button>";
+    }
+
+    $logoutchk = $__SE::PostChecker("logout");
+
+    if ($logoutchk == "TRUE") {
+      session_destroy();
+      echo "Logout erfolgreich";
     }
   }
 

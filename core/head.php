@@ -1,7 +1,7 @@
 <?php // Hier definieren wir unseren
       // Page Head, wo unter anderem das Charset
       // und der Titel definiert werden
-
+      session_start();
   ?>
 
 

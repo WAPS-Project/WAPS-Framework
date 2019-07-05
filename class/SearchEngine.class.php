@@ -114,13 +114,23 @@
 
     public static function HomeValidation($name)
     {
-      if ($name != "") {
-        return $name;
+
+      $pagefiles = scandir("page/");
+
+      if ($name == "") {
+        return "Home";
       }
 
       else {
-        return "Home";
+        foreach ($pagefiles as $file) {
+          $f = explode(".", $file);
+          if ($name == $f[0]) {
+            return $name;
+          }
+        }
       }
+      return "Error_404";
+
     }
 
     public static function NameValidation($pagename)
@@ -218,13 +228,12 @@
     }
 
 
-    public function GetURLInterpreter()
+    public static function GetURLInterpreter()
     {
 
       $url = $_SERVER["REQUEST_URI"];
       $url = explode("/", $url);
       $page = $url[1];
-
 
       if ($page == "") {
         return "Home";

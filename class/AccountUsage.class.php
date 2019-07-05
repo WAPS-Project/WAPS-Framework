@@ -48,7 +48,7 @@ class AccountUsage
     }
 
     else {
-      echo "<button class=\"btn btn-secondary button\"><a href=\"index.php?pagename=Login\" >Login/Registration</a></button>";
+      echo "<button class=\"btn btn-secondary button\"><a href=\"/Login\" >Login/Registration</a></button>";
     }
   }
 

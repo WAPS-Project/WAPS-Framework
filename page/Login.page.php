@@ -3,7 +3,7 @@
 $lg = "page/Lg.page.php";
 $rg = "page/Pg.page.php";
 $lchoice = "page/Lchoice.page.php";
-$st = $_SE::GetChecker("st");
+$st = $_SE::PostChecker("st");
 
 
 if ($st == "login") {

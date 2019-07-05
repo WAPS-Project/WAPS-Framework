@@ -32,7 +32,7 @@
       };
     }
 
-    public static function FileTypeChecker($path)
+    public static function FileTypeChecker($path, $type)
     {
       $files = scandir($path);
 
@@ -81,6 +81,27 @@
 
     }
 
+    public static function ListChecker($path, $sure)
+    {
+      $files = scandir($path);
+      foreach ($files as $file) {
+        $mash = explode(".", $file);
+        $name = $mash[0];
+        if ($name == $sure) {
+          return $sure;
+          break;
+        }
+
+        else {
+          continue;
+        }
+
+      }
+
+      throw new Exception("Error Processing Request", 404);
+      
+    }
+
     public static function PageValidation($pagename)
     {
       if ($pagename == "NO ENTRY") {
@@ -89,6 +110,27 @@
       else {
         return "page/" . $pagename . ".page.php";
       }
+    }
+
+    public static function HomeValidation($name)
+    {
+
+      $pagefiles = scandir("page/");
+
+      if ($name == "") {
+        return "Home";
+      }
+
+      else {
+        foreach ($pagefiles as $file) {
+          $f = explode(".", $file);
+          if ($name == $f[0]) {
+            return $name;
+          }
+        }
+      }
+      return "Error_404";
+
     }
 
     public static function NameValidation($pagename)
@@ -183,6 +225,31 @@
 
 
 
+    }
+
+
+    public static function GetURLInterpreter()
+    {
+
+      $url = $_SERVER["REQUEST_URI"];
+      $url = explode("/", $url);
+      $page = $url[1];
+
+      if (isset($url[2])) {
+        $pagesub = $url[2];
+        return "Error_404";
+      }
+
+      elseif ($page == "") {
+        return "Home";
+      }
+
+      else {
+        return $page;
+      }
+
+
+      
     }
 
 

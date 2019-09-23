@@ -6,7 +6,3 @@ require 'class.config.php';
 
 require 'core.config.php';
 
-
-
-
- ?>

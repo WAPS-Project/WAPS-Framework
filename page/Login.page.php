@@ -7,17 +7,9 @@ $st = $_SE::PostChecker("st");
 
 
 if ($st == "login") {
-  include $lg;
+    include $lg;
+} elseif ($st == "register") {
+    include $rg;
+} else {
+    include $lchoice;
 }
-
-elseif ($st == "register") {
-  include $rg;
-}
-
-else {
-  include $lchoice;
-}
-
-
-
-?>

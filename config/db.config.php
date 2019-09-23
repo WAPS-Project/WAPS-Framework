@@ -53,4 +53,3 @@ define ( 'MYSQL_BENUTZER',  $DBUSER );
 define ( 'MYSQL_KENNWORT',  $DBPASSWORD );
 // für unser Bsp. nennen wir die DB php_projekt_sample
 define ( 'MYSQL_DATENBANK', $DBNAME );
-?>

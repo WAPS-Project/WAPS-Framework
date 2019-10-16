@@ -38,8 +38,23 @@ class StartUp
 
     }
 
-    function classDirCheck()
+    static function classDirCheck()
     {
+        $dirPath = "/class/";
+        $files = scandir($dirPath);
+
+        foreach ($files as $file) {
+
+            $nameParts = explode($file);
+
+            if ($nameParts[1] === "class" && $nameParts[2] === "php"){
+                return;
+            }
+
+            else {
+                die("Nicht alle Files im Class Folder entsprechen dem 'expample.class.php' Muster!");
+            }
+        }
 
     }
 

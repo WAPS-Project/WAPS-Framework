@@ -1,6 +1,10 @@
 <?php
 
+use webapp_php_sample\main;
+
 require 'config/meta.config.php';
+
+main::main();
 
 ?>
 <!DOCTYPE html>

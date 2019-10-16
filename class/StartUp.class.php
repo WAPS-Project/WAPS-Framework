@@ -45,13 +45,11 @@ class StartUp
 
         foreach ($files as $file) {
 
-            $nameParts = explode($file);
+            $nameParts = explode($file, ".");
 
-            if ($nameParts[1] === "class" && $nameParts[2] === "php"){
+            if ($nameParts[1] === "class" && $nameParts[2] === "php") {
                 return;
-            }
-
-            else {
+            } else {
                 die("Nicht alle Files im Class Folder entsprechen dem 'expample.class.php' Muster!");
             }
         }

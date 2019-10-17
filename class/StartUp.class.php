@@ -7,10 +7,9 @@ use mysqli;
 
 class StartUp
 {
-    static function createDatabase()
+    static function loadDatabase()
     {
         require_once('config/db.config.php');
-        $query = file_get_contents("../sql/php_WebApp_sample.sql");
 
         $db_link = new mysqli(
             MYSQL_HOST,
@@ -18,23 +17,11 @@ class StartUp
             MYSQL_KENNWORT
         );
 
-        $db_link_done = mysqli_connect(
-            MYSQL_HOST,
-            MYSQL_BENUTZER,
-            MYSQL_KENNWORT,
-            MYSQL_DATENBANK
-        );
-
         if ($db_link->connect_error) {
             die("Connection failed: " . $db_link->connect_error);
         }
 
-        if ($db_link->query($query) === TRUE) {
-            return $db_link_done;
-
-        } else {
-            echo "Error creating database: " . $db_link->error;
-        }
+        return $db_link;
 
     }
 
@@ -45,11 +32,12 @@ class StartUp
 
         foreach ($files as $file) {
 
-            $nameParts = explode($file, ".");
+            $nameParts = explode(".", $file);
 
-            if ($nameParts[1] === "class" && $nameParts[2] === "php") {
+            if ($nameParts[1] === "class" && $nameParts[2] === "php" || $file === "." || $file === "..") {
                 return;
             } else {
+                echo "<script>console.log('$file')</script>";
                 die("Nicht alle Files im Class Folder entsprechen dem 'expample.class.php' Muster!");
             }
         }

@@ -2,7 +2,6 @@
 
 require 'config/meta.config.php';
 
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $language ?>" dir="ltr">

@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS `php_webapp_sample`;
-CREATE DATABASE IF NOT EXISTS `php_webapp_sample` /*!40100 DEFAULT CHARACTER SET utf8*/;
+
 USE `php_webapp_sample`;
 
 

@@ -1,5 +1,9 @@
 <?php
 
+require 'obj/pageMap.php';
+require 'obj/pageObj.php';
+
+
 require 'class/AccountUsage.class.php';
 require 'class/ErrorHandler.class.php';
 require 'class/Gallery.class.php';

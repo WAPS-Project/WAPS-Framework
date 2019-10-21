@@ -12981,6 +12981,10 @@
         }
     };
     function update(params) {
+        var popup = getPopup();
+        if (!popup || hasClass(popup, swalClasses.hide)) {
+            return warn("You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.");
+        }
         var validUpdatableParams = {};
         Object.keys(params).forEach(function (param) {
             if (Swal.isUpdatableParameter(param)) {
@@ -13068,7 +13072,7 @@
         };
     });
     SweetAlert.DismissReason = DismissReason;
-    SweetAlert.version = '8.18.4';
+    SweetAlert.version = '8.18.5';
     var Swal = SweetAlert;
     Swal["default"] = Swal;
     return Swal;

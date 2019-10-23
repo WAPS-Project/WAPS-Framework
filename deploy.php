@@ -1,4 +1,6 @@
 <?php
+// https://deployer.org/docs/getting-started.html
+
 namespace Deployer;
 
 require 'recipe/common.php';
@@ -22,8 +24,8 @@ set('writable_dirs', []);
 
 // Hosts
 
-host('project.com')
-    ->set('deploy_path', '~/var/www/SampleWebApp.de');
+host('localhost:443')
+    ->set('deploy_path', '~/');
     
 
 // Tasks
@@ -51,4 +53,9 @@ after('deploy:failed', 'deploy:unlock');
 
 task('test', function () {
     writeln('Hello world');
+});
+
+task('pwd', function () {
+    $result = run('pwd');
+    writeln("Current dir: $result");
 });

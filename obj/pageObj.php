@@ -12,4 +12,6 @@ class pageObj
     public $File;
 
     public $Path;
+
+    public  bool  $IsSet;
 }

@@ -37,10 +37,18 @@ class StartUp
         foreach ($files as $file) {
             $fileObj = new pageObj();
             $filePart = explode(".", $file);
+            $fileErrorCheck = explode("_", $file);
             if ($file != "." && $file != "..") {
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
                 $fileObj->Path = "page/" . $file;
+
+                if ($fileErrorCheck[0] === "Error") {
+                    $fileObj->IsSet = FALSE;
+                }
+                else {
+                    $fileObj->IsSet = TRUE;
+                }
 
                 array_push($fileMapExplicit, $fileObj);
             }

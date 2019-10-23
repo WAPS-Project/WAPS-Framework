@@ -3,7 +3,6 @@
 
 namespace webapp_php_sample_class;
 
-
 class Main
 {
     public static function main($pagePath, $pageName)
@@ -23,8 +22,33 @@ class Main
 
     }
 
-    public static function navigation($pageMap) {
+    public static function navigation($pageMap, $pageName)
+    {
+        $pageList = json_decode($pageMap);
 
+        echo "<div class='collapse navbar-collapse' id='navbarSupportedContent'>";
+        echo "<ul class=\"navbar-nav mr-auto\">";
+
+        foreach ($pageList as $pageObj) {
+            $active = "";
+            $current = "";
+
+
+            if ($pageName === $pageObj->Name) {
+                echo "<span class='sr-only'>(current)</span>";
+            }
+
+            if ($pageName === $pageObj->Name) {
+                $active = "active";
+            }
+
+            echo "<li class='nav-item'>";
+
+            echo "<a class=\"nav-link " . $active . " \" href='" . $pageObj->path . "' >" . $pageObj->Name . " " . $current . "</a>";
+            echo "</li>";
+        }
     }
 
 }
+
+//

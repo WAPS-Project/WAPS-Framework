@@ -90,7 +90,7 @@ VALUES (1, "Admin", "Admin", "Admin", 'admin@email.de', "Admin", 5),
 ;
 
 --
--- Einfügen des Admin Passworts
+-- Einfügen des Temporären, gehashten Admin Passworts
 --
 
 INSERT INTO passwd (PWID, UID, passwort)

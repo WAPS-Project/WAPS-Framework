@@ -300,3 +300,5 @@ public/
 # End of https://www.gitignore.io/api/node
 
 var/*
+
+config/pagemap.config.json

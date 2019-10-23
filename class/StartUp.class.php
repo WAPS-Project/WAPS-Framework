@@ -55,15 +55,16 @@ class StartUp
         foreach ($files as $file) {
             $fileObj = new pageObj();
             $filePart = explode(".", $file);
-
-            $fileObj -> Name = $filePart[0];
-            $fileObj -> File = $file;
-            $fileObj -> Path = "page/".$file;
-
+            if ($file != "." && $file != "..") {
+                $fileObj -> Name = $filePart[0];
+                $fileObj -> File = $file;
+                $fileObj -> Path = "page/".$file;
+            }
             array_push($fileMapExplicit, $fileObj);
         }
 
         $fileJSON = json_encode($fileMapExplicit);
+        file_put_contents("./config/pagemap.config.json", $fileJSON);
         return $fileJSON;
     }
 

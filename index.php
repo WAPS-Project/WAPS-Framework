@@ -1,5 +1,7 @@
 <?php
 
+use webapp_php_sample_class\Main;
+
 require 'config/meta.config.php';
 
 ?>
@@ -11,20 +13,9 @@ include 'core/head.php';                                                        
 <body>
 <?php
 include 'core/header.php';                                                           //adding the header
-?>
-<div class="content">
-    <h1 class="titleDoc"><?php echo $pageName ?></h1>
-    <?php if ($pagePath != "page/home.page.php") {
 
-        include $pagePath;
+Main::main($pagePath, $pageName);
 
-    } else {
-        include 'page/home.page.php';
-    }
-
-    ?>
-</div>
-<?php
 include 'core/footer.php';
 ?>
 </body>

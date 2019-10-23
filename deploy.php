@@ -12,7 +12,7 @@ set('application', 'wepapp_php_sample');
 set('repository', 'git@gitlab.com:JosunLP/webapp_php_sample.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true); 
+set('git_tty', true);
 
 // Shared files/dirs between deploys 
 set('shared_files', []);
@@ -26,7 +26,7 @@ set('writable_dirs', []);
 
 host('localhost:443')
     ->set('deploy_path', '~/');
-    
+
 
 // Tasks
 

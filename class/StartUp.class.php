@@ -27,9 +27,33 @@ class StartUp
 
     }
 
+    public static function loadPages()
+    {
+        $files = self::dirCheck("page");
+
+        $fileMap = new pageMap();
+        $fileMapExplicit = $fileMap::$PageMap;
+
+        foreach ($files as $file) {
+            $fileObj = new pageObj();
+            $filePart = explode(".", $file);
+            if ($file != "." && $file != "..") {
+                $fileObj->Name = $filePart[0];
+                $fileObj->File = $file;
+                $fileObj->Path = "page/" . $file;
+
+                array_push($fileMapExplicit, $fileObj);
+            }
+        }
+
+        $fileJSON = json_encode($fileMapExplicit);
+        file_put_contents("./config/pagemap.config.json", $fileJSON);
+        return $fileJSON;
+    }
+
     static private function dirCheck($dir)
     {
-        $dirPath = $dir."/";
+        $dirPath = $dir . "/";
         $files = scandir($dirPath);
 
         foreach ($files as $file) {
@@ -44,28 +68,6 @@ class StartUp
             }
         }
         return $files;
-    }
-
-    public static function loadPages() {
-        $files = self::dirCheck("page");
-
-        $fileMap = new pageMap();
-        $fileMapExplicit = $fileMap::$PageMap;
-
-        foreach ($files as $file) {
-            $fileObj = new pageObj();
-            $filePart = explode(".", $file);
-            if ($file != "." && $file != "..") {
-                $fileObj -> Name = $filePart[0];
-                $fileObj -> File = $file;
-                $fileObj -> Path = "page/".$file;
-            }
-            array_push($fileMapExplicit, $fileObj);
-        }
-
-        $fileJSON = json_encode($fileMapExplicit);
-        file_put_contents("./config/pagemap.config.json", $fileJSON);
-        return $fileJSON;
     }
 
 }

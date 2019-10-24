@@ -2,6 +2,7 @@
 
 use webapp_php_sample_class\AccountUsage;
 use webapp_php_sample_class\ErrorHandler;
+use webapp_php_sample_class\Main;
 use webapp_php_sample_class\SearchEngine;
 use webapp_php_sample_class\StartUp;
 
@@ -13,12 +14,10 @@ try {
     ErrorHandler::FireError($e->getCode(), $e->getMessage());
 }
 
-$_SE = new SearchEngine;
-$_USR = new AccountUsage;
-$pageName = $_SE::HomeValidation($_SE::GetURLInterpreter());
-$pagePath = $_SE::PageValidation($pageName);
-$pageList = $_SE::FileValidation("page/open");
-$IP = $_SE::PostChecker("ip");
+$pageName = Main::HomeValidation(Main::GetURLInterpreter());
+$pagePath = Main::PageValidation($pageName);
+$pageList = Main::FileValidation("page/open");
+$IP = Main::PostChecker("ip");
 
 try {
     $db_link = new mysqli(
@@ -31,7 +30,7 @@ try {
 }
 
 if ($IP != "NO ENTRY") {
-    $_SE::IPpush($IP, $db_link);
+    Main::IPush($IP, $db_link);
     echo $IP;
 }
 

@@ -10,12 +10,12 @@ class Main
         echo '<div class="content">';
         echo '<h1 class="titleDoc">' . $pageName . '</h1>';
 
-        if ($pagePath != "page/home.page.php") {
+        if ($pagePath != "page/open/home.page.php") {
 
             include $pagePath;
 
         } else {
-            include 'page/home.page.php';
+            include 'page/open/home.page.php';
         }
 
         echo '</div>';
@@ -44,7 +44,7 @@ class Main
 
             echo "<li class='nav-item'>";
 
-            echo "<a class=\"nav-link " . $active . " \" href='" . $pageObj->path . "' >" . $pageObj->Name . " " . $current . "</a>";
+            echo "<a class=\"nav-link " . $active . " \" href='" . $pageObj->Path . "' >" . $pageObj->Name . " " . $current . "</a>";
             echo "</li>";
         }
     }

@@ -23,41 +23,6 @@ class SearchEngine
         }
     }
 
-    public static function FileTypeChecker($path, $type)
-    {
-        $files = scandir($path);
-        foreach ($files as $file) {
-            if ($file == "." || $file == "..") {
-                continue;
-            } elseif ($file == NULL) {
-                die("Es ist ein Fehler aufgetreten!");
-            } else {
-                $fArray = explode(".", $file);
-                $keyName = $fArray[0];
-                $keyType = $fArray[1];
-                try {
-                    $fileType = $fArray[2];
-                } catch (\Exception $e) {
-                }
-                if ($keyType != "php" || $keyType != "js") {
-                    if ($keyType == "class" && $fileType == "php") {
-                        echo "</br>Data: Name = $keyName , Type = $keyType";
-                    } elseif ($keyType == "page" && $fileType == "php") {
-                        echo "</br>Data: Name = $keyName , Type = $keyType";
-                    } elseif ($keyType == "config" && $fileType == "php") {
-                        echo "</br>Data: Name = $keyName , Type = $keyType";
-                    } else {
-                        throw new Exception("ERROR J1: $file is not a valid Page, Config or Class file, please check your input!");
-                    }
-                } else {
-                    throw new Exception("ERROR J0: $file is not a valid file, please check your input!");
-                }
-            }
-
-        }
-        return;
-    }
-
     public static function ListChecker($path, $sure)
     {
         $files = scandir($path);
@@ -77,15 +42,15 @@ class SearchEngine
     public static function PageValidation($pagename)
     {
         if ($pagename == "NO ENTRY") {
-            return "page/Home.page.php";
+            return "page/open/Home.page.php";
         } else {
-            return "page/" . $pagename . ".page.php";
+            return "page/open/" . $pagename . ".page.php";
         }
     }
 
     public static function HomeValidation($name)
     {
-        $pageFiles = scandir("page/");
+        $pageFiles = scandir("page/open/");
         if ($name == "") {
             return "Home";
         } else {
@@ -112,14 +77,14 @@ class SearchEngine
     {
         $files = scandir($path);
         $count = count($files);
-        //var_dump($count);
+
         $i = 0;
         $fileList = array('page' => array());
         foreach ($files as $file) {
             if ($file == "." || $file == "..") {
                 continue;
             } elseif ($file == NULL) {
-                die("Es ist ein Fehler aufgetreten!");
+                ErrorHandler::FireError("FileError", "The File check failed");
             } else {
                 $fileList["page"][$i] = $path . $file;
             }
@@ -175,7 +140,6 @@ class SearchEngine
         $url = explode("/", $url);
         $page = $url[1];
         if (isset($url[2])) {
-            $pagesub = $url[2];
             return "Error_404";
         } elseif ($page == "") {
             return "Home";

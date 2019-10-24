@@ -29,7 +29,7 @@ class StartUp
 
     public static function loadPages()
     {
-        $files = self::dirCheck("page/public");
+        $files = self::dirCheck("page/open/");
 
         $fileMap = new pageMap();
         $fileMapExplicit = $fileMap::$PageMap;
@@ -41,7 +41,7 @@ class StartUp
             if ($file != "." && $file != "..") {
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
-                $fileObj->Path = "page/" . $file;
+                $fileObj->Path = "page/open/" . $file;
 
                 if ($fileErrorCheck[0] === "Error") {
                     $fileObj->IsSet = FALSE;

@@ -17,7 +17,7 @@ $_SE = new SearchEngine;
 $_USR = new AccountUsage;
 $pageName = $_SE::HomeValidation($_SE::GetURLInterpreter());
 $pagePath = $_SE::PageValidation($pageName);
-$pageList = $_SE::FileValidation("page/public/");
+$pageList = $_SE::FileValidation("page/open");
 $IP = $_SE::PostChecker("ip");
 
 try {

@@ -17,7 +17,7 @@ $_SE = new SearchEngine;
 $_USR = new AccountUsage;
 $pageName = $_SE::HomeValidation($_SE::GetURLInterpreter());
 $pagePath = $_SE::PageValidation($pageName);
-$pageList = $_SE::FileValidation("page/");
+$pageList = $_SE::FileValidation("page/public/");
 $IP = $_SE::PostChecker("ip");
 
 try {
@@ -27,7 +27,7 @@ try {
         MYSQL_KENNWORT
     );
 } catch (Exception $e) {
-    ErrorHandler::CreateError($e->getCode(), $e->getMessage());
+    ErrorHandler::FireError($e->getCode(), $e->getMessage());
 }
 
 if ($IP != "NO ENTRY") {

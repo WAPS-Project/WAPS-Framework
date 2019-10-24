@@ -13,5 +13,5 @@ class pageObj
 
     public $Path;
 
-    public  bool  $IsSet;
+    public $IsSet;
 }

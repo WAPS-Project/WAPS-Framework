@@ -29,7 +29,7 @@ class StartUp
 
     public static function loadPages()
     {
-        $files = self::dirCheck("page");
+        $files = self::dirCheck("page/public");
 
         $fileMap = new pageMap();
         $fileMapExplicit = $fileMap::$PageMap;
@@ -68,7 +68,7 @@ class StartUp
 
             $nameParts = explode(".", $file);
 
-            if ($nameParts[1] === $dir || $file === "." || $file === "..") {
+            if ($nameParts[1] === $dir || $file != "." || $file != "..") {
                 continue;
             } else {
                 echo "<script>console.log('$file')</script>";

@@ -44,7 +44,7 @@ class Main
 
             echo "<li class='nav-item'>";
 
-            echo "<a class=\"nav-link " . $active . " \" href='" . $pageObj->Path . "' >" . $pageObj->Name . " " . $current . "</a>";
+            echo "<a class=\"nav-link " . $active . " \" href='/" . $pageObj->Name . "' >" . $pageObj->Name . " " . $current . "</a>";
             echo "</li>";
         }
     }

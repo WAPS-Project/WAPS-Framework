@@ -1,9 +1,11 @@
 <?php
 
+use webapp_php_sample_class\SearchEngine;
+
 $lg = "page/private/Lg.page.php";
 $rg = "page/private/Pg.page.php";
 $lchoice = "page/private/Lchoice.page.php";
-$st = $_SE::PostChecker("st");
+$st = SearchEngine::PostChecker("st");
 
 
 if ($st == "login") {

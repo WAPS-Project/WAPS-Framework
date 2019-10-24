@@ -130,7 +130,7 @@ class SearchEngine
         $pip = $_SERVER['REMOTE_ADDR'];
         $info = $_SERVER['HTTP_USER_AGENT'];
         $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$cip', '$timestamp', '$date');";
-        $injc = mysqli_query($link, $query);
+        mysqli_query($link, $query);
     }
 
 

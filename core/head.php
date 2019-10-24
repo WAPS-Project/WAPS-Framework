@@ -7,10 +7,10 @@
 <head>
     <?php require 'config/main.config.php';
     ?>
-    <meta charset="<?php echo $charset ?>">
-    <meta name="description" content="<?php echo $description ?>">
-    <meta name="keywords" content="<?php echo $keywords ?>">
-    <meta name="author" content="<?php echo $author ?>">
+    <meta charset="<?php echo CHARSET ?>">
+    <meta name="description" content="<?php echo DESCRIPTION ?>">
+    <meta name="keywords" content="<?php echo KEYWORDS ?>">
+    <meta name="author" content="<?php echo AUTHOR ?>">
     <link rel="shortcut icon" href="<?php $_SERVER['DOCUMENT_ROOT'] ?>/content/img/fav.png">
     <title>Web Application PHP <?php echo ' - ' . $pageName; ?></title>
     <?php include 'core/scripts.php'; ?>

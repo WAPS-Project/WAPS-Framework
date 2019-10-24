@@ -11,10 +11,6 @@ $keywords = "PHP,HTMl,XML,JavaScript,CSS,APP";
 $author = "Jonas Pfalzgraf";
 
 
-
-
-
-
 define("CHARSET", $charset);
 define("LANGUAGE", $language);
 define("DESCRIPTION", $description);

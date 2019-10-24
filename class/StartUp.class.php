@@ -45,8 +45,7 @@ class StartUp
 
                 if ($fileErrorCheck[0] === "Error") {
                     $fileObj->IsSet = FALSE;
-                }
-                else {
+                } else {
                     $fileObj->IsSet = TRUE;
                 }
 

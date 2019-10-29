@@ -7,9 +7,8 @@ class AccountUsage
 
     public static function LoginUser($db)
     {
-        $__SE = new SearchEngine;
-        $myUsername = $__SE::PostChecker("username");
-        $myPassword = $__SE::PostChecker("password");
+        $myUsername = Main::checkPost("username");
+        $myPassword = Main::checkPost("password");
         $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
         if ($result = mysqli_query($db, $queryCheck)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -28,7 +27,6 @@ class AccountUsage
 
     public static function UserWelcome()
     {
-        $__SE = new SearchEngine;
         if (isset($_SESSION['login_User'])) {
             $username = $_SESSION['login_User'];
             echo "<form method= \"post\"  id= \"userLogin\">";
@@ -38,7 +36,7 @@ class AccountUsage
         } else {
             echo "<button class=\"btn btn-secondary button logging-btn\"><a href=\"/Login\" >Login/Registration</a></button>";
         }
-        $logoutCheck = $__SE::PostChecker("logout");
+        $logoutCheck = Main::checkPost("logout");
         if ($logoutCheck == "TRUE") {
             session_destroy();
             echo "Logout erfolgreich";
@@ -47,14 +45,13 @@ class AccountUsage
 
     public static function AddUser($db_link)
     {
-        $__SE = new SearchEngine;
-        $username = $__SE::PostChecker("username");
-        $firstName = $__SE::PostChecker("firstName");
-        $secondName = $__SE::PostChecker("lastName");
-        $email = $__SE::PostChecker("email");
-        $age = $__SE::PostChecker("age");
-        $password = $__SE::PostChecker("pw");
-        $check = $__SE::PostChecker("check");
+        $username = Main::checkPost("username");
+        $firstName = Main::checkPost("firstName");
+        $secondName = Main::checkPost("lastName");
+        $email = Main::checkPost("email");
+        $age = Main::checkPost("age");
+        $password = Main::checkPost("pw");
+        $check = Main::checkPost("check");
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
         if ($check == "on") {
             if ($age >= 18) {
@@ -68,20 +65,20 @@ class AccountUsage
             } elseif ($age >= 0 && $age < 6) {
                 $ageID = 1;
             }
-            //$queryUSID = "SELECT `UID` AS 'ID' FROM `usr` ORDER BY 'ID' DESC LIMIT 1;";
+
             $queryUSID = "SELECT MAX(UID) AS 'ID' FROM usr;";
-            //var_dump($queryUSID);
+
             if ($rslt = mysqli_query($db_link, $queryUSID)) {
-                //var_dump($rslt);
+
                 while ($obj = mysqli_fetch_array($rslt)) {
-                    //var_dump($obj);
+
                     $USID = $obj["ID"] + 1;
                     $query = "INSERT INTO usr ( username, firstname, lastname, email, userrank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";
-                    //var_dump($query);
+
                     $query2 = "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwSave', $USID);";
-                    //var_dump($query2);
-                    mysqli_query($db_link, $query);
-                    mysqli_query($db_link, $query2);
+
+                    Main::checkSqlSyntax($query);
+                    Main::checkSqlSyntax($query2);
                 }
             }
         }

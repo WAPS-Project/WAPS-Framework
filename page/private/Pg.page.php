@@ -1,3 +1,6 @@
+<?php
+
+?>
 <form class="formular" method="post">
     <div class="form-group">
         <label class="label" for="username">E-Mail</label>
@@ -38,8 +41,3 @@
     </div>
     <button type="submit" class="btn btn-success button">Absenden</button>
 </form>
-
-<?php
-$_USR::AddUser($db_link);
-//var_dump($addusr);
-?>

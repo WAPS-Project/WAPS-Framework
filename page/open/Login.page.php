@@ -1,11 +1,11 @@
 <?php
 
-use webapp_php_sample_class\SearchEngine;
+use webapp_php_sample_class\Main;
 
 $lg = "page/private/Lg.page.php";
 $rg = "page/private/Pg.page.php";
-$lchoice = "page/private/Lchoice.page.php";
-$st = SearchEngine::PostChecker("st");
+$lc = "page/private/Lchoice.page.php";
+$st = Main::checkPost("st");
 
 
 if ($st == "login") {
@@ -13,5 +13,5 @@ if ($st == "login") {
 } elseif ($st == "register") {
     include $rg;
 } else {
-    include $lchoice;
+    include $lc;
 }

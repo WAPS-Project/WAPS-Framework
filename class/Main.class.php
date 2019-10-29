@@ -3,6 +3,8 @@
 
 namespace webapp_php_sample_class;
 
+use mysqli;
+
 class Main
 {
     public static function main($pagePath, $pageName)
@@ -11,10 +13,9 @@ class Main
         echo '<h1 class="titleDoc">' . $pageName . '</h1>';
 
         if ($pagePath != "page/open/home.page.php") {
-
             include $pagePath;
-
-        } else {
+        }
+        else {
             include 'page/open/home.page.php';
         }
 
@@ -49,39 +50,43 @@ class Main
         }
     }
 
-    public static function GetChecker($prf)
+    public static function checkGet($key)
     {
-        if (isset($_GET[$prf])) {
-            return $_GET[$prf];
+        if (isset($_GET[$key])) {
+            return $_GET[$key];
         } else {
             return "NO ENTRY";
         }
     }
 
-    public static function PostChecker($prf)
+    public static function checkPost($key)
     {
-        if (!empty($_POST[$prf])) {
-            return $_POST[$prf];
+        if (!empty($_POST[$key])) {
+            return $_POST[$key];
         } else {
             return "NO ENTRY";
         }
     }
 
-    public static function PageValidation($pagename)
+    public static function validatePage($pageName)
     {
-        if ($pagename == "NO ENTRY") {
+        if ($pageName == "NO ENTRY") {
             return "page/open/Home.page.php";
         } else {
-            return "page/open/" . $pagename . ".page.php";
+            return "page/open/" . $pageName . ".page.php";
         }
     }
 
-    public static function HomeValidation($name)
+    public static function validateHome($name)
     {
         $pageFiles = scandir("page/open/");
         if ($name == "") {
             return "Home";
-        } else {
+        }
+        elseif ($name === "Impressum") {
+            return "Impressum";
+        }
+        else {
             foreach ($pageFiles as $file) {
                 $f = explode(".", $file);
                 if ($name == $f[0]) {
@@ -92,7 +97,7 @@ class Main
         return "Error_404";
     }
 
-    public static function NameValidation($pageName)
+    public static function validateName($pageName)
     {
         if ($pageName == "NO ENTRY") {
             return "Home";
@@ -101,7 +106,7 @@ class Main
         }
     }
 
-    public static function FileValidation($path)
+    public static function validateFile($path)
     {
         $files = scandir($path);
         $count = count($files);
@@ -121,7 +126,7 @@ class Main
         return $fileList;
     }
 
-    public static function GetURLInterpreter()
+    public static function getUrlInterpreter()
     {
         $url = $_SERVER["REQUEST_URI"];
         $url = explode("/", $url);
@@ -135,14 +140,64 @@ class Main
         }
     }
 
-    public static function IPush($cip, $link)
+    public static function ipPush($cip, $link)
     {
         $timestamp = date('H:i:s');
         $date = date('Y-m-d');
         $pip = $_SERVER['REMOTE_ADDR'];
         $info = $_SERVER['HTTP_USER_AGENT'];
         $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$cip', '$timestamp', '$date');";
+        self::checkSqlSyntax($query);
         mysqli_query($link, $query);
     }
 
+    private static function replaceCharacterWithinQuotes($str, $char, $repl)
+    {
+        if (strpos($str, $char) === false) return $str;
+
+        $placeholder = chr(7);
+        $inSingleQuote = false;
+        $inDoubleQuotes = false;
+        for ($p = 0; $p < strlen($str); $p++) {
+            switch ($str[$p]) {
+                case "'":
+                    if (!$inDoubleQuotes) $inSingleQuote = !$inSingleQuote;
+                    break;
+                case '"':
+                    if (!$inSingleQuote) $inDoubleQuotes = !$inDoubleQuotes;
+                    break;
+                case '\\':
+                    $p++;
+                    break;
+                case $char:
+                    if ($inSingleQuote || $inDoubleQuotes) $str[$p] = $placeholder;
+                    break;
+            }
+        }
+        return str_replace($placeholder, $repl, $str);
+    }
+
+    public static function checkSqlSyntax($query)
+    {
+        $mysqli = (new mysqli);
+        if (trim($query)) {
+            $query = self::replaceCharacterWithinQuotes($query, '#', '%');
+            $query = self::replaceCharacterWithinQuotes($query, ';', ':');
+            $query = "EXPLAIN " .
+                preg_replace(Array("/#[^\n\r;]*([\n\r;]|$)/",
+                    "/[Ss][Ee][Tt]\s+\@[A-Za-z0-9_]+\s*=\s*[^;]+(;|$)/",
+                    "/;\s*;/",
+                    "/;\s*$/",
+                    "/;/"),
+                    Array("", "", ";", "", "; EXPLAIN "), $query);
+
+            foreach (explode(';', $query) as $q) {
+                $result = $mysqli->query($q);
+                $err = !$result ? $mysqli->error : false;
+                if (!is_object($result) && !$err) $err = "Unknown SQL error";
+                if ($err) return $err;
+            }
+            return false;
+        }
+    }
 }

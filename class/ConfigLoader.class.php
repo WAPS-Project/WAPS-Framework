@@ -4,26 +4,58 @@
 namespace webapp_php_sample_class;
 
 
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
+
 class ConfigLoader
 {
-    private static function validateConfig($file)
+    private static function validateConfig($path)
     {
-        $fileName = explode($file);
+        $files = scandir($path);
 
-        if ($fileName[0] === "config" && $fileName[1] === "json") {
-            $config = json_decode($file);
+        foreach ($files as $file) {
+            $fileParts = explode(".", $file);
 
-            if ($config[0][0] === "configFile") {
-                return $config;
+            if ($fileParts[0] === "config" && $fileParts[1] === "json") {
+                $config = file_get_contents($path . $file);
+                $configObj = json_decode($config, true);
+
+                if ($configObj["head"]["title"] === "configFile") {
+                    return $configObj;
+                }
             }
         }
         return false;
     }
 
-    public static function loadConfig($file) {
-        $config = self::validateConfig($file);
+    public static function loadConfig($path) {
+        $config = self::validateConfig($path);
 
         if ($config != false) {
+            $charset = $config["metaData"]["charset"];
+            $language = $config["metaData"]["language"];
+            $description = $config["metaData"]["description"];
+            $keywords = $config["metaData"]["keywords"];
+            $author = $config["metaData"]["author"];
+
+            $DBHOST = $config["database"]["dbhost"];
+            $DBUSER = $config["database"]["dbuser"];
+            $DBPASSWORD = $config["database"]["dbpassword"];
+            $DBNAME = $config["database"]["dbname"];
+
+            define("CHARSET", $charset);
+            define("LANGUAGE", $language);
+            define("DESCRIPTION", $description);
+            define("KEYWORDS", $keywords);
+            define("AUTHOR", $author);
+            define('MYSQL_HOST', $DBHOST);
+            define('MYSQL_BENUTZER', $DBUSER);
+            define('MYSQL_KENNWORT', $DBPASSWORD);
+            define('MYSQL_DATENBANK', $DBNAME);
+
+            error_reporting(E_ALL);
+
+
 
         }
     }

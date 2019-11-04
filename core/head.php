@@ -5,8 +5,6 @@
 
 
 <head>
-    <?php require 'config/main.config.php';
-    ?>
     <meta charset="<?php echo CHARSET ?>">
     <meta name="description" content="<?php echo DESCRIPTION ?>">
     <meta name="keywords" content="<?php echo KEYWORDS ?>">

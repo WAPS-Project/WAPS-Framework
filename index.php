@@ -2,7 +2,7 @@
 
 use webapp_php_sample_class\Main;
 
-require 'config/meta.config.php';
+include 'core/loader.php';
 
 ?>
 <!DOCTYPE html>

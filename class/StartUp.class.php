@@ -11,8 +11,6 @@ class StartUp
 {
     public static function loadDatabase()
     {
-        require_once('config/db.config.php');
-
         $db_link = new mysqli(
             MYSQL_HOST,
             MYSQL_BENUTZER,

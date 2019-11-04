@@ -36,7 +36,7 @@ class StartUp
             $fileObj = new pageObj();
             $filePart = explode(".", $file);
             $fileErrorCheck = explode("_", $file);
-            if ($file != "." && $file != "..") {
+            if ($file != "." && $file != ".." && $filePart[0] != "Home") {
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
                 $fileObj->Path = "page/" . $file;
@@ -48,6 +48,20 @@ class StartUp
                 }
 
                 array_push($fileMapExplicit, $fileObj);
+            }
+
+            elseif ($file != "." && $file != ".." && $filePart[0] === "Home") {
+                $fileObj->Name = $filePart[0];
+                $fileObj->File = $file;
+                $fileObj->Path = "page/" . $file;
+
+                if ($fileErrorCheck[0] === "Error") {
+                    $fileObj->IsSet = FALSE;
+                } else {
+                    $fileObj->IsSet = TRUE;
+                }
+
+                array_unshift($fileMapExplicit, $fileObj);
             }
         }
 

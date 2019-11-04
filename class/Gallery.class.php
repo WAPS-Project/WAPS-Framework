@@ -4,17 +4,7 @@ namespace webapp_php_sample_class;
 
 class GalleryBuilder
 {
-    function __construct()
-    {
-        echo "<script> console.log(' Gallery Alive!'); </script>";
-    }
-
-    function __destruct()
-    {
-        echo "<script> console.log(' Gallery done!'); </script>";
-    }
-
-    public function GalleryGenerator($path)
+    public static function GalleryGenerator($path)
     {
         $images = scandir($path);
         $count = count($images);

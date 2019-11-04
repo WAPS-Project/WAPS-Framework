@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS `php_webapp_sample`;
-CREATE DATABASE IF NOT EXISTS `php_webapp_sample` /*!40100 DEFAULT CHARACTER SET utf8*/;
+
 USE `php_webapp_sample`;
 
 
@@ -91,7 +90,7 @@ VALUES (1, "Admin", "Admin", "Admin", 'admin@email.de', "Admin", 5),
 ;
 
 --
--- Einfügen des Admin Passworts
+-- Einfügen des Temporären, gehashten Admin Passworts
 --
 
 INSERT INTO passwd (PWID, UID, passwort)

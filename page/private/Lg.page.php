@@ -1,3 +1,6 @@
+<?php
+
+?>
 <form class="formular" method="post">
     <div class="form-group">
         <label class="label" for="InputUsername"><i class="fas fa-user"></i></label>
@@ -18,4 +21,3 @@
     </div>
     <button type="submit" class="btn btn-primary button">Bestätigen</button>
 </form>
-<?php $_USR::LoginUser($db_link); ?>

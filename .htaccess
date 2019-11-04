@@ -2,4 +2,9 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([\w]+)? /index.php?pagename=$1
 
+ErrorDocument 400 /Error_400
+ErrorDocument 401 /Error_401
+ErrorDocument 402 /Error_402
+ErrorDocument 403 /Error_403
 ErrorDocument 404 /Error_404
+ErrorDocument 500 /Error_500

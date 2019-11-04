@@ -13,7 +13,34 @@ class Main
         echo '<h1 class="titleDoc">' . $pageName . '</h1>';
 
         if ($pagePath != "page/open/home.page.php") {
-            include $pagePath;
+
+            $pathParts = explode("/", $pagePath);
+            $pathParts[1] = "static";
+            $staticPath = implode("/", $pathParts);
+            $openDir =  scandir("page/open/");
+            $staticDir = scandir("page/static/");
+            $openProof = 0;
+            $staticProof = 0;
+
+            foreach ($openDir as $openFile){
+                $open = explode(".", $openFile);
+                if ($pageName === $open[0]) {
+                    $openProof++;
+                }
+            }
+            foreach ($staticDir as $staticFile){
+                $static = explode(".", $staticFile);
+                if ($pageName === $static[0]) {
+                    $staticProof++;
+                }
+            }
+
+            if ($openProof > 0) {
+                include $pagePath;
+            }
+            elseif ($staticProof > 0){
+                include $staticPath;
+            }
         }
         else {
             include 'page/open/home.page.php';
@@ -72,7 +99,8 @@ class Main
     {
         if ($pageName == "NO ENTRY") {
             return "page/open/Home.page.php";
-        } else {
+        }
+        else {
             return "page/open/" . $pageName . ".page.php";
         }
     }
@@ -109,7 +137,6 @@ class Main
     public static function validateFile($path)
     {
         $files = scandir($path);
-        $count = count($files);
 
         $i = 0;
         $fileList = array('page' => array());

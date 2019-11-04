@@ -1,0 +1,18 @@
+{
+  "head": {
+    "title": "configFile"
+  },
+  "metaData": {
+    "charset": "utf8",
+    "language": "de_DE",
+    "description": "Example Web App",
+    "keywords": "PHP,HTMl,XML,JavaScript,CSS,APP",
+    "author": "Jonas Pfalzgraf"
+  },
+  "database": {
+    "dbhost": "localhost",
+    "dbname": "php_webapp_sample",
+    "dbuser": "root",
+    "dbpassword": ""
+  }
+}

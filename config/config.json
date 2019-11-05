@@ -15,5 +15,10 @@
     "dbname": "php_webapp_sample",
     "dbuser": "root",
     "dbpassword": ""
+  },
+  "mailConfig": {
+    "infoMail": "info",
+    "autoMail": "auto",
+    "supportMail": "support"
   }
 }

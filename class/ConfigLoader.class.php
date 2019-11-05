@@ -45,6 +45,10 @@ class ConfigLoader
 
             $version = $config["head"]["version"];
 
+            $infoMail = $config["mailConfig"]["infoMail"];
+            $autoMail = $config["mailConfig"]["autoMail"];
+            $supportMail = $config["mailConfig"]["supportMail"];
+
             define("CHARSET", $charset);
             define("LANGUAGE", $language);
             define("DESCRIPTION", $description);
@@ -55,6 +59,9 @@ class ConfigLoader
             define('MYSQL_KENNWORT', $DBPASSWORD);
             define('MYSQL_DATENBANK', $DBNAME);
             define('VERSION', $version);
+            define('MAIL_INFO', $infoMail);
+            define('MAIL_AUTO', $autoMail);
+            define('MAIL_SUPPORT', $supportMail);
 
             error_reporting(E_ALL);
 

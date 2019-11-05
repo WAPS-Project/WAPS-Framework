@@ -43,6 +43,8 @@ class ConfigLoader
             $DBPASSWORD = $config["database"]["dbpassword"];
             $DBNAME = $config["database"]["dbname"];
 
+            $version = $config["head"]["version"];
+
             define("CHARSET", $charset);
             define("LANGUAGE", $language);
             define("DESCRIPTION", $description);
@@ -52,6 +54,7 @@ class ConfigLoader
             define('MYSQL_BENUTZER', $DBUSER);
             define('MYSQL_KENNWORT', $DBPASSWORD);
             define('MYSQL_DATENBANK', $DBNAME);
+            define('VERSION', $version);
 
             error_reporting(E_ALL);
 

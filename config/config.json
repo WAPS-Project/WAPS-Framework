@@ -1,6 +1,7 @@
 {
   "head": {
-    "title": "configFile"
+    "title": "configFile",
+    "version": "1.0.1"
   },
   "metaData": {
     "charset": "utf8",

@@ -4,7 +4,9 @@
   "description": "Ein auf PHP und Apache Basierendes System zum schnellen aufsetzen von kleinen Website Projekten",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-js": "npx babel content/src/js --out-dir content/dist/js",
+    "build-css": "sass content/src/css/main.scss content/dist/css/main.css"
   },
   "repository": {
     "type": "git",
@@ -17,12 +19,20 @@
   },
   "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.7.0",
     "bootstrap": "^4.3.1",
+    "core-js": "^3.4.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
+    "sass": "^1.23.3",
     "sweetalert2": "^8.19.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-typescript": "^7.7.2",
+    "babel-preset-minify": "^0.5.1",
     "typescript": "^3.6.4"
   }
 }

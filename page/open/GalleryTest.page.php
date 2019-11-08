@@ -2,4 +2,4 @@
 
 use webapp_php_sample_class\GalleryBuilder;
 
-GalleryBuilder::GalleryGenerator("content/img/galleryTest/");
+GalleryBuilder::GalleryGenerator("content/dist/img/galleryTest/");

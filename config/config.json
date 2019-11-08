@@ -1,7 +1,7 @@
 {
   "head": {
     "title": "configFile",
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "metaData": {
     "charset": "utf8",
@@ -15,5 +15,10 @@
     "dbname": "php_webapp_sample",
     "dbuser": "root",
     "dbpassword": ""
+  },
+  "mailConfig": {
+    "infoMail": "info",
+    "autoMail": "auto",
+    "supportMail": "support"
   }
 }

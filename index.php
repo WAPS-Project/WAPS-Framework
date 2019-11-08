@@ -6,7 +6,7 @@ include 'core/loader.php';
 
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $language ?>" dir="ltr">
+<html lang="<?php echo LANGUAGE ?>" dir="ltr">
 <?php
 include 'core/head.php';                                                             // adding the page head
 ?>
@@ -19,6 +19,4 @@ Main::main($pagePath, $pageName);
 include 'core/footer.php';
 ?>
 </body>
-
-
 </html>

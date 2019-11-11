@@ -3,8 +3,6 @@
 
 namespace webapp_php_sample_class;
 
-use mysqli;
-
 class Main
 {
     public static function main($pagePath, $pageName)
@@ -17,18 +15,18 @@ class Main
             $pathParts = explode("/", $pagePath);
             $pathParts[1] = "static";
             $staticPath = implode("/", $pathParts);
-            $openDir =  scandir("page/open/");
+            $openDir = scandir("page/open/");
             $staticDir = scandir("page/static/");
             $openProof = 0;
             $staticProof = 0;
 
-            foreach ($openDir as $openFile){
+            foreach ($openDir as $openFile) {
                 $open = explode(".", $openFile);
                 if ($pageName === $open[0]) {
                     $openProof++;
                 }
             }
-            foreach ($staticDir as $staticFile){
+            foreach ($staticDir as $staticFile) {
                 $static = explode(".", $staticFile);
                 if ($pageName === $static[0]) {
                     $staticProof++;
@@ -37,12 +35,10 @@ class Main
 
             if ($openProof > 0) {
                 include $pagePath;
-            }
-            elseif ($staticProof > 0){
+            } elseif ($staticProof > 0) {
                 include $staticPath;
             }
-        }
-        else {
+        } else {
             include 'page/open/home.page.php';
         }
 
@@ -82,7 +78,7 @@ class Main
         if (isset($_GET[$key])) {
             return $_GET[$key];
         } else {
-            return "NO ENTRY";
+            return null;
         }
     }
 
@@ -91,7 +87,7 @@ class Main
         if (!empty($_POST[$key])) {
             return $_POST[$key];
         } else {
-            return "NO ENTRY";
+            return null;
         }
     }
 
@@ -99,8 +95,7 @@ class Main
     {
         if ($pageName == "NO ENTRY") {
             return "page/open/Home.page.php";
-        }
-        else {
+        } else {
             return "page/open/" . $pageName . ".page.php";
         }
     }
@@ -110,11 +105,9 @@ class Main
         $pageFiles = scandir("page/open/");
         if ($name == "") {
             return "Home";
-        }
-        elseif ($name === "Impressum") {
+        } elseif ($name === "Impressum") {
             return "Impressum";
-        }
-        else {
+        } else {
             foreach ($pageFiles as $file) {
                 $f = explode(".", $file);
                 if ($name == $f[0]) {
@@ -167,13 +160,19 @@ class Main
         }
     }
 
-    public static function ipPush($cip, $link)
+    protected static function ipPush($link, $clientIp)
     {
         $timestamp = date('H:i:s');
         $date = date('Y-m-d');
         $pip = $_SERVER['REMOTE_ADDR'];
         $info = $_SERVER['HTTP_USER_AGENT'];
-        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$cip', '$timestamp', '$date');";
+        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
         mysqli_query($link, $query);
+    }
+
+    public static function ipCheck($database_link)
+    {
+        $clientIp = Main::checkPost("ip");
+        self::ipPush($database_link, $clientIp);
     }
 }

@@ -18,7 +18,7 @@ class StartUp
         );
 
         if (!$db_link) {
-            die("Connection is dead");
+            die("Connection is dead:" . mysqli_connect_error());
         }
 
         return $db_link;

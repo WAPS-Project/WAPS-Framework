@@ -32,11 +32,7 @@ $pageMap = StartUp::loadPages();
 $pageName = Main::validateHome(Main::getUrlInterpreter());
 $pagePath = Main::validatePage($pageName);
 $pageList = Main::validateFile("page/open");
-$IP = Main::checkPost("ip");
 
+Main::ipCheck($database_link);
 
-if ($IP != "NO ENTRY") {
-    Main::ipPush($IP, $database_link);
-    echo $IP;
-}
 

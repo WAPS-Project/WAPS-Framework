@@ -16,7 +16,7 @@ class SessionTool
                 if ($trust == true) {
                     session_start();
                     $_SESSION['login_User'] = $myUsername;
-                    echo("<script> alert('". var_dump($_SESSION["login_User"]) ."')</script>");
+                    echo("<script> alert('" . var_dump($_SESSION["login_User"]) . "')</script>");
                 } else {
                     $error = "Your Login Name or Password is invalid";
                     echo $error;
@@ -77,9 +77,8 @@ class SessionTool
 
                     $query2 = "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwSave', $USID);";
 
-                    query();
-                    Main::checkSqlSyntax($query);
-                    Main::checkSqlSyntax($query2);
+                    mysqli_query($db_link, $query);
+                    mysqli_query($db_link, $query2);
                 }
             }
         }

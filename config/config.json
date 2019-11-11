@@ -8,11 +8,12 @@
     "language": "de_DE",
     "description": "Example Web App",
     "keywords": "PHP,HTMl,XML,JavaScript,CSS,APP",
-    "author": "Jonas Pfalzgraf"
+    "author": "Jonas Pfalzgraf",
+    "pageTitle": "Web Application PHP"
   },
   "database": {
     "dbhost": "localhost",
-    "dbname": "php_webapp_sample",
+    "dbname": "webapp_php_sample",
     "dbuser": "root",
     "dbpassword": ""
   },

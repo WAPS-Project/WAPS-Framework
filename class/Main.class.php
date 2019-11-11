@@ -174,57 +174,6 @@ class Main
         $pip = $_SERVER['REMOTE_ADDR'];
         $info = $_SERVER['HTTP_USER_AGENT'];
         $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$cip', '$timestamp', '$date');";
-        self::checkSqlSyntax($query);
         mysqli_query($link, $query);
-    }
-
-    private static function replaceCharacterWithinQuotes($str, $char, $repl)
-    {
-        if (strpos($str, $char) === false) return $str;
-
-        $placeholder = chr(7);
-        $inSingleQuote = false;
-        $inDoubleQuotes = false;
-        for ($p = 0; $p < strlen($str); $p++) {
-            switch ($str[$p]) {
-                case "'":
-                    if (!$inDoubleQuotes) $inSingleQuote = !$inSingleQuote;
-                    break;
-                case '"':
-                    if (!$inSingleQuote) $inDoubleQuotes = !$inDoubleQuotes;
-                    break;
-                case '\\':
-                    $p++;
-                    break;
-                case $char:
-                    if ($inSingleQuote || $inDoubleQuotes) $str[$p] = $placeholder;
-                    break;
-            }
-        }
-        return str_replace($placeholder, $repl, $str);
-    }
-
-    public static function checkSqlSyntax($query)
-    {
-        $mysqli = (new mysqli);
-        if (trim($query)) {
-            $query = self::replaceCharacterWithinQuotes($query, '#', '%');
-            $query = self::replaceCharacterWithinQuotes($query, ';', ':');
-            $query = "EXPLAIN " .
-                preg_replace(Array("/#[^\n\r;]*([\n\r;]|$)/",
-                    "/[Ss][Ee][Tt]\s+\@[A-Za-z0-9_]+\s*=\s*[^;]+(;|$)/",
-                    "/;\s*;/",
-                    "/;\s*$/",
-                    "/;/"),
-                    Array("", "", ";", "", "; EXPLAIN "), $query);
-
-            foreach (explode(';', $query) as $q) {
-                $result = $mysqli->query($q);
-                $err = !$result ? $mysqli->error : false;
-                if (!is_object($result) && !$err) $err = "Unknown SQL error";
-                if ($err) return $err;
-            }
-            return false;
-        }
     }
 }

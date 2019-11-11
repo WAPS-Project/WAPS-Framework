@@ -2,7 +2,7 @@
 
 namespace webapp_php_sample_class;
 
-class AccountUsage
+class SessionTool
 {
 
     public static function LoginUser($db)
@@ -16,7 +16,7 @@ class AccountUsage
                 if ($trust == true) {
                     session_start();
                     $_SESSION['login_User'] = $myUsername;
-                    echo("<script> alert('Läuft')</script>");
+                    echo("<script> alert('". var_dump($_SESSION["login_User"]) ."')</script>");
                 } else {
                     $error = "Your Login Name or Password is invalid";
                     echo $error;
@@ -77,6 +77,7 @@ class AccountUsage
 
                     $query2 = "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwSave', $USID);";
 
+                    query();
                     Main::checkSqlSyntax($query);
                     Main::checkSqlSyntax($query2);
                 }

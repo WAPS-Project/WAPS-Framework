@@ -37,6 +37,7 @@ class ConfigLoader
             $description = $config["metaData"]["description"];
             $keywords = $config["metaData"]["keywords"];
             $author = $config["metaData"]["author"];
+            $pageTitle = $config["metaData"]["pageTitle"];
 
             $DBHOST = $config["database"]["dbhost"];
             $DBUSER = $config["database"]["dbuser"];
@@ -54,10 +55,11 @@ class ConfigLoader
             define("DESCRIPTION", $description);
             define("KEYWORDS", $keywords);
             define("AUTHOR", $author);
+            define("PAGE_TITLE",$pageTitle);
             define('MYSQL_HOST', $DBHOST);
-            define('MYSQL_BENUTZER', $DBUSER);
-            define('MYSQL_KENNWORT', $DBPASSWORD);
-            define('MYSQL_DATENBANK', $DBNAME);
+            define('MYSQL_USER', $DBUSER);
+            define('MYSQL_KEYWORD', $DBPASSWORD);
+            define('MYSQL_DATABASE', $DBNAME);
             define('VERSION', $version);
             define('MAIL_INFO', $infoMail);
             define('MAIL_AUTO', $autoMail);

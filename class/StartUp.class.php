@@ -3,7 +3,6 @@
 
 namespace webapp_php_sample_class;
 
-use mysqli;
 use webapp_php_sample_obj\pageMap;
 use webapp_php_sample_obj\pageObj;
 
@@ -11,18 +10,18 @@ class StartUp
 {
     public static function loadDatabase()
     {
-        $db_link = new mysqli(
+        $db_link = mysqli_connect(
             MYSQL_HOST,
-            MYSQL_BENUTZER,
-            MYSQL_KENNWORT
+            MYSQL_USER,
+            MYSQL_KEYWORD,
+            MYSQL_DATABASE
         );
 
-        if ($db_link->connect_error) {
-            die("Connection failed: " . $db_link->connect_error);
+        if (!$db_link) {
+            die("Connection is dead");
         }
 
         return $db_link;
-
     }
 
     public static function loadPages()
@@ -48,9 +47,7 @@ class StartUp
                 }
 
                 array_push($fileMapExplicit, $fileObj);
-            }
-
-            elseif ($file != "." && $file != ".." && $filePart[0] === "Home") {
+            } elseif ($file != "." && $file != ".." && $filePart[0] === "Home") {
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
                 $fileObj->Path = "page/" . $file;

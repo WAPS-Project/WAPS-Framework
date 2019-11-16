@@ -12,10 +12,11 @@ class SessionTool
         $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
         if ($result = mysqli_query($db, $queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                $trust = password_verify($myPassword, $rArray["password"]);
+                $trust = password_verify($myPassword, $rArray["passwort"]);
                 if ($trust == true) {
                     $_SESSION['login_User'] = $myUsername;
-                    echo("<script> alert('" . var_dump($_SESSION["login_User"]) . "')</script>");
+                    header( "Location: Home" );
+                    exit;
                 } else {
                     $error = "Your Login Name or Password is invalid";
                     ErrorHandler::FireWarning("Login failed", $error);
@@ -30,7 +31,7 @@ class SessionTool
         if (isset($_SESSION['login_User'])) {
             $username = $_SESSION['login_User'];
             echo "<form method= \"post\"  id= \"userLogin\">";
-            echo "<label id= \"greetings\">Herzlich Willkommen $username</label>";
+            echo "<label id= \"greetings\" class='greeting'>Herzlich Willkommen $username </label>" . "   ";
             echo "<button id= \"logout\" type=\"submit\" class=\"btn btn-secondary button logging-btn\" name= \"logout\" value= \"TRUE\">Logout</button>";
             echo "</form>";
         } else {
@@ -39,7 +40,8 @@ class SessionTool
         $logoutCheck = Main::checkPost("logout");
         if ($logoutCheck == "TRUE") {
             session_destroy();
-            echo "Logout erfolgreich";
+            header( "Location: Home" );
+            exit;
         }
     }
 

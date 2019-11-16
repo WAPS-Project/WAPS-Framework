@@ -20,7 +20,7 @@ class ErrorHandler
     static function CreateError($type, $message, $weight, $isFatal)
     {
         if ($weight >= 3 && $isFatal) {
-            throw new Exception("<script>swal.fire({type: 'error', title: '$type', text: '$message . This is a fatal Error!', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>");
+            throw new Exception("<script>Swal.fire({type: 'error', title: '$type', text: '$message . This is a fatal Error!', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>");
         } elseif ($weight <= 3 && !$isFatal) {
             echo "<script>Swal.fire({type: 'error', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>";
         }

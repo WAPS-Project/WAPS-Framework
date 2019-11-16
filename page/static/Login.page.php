@@ -18,5 +18,3 @@ if ($st == "login") {
 } else {
     include $lc;
 }
-
-var_dump($_SESSION['login_User']);

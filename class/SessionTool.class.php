@@ -10,19 +10,19 @@ class SessionTool
         $myUsername = Main::checkPost("username");
         $myPassword = Main::checkPost("password");
         $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
-        if ($result = mysqli_query($db, $queryCheck)) {
+        if ($result = mysqli_query($db, $queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $trust = password_verify($myPassword, $rArray["password"]);
                 if ($trust == true) {
-                    session_start();
                     $_SESSION['login_User'] = $myUsername;
                     echo("<script> alert('" . var_dump($_SESSION["login_User"]) . "')</script>");
                 } else {
                     $error = "Your Login Name or Password is invalid";
-                    echo $error;
+                    ErrorHandler::FireWarning("Login failed", $error);
                 }
             }
         }
+        mysqli_close($db);
     }
 
     public static function UserWelcome()
@@ -82,5 +82,6 @@ class SessionTool
                 }
             }
         }
+        mysqli_close($db_link);
     }
 }

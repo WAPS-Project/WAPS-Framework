@@ -1,7 +1,4 @@
-<?php
-
-?>
-<form class="formular" method="post">
+<form class="formular" method="post" target="_parent">
     <div class="form-group">
         <label class="label" for="InputUsername"><i class="fas fa-user"></i></label>
         <input type="text" name="username" class="form-control input" id="UsernameInput" aria-describedby="usernameHelp"

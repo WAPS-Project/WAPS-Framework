@@ -71,21 +71,13 @@ class Main
             echo "<a class=\"nav-link " . $active . " \" href='/" . $pageObj->Name . "' >" . $pageObj->Name . " " . $current . "</a>";
             echo "</li>";
         }
+        SessionTool::UserWelcome();
     }
 
     public static function checkGet($key)
     {
         if (isset($_GET[$key])) {
             return $_GET[$key];
-        } else {
-            return null;
-        }
-    }
-
-    public static function checkPost($key)
-    {
-        if (!empty($_POST[$key])) {
-            return $_POST[$key];
         } else {
             return null;
         }
@@ -107,6 +99,8 @@ class Main
             return "Home";
         } elseif ($name === "Impressum") {
             return "Impressum";
+        } elseif ($name === "Login") {
+            return "Login";
         } else {
             foreach ($pageFiles as $file) {
                 $f = explode(".", $file);
@@ -160,6 +154,21 @@ class Main
         }
     }
 
+    public static function ipCheck($database_link)
+    {
+        $clientIp = Main::checkPost("ip");
+        self::ipPush($database_link, $clientIp);
+    }
+
+    public static function checkPost($key)
+    {
+        if (!empty($_POST[$key])) {
+            return $_POST[$key];
+        } else {
+            return null;
+        }
+    }
+
     protected static function ipPush($link, $clientIp)
     {
         $timestamp = date('H:i:s');
@@ -168,11 +177,5 @@ class Main
         $info = $_SERVER['HTTP_USER_AGENT'];
         $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
         mysqli_query($link, $query);
-    }
-
-    public static function ipCheck($database_link)
-    {
-        $clientIp = Main::checkPost("ip");
-        self::ipPush($database_link, $clientIp);
     }
 }

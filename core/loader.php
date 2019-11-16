@@ -25,10 +25,13 @@ use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Main;
 use webapp_php_sample_class\StartUp;
 
-ConfigLoader::loadConfig("config/");
-$database_link = StartUp::loadDatabase();
-$pageMap = StartUp::loadPages();
-
+try {
+    ConfigLoader::loadConfig("config/");
+    $database_link = StartUp::loadDatabase();
+    $pageMap = StartUp::loadPages();
+} catch (Exception $e) {
+    ErrorHandler::FireError($e->getCode(), $e->getMessage());
+}
 $pageName = Main::validateHome(Main::getUrlInterpreter());
 $pagePath = Main::validatePage($pageName);
 $pageList = Main::validateFile("page/open");

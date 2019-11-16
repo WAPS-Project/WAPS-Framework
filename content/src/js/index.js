@@ -1,6 +1,7 @@
 //https://www.npmjs.com/package/bundle-js
 
-import 'jquery';
-import 'popper.js';
-import 'bootstrap';
-import 'sweetalert2';
+window.$ = require('jquery');
+window.jQuery = require('jquery');
+require('popper.js');
+require('bootstrap');
+window.Swal = require('sweetalert2');

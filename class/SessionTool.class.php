@@ -2,7 +2,7 @@
 
 namespace webapp_php_sample_class;
 
-class AccountUsage
+class SessionTool
 {
 
     public static function LoginUser($db)
@@ -10,19 +10,20 @@ class AccountUsage
         $myUsername = Main::checkPost("username");
         $myPassword = Main::checkPost("password");
         $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
-        if ($result = mysqli_query($db, $queryCheck)) {
+        if ($result = mysqli_query($db, $queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                $trust = password_verify($myPassword, $rArray["password"]);
+                $trust = password_verify($myPassword, $rArray["passwort"]);
                 if ($trust == true) {
-                    session_start();
                     $_SESSION['login_User'] = $myUsername;
-                    echo("<script> alert('Läuft')</script>");
+                    header( "Location: Home" );
+                    exit;
                 } else {
                     $error = "Your Login Name or Password is invalid";
-                    echo $error;
+                    ErrorHandler::FireWarning("Login failed", $error);
                 }
             }
         }
+        mysqli_close($db);
     }
 
     public static function UserWelcome()
@@ -30,7 +31,7 @@ class AccountUsage
         if (isset($_SESSION['login_User'])) {
             $username = $_SESSION['login_User'];
             echo "<form method= \"post\"  id= \"userLogin\">";
-            echo "<label id= \"greetings\">Herzlich Willkommen $username</label>";
+            echo "<label id= \"greetings\" class='greeting'>Herzlich Willkommen $username </label>" . "   ";
             echo "<button id= \"logout\" type=\"submit\" class=\"btn btn-secondary button logging-btn\" name= \"logout\" value= \"TRUE\">Logout</button>";
             echo "</form>";
         } else {
@@ -39,7 +40,8 @@ class AccountUsage
         $logoutCheck = Main::checkPost("logout");
         if ($logoutCheck == "TRUE") {
             session_destroy();
-            echo "Logout erfolgreich";
+            header( "Location: Home" );
+            exit;
         }
     }
 
@@ -77,10 +79,11 @@ class AccountUsage
 
                     $query2 = "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwSave', $USID);";
 
-                    Main::checkSqlSyntax($query);
-                    Main::checkSqlSyntax($query2);
+                    mysqli_query($db_link, $query);
+                    mysqli_query($db_link, $query2);
                 }
             }
         }
+        mysqli_close($db_link);
     }
 }

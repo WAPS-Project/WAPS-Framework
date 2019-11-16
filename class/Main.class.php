@@ -3,8 +3,6 @@
 
 namespace webapp_php_sample_class;
 
-use mysqli;
-
 class Main
 {
     public static function main($pagePath, $pageName)
@@ -17,18 +15,18 @@ class Main
             $pathParts = explode("/", $pagePath);
             $pathParts[1] = "static";
             $staticPath = implode("/", $pathParts);
-            $openDir =  scandir("page/open/");
+            $openDir = scandir("page/open/");
             $staticDir = scandir("page/static/");
             $openProof = 0;
             $staticProof = 0;
 
-            foreach ($openDir as $openFile){
+            foreach ($openDir as $openFile) {
                 $open = explode(".", $openFile);
                 if ($pageName === $open[0]) {
                     $openProof++;
                 }
             }
-            foreach ($staticDir as $staticFile){
+            foreach ($staticDir as $staticFile) {
                 $static = explode(".", $staticFile);
                 if ($pageName === $static[0]) {
                     $staticProof++;
@@ -37,12 +35,10 @@ class Main
 
             if ($openProof > 0) {
                 include $pagePath;
-            }
-            elseif ($staticProof > 0){
+            } elseif ($staticProof > 0) {
                 include $staticPath;
             }
-        }
-        else {
+        } else {
             include 'page/open/home.page.php';
         }
 
@@ -75,6 +71,7 @@ class Main
             echo "<a class=\"nav-link " . $active . " \" href='/" . $pageObj->Name . "' >" . $pageObj->Name . " " . $current . "</a>";
             echo "</li>";
         }
+        SessionTool::UserWelcome();
     }
 
     public static function checkGet($key)
@@ -82,16 +79,7 @@ class Main
         if (isset($_GET[$key])) {
             return $_GET[$key];
         } else {
-            return "NO ENTRY";
-        }
-    }
-
-    public static function checkPost($key)
-    {
-        if (!empty($_POST[$key])) {
-            return $_POST[$key];
-        } else {
-            return "NO ENTRY";
+            return null;
         }
     }
 
@@ -99,8 +87,7 @@ class Main
     {
         if ($pageName == "NO ENTRY") {
             return "page/open/Home.page.php";
-        }
-        else {
+        } else {
             return "page/open/" . $pageName . ".page.php";
         }
     }
@@ -110,11 +97,11 @@ class Main
         $pageFiles = scandir("page/open/");
         if ($name == "") {
             return "Home";
-        }
-        elseif ($name === "Impressum") {
+        } elseif ($name === "Impressum") {
             return "Impressum";
-        }
-        else {
+        } elseif ($name === "Login") {
+            return "Login";
+        } else {
             foreach ($pageFiles as $file) {
                 $f = explode(".", $file);
                 if ($name == $f[0]) {
@@ -167,64 +154,28 @@ class Main
         }
     }
 
-    public static function ipPush($cip, $link)
+    public static function ipCheck($database_link)
+    {
+        $clientIp = Main::checkPost("ip");
+        self::ipPush($database_link, $clientIp);
+    }
+
+    public static function checkPost($key)
+    {
+        if (!empty($_POST[$key])) {
+            return $_POST[$key];
+        } else {
+            return null;
+        }
+    }
+
+    protected static function ipPush($link, $clientIp)
     {
         $timestamp = date('H:i:s');
         $date = date('Y-m-d');
         $pip = $_SERVER['REMOTE_ADDR'];
         $info = $_SERVER['HTTP_USER_AGENT'];
-        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$cip', '$timestamp', '$date');";
-        self::checkSqlSyntax($query);
+        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
         mysqli_query($link, $query);
-    }
-
-    private static function replaceCharacterWithinQuotes($str, $char, $repl)
-    {
-        if (strpos($str, $char) === false) return $str;
-
-        $placeholder = chr(7);
-        $inSingleQuote = false;
-        $inDoubleQuotes = false;
-        for ($p = 0; $p < strlen($str); $p++) {
-            switch ($str[$p]) {
-                case "'":
-                    if (!$inDoubleQuotes) $inSingleQuote = !$inSingleQuote;
-                    break;
-                case '"':
-                    if (!$inSingleQuote) $inDoubleQuotes = !$inDoubleQuotes;
-                    break;
-                case '\\':
-                    $p++;
-                    break;
-                case $char:
-                    if ($inSingleQuote || $inDoubleQuotes) $str[$p] = $placeholder;
-                    break;
-            }
-        }
-        return str_replace($placeholder, $repl, $str);
-    }
-
-    public static function checkSqlSyntax($query)
-    {
-        $mysqli = (new mysqli);
-        if (trim($query)) {
-            $query = self::replaceCharacterWithinQuotes($query, '#', '%');
-            $query = self::replaceCharacterWithinQuotes($query, ';', ':');
-            $query = "EXPLAIN " .
-                preg_replace(Array("/#[^\n\r;]*([\n\r;]|$)/",
-                    "/[Ss][Ee][Tt]\s+\@[A-Za-z0-9_]+\s*=\s*[^;]+(;|$)/",
-                    "/;\s*;/",
-                    "/;\s*$/",
-                    "/;/"),
-                    Array("", "", ";", "", "; EXPLAIN "), $query);
-
-            foreach (explode(';', $query) as $q) {
-                $result = $mysqli->query($q);
-                $err = !$result ? $mysqli->error : false;
-                if (!is_object($result) && !$err) $err = "Unknown SQL error";
-                if ($err) return $err;
-            }
-            return false;
-        }
     }
 }

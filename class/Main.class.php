@@ -169,11 +169,26 @@ class Main
         }
     }
 
+    private static function getRealIp() {
+        $ip = 'undefined';
+        if (isset($_SERVER)) {
+            $ip = $_SERVER['REMOTE_ADDR'];
+            if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            elseif (isset($_SERVER['HTTP_CLIENT_IP'])) $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } else {
+            $ip = getenv('REMOTE_ADDR');
+            if (getenv('HTTP_X_FORWARDED_FOR')) $ip = getenv('HTTP_X_FORWARDED_FOR');
+            elseif (getenv('HTTP_CLIENT_IP')) $ip = getenv('HTTP_CLIENT_IP');
+        }
+        $ip = htmlspecialchars($ip, ENT_QUOTES, 'UTF-8');
+        return $ip;
+    }
+
     protected static function ipPush($link, $clientIp)
     {
         $timestamp = date('H:i:s');
         $date = date('Y-m-d');
-        $pip = $_SERVER['REMOTE_ADDR'];
+        $pip = self::getRealIp();
         $info = $_SERVER['HTTP_USER_AGENT'];
         $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
         mysqli_query($link, $query);

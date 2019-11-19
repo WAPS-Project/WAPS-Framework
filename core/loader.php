@@ -37,5 +37,3 @@ $pagePath = Main::validatePage($pageName);
 $pageList = Main::validateFile("page/open");
 
 Main::ipCheck($database_link);
-
-

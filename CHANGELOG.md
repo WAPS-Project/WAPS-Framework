@@ -1,4 +1,9 @@
-#Changelog
+# Changelog
+
+## 1.2.1
+
+### Buf Fix: IP Logger
+Fixing the broken IP Logger
 
 ## 1.2.0
 

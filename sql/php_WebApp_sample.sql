@@ -1,5 +1,5 @@
 
-USE `php_webapp_sample`;
+USE `webapp_php_sample`;
 
 
 

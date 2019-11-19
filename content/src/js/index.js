@@ -5,3 +5,4 @@ window.jQuery = require('jquery');
 require('popper.js');
 require('bootstrap');
 window.Swal = require('sweetalert2');
+require("./getClientIp.js");

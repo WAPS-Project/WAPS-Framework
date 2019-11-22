@@ -9,7 +9,7 @@ class SessionTool
     {
         $myUsername = Main::checkPost("username");
         $myPassword = Main::checkPost("password");
-        $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
+        $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
         if ($result = mysqli_query($db, $queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $trust = password_verify($myPassword, $rArray["passwort"]);
@@ -47,12 +47,12 @@ class SessionTool
 
     public static function AddUser($db_link)
     {
-        $username = Main::checkPost("username");
-        $firstName = Main::checkPost("firstName");
-        $secondName = Main::checkPost("lastName");
-        $email = Main::checkPost("email");
-        $age = Main::checkPost("age");
-        $password = Main::checkPost("pw");
+        $username = filter_var(Main::checkPost("username"), FILTER_SANITIZE_STRING);
+        $firstName = filter_var(Main::checkPost("firstName"), FILTER_SANITIZE_STRING);
+        $secondName = filter_var(Main::checkPost("lastName"), FILTER_SANITIZE_STRING);
+        $email = filter_var(Main::checkPost("email"), FILTER_SANITIZE_EMAIL);
+        $age = filter_var(Main::checkPost("age"), FILTER_SANITIZE_NUMBER_INT);
+        $password = filter_var(Main::checkPost("pw"), FILTER_SANITIZE_STRING);
         $check = Main::checkPost("check");
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
         if ($check == "on") {

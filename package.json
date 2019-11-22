@@ -20,10 +20,10 @@
   "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "core-js": "^3.4.1",
+    "core-js": "^3.4.2",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
-    "sass": "^1.23.6",
+    "sass": "^1.23.7",
     "sweetalert2": "^8.19.0"
   },
   "devDependencies": {

@@ -34,13 +34,13 @@ class StartUp
         foreach ($files as $file) {
             $fileObj = new pageObj();
             $filePart = explode(".", $file);
-            $fileErrorCheck = explode("_", $file);
+            $fileErrorCheck = [true, false];
             if ($file != "." && $file != ".." && $filePart[0] != "Home") {
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
-                $fileObj->Path = "page/" . $file;
+                $fileObj->Path = "page/open/" . $file;
 
-                if ($fileErrorCheck[0] === "Error") {
+                if ($fileErrorCheck[0] === true) {
                     $fileObj->IsSet = FALSE;
                 } else {
                     $fileObj->IsSet = TRUE;
@@ -50,7 +50,7 @@ class StartUp
             } elseif ($file != "." && $file != ".." && $filePart[0] === "Home") {
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
-                $fileObj->Path = "page/" . $file;
+                $fileObj->Path = "page/open/" . $file;
 
                 if ($fileErrorCheck[0] === "Error") {
                     $fileObj->IsSet = FALSE;
@@ -65,6 +65,10 @@ class StartUp
         $fileJSON = json_encode($fileMapExplicit);
         file_put_contents("./config/pagemap.config.json", $fileJSON);
         return $fileJSON;
+    }
+
+    static protected function pageStateCheck($file) {
+
     }
 
     static private function dirCheck($dir)

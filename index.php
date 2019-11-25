@@ -14,7 +14,7 @@ include 'core/head.php';                                                        
 <?php
 include 'core/header.php';                                                           //adding the header
 
-Main::main($pagePath, $pageName);
+Main::main($pagePath, $pageName, $pageMap);
 
 include 'core/footer.php';
 ?>

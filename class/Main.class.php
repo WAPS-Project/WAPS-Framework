@@ -5,10 +5,16 @@ namespace webapp_php_sample_class;
 
 class Main
 {
-    public static function main($pagePath, $pageName)
+    public static function main($pagePath, $pageName, $pageMap)
     {
+        $pageList = json_decode($pageMap);
+
         echo '<div class="content">';
-        echo '<h1 class="titleDoc">' . $pageName . '</h1>';
+        foreach ($pageList as $page) {
+            if ($page->Name === $pageName && $page->IsSet === true) {
+                echo '<h1 class="titleDoc">' . $pageName . '</h1>';
+            }
+        }
 
         if ($pagePath != "page/open/home.page.php") {
 
@@ -169,7 +175,8 @@ class Main
         }
     }
 
-    private static function getRealIp() {
+    private static function getRealIp()
+    {
         $ip = 'undefined';
         if (isset($_SERVER)) {
             $ip = $_SERVER['REMOTE_ADDR'];

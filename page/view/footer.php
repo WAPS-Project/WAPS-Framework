@@ -1,5 +1,5 @@
 <footer class="footer">
     <?php echo "&copy;" . COPYRIGHT . " " . date("Y"); ?>
-    <a href="/Impressum"> Impressum</a>
+    <a href="../../index.php"> Impressum</a>
     <div class="status"></div>
 </footer>

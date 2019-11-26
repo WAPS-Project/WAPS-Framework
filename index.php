@@ -8,15 +8,15 @@ include 'core/loader.php';
 <!DOCTYPE html>
 <html lang="<?php echo LANGUAGE ?>" dir="ltr">
 <?php
-include 'core/head.php';                                                             // adding the page head
+include 'page/view/head.php';                                                             // adding the page head
 ?>
 <body>
 <?php
-include 'core/header.php';                                                           //adding the header
+include 'page/view/header.php';                                                           //adding the header
 
 Main::main($pagePath, $pageName, $pageMap);
 
-include 'core/footer.php';
+include 'page/view/footer.php';
 ?>
 </body>
 </html>

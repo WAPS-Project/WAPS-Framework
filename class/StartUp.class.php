@@ -32,43 +32,37 @@ class StartUp
         $fileMapExplicit = $fileMap::$PageMap;
 
         foreach ($files as $file) {
-            $fileObj = new pageObj();
-            $filePart = explode(".", $file);
-            $fileErrorCheck = [true, false];
-            if ($file != "." && $file != ".." && $filePart[0] != "Home") {
+            if ($file != "." && $file != "..") {
+                $fileObj = new pageObj();
+                $filePart = explode(".", $file);
+                $fileObj->Path = "page/open/" . $file;
+                $fileLines = file($fileObj->Path);
+                $titleCheckLine = $fileLines[4];
+                $titleCheckParts = explode(":", $titleCheckLine);
+                $titleCheckParts = explode(";", $titleCheckParts[1]);
+                $titleCheck = filter_var(
+                    str_replace(" ", "", $titleCheckParts[0]),
+                    FILTER_VALIDATE_BOOLEAN);
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
-                $fileObj->Path = "page/open/" . $file;
 
-                if ($fileErrorCheck[0] === true) {
-                    $fileObj->IsSet = FALSE;
-                } else {
+                if ($titleCheck === true) {
                     $fileObj->IsSet = TRUE;
+                } elseif ($titleCheck === false) {
+                    $fileObj->IsSet = FALSE;
                 }
 
-                array_push($fileMapExplicit, $fileObj);
-            } elseif ($file != "." && $file != ".." && $filePart[0] === "Home") {
-                $fileObj->Name = $filePart[0];
-                $fileObj->File = $file;
-                $fileObj->Path = "page/open/" . $file;
-
-                if ($fileErrorCheck[0] === "Error") {
-                    $fileObj->IsSet = FALSE;
-                } else {
-                    $fileObj->IsSet = TRUE;
+                if ($filePart[0] != "Home") {
+                    array_push($fileMapExplicit, $fileObj);
+                } elseif ($filePart[0] === "Home") {
+                    array_unshift($fileMapExplicit, $fileObj);
                 }
-
-                array_unshift($fileMapExplicit, $fileObj);
             }
         }
 
         $fileJSON = json_encode($fileMapExplicit);
         file_put_contents("./config/pagemap.config.json", $fileJSON);
         return $fileJSON;
-    }
-
-    static protected function pageStateCheck($file) {
-
     }
 
     static private function dirCheck($dir)
@@ -89,5 +83,4 @@ class StartUp
         }
         return $files;
     }
-
 }

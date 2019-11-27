@@ -70,9 +70,9 @@ class SessionTool
 
             $queryUSID = "SELECT MAX(UID) AS 'ID' FROM usr;";
 
-            if ($rslt = mysqli_query($db_link, $queryUSID)) {
+            if ($result = mysqli_query($db_link, $queryUSID)) {
 
-                while ($obj = mysqli_fetch_array($rslt)) {
+                while ($obj = mysqli_fetch_array($result)) {
 
                     $USID = $obj["ID"] + 1;
                     $query = "INSERT INTO usr ( username, firstname, lastname, email, userrank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";

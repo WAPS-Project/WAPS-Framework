@@ -18,6 +18,7 @@ class StartUp
         );
 
         if (!$db_link) {
+            mysqli_query(mysqli_connect(MYSQL_HOST, MYSQL_USER, MYSQL_KEYWORD), "CREATE DATABASE IF NOT EXISTS " . MYSQL_DATABASE . ";");
             die("Connection is dead:" . mysqli_connect_error());
         }
 
@@ -65,7 +66,7 @@ class StartUp
         return $fileJSON;
     }
 
-    static private function dirCheck($dir)
+    private static function dirCheck($dir)
     {
         $dirPath = $dir . "/";
         $files = scandir($dirPath);
@@ -82,5 +83,22 @@ class StartUp
             }
         }
         return $files;
+    }
+
+    public static function checkDatabaseStatus()
+    {
+        $databaseLink = self::loadDatabase();
+        $sqlFile = fopen("sql/webapp_php_sample.sql", "r");
+        $sqlLines = fgets($sqlFile);
+        $tableRequest = "SHOW TABLES";
+
+        var_dump($sqlLines);
+
+        if ($result = mysqli_query($databaseLink, $tableRequest, MYSQLI_USE_RESULT)) {
+            while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                var_dump($rArray);
+            }
+        }
+        fclose($sqlFile);
     }
 }

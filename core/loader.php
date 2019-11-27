@@ -5,11 +5,11 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 $classList = scandir("class/");
-$objList = scandir("obj/");
+$objList = scandir("model/");
 
 foreach ($objList as $singleObj) {
     if ($singleObj != "." && $singleObj != "..") {
-        include "obj/" . $singleObj;
+        include "model/" . $singleObj;
     }
 
 }
@@ -28,6 +28,7 @@ use webapp_php_sample_class\StartUp;
 try {
     ConfigLoader::loadConfig("config/");
     $database_link = StartUp::loadDatabase();
+    StartUp::checkDatabaseStatus();
     $pageMap = StartUp::loadPages();
 } catch (Exception $e) {
     ErrorHandler::FireError($e->getCode(), $e->getMessage());

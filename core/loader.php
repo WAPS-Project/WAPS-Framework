@@ -6,14 +6,14 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $classList = scandir("class/");
 $objList = scandir("model/");
+$classFiles = array_diff($classList, array('.', '..'));
+$objFiles = array_diff($objList, array('.', '..'));
 
-foreach ($objList as $singleObj) {
-    if ($singleObj != "." && $singleObj != "..") {
-        include "model/" . $singleObj;
-    }
+foreach ($objFiles as $singleObj) {
+    include "model/" . $singleObj;
 
 }
-foreach ($classList as $singleClass) {
+foreach ($classFiles as $singleClass) {
     $classParts = explode(".", $singleClass);
     if ($classParts[1] === "class") {
         include "class/" . $singleClass;

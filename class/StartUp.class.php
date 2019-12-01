@@ -89,14 +89,16 @@ class StartUp
     {
         $databaseLink = self::loadDatabase();
         $sqlFile = fopen("sql/webapp_php_sample.sql", "r");
-        $sqlLines = fgets($sqlFile);
         $tableRequest = "SHOW TABLES";
-
-        var_dump($sqlLines);
+        $sqlLines = fread($sqlFile, filesize("sql/webapp_php_sample.sql"));
 
         if ($result = mysqli_query($databaseLink, $tableRequest, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                var_dump($rArray);
+                foreach($rArray as $table) {
+                    if (!in_array($table, DATABASE_TABLE_LIST)) {
+                        mysqli_query($databaseLink, $sqlLines);
+                    }
+                }
             }
         }
         fclose($sqlFile);

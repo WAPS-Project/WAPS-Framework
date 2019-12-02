@@ -1,3 +1,4 @@
+<h1>Registration</h1>
 <form class="formular" method="post" target="_parent">
     <div class="form-group">
         <label class="label" for="username">E-Mail</label>

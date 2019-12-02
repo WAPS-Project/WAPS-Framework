@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * Bootstrap v4.4.0 (https://getbootstrap.com/)
+ * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -1982,7 +1982,7 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(1.5em + 0.75rem2px);
+  height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -2074,7 +2074,7 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-sm {
-  height: calc(1.5em + 0.5rem2px);
+  height: calc(1.5em + 0.5rem + 2px);
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -2082,7 +2082,7 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-lg {
-  height: calc(1.5em + 1rem2px);
+  height: calc(1.5em + 1rem + 2px);
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -2129,7 +2129,7 @@ textarea.form-control {
   margin-top: 0.3rem;
   margin-left: -1.25rem;
 }
-.form-check-input[disabled] ~ .form-check-label {
+.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
   color: #6c757d;
 }
 
@@ -3394,7 +3394,7 @@ input[type=button].btn-block {
 
 .input-group-lg > .form-control:not(textarea),
 .input-group-lg > .custom-select {
-  height: calc(1.5em + 1rem2px);
+  height: calc(1.5em + 1rem + 2px);
 }
 
 .input-group-lg > .form-control,
@@ -3411,7 +3411,7 @@ input[type=button].btn-block {
 
 .input-group-sm > .form-control:not(textarea),
 .input-group-sm > .custom-select {
-  height: calc(1.5em + 0.5rem2px);
+  height: calc(1.5em + 0.5rem + 2px);
 }
 
 .input-group-sm > .form-control,
@@ -3487,10 +3487,10 @@ input[type=button].btn-block {
   background-color: #b3d7ff;
   border-color: #b3d7ff;
 }
-.custom-control-input[disabled] ~ .custom-control-label {
+.custom-control-input[disabled] ~ .custom-control-label, .custom-control-input:disabled ~ .custom-control-label {
   color: #6c757d;
 }
-.custom-control-input[disabled] ~ .custom-control-label::before {
+.custom-control-input[disabled] ~ .custom-control-label::before, .custom-control-input:disabled ~ .custom-control-label::before {
   background-color: #e9ecef;
 }
 
@@ -3586,7 +3586,7 @@ input[type=button].btn-block {
 .custom-select {
   display: inline-block;
   width: 100%;
-  height: calc(1.5em + 0.75rem2px);
+  height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -3625,7 +3625,7 @@ input[type=button].btn-block {
 }
 
 .custom-select-sm {
-  height: calc(1.5em + 0.5rem2px);
+  height: calc(1.5em + 0.5rem + 2px);
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
@@ -3633,7 +3633,7 @@ input[type=button].btn-block {
 }
 
 .custom-select-lg {
-  height: calc(1.5em + 1rem2px);
+  height: calc(1.5em + 1rem + 2px);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
@@ -3644,7 +3644,7 @@ input[type=button].btn-block {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: calc(1.5em + 0.75rem2px);
+  height: calc(1.5em + 0.75rem + 2px);
   margin-bottom: 0;
 }
 
@@ -3652,7 +3652,7 @@ input[type=button].btn-block {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: calc(1.5em + 0.75rem2px);
+  height: calc(1.5em + 0.75rem + 2px);
   margin: 0;
   opacity: 0;
 }
@@ -3660,7 +3660,7 @@ input[type=button].btn-block {
   border-color: #80bdff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
-.custom-file-input[disabled] ~ .custom-file-label {
+.custom-file-input[disabled] ~ .custom-file-label, .custom-file-input:disabled ~ .custom-file-label {
   background-color: #e9ecef;
 }
 .custom-file-input:lang(en) ~ .custom-file-label::after {
@@ -3676,7 +3676,7 @@ input[type=button].btn-block {
   right: 0;
   left: 0;
   z-index: 1;
-  height: calc(1.5em + 0.75rem2px);
+  height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
   font-weight: 400;
   line-height: 1.5;
@@ -11073,125 +11073,9 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   src: url("../font/Ubuntu/Ubuntu-Medium.ttf") format("truetype");
   font-style: Medium;
 }
-@media only screen and (max-device-width: 40rem) {
-  .galleria {
-    width: 100%;
-    display: grid;
-  }
+.navbar {
+  background-color: #f56262 !important;
 }
-.galleria .img_galleria {
-  padding-left: 2rem;
-}
-@media only screen and (max-device-width: 40rem) {
-  .galleria .img_galleria {
-    width: 20rem;
-    padding-bottom: 2rem;
-  }
-}
-h1, h2, h3 {
-  font-family: "Ubuntu", Arial;
-}
-@media only screen and (max-device-width: 40rem) {
-  h1, h2, h3 {
-    width: 100%;
-    margin: auto;
-    font-size: 6rem;
-  }
-}
-@media only screen and (min-device-width: 40rem) {
-  h1, h2, h3 {
-    margin: auto;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  h1, h2, h3 {
-    width: 100%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin: auto;
-  }
-}
-
-@media only screen and (max-device-width: 40rem) {
-  ::-webkit-scrollbar {
-    width: 1rem;
-  }
-}
-@media only screen and (min-device-width: 40rem) {
-  ::-webkit-scrollbar {
-    width: 1rem;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  ::-webkit-scrollbar {
-    width: 1rem;
-  }
-}
-
-@media only screen and (max-device-width: 40rem) {
-  ::-webkit-scrollbar-track {
-    background: darkgrey;
-  }
-}
-@media only screen and (min-device-width: 40rem) {
-  ::-webkit-scrollbar-track {
-    background: darkgrey;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  ::-webkit-scrollbar-track {
-    background: darkgrey;
-  }
-}
-
-@media only screen and (max-device-width: 40rem) {
-  ::-webkit-scrollbar-thumb {
-    background: grey;
-  }
-}
-@media only screen and (min-device-width: 40rem) {
-  ::-webkit-scrollbar-thumb {
-    background: grey;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  ::-webkit-scrollbar-thumb {
-    background: grey;
-  }
-}
-
-@media only screen and (max-device-width: 40rem) {
-  p {
-    margin: 0;
-    padding-top: 1rem;
-    width: 100%;
-    font-family: "Ubuntu", "Staatliches";
-    color: black;
-    font-size: 2.5rem;
-  }
-}
-@media only screen and (min-device-width: 40rem) {
-  p {
-    margin: 0;
-    width: 100%;
-    font-family: "Ubuntu", "Staatliches";
-    font-style: regular;
-    font-weight: regular;
-    color: black;
-    font-size: 1.2rem;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  p {
-    margin: 0;
-    padding-top: 0.5rem;
-    width: 100%;
-    font-family: "Ubuntu", "Staatliches";
-    color: black;
-    font-size: 1.3rem;
-  }
-}
-
 @media only screen and (max-device-width: 40rem) {
   .navbar {
     padding-bottom: 3rem;
@@ -11200,7 +11084,6 @@ h1, h2, h3 {
     left: 0;
     right: 0;
     position: fixed;
-    background-color: white;
   }
 }
 @media only screen and (min-device-width: 40rem) {
@@ -11242,7 +11125,7 @@ h1, h2, h3 {
     font-size: 5rem;
     max-font-size: 6rem;
     min-font-size: 0.5rem;
-    background-color: white;
+    background-color: #f56262 !important;
     color: black;
     background-size: cover;
     border-color: darkgray;
@@ -11266,6 +11149,7 @@ h1, h2, h3 {
 @media only screen and (max-device-width: 40rem) {
   .navbar-brand {
     font-size: 4rem;
+    border-radius: 100%;
   }
 }
 
@@ -11286,7 +11170,7 @@ h1, h2, h3 {
 }
 @media only screen and (max-device-width: 40rem) {
   .navbar-light .navbar-toggler:focus {
-    border-color: grey;
+    border-color: lightgrey;
     border-style: solid;
   }
 }
@@ -11326,134 +11210,33 @@ h1, h2, h3 {
   }
 }
 
-@media only screen and (max-device-width: 40rem) {
-  .logo {
-    margin-right: 1rem;
-    width: 5rem;
-    margin-left: 2rem;
-  }
-}
-@media only screen and (min-device-width: 40rem) {
-  .logo {
-    margin-right: 1rem;
-    width: 1rem;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  .logo {
-    margin-right: 1rem;
-    width: 1rem;
-  }
-}
-
-a {
-  color: black;
-}
-
-a:hover {
-  color: darkgrey;
-}
-
-.divider {
-  border-left-style: solid;
-  border-color: black;
+.footer {
+  background-color: #f56262 !important;
   position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-
-.navbar-itrem:hover {
-  transform: scale(1.05);
-  transition: all 0.5s;
-  text-rendering: geometricPrecision;
-}
-
-.dropdown-submenu {
-  position: relative;
-}
-
-.dropdown-submenu .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -1px;
-}
-
-.content {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-@media only screen and (max-device-width: 40rem) {
-  .content {
-    margin-left: 5rem;
-    margin-right: 5rem;
-    min-height: 100rem;
-    padding-top: 25rem;
-    padding-bottom: 7rem;
-    background-color: lightgrey;
-  }
-}
-@media only screen and (min-device-width: 40rem) {
-  .content {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    min-height: 42rem;
-    padding-top: 8rem;
-    padding-bottom: 3rem;
-    background-color: lightgrey;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  .content {
-    margin-left: 10rem;
-    margin-right: 10rem;
-    min-height: 50rem;
-    padding-top: 8rem;
-    padding-bottom: 3rem;
-    background-color: lightgrey;
-  }
-}
-
-@media only screen and (max-device-width: 40rem) {
-  .titleDoc {
-    margin-left: 1rem;
-  }
-}
-
 @media only screen and (max-device-width: 40rem) {
   .footer {
-    background-color: #f8f9fa !important;
-    position: fixed;
-    text-align: center;
     height: 6rem;
     font-size: 3rem;
     padding: 0px;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 @media only screen and (min-device-width: 40rem) {
   .footer {
-    background-color: #f8f9fa !important;
-    position: fixed;
-    text-align: center;
     height: 2.5rem;
     font-size: 1.3rem;
     padding: 0px;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 @media only screen and (min-width: 1000px) {
   .footer {
-    background-color: #f8f9fa !important;
-    position: fixed;
-    text-align: center;
     height: 2.5rem;
     font-size: 1.3rem;
     padding: 0px;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 }
 
@@ -11554,6 +11337,200 @@ a:hover {
     position: static;
     width: 30px;
     height: 30px;
+  }
+}
+
+@media only screen and (max-device-width: 40rem) {
+  .galleria {
+    width: 100%;
+    display: grid;
+  }
+}
+.galleria .img_galleria {
+  padding-left: 2rem;
+}
+@media only screen and (max-device-width: 40rem) {
+  .galleria .img_galleria {
+    width: 20rem;
+    padding-bottom: 2rem;
+  }
+}
+html, body {
+  height: 100%;
+  background-color: lightgrey;
+}
+
+h1, h2, h3 {
+  font-family: "Ubuntu", Arial;
+}
+@media only screen and (max-device-width: 40rem) {
+  h1, h2, h3 {
+    width: 100%;
+    margin: auto;
+    font-size: 6rem;
+  }
+}
+@media only screen and (min-device-width: 40rem) {
+  h1, h2, h3 {
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  h1, h2, h3 {
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-device-width: 40rem) {
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+}
+@media only screen and (min-device-width: 40rem) {
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f56262;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+}
+
+@media only screen and (max-device-width: 40rem) {
+  p {
+    margin: 0;
+    padding-top: 1rem;
+    width: 100%;
+    font-family: "Ubuntu", "Staatliches";
+    color: black;
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (min-device-width: 40rem) {
+  p {
+    margin: 0;
+    width: 100%;
+    font-family: "Ubuntu", "Staatliches";
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  p {
+    margin: 0;
+    padding-top: 0.5rem;
+    width: 100%;
+    font-family: "Ubuntu", "Staatliches";
+    color: black;
+    font-size: 1.3rem;
+  }
+}
+
+.logo {
+  background: white !important;
+  border-radius: 100%;
+  padding: 0.1rem;
+}
+@media only screen and (max-device-width: 40rem) {
+  .logo {
+    margin-right: 1rem;
+    width: 5rem;
+    margin-left: 2rem;
+  }
+}
+@media only screen and (min-device-width: 40rem) {
+  .logo {
+    margin-right: 1rem;
+    width: 2rem;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .logo {
+    margin-right: 1rem;
+    width: 2rem;
+  }
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: darkgrey;
+}
+
+.divider {
+  border-left-style: solid;
+  border-color: black;
+  position: fixed;
+}
+
+.navbar-itrem:hover {
+  transform: scale(1.05);
+  transition: all 0.5s;
+  text-rendering: geometricPrecision;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+}
+@media only screen and (max-device-width: 40rem) {
+  .content {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    min-height: 100%;
+    padding-top: 25rem;
+    padding-bottom: 7rem;
+  }
+}
+@media only screen and (min-device-width: 40rem) {
+  .content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    min-height: 100%;
+    padding-top: 8rem;
+    padding-bottom: 3rem;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .content {
+    margin-left: 10rem;
+    margin-right: 10rem;
+    min-height: 100%;
+    padding-top: 8rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media only screen and (max-device-width: 40rem) {
+  .titleDoc {
+    margin-left: 1rem;
   }
 }
 

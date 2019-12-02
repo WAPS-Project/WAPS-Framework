@@ -1,3 +1,11 @@
+<?php
+
+/*
+PAGEINFO
+Title: false;
+*/
+
+?>
 <div class="login">
     <form class="formular" target="_self" method="post">
         <input type="hidden" name="pagename" value="Login">

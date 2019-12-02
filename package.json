@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "sass content/src/css/main.scss content/dist/css/main.css",
+    "build-css-w": "sass content/src/css/main.scss content/dist/css/main.css --watch",
     "build": "webpack"
   },
   "repository": {
@@ -19,8 +20,8 @@
   },
   "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
   "dependencies": {
-    "bootstrap": "^4.4.0",
-    "core-js": "^3.4.4",
+    "bootstrap": "^4.4.1",
+    "core-js": "^3.4.5",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "sass": "^1.23.7",

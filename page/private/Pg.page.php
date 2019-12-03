@@ -1,3 +1,11 @@
+<?php
+
+/*
+PAGEINFO
+Title: false;
+*/
+
+?>
 <h1>Registration</h1>
 <form class="formular" method="post" target="_parent">
     <div class="form-group">

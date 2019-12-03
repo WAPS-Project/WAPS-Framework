@@ -6,6 +6,7 @@
 @import "navbar";
 @import "footer";
 @import "galleria";
+@import "accessFormular";
 
 html, body {
   height: 100%;
@@ -161,29 +162,15 @@ a:hover {
   }
 }
 
-.login {
-  display: flex;
-  padding-top: 2rem;
-
-  .formular {
-    .button {
-      display: inline-flex;
-    }
-  }
-}
-
-input#nachricht,
-textarea {
-  box-shadow: inset 5px 1px 11px grey;
-  width: 80%;
-  height: 7rem;
-}
-
-textarea {
-  height: 10rem;
-}
-
-input:focus,
-textarea:focus {
-  background-color: #d9d9d9;
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+  width: 100% !important;
 }

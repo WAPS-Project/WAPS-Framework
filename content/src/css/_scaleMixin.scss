@@ -13,3 +13,20 @@
     }
   }
 }
+
+@mixin partialButton {
+  button {
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+}
+
+@mixin hoverMe {
+  &:hover {
+    border-style: solid;
+    border-width: thin;
+    border-color: grey;
+  }
+}

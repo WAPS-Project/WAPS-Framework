@@ -1,0 +1,63 @@
+@import "root";
+@import "scaleMixin";
+
+.login {
+  display: block;
+  padding: 2rem;
+  background: $main-menue-background-color;
+  border-radius: 0.5rem;
+  min-height: 20rem;
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+  margin: auto;
+
+  @include respond-to(handhelds) {
+
+  }
+  @include respond-to(medium-screens) {
+
+  }
+  @include respond-to(wide-screens) {
+    width: 35rem;
+  }
+
+  .choice {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    margin: 0 auto;
+    background-color: pink;
+    text-align: center !important;
+
+    .login-form {
+      width: 100%;
+      background-color: lightblue;
+      @include partialButton;
+      @include hoverMe;
+    }
+
+    .register-form {
+      width: 100%;
+      background-color: lightcyan;
+      @include partialButton;
+      @include hoverMe;
+    }
+  }
+}
+
+input#nachricht,
+textarea {
+  box-shadow: inset 5px 1px 11px grey;
+  width: 80%;
+  height: 7rem;
+}
+
+textarea {
+  height: 10rem;
+}
+
+input:focus,
+textarea:focus {
+  background-color: #d9d9d9;
+}

@@ -11355,6 +11355,77 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
     padding-bottom: 2rem;
   }
 }
+.login {
+  display: block;
+  padding: 2rem;
+  background: #f56262;
+  border-radius: 0.5rem;
+  min-height: 20rem;
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+  margin: auto;
+}
+@media only screen and (min-width: 1000px) {
+  .login {
+    width: 35rem;
+  }
+}
+.login .choice {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  margin: 0 auto;
+  background-color: pink;
+  text-align: center !important;
+}
+.login .choice .login-form {
+  width: 100%;
+  background-color: lightblue;
+}
+.login .choice .login-form button {
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+.login .choice .login-form:hover {
+  border-style: solid;
+  border-width: thin;
+  border-color: grey;
+}
+.login .choice .register-form {
+  width: 100%;
+  background-color: lightcyan;
+}
+.login .choice .register-form button {
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+.login .choice .register-form:hover {
+  border-style: solid;
+  border-width: thin;
+  border-color: grey;
+}
+
+input#nachricht,
+textarea {
+  box-shadow: inset 5px 1px 11px grey;
+  width: 80%;
+  height: 7rem;
+}
+
+textarea {
+  height: 10rem;
+}
+
+input:focus,
+textarea:focus {
+  background-color: #d9d9d9;
+}
+
 html, body {
   height: 100%;
   background-color: lightgrey;
@@ -11534,28 +11605,17 @@ a:hover {
   }
 }
 
-.login {
-  display: flex;
-  padding-top: 2rem;
-}
-.login .formular .button {
-  display: inline-flex;
-}
-
-input#nachricht,
-textarea {
-  box-shadow: inset 5px 1px 11px grey;
-  width: 80%;
-  height: 7rem;
-}
-
-textarea {
-  height: 10rem;
-}
-
-input:focus,
-textarea:focus {
-  background-color: #d9d9d9;
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+  width: 100% !important;
 }
 
 /*# sourceMappingURL=main.css.map */

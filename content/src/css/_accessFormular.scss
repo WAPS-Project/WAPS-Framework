@@ -13,10 +13,10 @@
   margin: auto;
 
   @include respond-to(handhelds) {
-
+    font-size: 3rem;
   }
   @include respond-to(medium-screens) {
-
+    max-width: 35rem;
   }
   @include respond-to(wide-screens) {
     width: 35rem;
@@ -27,7 +27,6 @@
     padding: 0;
     display: flex;
     margin: 0 auto;
-    background-color: pink;
     text-align: center !important;
 
     .login-form {

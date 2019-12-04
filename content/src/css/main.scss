@@ -1,5 +1,10 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "../../../node_modules/sweetalert2/src/sweetalert2";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/v4-shims";
 @import "font";
 @import "root";
 @import "scaleMixin";
@@ -30,6 +35,11 @@ h1, h2, h3 {
     padding-bottom: 1rem;
     margin: auto;
   }
+}
+
+.button {
+  background-color: rgba(0,0,0,0);
+  border-style: none;
 }
 
 ::-webkit-scrollbar {
@@ -101,10 +111,9 @@ p {
 
 a {
   color: $main-font-color;
-}
-
-a:hover {
-  color: $main-font-color-hover;
+  &:hover {
+    color: $main-font-color-hover;
+  }
 }
 
 .divider {

@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "sass content/src/css/main.scss content/dist/css/main.css",
+    "build-css": "sass content/src/css/main.scss content/dist/css/main.css --style compressed",
     "build-css-w": "sass content/src/css/main.scss content/dist/css/main.css --watch",
-    "build": "webpack"
+    "build-js": "webpack",
+    "build": "npm run build-css; npm run build-js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-preset-es2015": "^6.24.1",

@@ -302,3 +302,6 @@ public/
 var/*
 
 config/pagemap.config.json
+
+content/dist/js/*
+content/dist/css/*

@@ -10,8 +10,9 @@
 @import "scaleMixin";
 @import "navbar";
 @import "footer";
-@import "galleria";
+@import "gallery";
 @import "accessFormular";
+@import "form";
 
 html, body {
   height: 100%;
@@ -37,11 +38,6 @@ h1, h2, h3 {
   }
 }
 
-.button {
-  background-color: rgba(0,0,0,0);
-  border-style: none;
-}
-
 ::-webkit-scrollbar {
   @include respond-to(handhelds) {
     width: 1rem;
@@ -52,6 +48,22 @@ h1, h2, h3 {
   @include respond-to(wide-screens) {
     width: 1rem;
   }
+}
+
+input#nachricht,
+textarea {
+  box-shadow: inset 5px 1px 11px grey;
+  width: 80%;
+  height: 7rem;
+}
+
+textarea {
+  height: 10rem;
+}
+
+input:focus,
+textarea:focus {
+  background-color: #d9d9d9;
 }
 
 ::-webkit-scrollbar-track {

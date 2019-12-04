@@ -13,13 +13,17 @@
   margin: auto;
 
   @include respond-to(handhelds) {
-    font-size: 3rem;
+    font-size: 2.5em;
+    margin-top: -2em;
+    margin-left: -0.8em;
+    margin-right: -0.8em;
+    border-radius: 0;
   }
   @include respond-to(medium-screens) {
-    max-width: 35rem;
+    max-width: 40rem;
   }
   @include respond-to(wide-screens) {
-    width: 35rem;
+    max-width: 40rem;
   }
 
   .choice {
@@ -43,20 +47,4 @@
       @include hoverMe;
     }
   }
-}
-
-input#nachricht,
-textarea {
-  box-shadow: inset 5px 1px 11px grey;
-  width: 80%;
-  height: 7rem;
-}
-
-textarea {
-  height: 10rem;
-}
-
-input:focus,
-textarea:focus {
-  background-color: #d9d9d9;
 }

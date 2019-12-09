@@ -22,16 +22,16 @@
   "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "core-js": "^3.4.7",
+    "core-js": "^3.4.8",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "sass": "^1.23.7",
     "sweetalert2": "^8.19.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.4",
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "@fortawesome/fontawesome-free": "^5.11.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",

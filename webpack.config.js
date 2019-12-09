@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     mode: "production", // "production" | "development" | "none"
     // Chosen mode tells webpack to use its built-in optimizations accordingly.
-    entry: "./content/src/js/index.js", // string | object | array
+    entry: "./content/src/ts/index.ts", // string | object | array
     // defaults to ./src
     // Here the application starts executing
     // and webpack starts bundling
@@ -27,7 +27,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env','@babel/preset-typescript']
                     }
                 }
             }

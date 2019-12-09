@@ -18,6 +18,7 @@ class StartUp
         );
 
         if (!$db_link) {
+            mysqli_query(mysqli_connect(MYSQL_HOST, MYSQL_USER, MYSQL_KEYWORD), "CREATE DATABASE IF NOT EXISTS " . MYSQL_DATABASE . ";");
             die("Connection is dead:" . mysqli_connect_error());
         }
 
@@ -32,33 +33,31 @@ class StartUp
         $fileMapExplicit = $fileMap::$PageMap;
 
         foreach ($files as $file) {
-            $fileObj = new pageObj();
-            $filePart = explode(".", $file);
-            $fileErrorCheck = explode("_", $file);
-            if ($file != "." && $file != ".." && $filePart[0] != "Home") {
+            if ($file != "." && $file != "..") {
+                $fileObj = new pageObj();
+                $filePart = explode(".", $file);
+                $fileObj->Path = "page/open/" . $file;
+                $fileLines = file($fileObj->Path);
+                $titleCheckLine = $fileLines[4];
+                $titleCheckParts = explode(":", $titleCheckLine);
+                $titleCheckParts = explode(";", $titleCheckParts[1]);
+                $titleCheck = filter_var(
+                    str_replace(" ", "", $titleCheckParts[0]),
+                    FILTER_VALIDATE_BOOLEAN);
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
-                $fileObj->Path = "page/" . $file;
 
-                if ($fileErrorCheck[0] === "Error") {
-                    $fileObj->IsSet = FALSE;
-                } else {
+                if ($titleCheck === true) {
                     $fileObj->IsSet = TRUE;
+                } elseif ($titleCheck === false) {
+                    $fileObj->IsSet = FALSE;
                 }
 
-                array_push($fileMapExplicit, $fileObj);
-            } elseif ($file != "." && $file != ".." && $filePart[0] === "Home") {
-                $fileObj->Name = $filePart[0];
-                $fileObj->File = $file;
-                $fileObj->Path = "page/" . $file;
-
-                if ($fileErrorCheck[0] === "Error") {
-                    $fileObj->IsSet = FALSE;
-                } else {
-                    $fileObj->IsSet = TRUE;
+                if ($filePart[0] != "Home") {
+                    array_push($fileMapExplicit, $fileObj);
+                } elseif ($filePart[0] === "Home") {
+                    array_unshift($fileMapExplicit, $fileObj);
                 }
-
-                array_unshift($fileMapExplicit, $fileObj);
             }
         }
 
@@ -67,7 +66,7 @@ class StartUp
         return $fileJSON;
     }
 
-    static private function dirCheck($dir)
+    private static function dirCheck($dir)
     {
         $dirPath = $dir . "/";
         $files = scandir($dirPath);
@@ -86,4 +85,22 @@ class StartUp
         return $files;
     }
 
+    public static function checkDatabaseStatus()
+    {
+        $databaseLink = self::loadDatabase();
+        $sqlFile = fopen("sql/webapp_php_sample.sql", "r");
+        $tableRequest = "SHOW TABLES";
+        $sqlLines = fread($sqlFile, filesize("sql/webapp_php_sample.sql"));
+
+        if ($result = mysqli_query($databaseLink, $tableRequest, MYSQLI_USE_RESULT)) {
+            while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                foreach($rArray as $table) {
+                    if (!in_array($table, DATABASE_TABLE_LIST)) {
+                        mysqli_query($databaseLink, $sqlLines);
+                    }
+                }
+            }
+        }
+        fclose($sqlFile);
+    }
 }

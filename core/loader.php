@@ -5,15 +5,15 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 $classList = scandir("class/");
-$objList = scandir("obj/");
+$objList = scandir("model/");
+$classFiles = array_diff($classList, array('.', '..'));
+$objFiles = array_diff($objList, array('.', '..'));
 
-foreach ($objList as $singleObj) {
-    if ($singleObj != "." && $singleObj != "..") {
-        include "obj/" . $singleObj;
-    }
+foreach ($objFiles as $singleObj) {
+    include "model/" . $singleObj;
 
 }
-foreach ($classList as $singleClass) {
+foreach ($classFiles as $singleClass) {
     $classParts = explode(".", $singleClass);
     if ($classParts[1] === "class") {
         include "class/" . $singleClass;
@@ -28,6 +28,7 @@ use webapp_php_sample_class\StartUp;
 try {
     ConfigLoader::loadConfig("config/");
     $database_link = StartUp::loadDatabase();
+    StartUp::checkDatabaseStatus();
     $pageMap = StartUp::loadPages();
 } catch (Exception $e) {
     ErrorHandler::FireError($e->getCode(), $e->getMessage());

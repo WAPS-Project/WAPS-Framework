@@ -9,7 +9,7 @@ class SessionTool
     {
         $myUsername = Main::checkPost("username");
         $myPassword = Main::checkPost("password");
-        $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '$myUsername';";
+        $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
         if ($result = mysqli_query($db, $queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $trust = password_verify($myPassword, $rArray["passwort"]);
@@ -32,10 +32,10 @@ class SessionTool
             $username = $_SESSION['login_User'];
             echo "<form method= \"post\"  id= \"userLogin\">";
             echo "<label id= \"greetings\" class='greeting'>Herzlich Willkommen $username </label>" . "   ";
-            echo "<button id= \"logout\" type=\"submit\" class=\"btn btn-secondary button logging-btn\" name= \"logout\" value= \"TRUE\">Logout</button>";
+            echo "<button id= \"logout\" type=\"submit\" class=\"btn btn-danger button logging-btn\" name= \"logout\" value= \"TRUE\">Logout</button>";
             echo "</form>";
         } else {
-            echo "<button class=\"btn btn-secondary button logging-btn\"><a href=\"/Login\" >Login/Registration</a></button>";
+            echo "<a href=\"/Login\" class='logging-btn-a'><button class=\"logging-btn\">Login/Registration</button></a>";
         }
         $logoutCheck = Main::checkPost("logout");
         if ($logoutCheck == "TRUE") {
@@ -47,12 +47,12 @@ class SessionTool
 
     public static function AddUser($db_link)
     {
-        $username = Main::checkPost("username");
-        $firstName = Main::checkPost("firstName");
-        $secondName = Main::checkPost("lastName");
-        $email = Main::checkPost("email");
-        $age = Main::checkPost("age");
-        $password = Main::checkPost("pw");
+        $username = filter_var(Main::checkPost("username"), FILTER_SANITIZE_STRING);
+        $firstName = filter_var(Main::checkPost("firstName"), FILTER_SANITIZE_STRING);
+        $secondName = filter_var(Main::checkPost("lastName"), FILTER_SANITIZE_STRING);
+        $email = filter_var(Main::checkPost("email"), FILTER_SANITIZE_EMAIL);
+        $age = filter_var(Main::checkPost("age"), FILTER_SANITIZE_NUMBER_INT);
+        $password = filter_var(Main::checkPost("pw"), FILTER_SANITIZE_STRING);
         $check = Main::checkPost("check");
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
         if ($check == "on") {
@@ -70,9 +70,9 @@ class SessionTool
 
             $queryUSID = "SELECT MAX(UID) AS 'ID' FROM usr;";
 
-            if ($rslt = mysqli_query($db_link, $queryUSID)) {
+            if ($result = mysqli_query($db_link, $queryUSID)) {
 
-                while ($obj = mysqli_fetch_array($rslt)) {
+                while ($obj = mysqli_fetch_array($result)) {
 
                     $USID = $obj["ID"] + 1;
                     $query = "INSERT INTO usr ( username, firstname, lastname, email, userrank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";

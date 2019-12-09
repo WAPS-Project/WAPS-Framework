@@ -8,14 +8,16 @@ class GalleryBuilder
     {
         $images = scandir($path);
         $count = count($images);
+        echo "<div class='gallery'>";
         foreach ($images as $value) {
             if ($value == ".." or $value == ".") {
                 echo "";
             } else {
-                print("<img src='" . $path . $value . "' class='img_galleria' >");
+                print("<img src='" . $path . $value . "' class='gallery-item' >");
 
             }
         }
+        echo "</div>";
     }
 
 }

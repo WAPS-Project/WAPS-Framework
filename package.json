@@ -5,8 +5,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "sass content/src/css/main.scss content/dist/css/main.css",
-    "build": "webpack"
+    "build-css": "sass content/src/css/main.scss content/dist/css/main.css --style compressed",
+    "build-css-w": "sass content/src/css/main.scss content/dist/css/main.css --watch",
+    "build-js": "webpack",
+    "build": "npm run build-css; npm run build-js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +21,8 @@
   },
   "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
   "dependencies": {
-    "bootstrap": "^4.4.0",
-    "core-js": "^3.4.4",
+    "bootstrap": "^4.4.1",
+    "core-js": "^3.4.7",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "sass": "^1.23.7",
@@ -30,10 +32,11 @@
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-preset-es2015": "^6.24.1",
-    "typescript": "^3.7.2",
+    "typescript": "^3.7.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   }

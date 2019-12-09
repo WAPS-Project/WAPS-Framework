@@ -1,3 +1,3 @@
 <?php
 
-echo "console.log('Plugin is loaded, AKA Hello World')";
+echo "<script>console.log('Plugin is loaded, AKA Hello World')</script>";

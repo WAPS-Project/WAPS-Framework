@@ -23,6 +23,7 @@ foreach ($classFiles as $singleClass) {
 use webapp_php_sample_class\ConfigLoader;
 use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Main;
+use webapp_php_sample_class\PluginLoader;
 use webapp_php_sample_class\StartUp;
 
 try {
@@ -30,6 +31,7 @@ try {
     $database_link = StartUp::loadDatabase();
     StartUp::checkDatabaseStatus();
     $pageMap = StartUp::loadPages();
+    PluginLoader::loadPlugins();
 } catch (Exception $e) {
     ErrorHandler::FireError($e->getCode(), $e->getMessage());
 }

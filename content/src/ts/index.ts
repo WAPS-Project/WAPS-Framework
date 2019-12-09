@@ -1,1 +1,1 @@
-console.log("Hello World my TS Friend");
+import '../js/index.js'

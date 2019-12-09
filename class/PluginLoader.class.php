@@ -12,6 +12,7 @@ class PluginLoader
 
     public static function loadPlugins()
     {
+        self::loadPluginConfig();
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), array(".", ".."));
         foreach ($pluginList as $plugin) {
             if (self::checkPluginManifest($plugin)) {
@@ -20,7 +21,7 @@ class PluginLoader
         }
     }
 
-    public static function loadPluginConfig()
+    protected static function loadPluginConfig()
     {
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), array(".", ".."));
         $configBundle = new pluginConfigBundle();

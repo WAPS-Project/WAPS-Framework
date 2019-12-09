@@ -35,7 +35,7 @@ class SessionTool
             echo "<button id= \"logout\" type=\"submit\" class=\"btn btn-danger button logging-btn\" name= \"logout\" value= \"TRUE\">Logout</button>";
             echo "</form>";
         } else {
-            echo "<a href=\"/Login\" class='logging-btn-a'><button class=\"logging-btn\">Login/Registration</button></a>";
+            echo "<a href=\"/Login\" class='logging-btn-a nav-link'><button class=\"logging-btn\">Login/Registration</button></a>";
         }
         $logoutCheck = Main::checkPost("logout");
         if ($logoutCheck == "TRUE") {

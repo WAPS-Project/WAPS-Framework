@@ -1,6 +1,6 @@
 # Webshop_PHP_Sample
 
-<img src="./content/dist/img/fav.png" alt="FrameWork Logo" style="width:200px" />
+<img src="./content/dist/img/fav.png" alt="FrameWork Logo" width="200" />
 
 ### A PHP web app framework.
 

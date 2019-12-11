@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.3.0
+
+### Add heading selector
+Adding a selection if the h1 should be generated or not.
+
+### Database Check
+Adding a Database Check at startup to validate that all tables are set.
+
+### Query improvements
+There were some sql query improvements made.
+
+### Style improvements
+A complete new Style and Logo added.
+ 
+### Plugin Support
+A new Plugin System was added, external plugins can now be implemented easy by just drag and drop them.
+
+### View/Core Refactoring
+The view Pages for the Header, Head and Footer are now in the ```./page/view/``` folder, future views will be stored there.
+
+### Documentation rewrite
+A new startup Documentation was added to the Project.
+
 ## 1.2.1
 
 ### Buf Fix: IP Logger

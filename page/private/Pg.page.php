@@ -1,11 +1,20 @@
-<form class="formular" method="post" target="_parent">
+<?php
+
+/*
+PAGEINFO
+Title: false;
+*/
+
+?>
+<h1>Registration</h1>
+<form class="form-session" method="post" target="_parent">
     <div class="form-group">
-        <label class="label" for="username">E-Mail</label>
+        <label class="label" for="username"><i class="far fa-envelope"></i> E-Mail</label>
         <input type="email" name="email" class="form-control input" id="InputEmail" aria-describedby="eMail"
                placeholder="Enter Email" required>
     </div>
     <div class="form-group">
-        <label class="label" for="username">Username</label>
+        <label class="label" for="username"><i class="fas fa-user-tie"></i> Username</label>
         <input type="text" name="username" class="form-control input" id="InputUsername" aria-describedby="userName"
                placeholder="Enter Username" required>
     </div>
@@ -20,12 +29,12 @@
                placeholder="Enter last Name" required>
     </div>
     <div class="form-group">
-        <label class="label" for="age">Alter</label>
-        <input type="number" name="age" class="form-control input" id="InputAge" aria-describedby="age"
+        <label class="label" for="age"><i class="fas fa-birthday-cake"></i> Alter</label>
+        <input type="number" name="age" min="1" max="150" class="form-control input" id="InputAge" aria-describedby="age"
                placeholder="Enter Age" required>
     </div>
     <div class="form-group">
-        <label class="label" for="InputPassword">Password</label>
+        <label class="label" for="InputPassword"><i class="fas fa-lock"></i> Password</label>
         <input type="password" name="pw" class="form-control input" id="InputPassword" placeholder="Enter Password"
                required>
         <small id="password" class="form-text text-muted">Bitte achte darauf, dass dein Passwort mindestens 10 Zeichen
@@ -36,5 +45,5 @@
         <label class="label-small" class="form-check-label" for="Check">Ich bin mit den <a
                     href="index.php?pagename=Termsofuse">Nutzungsbedingungen</a> einverstanden!</label>
     </div>
-    <button type="submit" class="btn btn-success button">Absenden</button>
+    <button type="submit" class="btn btn-success">Absenden</button>
 </form>

@@ -1,1 +1,8 @@
-<p>Willkommen zu Hause</p>
+<?php
+
+/*
+PageInfo:
+Title: true;
+*/
+
+echo "<p>Willkommen zu Hause</p>";

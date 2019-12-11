@@ -1,14 +1,13 @@
 # Mitarbeit Anleitung
 
-Ziel dieses Projekts ist es, eine Beispiel WebApp auf Basis von PHP zu schreiben.
-Dabei ist strickt auf die Kommentierung des Codes zu achten, er muss auch für absolute Anfänger verständlich sein.
-Die Mitarbeit steht jedem offen, vorgabe ist aber übersichtlichen Code zu schreiben, d.h.
-Freiräume, sauberer Syntax, Kommentare, schreiben der Dokumentation als MD
+The goal of this project is to write a PHP framework that minimizes the time to create new projects.
+The collaboration is open to everyone, but the default is to write clear code, says
+Free spaces, cleaner syntax, comments, writing documentation as MD
 
-Es wird nicht auf dem Master Branch gearbeitet, Ergebnisse werden nur in diesen gemergt!!!
+No one works on the Master Branch, results are only merged in these!
 
 ###FEATURE
-Es wird mit dem FEATURE System gearbeitet, neue Abschnitte werden in Features entwickelt und als
-FEATURE/Featurename angelegt, nach Fertigstellung wird eine Pull Request auf den dev/main/unstable Branch
-erstellt. Sobald sich genug Features gesammelt und diese getestet wurden, wird eine Pull Request auf den 
-Master Branch erstellt.
+It works with the ```FEATURE``` system, new sections are developed in features and as
+```FEATURE/FeatureName``` created, upon completion, will be a pull request on the ```dev/main/unstable``` branch
+created. From this the ```TASKs``` of the ```FEATURE``` are created, in which the tasks are divided and done. Once enough features have been collected and tested in the unstable branch, a pull request will be applied to the
+Master Branch created. Every merge in the ```master```, sets the version number high, is differentiated here in ```[major].[minor].[patch]```.

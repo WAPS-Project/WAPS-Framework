@@ -25,4 +25,9 @@ class ErrorHandler
             echo "<script>Swal.fire({type: 'error', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>";
         }
     }
+
+    static function FireJsonError($type, $message)
+    {
+        echo "{\"error\":{\"title\":\"" . $type . "\",\"message\":\"" . $message . "\"}}";
+    }
 }

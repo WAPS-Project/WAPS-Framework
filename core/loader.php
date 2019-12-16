@@ -4,8 +4,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$classList = scandir("class/");
-$objList = scandir("model/");
+$classList = scandir("./class/");
+$objList = scandir("./model/");
 $classFiles = array_diff($classList, array('.', '..'));
 $objFiles = array_diff($objList, array('.', '..'));
 
@@ -27,10 +27,10 @@ use webapp_php_sample_class\PluginLoader;
 use webapp_php_sample_class\StartUp;
 
 try {
-    ConfigLoader::loadConfig("config/");
+    ConfigLoader::loadConfig("./config/");
     $database_link = StartUp::loadDatabase();
     StartUp::checkDatabaseStatus();
-    $pageMap = StartUp::loadPages();
+    $pageMap = StartUp::loadPages("./pages/open/", "./config/");
     PluginLoader::loadPlugins();
 } catch (Exception $e) {
     ErrorHandler::FireError($e->getCode(), $e->getMessage());

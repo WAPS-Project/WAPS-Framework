@@ -1,31 +1,35 @@
 <?php
 
-$classList = scandir("../class/");
-$objList = scandir("../model/");
+$classString ="../class/";
+$modelString ="../model/";
+$configString = "../config/";
+
+$classList = scandir($classString);
+$objList = scandir($modelString);
 $classFiles = array_diff($classList, array('.', '..'));
 $objFiles = array_diff($objList, array('.', '..'));
 
 foreach ($objFiles as $singleObj) {
-    include "../model/" . $singleObj;
+    include $modelString . $singleObj;
 
 }
 foreach ($classFiles as $singleClass) {
     $classParts = explode(".", $singleClass);
     if ($classParts[1] === "class") {
-        include "../class/" . $singleClass;
+        include $classString . $singleClass;
     }
 }
 
 use webapp_php_sample_class\ConfigLoader;
-use webapp_php_sample_class\ErrorHandler;
+use webapp_php_sample_class\JsonHandler;
 use webapp_php_sample_class\Main;
 use webapp_php_sample_class\PluginLoader;
 use webapp_php_sample_class\StartUp;
 
 try {
-    ConfigLoader::loadConfig("../config/");
+    ConfigLoader::loadConfig($configString);
 } catch (Error $e) {
-    ErrorHandler::FireJsonError($e->getCode(), $e->getMessage());
+    JsonHandler::FireSimpleJson($e->getCode(), $e->getMessage());
 }
 
 try {
@@ -40,16 +44,16 @@ try {
 try {
     switch ($command) {
         case DEFAULT_STRING:
-            ErrorHandler::FireJsonError("No content warning", "Your request contains no valid Data");
+            JsonHandler::FireSimpleJson("No content warning", "Your request contains no valid Data");
             break;
         case "pageList":
-            StartUp::loadPages();
-            ErrorHandler::FireJsonError("done", "valid");
+            StartUp::loadPages("../page/open/", "../config/");
+            JsonHandler::FireSimpleJson("done", "valid");
             break;
         case "pluginList":
             PluginLoader::loadPluginConfig();
     }
 
 } catch (Error $e) {
-    ErrorHandler::FireJsonError($e->getCode(), $e->getMessage());
+    JsonHandler::FireSimpleJson($e->getCode(), $e->getMessage());
 }

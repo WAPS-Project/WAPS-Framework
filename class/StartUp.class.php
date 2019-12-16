@@ -25,10 +25,9 @@ class StartUp
         return $db_link;
     }
 
-    public static function loadPages()
+    public static function loadPages($pagePath, $configPath)
     {
-        $files = self::dirCheck("page/open/");
-
+        $files = self::dirCheck($pagePath);
         $fileMap = new pageMap();
         $fileMapExplicit = $fileMap::$PageMap;
 
@@ -36,7 +35,7 @@ class StartUp
             if ($file != "." && $file != "..") {
                 $fileObj = new pageObj();
                 $filePart = explode(".", $file);
-                $fileObj->Path = "page/open/" . $file;
+                $fileObj->Path = $pagePath . $file;
                 $fileLines = file($fileObj->Path);
                 $titleCheckLine = $fileLines[4];
                 $titleCheckParts = explode(":", $titleCheckLine);
@@ -62,26 +61,13 @@ class StartUp
         }
 
         $fileJSON = json_encode($fileMapExplicit);
-        file_put_contents("./config/pagemap.config.json", $fileJSON);
+        file_put_contents($configPath . "pagemap.config.json", $fileJSON);
         return $fileJSON;
     }
 
     private static function dirCheck($dir)
     {
-        $dirPath = $dir . "/";
-        $files = scandir($dirPath);
-
-        foreach ($files as $file) {
-
-            $nameParts = explode(".", $file);
-
-            if ($nameParts[1] === $dir || $file != "." || $file != "..") {
-                continue;
-            } else {
-                echo "<script>console.log('$file')</script>";
-                die("Nicht alle Files im Folder entsprechen dem 'expample." + $dir + ".php' Muster!");
-            }
-        }
+        $files = array_diff(scandir($dir), array('.', '..'));
         return $files;
     }
 

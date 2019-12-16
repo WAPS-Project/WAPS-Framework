@@ -1,7 +1,6 @@
 image: php:7.3
 
 before_script:
-  - bash ci/docker_install.sh > /dev/null
   - apt-get update -qq && apt-get install -y -qq nodejs
   - apt-get update -qq && apt-get install -y -qq apache2
   - apt-get update -qq && apt-get install -y -qq php7.3-mysql
@@ -9,11 +8,6 @@ before_script:
   - php -v
   - node --version
   - npm install
-
-
-cache:
-  paths:
-    - node_modules/
 
 test:node:7:
   image: node:7

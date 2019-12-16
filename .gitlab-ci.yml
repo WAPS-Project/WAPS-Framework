@@ -2,7 +2,8 @@ image: php:7.3
 
 before_script:
   - bash ci/docker_install.sh > /dev/null
-  - apt-get update -qq && apt-get install -y -qq nodejs phpunit php5-mysql
+  - apt-get update -qq && apt-get install -y -qq nodejs
+  - pt-get update -qq && apt-get install -y -qq phpunit php5-mysql
   - php -v
 
 test:app:

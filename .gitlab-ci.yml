@@ -3,13 +3,20 @@ image: php:7.3
 before_script:
   - bash ci/docker_install.sh > /dev/null
   - apt-get update -qq && apt-get install -y -qq nodejs
-  - node --version
-  - npm --version
-  - apt-get update -qq && apt-get install -y -qq npm
   - apt-get update -qq && apt-get install -y -qq apache2
+  - apt-get update -qq && apt-get install -y -qq php7.3-mysql
+  - apt-get update -qq && apt-get install -y -qq php7.3-cli
   - php -v
+  - node --version
+  - npm install
 
-test:app:
+
+cache:
+  paths:
+    - node_modules/
+
+test:node:7:
+  image: node:7
   script:
     - npm run build-css
     - npm run build-js

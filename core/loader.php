@@ -4,10 +4,14 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$classList = scandir("class/");
-$objList = scandir("model/");
-$classFiles = array_diff($classList, array('.', '..'));
-$objFiles = array_diff($objList, array('.', '..'));
+use webapp_php_sample_class\ConfigLoader;
+use webapp_php_sample_class\ErrorHandler;
+use webapp_php_sample_class\Main;
+use webapp_php_sample_class\PluginLoader;
+use webapp_php_sample_class\StartUp;
+
+$objFiles = array_diff(scandir('model/'), array('.', '..'));
+$classFiles = array_diff(scandir('class/'), array('.', '..'));
 
 foreach ($objFiles as $singleObj) {
     include "model/" . $singleObj;
@@ -20,12 +24,6 @@ foreach ($classFiles as $singleClass) {
     }
 }
 
-use webapp_php_sample_class\ConfigLoader;
-use webapp_php_sample_class\ErrorHandler;
-use webapp_php_sample_class\Main;
-use webapp_php_sample_class\PluginLoader;
-use webapp_php_sample_class\StartUp;
-
 try {
     ConfigLoader::loadConfig("config/");
     $database_link = StartUp::loadDatabase();
@@ -37,6 +35,6 @@ try {
 }
 $pageName = Main::validateHome(Main::getUrlInterpreter());
 $pagePath = Main::validatePage($pageName);
-$pageList = Main::validateFile("page/open");
+$pageList = Main::validateFile("page/open/");
 
 Main::ipCheck($database_link);

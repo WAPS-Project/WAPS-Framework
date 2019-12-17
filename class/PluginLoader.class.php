@@ -21,7 +21,7 @@ class PluginLoader
         }
     }
 
-    protected static function loadPluginConfig()
+    public static function loadPluginConfig()
     {
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), array(".", ".."));
         $configBundle = new pluginConfigBundle();

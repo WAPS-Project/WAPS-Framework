@@ -1,14 +1,31 @@
-image: php:7.3
+image: tetraweb/php
 
 before_script:
-  - apt-get update -qq && apt-get install -y -qq nodejs
-  - apt-get update -qq && apt-get install -y -qq apache2
-  - node --version
+  - apt-get update
+  - apt-get install zip unzip
+  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  - php composer-setup.php
+  - php -r "unlink('composer-setup.php');"
+  - php composer.phar install
   - npm install
+  - npm run build-css
+  - npm run build-js
+  - npm run build
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-test:node:7:
-  image: node:7
+
+stage_deploy:
+  artifacts:
+    paths:
+      - build/
+  only:
+    - dev
   script:
-    - npm run build-css
-    - npm run build-js
-    - npm run build
+    - ssh-add <(echo "$STAGING_PRIVATE_KEY")
+    - ssh -p22 server_user@server_host "mkdir htdocs/wp-content/themes/_tmp"
+    - scp -P22 -r build/* server_user@server_host:htdocs/wp-content/themes/_tmp
+    - ssh -p22 server_user@server_host "mv htdocs/wp-content/themes/live htdocs/wp-content/themes/_old && mv htdocs/wp-content/themes/_tmp htdocs/wp-content/themes/live"
+    - ssh -p22 server_user@server_host "rm -rf htdocs/wp-content/themes/_old"

@@ -1,13 +1,17 @@
 <?php
 
-$classString ="../class/";
-$modelString ="../model/";
-$configString = "../config/";
+use webapp_php_sample_class\ConfigLoader;
+use webapp_php_sample_class\JsonHandler;
+use webapp_php_sample_class\Main;
+use webapp_php_sample_class\PluginLoader;
+use webapp_php_sample_class\StartUp;
 
-$classList = scandir($classString);
-$objList = scandir($modelString);
-$classFiles = array_diff($classList, array('.', '..'));
-$objFiles = array_diff($objList, array('.', '..'));
+$classString = "class/";
+$modelString = "model/";
+$configString = "config/";
+
+$objFiles = array_diff(scandir($modelString), array('.', '..'));
+$classFiles = array_diff(scandir($classString), array('.', '..'));
 
 foreach ($objFiles as $singleObj) {
     include $modelString . $singleObj;
@@ -19,12 +23,6 @@ foreach ($classFiles as $singleClass) {
         include $classString . $singleClass;
     }
 }
-
-use webapp_php_sample_class\ConfigLoader;
-use webapp_php_sample_class\JsonHandler;
-use webapp_php_sample_class\Main;
-use webapp_php_sample_class\PluginLoader;
-use webapp_php_sample_class\StartUp;
 
 try {
     ConfigLoader::loadConfig($configString);
@@ -43,15 +41,17 @@ try {
 
 try {
     switch ($command) {
-        case DEFAULT_STRING:
-            JsonHandler::FireSimpleJson("No content warning", "Your request contains no valid Data");
-            break;
         case "pageList":
-            StartUp::loadPages("../page/open/", "../config/");
+            StartUp::loadPages();
             JsonHandler::FireSimpleJson("done", "valid");
             break;
         case "pluginList":
             PluginLoader::loadPluginConfig();
+            JsonHandler::FireSimpleJson("done", "valid");
+            break;
+        default:
+            JsonHandler::FireSimpleJson("No content warning", "Your request contains no valid Data");
+            break;
     }
 
 } catch (Error $e) {

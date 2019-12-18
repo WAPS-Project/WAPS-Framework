@@ -88,9 +88,9 @@ class StartUp
     public static function checkDatabaseStatus()
     {
         $databaseLink = self::loadDatabase();
-        $sqlFile = fopen("sql/webapp_php_sample.sql", "r");
+        $sqlFile = fopen("core/database/setup/webapp_php_sample.sql", "r");
         $tableRequest = "SHOW TABLES";
-        $sqlLines = fread($sqlFile, filesize("sql/webapp_php_sample.sql"));
+        $sqlLines = fread($sqlFile, filesize("core/database/setup/webapp_php_sample.sql"));
 
         if ($result = mysqli_query($databaseLink, $tableRequest, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {

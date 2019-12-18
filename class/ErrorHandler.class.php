@@ -33,7 +33,7 @@ class ErrorHandler
     static protected function CreateLog($key, $message)
     {
         $logPath = "./custom/log/crahslog/";
-        $files = array_diff(scandir($logPath), array('.', '..'));
+        $files = array_diff(scandir($logPath), array(DEFAULT_FILE_FILTER));
         $currentDate = date("Y_m_d");
         $newLine = self::WriteLogLine($key, $message);
         if (!in_array($currentDate . ".txt", $files)) {

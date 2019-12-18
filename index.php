@@ -2,7 +2,7 @@
 
 use webapp_php_sample_class\Main;
 
-include 'core/loader.php';
+include 'core/UI.loader.php';
 
 ?>
 <!DOCTYPE html>

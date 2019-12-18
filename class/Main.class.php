@@ -129,14 +129,12 @@ class Main
 
     public static function validateFile($path)
     {
-        $files = scandir($path);
+        $files = array_diff(scandir($path), DEFAULT_FILE_FILTER);
 
         $i = 0;
         $fileList = array('page' => array());
         foreach ($files as $file) {
-            if ($file == "." || $file == "..") {
-                continue;
-            } elseif ($file == NULL) {
+            if ($file == NULL) {
                 ErrorHandler::FireError("FileError", "The File check failed");
             } else {
                 $fileList["page"][$i] = $path . $file;

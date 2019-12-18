@@ -36,6 +36,7 @@
     "default_string": "DEFAULT",
     "default_int": 42,
     "default_bool": true,
-    "default_array": ["1", 2, true]
+    "default_array": ["1", 2, true],
+    "default_file_filter": [".", "..", ".gitkeep"]
   }
 }

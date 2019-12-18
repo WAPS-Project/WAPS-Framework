@@ -8,7 +8,8 @@
     "build-css": "sass content/src/css/main.scss content/dist/css/main.css --style compressed",
     "build-css-w": "sass content/src/css/main.scss content/dist/css/main.css --watch",
     "build-js": "webpack",
-    "build": "npm run build-css; npm run build-js"
+    "build": "npm run build-css; npm run build-js",
+    "cli": "php CLI.php"
   },
   "repository": {
     "type": "git",

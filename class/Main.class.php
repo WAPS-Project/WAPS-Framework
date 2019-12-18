@@ -175,7 +175,7 @@ class Main
         }
     }
 
-    private static function getRealIp()
+    public static function getRealIp()
     {
         $ip = 'undefined';
         if (isset($_SERVER)) {

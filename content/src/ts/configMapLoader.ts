@@ -15,7 +15,7 @@ class ConfigMapLoader {
     }
 
     request(command) {
-        $.post('/core/service.API.php', { svmode:command },function ( data ) {
+        $.post('/API.php?apiMode=service', { svmode:command },function ( data ) {
             console.log('Event: ' + data);
         })
     }

@@ -18,18 +18,6 @@ class Migration
         $migrationPreset = date("YmdHis");
         $migrationFileName = $migrationPreset . "_" . $migrationName . ".php";
         $migrationClassName = $migrationPreset . "_" . $migrationName;
-
-        $migrationHead = "
-        <?php
-        
-        namespace webapp_php_sample_migration;
-        
-        class " . $migrationClassName .
-            "
-        
-        ";
-
-
     }
 
     private function loadMigrations()

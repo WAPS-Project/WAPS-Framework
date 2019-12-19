@@ -13,7 +13,6 @@ use webapp_php_sample_class\StartUp;
 include "basic.loader.php";
 
 try {
-    ConfigLoader::loadConfig("config/");
     $database_link = StartUp::loadDatabase();
     StartUp::checkDatabaseStatus();
     $pageMap = StartUp::loadPages();

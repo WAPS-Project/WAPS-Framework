@@ -1,5 +1,7 @@
 <?php
 
+use webapp_php_sample_class\ConfigLoader;
+
 $classString = "class/";
 $modelString = "model/";
 $configString = "config/";
@@ -17,3 +19,5 @@ foreach ($classFiles as $singleClass) {
         include $classString . $singleClass;
     }
 }
+
+ConfigLoader::loadConfig($configString);

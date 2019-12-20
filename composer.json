@@ -9,6 +9,8 @@
   },
   "require": {
     "php": "^7.3",
-    "npm": "^6.13.2"
+    "npm": "^6.13.2",
+    "ext-mysqli": "*",
+    "ext-readline": "*"
   }
 }

@@ -16,7 +16,7 @@ class Main
             }
         }
 
-        if ($pagePath != "page/open/home.page.php") {
+        if ($pagePath != "page/open/Home.page.php") {
 
             $pathParts = explode("/", $pagePath);
             $pathParts[1] = "static";
@@ -45,7 +45,7 @@ class Main
                 include $staticPath;
             }
         } else {
-            include 'page/open/home.page.php';
+            include 'page/open/Home.page.php';
         }
 
         echo '</div>';
@@ -196,6 +196,6 @@ class Main
         $pip = self::getRealIp();
         $info = $_SERVER['HTTP_USER_AGENT'];
         $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
-        mysqli_query($link, $query);
+        $link->query($query);
     }
 }

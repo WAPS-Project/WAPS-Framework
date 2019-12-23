@@ -29,6 +29,7 @@ class cli
 
     static function checkIfCli() {
         if (PHP_SAPI != "cli") {
+            ErrorHandler::FireError("No CLI Error", "The Interface you use isn't a valid CL");
             die();
         }
     }

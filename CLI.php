@@ -2,9 +2,9 @@
 
 use webapp_php_sample_class\cli;
 
-include "core/basic.loader.php";
+include "core/loader/basic.loader.php";
 
-$CLIString = "core/cli/";
+$CLIString = "./core/CLI/";
 
 $CLIFiles = array_diff(scandir($CLIString), DEFAULT_FILE_FILTER);
 

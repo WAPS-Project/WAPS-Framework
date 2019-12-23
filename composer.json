@@ -8,9 +8,10 @@
     "cli": "php CLI.php"
   },
   "require": {
-    "php": "^7.3",
+    "php": "^7.4",
     "npm": "^6.13.2",
     "ext-mysqli": "*",
-    "ext-readline": "*"
+    "ext-readline": "*",
+    "ext-json": "*"
   }
 }

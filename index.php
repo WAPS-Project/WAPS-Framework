@@ -5,7 +5,7 @@ use webapp_php_sample_class\Main;
 ?>
 <!DOCTYPE html>
 <?php
-include 'core/UI.loader.php';
+include 'core/loader/UI.loader.php';
 ?>
 <html lang="<?php echo LANGUAGE ?>" dir="ltr">
 <?php

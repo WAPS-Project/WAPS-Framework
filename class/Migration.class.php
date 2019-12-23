@@ -4,49 +4,36 @@
 namespace webapp_php_sample_class;
 
 
+use Exception;
+
 class Migration
 {
-    const MIGRATION_PATH = "./core/database/migrations/";
-
-    public function migrate()
-    {
-        self::loadMigrations();
-    }
-
     public static function createMigration($migrationName, $mode, $tableName, $rows, $values, $valueString)
     {
         $migrationPreset = date("YmdHis");
-        $migrationFileName = $migrationPreset . "_" . $migrationName . ".migration.php";
-        $migrationClassName = $migrationPreset . "_" . $migrationName;
+        $migrationFileName = $migrationPreset . "_" . $migrationName . ".migration.json";
 
-        $migrationFileContent = self::createMigrationHead($migrationClassName)
-            . "DatabaseHandler::createSqlRequest(" . $mode . $tableName . $rows . $values . $valueString .");}}"
-            . self::createMigrationFooter();
+        $migrationFileContent = [
+            "Name" => $migrationName,
+            "Mode" => $mode,
+            "Table_Name" => $tableName,
+            "Rows" => $rows,
+            "Values" => $values,
+            "Value_String" => $valueString
+        ];
 
-        $files = array_diff(scandir(self::MIGRATION_PATH), DEFAULT_FILE_FILTER);
+        $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
 
         if (!in_array($migrationFileName, $files)) {
             $workFile = fopen(MIGRATION_PATH . $migrationFileName, "w");
-            fwrite($workFile, $migrationFileContent);
+            fwrite($workFile, json_encode($migrationFileContent));
             fclose($workFile);
-        }
-    }
-
-    public static function loadMigrations()
-    {
-        $files = array_diff(scandir(self::MIGRATION_PATH), DEFAULT_FILE_FILTER);
-        if ($files != null) {
-            foreach ($files as $file) {
-                include self::MIGRATION_PATH . $file;
-            }
-        } else {
-            echo "There are no Migrations!";
         }
     }
 
     public static function listMigrations()
     {
-        $files = array_diff(scandir(self::MIGRATION_PATH), DEFAULT_FILE_FILTER);
+        $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
         if ($files != null) {
             echo "\n";
             foreach ($files as $file) {
@@ -58,23 +45,44 @@ class Migration
         echo "\n";
     }
 
-    private static function createMigrationHead($migrationClassName):string
+    public static function createSimpleModelMigration()
     {
-        return "<?php
 
-         namespace webapp_php_sample_migration;
-         use webapp_php_sample_class\DatabaseHandler;
-
-         class "
-        . $migrationClassName .
-        "
-         {
-         public static function main() {
-         ";
     }
 
-    private static function createMigrationFooter():string
+    public static function loadMigrations()
     {
-        return "example::main();";
+        $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
+        if ($files != null) {
+            foreach ($files as $file) {
+                try {
+                    $fileOpen = fopen(MIGRATION_PATH . $file, "r");
+                    $json = fread($fileOpen, filesize(MIGRATION_PATH . $file));
+                    $migration = json_decode($json, true);
+                    $mode = $migration["Mode"];
+                    $tName = $migration["Table_Name"];
+                    $rows = $migration["Rows"];
+                    $values = $migration["Values"];
+                    $valueString = $migration["Value_String"];
+                    try {
+                        DatabaseHandler::createSqlRequest(
+                            $mode,
+                            $tName,
+                            $rows,
+                            $values,
+                            $valueString
+                        );
+                    } catch (Exception $e) {
+                        JsonHandler::FireSimpleJson($e->getCode(), $e->getMessage());
+                    }
+
+                } catch (Exception $e) {
+                    JsonHandler::FireSimpleJson($e->getCode(), $e->getMessage());
+                }
+            }
+            echo "\n Migrations done! \n";
+        } else {
+            echo "There are no Migrations!";
+        }
     }
 }

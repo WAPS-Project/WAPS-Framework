@@ -38,5 +38,8 @@
     "default_bool": true,
     "default_array": ["1", 2, true],
     "default_file_filter": [".", "..", ".gitkeep"]
+  },
+  "migrationConfig": {
+    "migration_path": "./core/database/migrations/"
   }
 }

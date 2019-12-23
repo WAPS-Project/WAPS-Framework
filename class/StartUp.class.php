@@ -3,6 +3,7 @@
 
 namespace webapp_php_sample_class;
 
+use mysqli;
 use webapp_php_sample_obj\pageMap;
 use webapp_php_sample_obj\pageObj;
 
@@ -10,7 +11,7 @@ class StartUp
 {
     public static function loadDatabase()
     {
-        $db_link = mysqli_connect(
+        $db_link = new mysqli(
             MYSQL_HOST,
             MYSQL_USER,
             MYSQL_KEYWORD,
@@ -18,7 +19,7 @@ class StartUp
         );
 
         if (!$db_link) {
-            mysqli_query(mysqli_connect(MYSQL_HOST, MYSQL_USER, MYSQL_KEYWORD), "CREATE DATABASE IF NOT EXISTS " . MYSQL_DATABASE . ";");
+            $db_link->query("CREATE DATABASE IF NOT EXISTS " . MYSQL_DATABASE . ";");
             die("Connection is dead:" . mysqli_connect_error());
         }
 
@@ -79,7 +80,7 @@ class StartUp
                 continue;
             } else {
                 echo "<script>console.log('$file')</script>";
-                die("Nicht alle Files im Folder entsprechen dem 'expample." + $dir + ".php' Muster!");
+                die("Nicht alle Files im Folder entsprechen dem 'expample." . $dir . ".php' Muster!");
             }
         }
         return $files;
@@ -92,11 +93,11 @@ class StartUp
         $tableRequest = "SHOW TABLES";
         $sqlLines = fread($sqlFile, filesize("core/database/setup/webapp_php_sample.sql"));
 
-        if ($result = mysqli_query($databaseLink, $tableRequest, MYSQLI_USE_RESULT)) {
+        if ($result = $databaseLink->query($tableRequest, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 foreach($rArray as $table) {
                     if (!in_array($table, DATABASE_TABLE_LIST)) {
-                        mysqli_query($databaseLink, $sqlLines);
+                        $databaseLink->query($sqlLines);
                     }
                 }
             }

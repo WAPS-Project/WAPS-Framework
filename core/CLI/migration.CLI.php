@@ -1,7 +1,7 @@
 <?php
 
 use webapp_php_sample_class\cli;
-use webapp_php_sample_class\JsonHandler;
+use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Migration;
 
 $command = "start";
@@ -9,8 +9,9 @@ $help = [
     "help" => "is used to show all commands",
     "exit" => "exits the cli",
     "migrate" => "runs the migrations against the Database",
-    "create" => "starting the creation of a new migration",
-    "list" => "lists all migrations"
+    "create" => "creates a migration based on the model classes",
+    "list" => "lists all migrations",
+    "custom" => "create a custom migration based on the user inputs"
 ];
 
 $helpC = [
@@ -19,10 +20,9 @@ $helpC = [
     "alter table" => "is used to update/ad table entries",
     "update table" => "is used to update table columns"
 ];
-
+cli::designHelp($help);
 while ($command != "exit") {
     cli::designLine();
-    cli::designHelp($help);
     $command = str_replace('/\s+/', '', cli::designInput());
 
     switch ($command) {
@@ -32,6 +32,10 @@ while ($command != "exit") {
             break;
 
         case "create":
+            Migration::createSimpleModelMigration();
+            break;
+
+        case "custom":
             echo "What kind of migration do you want to create? \n";
             cli::designHelp($helpC);
             $migrateMode = null;
@@ -51,7 +55,7 @@ while ($command != "exit") {
                                 $cSum = intval(cli::designInput());
                             } catch (Exception $e) {
                                 $cSum = null;
-                                JsonHandler::FireSimpleJson($e->getCode(), $e->getMessage());
+                                ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
                             }
                         }
 
@@ -62,17 +66,18 @@ while ($command != "exit") {
                             $key = cli::designInput();
                             echo "Please enter the column restrictions \n";
                             $val = cli::designInput();
-                            $pair = [$key=>$val];
+                            $pair = [$key => $val];
                             array_push($rows, $pair);
                         }
                         Migration::createMigration($mName, "create", $tName, $rows, null, null);
                         echo "\n";
                         echo "Migration created!";
                         echo "\n";
-                        return;
+                        break;
 
                     case "help":
                         cli::designHelp($helpC);
+                        break;
 
                     default:
                         echo "Please enter a valid mode";
@@ -80,6 +85,7 @@ while ($command != "exit") {
                 }
 
             }
+            break;
 
         case "migrate":
             echo "\n";
@@ -88,7 +94,7 @@ while ($command != "exit") {
 
         case "list":
             echo "\n";
-            echo "List: ";
+            echo "List: \n";
             Migration::listMigrations();
             break;
 
@@ -99,5 +105,6 @@ while ($command != "exit") {
         default:
             cli::designLine();
             echo "Please use a valid command!";
+            break;
     }
 }

@@ -10,24 +10,38 @@ class DatabaseHandler
     {
         $db_link = StartUp::loadDatabase();
         switch ($mode) {
+            case "insert":
+                $joinRow = join(", ", $rows);
+                $valueRow = join(", ", $values);
+                $requestString = "INSERT INTO " . $tableName . "  (" . $joinRow . ") (" . $valueRow . ")";
+                $db_link->query($requestString);
+
             case "alter":
-                foreach ($rows as $row) {
-                    $requestString = "ALTER TABLE " . $tableName . " ADD " . $row . $valueString;
-                    $db_link->query($requestString, MYSQLI_USE_RESULT);
+                foreach ($rows as $row => $datatype) {
+                    $requestString = "ALTER TABLE " . $tableName . " ADD " . $row . " " . $datatype;
+                    $db_link->query($requestString);
                 }
                 break;
             case "create":
                 $requestString = "CREATE TABLE " . $tableName;
-                $db_link->query($requestString, MYSQLI_USE_RESULT);
-                foreach ($rows as $row) {
+                $db_link->query($requestString);
+                foreach ($rows as $row => $datatype) {
                     $requestString = "ALTER TABLE " . $tableName . " ADD " . $row . $valueString;
-                    $db_link->query($requestString, MYSQLI_USE_RESULT);
+                    $db_link->query($requestString);
                 }
                 break;
             case "select":
-                $columnJoin = join(", ", $rows);
-                $requestString = "SELECT " . $columnJoin . $valueString;
-                $db_link->query($requestString, MYSQLI_USE_RESULT);
+                if (gettype($rows) === "array") {
+                    $rows = join(", ", $rows);
+                }
+                $requestString = "SELECT " . $rows . " " . $valueString;
+
+                if ($result = $db_link->query($requestString, MYSQLI_USE_RESULT)) {
+                    while ($obj = $result->fetch_array($result)) {
+                        return $obj;
+                    }
+                }
+
                 break;
             case "update":
                 foreach ($values as $key => $value) {
@@ -37,7 +51,7 @@ class DatabaseHandler
                 }
                 break;
             default:
-                ErrorHandler::FireWarning("Migration Warning", "No Migration mode chosen");
+                ErrorHandler::FireWarning("Database Warning", "No Sql request mode chosen");
                 break;
         }
     }

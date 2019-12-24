@@ -7,15 +7,11 @@ namespace webapp_php_sample_class;
 class cli
 {
     static function designLine() {
-        echo "\n";
-        echo "--------------------------------------------------------------\n";
-        echo "--------------------------------------------------------------\n";
-        echo "\n";
+        echo "\n--------------------------------------------------------------\n";
     }
 
     static function designInput() {
-        echo "Please enter a command: \n";
-        echo "\n";
+        echo "\nPlease enter a command: \n";
         return $command = readline("$ ");
     }
 
@@ -24,12 +20,11 @@ class cli
         foreach ($helpEntries as $helpName => $helpEntry) {
             echo $helpName . "           - " . $helpEntry . "\n";
         }
-        echo  "\n";
     }
 
     static function checkIfCli() {
         if (PHP_SAPI != "cli") {
-            ErrorHandler::FireError("No CLI Error", "The Interface you use isn't a valid CL");
+            ErrorHandler::FireCLIError("No CLI Error", "The Interface you use isn't a valid CL");
             die();
         }
     }

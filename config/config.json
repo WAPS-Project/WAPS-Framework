@@ -15,7 +15,7 @@
     "logo": "/content/dist/img/fav.svg"
   },
   "database": {
-    "mysql_host": "localhost",
+    "mysql_host": "localhost:3306",
     "mysql_database": "webapp_php_sample",
     "mysql_user": "root",
     "mysql_keyword": "",

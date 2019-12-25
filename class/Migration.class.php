@@ -112,32 +112,44 @@ class Migration
                     $rows = $migration["Rows"];
                     $values = $migration["Values"];
                     $valueString = $migration["Value_String"];
-                    try {
-                        DatabaseHandler::createSqlRequest(
-                            $mode,
-                            $tName,
-                            $rows,
-                            $values,
-                            $valueString
-                        );
-                        DatabaseHandler::createSqlRequest(
-                            "insert",
-                            "migrations",
-                            ["migrationName", "TS", "DT"],
-                            [$tName, date("H:i:s"), date("d.m.Y")],
-                            null
-                        );
-                    } catch (Exception $e) {
-                        ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
-                    }
 
+                    if (DatabaseHandler::createSqlRequest($mode, $tName, $rows, $values, $valueString)) {
+                        echo "request done \n";
+                    } else {
+                        echo "migration failed at connect\n";
+                        die();
+                    }
+                    if (DatabaseHandler::createSqlRequest(
+                        "insert",
+                        "migrations",
+                        ["migrationName", "TS", "DT"],
+                        [$tName, date("H:i:s"),
+                            date("d.m.Y")],
+                        null
+                    )) {
+                        echo "check done \n";
+                    } else {
+                        echo "migration failed at check\n";
+                        die();
+                    }
                 } catch (Exception $e) {
                     ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
                 }
             }
-            echo "\n Migrations done! \n";
+            return true;
         } else {
             echo "There are no Migrations!";
+            return false;
         }
+    }
+
+    public static function checkFiredMigrations()
+    {
+        return DatabaseHandler::createSqlRequest(
+            "select",
+            "migrations",
+            ["*"],
+            null,
+            null);
     }
 }

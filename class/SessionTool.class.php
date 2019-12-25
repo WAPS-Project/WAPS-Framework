@@ -15,7 +15,7 @@ class SessionTool
                 $trust = password_verify($myPassword, $rArray["passwort"]);
                 if ($trust == true) {
                     $_SESSION['login_User'] = $myUsername;
-                    header( "Location: Home" );
+                    header("Location: Home");
                     exit;
                 } else {
                     $error = "Your Login Name or Password is invalid";
@@ -40,7 +40,7 @@ class SessionTool
         $logoutCheck = Main::checkPost("logout");
         if ($logoutCheck == "TRUE") {
             session_destroy();
-            header( "Location: Home" );
+            header("Location: Home");
             exit;
         }
     }

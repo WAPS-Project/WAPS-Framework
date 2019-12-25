@@ -14,30 +14,54 @@ class DatabaseHandler
                 $joinRow = join(", ", $rows);
                 $valueRow = join(", ", $values);
                 $requestString = "INSERT INTO " . $tableName . "  (" . $joinRow . ") (" . $valueRow . ")";
-                $db_link->query($requestString);
+                if ($result = $db_link->query($requestString)) {
+                    return $result;
+                } else {
+                    return false;
+                }
+                break;
 
             case "alter":
                 foreach ($rows as $row => $datatype) {
                     $requestString = "ALTER TABLE " . $tableName . " ADD " . $row . " " . $datatype;
-                    $db_link->query($requestString);
+                    if ($result = $db_link->query($requestString)) {
+                        return $result;
+                    } else {
+                        return false;
+                    }
                 }
                 break;
             case "create":
-                $requestString = "CREATE TABLE " . $tableName;
-                $db_link->query($requestString);
-                foreach ($rows as $row => $datatype) {
-                    $requestString = "ALTER TABLE " . $tableName . " ADD " . $row . $valueString;
-                    $db_link->query($requestString);
+                $check = null;
+                $tableRows = [];
+                foreach ($rows as $key => $data) {
+                    array_merge($tableRows, [$key . " " . "data"]);
+                }
+                $joinRow = join(", ", $tableRows);
+                $requestString = "CREATE TABLE " . $tableName . " ( " . $joinRow . " ) ";
+                if ($db_link->query($requestString)) {
+                    $check = true;
+                } else {
+                    $check = false;
+                    echo "create request failed \n";
+                    die();
+                }
+                if ($check === false) {
+                    echo "something went wrong \n";
                 }
                 break;
             case "select":
                 if (gettype($rows) === "array") {
                     $rows = join(", ", $rows);
                 }
-                $requestString = "SELECT " . $rows . " " . $valueString;
+                if ($valueString != null) {
+                    $requestString = "SELECT " . $rows . " FROM " . $tableName . " WHERE " . $valueString;
+                } else {
+                    $requestString = "SELECT " . $rows . " FROM " . $tableName;
+                }
 
                 if ($result = $db_link->query($requestString, MYSQLI_USE_RESULT)) {
-                    while ($obj = $result->fetch_array($result)) {
+                    while ($obj = $result->fetch_all()) {
                         return $obj;
                     }
                 }

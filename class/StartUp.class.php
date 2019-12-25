@@ -9,23 +9,6 @@ use webapp_php_sample_obj\pageObj;
 
 class StartUp
 {
-    public static function loadDatabase()
-    {
-        $db_link = new mysqli(
-            MYSQL_HOST,
-            MYSQL_USER,
-            MYSQL_KEYWORD,
-            MYSQL_DATABASE
-        );
-
-        if (!$db_link) {
-            $db_link->query("CREATE DATABASE IF NOT EXISTS " . MYSQL_DATABASE . ";");
-            die("Connection is dead:" . mysqli_connect_error());
-        }
-
-        return $db_link;
-    }
-
     public static function loadPages()
     {
         $files = self::dirCheck("page/open/");
@@ -95,7 +78,7 @@ class StartUp
 
         if ($result = $databaseLink->query($tableRequest, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                foreach($rArray as $table) {
+                foreach ($rArray as $table) {
                     if (!in_array($table, DATABASE_TABLE_LIST)) {
                         $databaseLink->query($sqlLines);
                     }
@@ -103,5 +86,22 @@ class StartUp
             }
         }
         fclose($sqlFile);
+    }
+
+    public static function loadDatabase()
+    {
+        $db_link = new mysqli(
+            MYSQL_HOST,
+            MYSQL_USER,
+            MYSQL_KEYWORD,
+            MYSQL_DATABASE
+        );
+
+        if (!$db_link) {
+            $db_link->query("CREATE DATABASE IF NOT EXISTS " . MYSQL_DATABASE . ";");
+            die("Connection is dead:" . mysqli_connect_error());
+        }
+
+        return $db_link;
     }
 }

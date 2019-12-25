@@ -173,6 +173,16 @@ class Main
         }
     }
 
+    protected static function ipPush($link, $clientIp)
+    {
+        $timestamp = date('H:i:s');
+        $date = date('Y-m-d');
+        $pip = self::getRealIp();
+        $info = $_SERVER['HTTP_USER_AGENT'];
+        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
+        $link->query($query);
+    }
+
     public static function getRealIp()
     {
         $ip = 'undefined';
@@ -187,15 +197,5 @@ class Main
         }
         $ip = htmlspecialchars($ip, ENT_QUOTES, 'UTF-8');
         return $ip;
-    }
-
-    protected static function ipPush($link, $clientIp)
-    {
-        $timestamp = date('H:i:s');
-        $date = date('Y-m-d');
-        $pip = self::getRealIp();
-        $info = $_SERVER['HTTP_USER_AGENT'];
-        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
-        $link->query($query);
     }
 }

@@ -11,7 +11,8 @@ $help = [
     "migrate" => "runs the migrations against the Database",
     "create" => "creates a migration based on the model classes",
     "list" => "lists all migrations",
-    "custom" => "create a custom migration based on the user inputs"
+    "custom" => "create a custom migration based on the user inputs",
+    "check" => "check all previous migrations run on the database"
 ];
 
 $helpC = [
@@ -87,9 +88,26 @@ while ($command != "exit") {
             }
             break;
 
+        case "check":
+            echo "\n";
+            if ($obj = Migration::checkFiredMigrations()) {
+                foreach ($obj as $key => $value) {
+                    echo $key . " : " . $value . "\n";
+                }
+                echo "done\n";
+                break;
+            } else {
+                echo "check failed!\n";
+                break;
+            }
+
         case "migrate":
             echo "\n";
-            Migration::loadMigrations();
+            if (Migration::loadMigrations()) {
+                echo "\n Migrations done! \n";
+            } else {
+                echo "\n Something went wrong! \n";
+            }
             break;
 
         case "list":

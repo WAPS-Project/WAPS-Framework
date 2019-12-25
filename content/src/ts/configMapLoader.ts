@@ -1,5 +1,3 @@
-import {jsJsx} from "ts-loader/dist/constants";
-
 class ConfigMapLoader {
 
     async main() {
@@ -20,7 +18,7 @@ class ConfigMapLoader {
     }
 
     request(command) {
-        $.post('/API.php?apiMode=service', { svmode:command },function ( data ) {
+        $.post('/API.php?apiMode=service', {svmode: command}, function (data) {
             console.log('Event: ' + data);
         })
     }

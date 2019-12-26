@@ -34,8 +34,11 @@ class DatabaseHandler
             case "create":
                 $check = null;
                 $tableRows = [];
-                foreach ($rows as $key => $data) {
-                    array_merge($tableRows, [$key . " " . "data"]);
+                foreach ($rows as $row) {
+                    foreach ($row as $key => $data) {
+                        $var = $key . " " . $data;
+                        array_push($tableRows, $var);
+                    }
                 }
                 $joinRow = join(", ", $tableRows);
                 $requestString = "CREATE TABLE " . $tableName . " ( " . $joinRow . " ) ";

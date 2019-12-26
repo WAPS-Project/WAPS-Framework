@@ -53,8 +53,15 @@ class Migration
             $className = get_class($class);
             $classMethodArray = [];
 
-            foreach ($classVars as $classVar) {
-                array_merge($classMethodArray, [$classVar => gettype($classVar)]);
+            foreach ($classVars as $classVar => $key) {
+                $value = gettype($key);
+                if ($value === "integer") {
+                    $value = "INT";
+                }
+                if ($value === "string") {
+                    $value = "VARCHAR(255)";
+                }
+                array_push($classMethodArray, [$classVar => $value]);
             }
 
             if (!in_array($fileParts[0], $mList)) {
@@ -113,25 +120,16 @@ class Migration
                     $values = $migration["Values"];
                     $valueString = $migration["Value_String"];
 
-                    if (DatabaseHandler::createSqlRequest($mode, $tName, $rows, $values, $valueString)) {
-                        echo "request done \n";
-                    } else {
-                        echo "migration failed at connect\n";
-                        die();
-                    }
-                    if (DatabaseHandler::createSqlRequest(
+                    DatabaseHandler::createSqlRequest($mode, $tName, $rows, $values, $valueString);
+
+                    DatabaseHandler::createSqlRequest(
                         "insert",
                         "migrations",
                         ["migrationName", "TS", "DT"],
                         [$tName, date("H:i:s"),
                             date("d.m.Y")],
                         null
-                    )) {
-                        echo "check done \n";
-                    } else {
-                        echo "migration failed at check\n";
-                        die();
-                    }
+                    );
                 } catch (Exception $e) {
                     ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
                 }

@@ -1,0 +1,1 @@
+{"Name":"TestModel","Mode":"create","Table_Name":"TestModel","Rows":[{"ID":"INT"},{"Test":"VARCHAR(255)"},{"BTest":"boolean"}],"Values":null,"Value_String":null}

@@ -3,6 +3,7 @@
 
 class TestModel
 {
-    public int $ID;
-    public string $Test;
+    public $ID = DEFAULT_INT;
+    public $Test = DEFAULT_STRING;
+    public $BTest = true;
 }

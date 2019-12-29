@@ -12,8 +12,8 @@ class DatabaseHandler
         switch ($mode) {
             case "insert":
                 $joinRow = join(", ", $rows);
-                $valueRow = join(", ", $values);
-                $requestString = "INSERT INTO " . $tableName . "  (" . $joinRow . ") (" . $valueRow . ")";
+                $valueRow = join("', '", $values);
+                $requestString = "INSERT INTO " . $tableName . "  (" . $joinRow . ") VALUES ('" . $valueRow . "')";
                 if ($result = $db_link->query($requestString)) {
                     return $result;
                 } else {

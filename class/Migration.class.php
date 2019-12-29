@@ -127,7 +127,7 @@ class Migration
                         "migrations",
                         ["migrationName", "TS", "DT"],
                         [$tName, date("H:i:s"),
-                            date("d.m.Y")],
+                            date("Y-m-d")],
                         null
                     );
                 } catch (Exception $e) {

@@ -9,7 +9,7 @@ class SessionTool
     {
         $myUsername = Main::checkPost("username");
         $myPassword = Main::checkPost("password");
-        $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
+        $queryCheck = "SELECT userName, passwort FROM usr LEFT JOIN passWd ON usr.UID = passWd.UID WHERE userName = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
         if ($result = $db->query($queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $trust = password_verify($myPassword, $rArray["passwort"]);
@@ -75,9 +75,9 @@ class SessionTool
                 while ($obj = mysqli_fetch_array($result)) {
 
                     $USID = $obj["ID"] + 1;
-                    $query = "INSERT INTO usr ( username, firstname, lastname, email, userrank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";
+                    $query = "INSERT INTO usr ( userName, firstName, lastName, email, userRank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";
 
-                    $query2 = "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwSave', $USID);";
+                    $query2 = "INSERT INTO passWd ( passwort, UID) VALUES ( '$pwSave', $USID);";
 
                     $db_link->query($query);
                     $db_link->query($query2);

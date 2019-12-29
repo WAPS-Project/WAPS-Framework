@@ -1,7 +1,9 @@
 <?php
 
+use webapp_php_sample_class\ConfigLoader;
+
 $classString = "class/";
-$modelString = "model/";
+$modelString = "object/";
 $configString = "config/";
 
 $objFiles = array_diff(scandir($modelString), array('.', '..'));
@@ -17,3 +19,5 @@ foreach ($classFiles as $singleClass) {
         include $classString . $singleClass;
     }
 }
+
+ConfigLoader::loadConfig($configString);

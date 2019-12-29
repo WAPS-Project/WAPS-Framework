@@ -65,6 +65,21 @@ CREATE TABLE passwd
 
 
 
+--
+-- Tabellenstruktur für Tabelle `migrations`
+--
+
+CREATE TABLE migrations
+(
+    MID                 int(11)   NOT NULL auto_increment,
+    migrationName       text(256)   NOT NULL,
+    TS                  TIME,
+    DT                  DATE,
+    PRIMARY KEY (MID)
+);
+
+
+
 -- --------------------------------------------------------
 
 --

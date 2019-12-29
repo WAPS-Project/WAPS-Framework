@@ -1,16 +1,9 @@
 <?php
 
-use webapp_php_sample_class\ConfigLoader;
 use webapp_php_sample_class\JsonHandler;
 use webapp_php_sample_class\Main;
 use webapp_php_sample_class\PluginLoader;
 use webapp_php_sample_class\StartUp;
-
-try {
-    ConfigLoader::loadConfig($configString);
-} catch (Error $e) {
-    JsonHandler::FireSimpleJson($e->getCode(), $e->getMessage());
-}
 
 try {
     $command = Main::checkPost("svmode");

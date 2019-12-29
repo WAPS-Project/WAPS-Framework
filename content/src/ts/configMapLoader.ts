@@ -1,21 +1,24 @@
-import {jsJsx} from "ts-loader/dist/constants";
-
 class ConfigMapLoader {
 
-    main() {
-        this.timeout(30000);
-        this.request("pageList");
-        this.request("pluginList");
+    async main() {
+        while (true) {
+            await this.wait(50000);
+            this.request("pageList");
+            this.request("pluginList");
+            await this.wait(50000);
+        }
     }
 
-    timeout(ms) {
-        setTimeout(() => {
-            this.timeout(ms);
-        }, ms);
+    wait(time) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+            }, time);
+        });
     }
 
     request(command) {
-        $.post('/API.php?apiMode=service', { svmode:command },function ( data ) {
+        $.post('/API.php?apiMode=service', {svmode: command}, function (data) {
             console.log('Event: ' + data);
         })
     }

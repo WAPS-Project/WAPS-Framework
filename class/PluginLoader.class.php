@@ -13,7 +13,7 @@ class PluginLoader
     public static function loadPlugins()
     {
         self::loadPluginConfig();
-        $pluginList = array_diff(scandir(self::PLUGIN_PATH), array(".", ".."));
+        $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
         foreach ($pluginList as $plugin) {
             if (self::checkPluginManifest($plugin)) {
                 include self::PLUGIN_PATH . $plugin . "/manifest.php";
@@ -23,7 +23,7 @@ class PluginLoader
 
     public static function loadPluginConfig()
     {
-        $pluginList = array_diff(scandir(self::PLUGIN_PATH), array(".", ".."));
+        $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
         $configBundle = new pluginConfigBundle();
         foreach ($pluginList as $plugin) {
             if (self::checkPluginManifest($plugin)) {

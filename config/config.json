@@ -15,7 +15,7 @@
     "logo": "/content/dist/img/fav.svg"
   },
   "database": {
-    "mysql_host": "localhost",
+    "mysql_host": "localhost:3306",
     "mysql_database": "webapp_php_sample",
     "mysql_user": "root",
     "mysql_keyword": "",
@@ -36,7 +36,18 @@
     "default_string": "DEFAULT",
     "default_int": 42,
     "default_bool": true,
-    "default_array": ["1", 2, true],
-    "default_file_filter": [".", "..", ".gitkeep"]
+    "default_array": [
+      "1",
+      2,
+      true
+    ],
+    "default_file_filter": [
+      ".",
+      "..",
+      ".gitkeep"
+    ]
+  },
+  "migrationConfig": {
+    "migration_path": "./core/database/migrations/"
   }
 }

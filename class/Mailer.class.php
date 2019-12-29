@@ -4,6 +4,8 @@
 namespace webapp_php_sample_class;
 
 
+use Exception;
+
 class Mailer
 {
     public static function createMail($targetAddress, $subject, $message, $mode)
@@ -39,7 +41,7 @@ class Mailer
                 $message,
                 $header
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             ErrorHandler::FireError($e->getCode(), $e->getMessage());
         }
     }

@@ -10,12 +10,12 @@ class SessionTool
         $myUsername = Main::checkPost("username");
         $myPassword = Main::checkPost("password");
         $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
-        if ($result = mysqli_query($db, $queryCheck, MYSQLI_USE_RESULT)) {
+        if ($result = $db->query($queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $trust = password_verify($myPassword, $rArray["passwort"]);
                 if ($trust == true) {
                     $_SESSION['login_User'] = $myUsername;
-                    header( "Location: Home" );
+                    header("Location: Home");
                     exit;
                 } else {
                     $error = "Your Login Name or Password is invalid";
@@ -40,7 +40,7 @@ class SessionTool
         $logoutCheck = Main::checkPost("logout");
         if ($logoutCheck == "TRUE") {
             session_destroy();
-            header( "Location: Home" );
+            header("Location: Home");
             exit;
         }
     }
@@ -79,8 +79,8 @@ class SessionTool
 
                     $query2 = "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwSave', $USID);";
 
-                    mysqli_query($db_link, $query);
-                    mysqli_query($db_link, $query2);
+                    $db_link->query($query);
+                    $db_link->query($query2);
                 }
             }
         }

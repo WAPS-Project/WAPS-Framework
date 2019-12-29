@@ -2,9 +2,9 @@
 
 use webapp_php_sample_class\cli;
 
-include "core/basic.loader.php";
+include "core/loader/basic.loader.php";
 
-$CLIString = "core/cli/";
+$CLIString = "./core/CLI/";
 
 $CLIFiles = array_diff(scandir($CLIString), DEFAULT_FILE_FILTER);
 
@@ -23,10 +23,10 @@ echo "\n\n";
 
 $mode = readline("Please insert the cli mode you want to use: \n");
 
-if (!in_array($mode . ".CLI.php", $CLIFiles)) {
-    echo "The command you used is invalid";
-    readline();
-    die();
+while (!in_array($mode . ".CLI.php", $CLIFiles)) {
+    echo "The command you used is invalid \n";
+
+    $mode = cli::designInput();
 }
 
 foreach ($CLIFiles as $file) {

@@ -6,7 +6,7 @@ class GalleryBuilder
 {
     public static function GalleryGenerator($path)
     {
-        $images = array_diff(scandir($path), array(DEFAULT_FILE_FILTER));
+        $images = array_diff(scandir($path), DEFAULT_FILE_FILTER);
         $count = count($images);
         echo "<div class='gallery'>";
         foreach ($images as $value) {

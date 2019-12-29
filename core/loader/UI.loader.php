@@ -4,7 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-use webapp_php_sample_class\ConfigLoader;
 use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Main;
 use webapp_php_sample_class\PluginLoader;

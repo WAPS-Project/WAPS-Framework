@@ -16,7 +16,7 @@ class Main
             }
         }
 
-        if ($pagePath != "page/open/home.page.php") {
+        if ($pagePath != "page/open/Home.page.php") {
 
             $pathParts = explode("/", $pagePath);
             $pathParts[1] = "static";
@@ -45,7 +45,7 @@ class Main
                 include $staticPath;
             }
         } else {
-            include 'page/open/home.page.php';
+            include 'page/open/Home.page.php';
         }
 
         echo '</div>';
@@ -173,6 +173,16 @@ class Main
         }
     }
 
+    protected static function ipPush($link, $clientIp)
+    {
+        $timestamp = date('H:i:s');
+        $date = date('Y-m-d');
+        $pip = self::getRealIp();
+        $info = $_SERVER['HTTP_USER_AGENT'];
+        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
+        $link->query($query);
+    }
+
     public static function getRealIp()
     {
         $ip = 'undefined';
@@ -187,15 +197,5 @@ class Main
         }
         $ip = htmlspecialchars($ip, ENT_QUOTES, 'UTF-8');
         return $ip;
-    }
-
-    protected static function ipPush($link, $clientIp)
-    {
-        $timestamp = date('H:i:s');
-        $date = date('Y-m-d');
-        $pip = self::getRealIp();
-        $info = $_SERVER['HTTP_USER_AGENT'];
-        $query = "INSERT INTO iplogg ( info, publicIP, clientIP, TS, DT ) VALUES ( '$info', '$pip', '$clientIp', '$timestamp', '$date');";
-        mysqli_query($link, $query);
     }
 }

@@ -1,4 +1,3 @@
-
 USE `webapp_php_sample`;
 
 
@@ -71,10 +70,10 @@ CREATE TABLE passWd
 
 CREATE TABLE migrations
 (
-    MID                 int(11)   NOT NULL auto_increment,
-    migrationName       text(256)   NOT NULL,
-    TS                  TIME,
-    DT                  DATE,
+    MID           int(11)   NOT NULL auto_increment,
+    migrationName text(256) NOT NULL,
+    TS            TIME,
+    DT            DATE,
     PRIMARY KEY (MID)
 );
 

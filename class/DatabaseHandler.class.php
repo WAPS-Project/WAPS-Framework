@@ -64,7 +64,7 @@ class DatabaseHandler
                 }
 
                 if ($result = $db_link->query($requestString, MYSQLI_USE_RESULT)) {
-                    while ($obj = $result->fetch_all()) {
+                    while ($obj = $result->fetch_all(MYSQLI_ASSOC)) {
                         return $obj;
                     }
                 }

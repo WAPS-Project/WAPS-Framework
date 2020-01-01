@@ -93,7 +93,7 @@ while ($command != "exit") {
             if ($obj = Migration::checkFiredMigrations()) {
                 foreach ($obj as $key => $value) {
                     foreach ($value as $item)
-                    echo $key . " : " . $item . "\n";
+                        echo $key . " : " . $item . "\n";
                 }
                 echo "done\n";
                 break;

@@ -101,6 +101,7 @@ class Main
     public static function validateHome($name)
     {
         $pageFiles = scandir("page/open/");
+        $pageFilesStatic = scandir("page/static/");
         if ($name == "") {
             return "Home";
         } elseif ($name === "Impressum") {
@@ -109,6 +110,12 @@ class Main
             return "Login";
         } else {
             foreach ($pageFiles as $file) {
+                $f = explode(".", $file);
+                if ($name == $f[0]) {
+                    return $name;
+                }
+            }
+            foreach ($pageFilesStatic as $file) {
                 $f = explode(".", $file);
                 if ($name == $f[0]) {
                     return $name;

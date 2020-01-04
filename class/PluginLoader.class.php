@@ -27,7 +27,6 @@ class PluginLoader
         $configBundle = new pluginConfigBundle();
         foreach ($pluginList as $plugin) {
             if (self::checkPluginManifest($plugin)) {
-                $configBundle = new pluginConfigBundle();
                 $pluginConfig = file_get_contents(self::PLUGIN_PATH . $plugin . "/config/config.json");
                 $configObj = json_decode($pluginConfig, true);
                 array_push($configBundle->configList, $configObj);

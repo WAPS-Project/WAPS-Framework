@@ -1,3 +1,8 @@
+<?php
+
+use webapp_php_sample_class\PluginLoader;
+
+?>
 <head>
     <meta charset="<?php echo CHARSET ?>">
     <meta name="description" content="<?php echo DESCRIPTION ?>">
@@ -8,4 +13,5 @@
     <title><?php echo PAGE_TITLE . ' - ' . $pageName; ?></title>
     <script src="/content/dist/js/main.js"></script>
     <link rel="stylesheet" href="/content/dist/css/main.css">
+    <?php PluginLoader::loadPlugins(); ?>
 </head>

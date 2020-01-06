@@ -5,16 +5,16 @@ use webapp_php_sample_class\Main;
 
 include 'core/loader/basic.loader.php';
 
-$APIString = "core/api/";
+$APIString = 'core/API/';
 
 $APIFiles = array_diff(scandir($APIString), array('.', '..'));
-$command = Main::checkGet("apiMode");
+$command = Main::checkGet('apiMode');
 
 foreach ($APIFiles as $singleAPI) {
-    $fileParts = explode(".", $singleAPI);
+    $fileParts = explode('.', $singleAPI);
     if ($command === $fileParts[0]) {
         include $APIString . $singleAPI;
     } elseif ($command === null) {
-        JsonHandler::FireSimpleJson("No content warning", "Your request contains no valid Data");
+        JsonHandler::FireSimpleJson('No content warning', 'Your request contains no valid Data');
     }
 }

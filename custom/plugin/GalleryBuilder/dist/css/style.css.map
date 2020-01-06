@@ -1,1 +1,12 @@
-{"version":3,"sourceRoot":"","sources":["../../src/scss/_gallery.scss","../../src/scss/_root.scss","../../src/scss/_scaleMixin.scss"],"names":[],"mappings":"AAGA;EACE,kBCC4B;EDA5B;EACA;EACA;;AAWA;EACE;EACA;EACA;EACA;;AElBA;EFcF;IAMI;IACA;;;AEjBF;EFUF;IAUI;IACA;;;AAKF;EACE;EACA;EACA;EACA","file":"style.css"}
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "../../src/scss/_gallery.scss",
+    "../../src/scss/_root.scss",
+    "../../src/scss/_scaleMixin.scss"
+  ],
+  "names": [],
+  "mappings": "AAGA;EACE,kBCC4B;EDA5B;EACA;EACA;;AAWA;EACE;EACA;EACA;EACA;;AElBA;EFcF;IAMI;IACA;;;AEjBF;EFUF;IAUI;IACA;;;AAKF;EACE;EACA;EACA;EACA",
+  "file": "style.css"
+}

@@ -6,23 +6,23 @@ namespace webapp_php_sample_class;
 
 class JsonHandler
 {
-    static function FireSimpleJson($key, $value)
+    public static function FireSimpleJson($key, $value): void
     {
         $array = [[$key => $value]];
         $json = self::BuildJson($array);
         echo $json;
     }
 
-    static function BuildJson($objectArray)
+    public static function BuildJson($objectArray)
     {
         $arrayMaster = [];
         foreach ($objectArray as $value) {
-            array_push($arrayMaster, $value);
+            $arrayMaster[] = $value;
         }
-        return json_encode($arrayMaster);
+        return json_encode($arrayMaster, JSON_THROW_ON_ERROR, 512);
     }
 
-    static function FireComplexResponse($array)
+    public static function FireComplexResponse($array): void
     {
 
     }

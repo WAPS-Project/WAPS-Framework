@@ -6,7 +6,7 @@ use webapp_php_sample_class\PluginLoader;
 use webapp_php_sample_class\StartUp;
 
 try {
-    $command = Main::checkPost("svmode");
+    $command = Main::checkPost('svmode');
     if ($command === NULL) {
         $command = DEFAULT_STRING;
     }
@@ -16,16 +16,16 @@ try {
 
 try {
     switch ($command) {
-        case "pageList":
+        case 'pageList':
             StartUp::loadPages();
-            JsonHandler::FireSimpleJson("done", "valid");
+            JsonHandler::FireSimpleJson('done', 'valid');
             break;
-        case "pluginList":
+        case 'pluginList':
             PluginLoader::loadPluginConfig();
-            JsonHandler::FireSimpleJson("done", "valid");
+            JsonHandler::FireSimpleJson('done', 'valid');
             break;
         default:
-            JsonHandler::FireSimpleJson("No content warning", "Your request contains no valid Data");
+            JsonHandler::FireSimpleJson('No content warning', 'Your request contains no valid Data');
             break;
     }
 

@@ -6,29 +6,29 @@ namespace webapp_php_sample_class;
 
 class cli
 {
-    static function designLine()
+    public static function designLine(): void
     {
         echo "\n--------------------------------------------------------------\n";
     }
 
-    static function designInput()
+    public static function designInput(): string
     {
         echo "\nPlease enter a command: \n";
-        return $command = readline("$ ");
+        return readline('$ ');
     }
 
-    static function designHelp($helpEntries)
+    public static function designHelp($helpEntries): void
     {
         echo "\n";
         foreach ($helpEntries as $helpName => $helpEntry) {
-            echo $helpName . "           - " . $helpEntry . "\n";
+            echo $helpName . '           - ' . $helpEntry . "\n";
         }
     }
 
-    static function checkIfCli()
+    public static function checkIfCli(): void
     {
-        if (PHP_SAPI != "cli") {
-            ErrorHandler::FireCLIError("No CLI Error", "The Interface you use isn't a valid CL");
+        if (PHP_SAPI !== 'cli') {
+            ErrorHandler::FireCLIError('No CLI Error', 'The Interface you use isn\'t a valid CL');
             die();
         }
     }

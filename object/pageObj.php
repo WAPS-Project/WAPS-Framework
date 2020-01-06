@@ -6,11 +6,11 @@ namespace webapp_php_sample_obj;
 
 class pageObj
 {
-    public $Name;
+    public string $Name;
 
-    public $File;
+    public string $File;
 
-    public $Path;
+    public string $Path;
 
-    public $IsSet;
+    public bool $IsSet;
 }

@@ -8,27 +8,27 @@ use Exception;
 
 class Migration
 {
-    public static function listMigrations()
+    public static function listMigrations(): void
     {
         $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
-        if ($files != null) {
+        if ($files !== null) {
             echo "\n";
             foreach ($files as $file) {
                 echo $file . "\n";
             }
         } else {
-            echo "There are no Migrations!";
+            echo 'There are no Migrations!';
         }
         echo "\n";
     }
 
-    public static function createSimpleModelMigration()
+    public static function createSimpleModelMigration(): void
     {
-        $path = "./core/database/model/";
-        $migrationPath = "./core/database/migrations/";
+        $path = './core/database/model/';
+        $migrationPath = './core/database/migrations/';
         $models = array_diff(scandir($path), DEFAULT_FILE_FILTER);
 
-        $migrationList[] = DatabaseHandler::createSqlRequest("select", "migrations", ["*"], null, null);
+        $migrationList[] = DatabaseHandler::createSqlRequest('select', 'migrations', ['*'], null, null);
 
         $count = 0;
         $bound = 0;
@@ -37,11 +37,11 @@ class Migration
             $migrations = array_diff(scandir($migrationPath), DEFAULT_FILE_FILTER);
             $mList = [];
             foreach ($migrations as $m) {
-                $migrationParts = explode(".", $m);
-                $migrationSubParts = explode("_", $migrationParts[0]);
-                array_push($mList, $migrationSubParts[1]);
+                $migrationParts = explode('.', $m);
+                $migrationSubParts = explode('_', $migrationParts[0]);
+                $mList[] = $migrationSubParts[1];
             }
-            $fileParts = explode(".", $model);
+            $fileParts = explode('.', $model);
             try {
                 include_once $path . $model;
                 $class = new $fileParts[0];
@@ -55,21 +55,21 @@ class Migration
 
             foreach ($classVars as $classVar => $key) {
                 $value = gettype($key);
-                if ($value === "integer") {
-                    $value = "INT";
+                if ($value === 'integer') {
+                    $value = 'INT';
                 }
-                if ($value === "string") {
-                    $value = "VARCHAR(255)";
+                if ($value === 'string') {
+                    $value = 'VARCHAR(255)';
                 }
-                array_push($classMethodArray, [$classVar => $value]);
+                $classMethodArray[] = [$classVar => $value];
             }
 
-            if (!in_array($fileParts[0], $mList)) {
-                if (!in_array($fileParts[0], $migrationList)) {
+            if (!in_array($fileParts[0], $mList, true)) {
+                if (!in_array($fileParts[0], $migrationList, true)) {
                     $count++;
-                    self::createMigration($className, "create", $className, $classMethodArray, null, null);
+                    self::createMigration($className, 'create', $className, $classMethodArray, null, null);
                 } else {
-                    self::createMigration($className, "alter", $className, $classMethodArray, null, null);
+                    self::createMigration($className, 'alter', $className, $classMethodArray, null, null);
                 }
             } else {
                 $bound++;
@@ -78,56 +78,56 @@ class Migration
         }
 
         if ($count === 0 && $bound === 0) {
-            echo "There are no new migrations";
+            echo 'There are no new migrations';
         }
     }
 
-    public static function createMigration($migrationName, $mode, $tableName, $rows, $values, $valueString)
+    public static function createMigration($migrationName, $mode, $tableName, $rows, $values, $valueString): void
     {
-        $migrationPreset = date("YmdHis");
-        $migrationFileName = $migrationPreset . "_" . $migrationName . ".migration.json";
+        $migrationPreset = date('YmdHis');
+        $migrationFileName = $migrationPreset . '_' . $migrationName . '.migration.json';
 
         $migrationFileContent = [
-            "Name" => $migrationName,
-            "Mode" => $mode,
-            "Table_Name" => $tableName,
-            "Rows" => $rows,
-            "Values" => $values,
-            "Value_String" => $valueString
+            'Name' => $migrationName,
+            'Mode' => $mode,
+            'Table_Name' => $tableName,
+            'Rows' => $rows,
+            'Values' => $values,
+            'Value_String' => $valueString
         ];
 
         $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
 
-        if (!in_array($migrationFileName, $files)) {
-            $workFile = fopen(MIGRATION_PATH . $migrationFileName, "w");
-            fwrite($workFile, json_encode($migrationFileContent));
+        if (!in_array($migrationFileName, $files, true)) {
+            $workFile = fopen(MIGRATION_PATH . $migrationFileName, 'wb');
+            fwrite($workFile, json_encode($migrationFileContent, JSON_THROW_ON_ERROR, 512));
             fclose($workFile);
         }
     }
 
-    public static function loadMigrations()
+    public static function loadMigrations(): ?bool
     {
         $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
-        if ($files != null) {
+        if ($files !== null) {
             foreach ($files as $file) {
                 try {
-                    $fileOpen = fopen(MIGRATION_PATH . $file, "r");
+                    $fileOpen = fopen(MIGRATION_PATH . $file, 'rb');
                     $json = fread($fileOpen, filesize(MIGRATION_PATH . $file));
-                    $migration = json_decode($json, true);
-                    $mode = $migration["Mode"];
-                    $tName = $migration["Table_Name"];
-                    $rows = $migration["Rows"];
-                    $values = $migration["Values"];
-                    $valueString = $migration["Value_String"];
+                    $migration = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+                    $mode = $migration['Mode'];
+                    $tName = $migration['Table_Name'];
+                    $rows = $migration['Rows'];
+                    $values = $migration['Values'];
+                    $valueString = $migration['Value_String'];
 
                     DatabaseHandler::createSqlRequest($mode, $tName, $rows, $values, $valueString);
 
                     DatabaseHandler::createSqlRequest(
-                        "insert",
-                        "migrations",
-                        ["migrationName", "TS", "DT"],
-                        [$tName, date("H:i:s"),
-                            date("Y-m-d")],
+                        'insert',
+                        'migrations',
+                        ['migrationName', 'TS', 'DT'],
+                        [$tName, date('H:i:s'),
+                            date('Y-m-d')],
                         null
                     );
                 } catch (Exception $e) {
@@ -135,18 +135,18 @@ class Migration
                 }
             }
             return true;
-        } else {
-            echo "There are no Migrations!";
-            return false;
         }
+
+        echo 'There are no Migrations!';
+        return false;
     }
 
     public static function checkFiredMigrations()
     {
         return DatabaseHandler::createSqlRequest(
-            "select",
-            "migrations",
-            ["*"],
+            'select',
+            'migrations',
+            ['*'],
             null,
             null);
     }

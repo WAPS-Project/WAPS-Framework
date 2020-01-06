@@ -1,0 +1,32 @@
+.gallery {
+  background-color: #f56262;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding-top: 2rem;
+}
+.gallery .gallery-item {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem !important;
+  border-style: solid;
+}
+@media only screen and (max-device-width: 40rem) {
+  .gallery .gallery-item {
+    width: 15rem;
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (min-device-width: 40rem) {
+  .gallery .gallery-item {
+    width: 10rem;
+    margin-bottom: 2rem;
+  }
+}
+.gallery .gallery-item:hover {
+  zoom: 120%;
+  animation-duration: 3s;
+  border-radius: 0;
+  border-style: none;
+}
+
+/*# sourceMappingURL=style.css.map */

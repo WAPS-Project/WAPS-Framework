@@ -5,7 +5,7 @@ namespace webapp_php_sample_class;
 class ErrorHandler
 {
 
-    private const FOOTER = '<span>For help ask at <a href="https://gitlab.com/JosunLP/webapp_php_sample">https://gitlab.com/JosunLP/webapp_php_sample</a></span>';
+    private const FOOTER = '<span>For help ask at <a href="https://gitlab.com/webapp-php-sample/framework">https://gitlab.com/JosunLP/webapp_php_sample</a></span>';
 
     public static function FireError($type, $message): void
     {

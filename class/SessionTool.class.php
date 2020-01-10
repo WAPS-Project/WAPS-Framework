@@ -38,7 +38,7 @@ class SessionTool
             echo "<a href=\"/Login\" class='logging-btn-a nav-link'><button class=\"logging-btn\">Login/Registration</button></a>";
         }
         $logoutCheck = Main::checkPost('logout');
-        if ($logoutCheck === "TRUE") {
+        if ($logoutCheck === 'TRUE') {
             session_destroy();
             header('Location: Home');
             exit;

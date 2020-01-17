@@ -79,11 +79,6 @@ class Main
         SessionTool::UserWelcome();
     }
 
-    public static function checkGet($key)
-    {
-        return $_GET[$key] ?? null;
-    }
-
     public static function validatePage($pageName): string
     {
         if ($pageName === 'NO ENTRY') {
@@ -168,14 +163,18 @@ class Main
 
     public static function ipCheck($database_link): void
     {
-        $clientIp = self::checkPost('ip');
+        $clientIp = self::checkRequest('post','ip');
         self::ipPush($database_link, $clientIp);
     }
 
-    public static function checkPost($key)
+    public static function checkRequest($mode, $key)
     {
-        if (!empty($_POST[$key])) {
-            return $_POST[$key];
+        switch($mode) {
+            case 'post':
+                return $_POST[$key] ?? null;
+
+            case 'get':
+                return $_GET[$key] ?? null;
         }
 
         return null;

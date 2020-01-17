@@ -8,7 +8,7 @@ include 'core/loader/basic.loader.php';
 $APIString = 'core/API/';
 
 $APIFiles = array_diff(scandir($APIString), array('.', '..'));
-$command = Main::checkGet('apiMode');
+$command = Main::checkRequest('get', 'apiMode');
 
 foreach ($APIFiles as $singleAPI) {
     $fileParts = explode('.', $singleAPI);

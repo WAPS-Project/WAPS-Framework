@@ -7,8 +7,8 @@ class SessionTool
 
     public static function LoginUser($db): void
     {
-        $myUsername = Main::checkPost('username');
-        $myPassword = Main::checkPost('password');
+        $myUsername = Main::checkRequest('post','username');
+        $myPassword = Main::checkRequest('post','password');
         $queryCheck = "SELECT userName, passwort FROM usr LEFT JOIN passWd ON usr.UID = passWd.UID WHERE userName = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
         if ($result = $db->query($queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -37,7 +37,7 @@ class SessionTool
         } else {
             echo "<a href=\"/Login\" class='logging-btn-a nav-link'><button class=\"logging-btn\">Login/Registration</button></a>";
         }
-        $logoutCheck = Main::checkPost('logout');
+        $logoutCheck = Main::checkRequest('post','logout');
         if ($logoutCheck === 'TRUE') {
             session_destroy();
             header('Location: Home');
@@ -47,13 +47,13 @@ class SessionTool
 
     public static function AddUser($db_link): void
     {
-        $username = filter_var(Main::checkPost('username'), FILTER_SANITIZE_STRING);
-        $firstName = filter_var(Main::checkPost('firstName'), FILTER_SANITIZE_STRING);
-        $secondName = filter_var(Main::checkPost('lastName'), FILTER_SANITIZE_STRING);
-        $email = filter_var(Main::checkPost('email'), FILTER_SANITIZE_EMAIL);
-        $age = filter_var(Main::checkPost('age'), FILTER_SANITIZE_NUMBER_INT);
-        $password = filter_var(Main::checkPost('pw'), FILTER_SANITIZE_STRING);
-        $check = Main::checkPost('check');
+        $username = filter_var(Main::checkRequest('post','username'), FILTER_SANITIZE_STRING);
+        $firstName = filter_var(Main::checkRequest('post','firstName'), FILTER_SANITIZE_STRING);
+        $secondName = filter_var(Main::checkRequest('post','lastName'), FILTER_SANITIZE_STRING);
+        $email = filter_var(Main::checkRequest('post','email'), FILTER_SANITIZE_EMAIL);
+        $age = filter_var(Main::checkRequest('post','age'), FILTER_SANITIZE_NUMBER_INT);
+        $password = filter_var(Main::checkRequest('post','pw'), FILTER_SANITIZE_STRING);
+        $check = Main::checkRequest('post','check');
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
         if ($check === "on") {
             if ($age >= 18) {

@@ -169,11 +169,11 @@ class UserConfig
 
     public static function userDataRequest(): void
     {
-        $requestMode = Main::checkPost('requestMode');
-        $username = Main::checkPost('userName');
-        $firstName = Main::checkPost('firstName');
-        $lastName = Main::checkPost('lastName');
-        $email = Main::checkPost('email');
+        $requestMode = Main::checkRequest('post','requestMode');
+        $username = Main::checkRequest('post','userName');
+        $firstName = Main::checkRequest('post','firstName');
+        $lastName = Main::checkRequest('post','lastName');
+        $email = Main::checkRequest('post','email');
 
         if ($username !== null && $firstName !== null && $lastName !== null && $email !== null) {
 
@@ -183,9 +183,9 @@ class UserConfig
 
     public static function passwordRequest(): void
     {
-        $requestMode = Main::checkPost('requestMode');
-        $old_passwort = Main::checkPost('old_passwort');
-        $passwort = Main::checkPost('passwort');
+        $requestMode = Main::checkRequest('post','requestMode');
+        $old_passwort = Main::checkRequest('post','old_passwort');
+        $passwort = Main::checkRequest('post','passwort');
 
         if ($requestMode === 'password') {
             if ($result = DatabaseHandler::createSqlRequest('select', 'usr LEFT JOIN passWd ON usr.UID = passWd.UID', ['userName', 'passwort'], null, "userName = '" . filter_var($_SESSION['login_User'], FILTER_SANITIZE_STRING))) {

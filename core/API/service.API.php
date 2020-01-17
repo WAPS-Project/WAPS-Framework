@@ -6,7 +6,7 @@ use webapp_php_sample_class\PluginLoader;
 use webapp_php_sample_class\StartUp;
 
 try {
-    $command = Main::checkPost('svmode');
+    $command = Main::checkRequest('post','svmode');
     if ($command === NULL) {
         $command = DEFAULT_STRING;
     }

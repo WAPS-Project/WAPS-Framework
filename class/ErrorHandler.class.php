@@ -34,7 +34,7 @@ class ErrorHandler
 
     private static function WriteLogLine($key, $message): string
     {
-        $clientIp = Main::checkPost('ip');
+        $clientIp = Main::checkRequest('post','ip');
         $ip = Main::getRealIp();
         $currentDate = date('Y.m.d_H:i:s');
         return '[' . $currentDate . ']:  (' . $clientIp . '/' . $ip . ') - Error Key: ' . $key . ' | Error Message: ' . $message . ' ;';

@@ -4,11 +4,11 @@ namespace webapp_php_sample_class;
 
 class SearchEngine
 {
-    public static function SearchQuest($searchGlobal, $link)
+    public static function SearchQuest($searchGlobal, $link): void
     {
-        $words = explode(" ", $searchGlobal);
-        $wordList = implode(", ", $words);
-        $wordCheck = implode(" ", $words);
+        $words = explode(' ', $searchGlobal);
+        $wordList = implode(', ', $words);
+        $wordCheck = implode(' ', $words);
         $query = 'SELECT * FROM Generator WHERE ' . $wordList . ' LIKE ' . $wordCheck;
         //var_dump($query);
     }

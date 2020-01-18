@@ -4,47 +4,47 @@ use webapp_php_sample_class\cli;
 use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Migration;
 
-$command = "start";
+$command = 'start';
 $help = [
-    "help" => "is used to show all commands",
-    "exit" => "exits the cli",
-    "migrate" => "runs the migrations against the Database",
-    "create" => "creates a migration based on the model classes",
-    "list" => "lists all migrations",
-    "custom" => "create a custom migration based on the user inputs",
-    "check" => "check all previous migrations run on the database"
+    'help' => 'is used to show all commands',
+    'exit' => 'exits the cli',
+    'migrate' => 'runs the migrations against the Database',
+    'create' => 'creates a migration based on the model classes',
+    'list' => 'lists all migrations',
+    'custom' => 'create a custom migration based on the user inputs',
+    'check' => 'check all previous migrations run on the database'
 ];
 
 $helpC = [
-    "help" => "is used to show all commands",
-    "create table" => "is used to create a new table",
-    "alter table" => "is used to update/ad table entries",
-    "update table" => "is used to update table columns"
+    'help' => 'is used to show all commands',
+    'create table' => 'is used to create a new table',
+    'alter table' => 'is used to update/ad table entries',
+    'update table' => 'is used to update table columns'
 ];
 cli::designHelp($help);
-while ($command != "exit") {
+while ($command !== 'exit') {
     cli::designLine();
     $command = str_replace('/\s+/', '', cli::designInput());
 
     switch ($command) {
 
-        case "help":
+        case 'help':
             cli::designHelp($help);
             break;
 
-        case "create":
+        case 'create':
             Migration::createSimpleModelMigration();
             break;
 
-        case "custom":
+        case 'custom':
             echo "What kind of migration do you want to create? \n";
             cli::designHelp($helpC);
             $migrateMode = null;
-            while ($migrateMode != "exit") {
+            while ($migrateMode !== "exit") {
                 $migrateMode = cli::designInput();
 
                 switch ($migrateMode) {
-                    case "create table":
+                    case 'create table':
                         echo "What is the name of your Migration? \n";
                         $mName = cli::designInput();
                         echo "What is the name of your Table? \n";
@@ -53,7 +53,7 @@ while ($command != "exit") {
                         $cSum = null;
                         while ($cSum === null) {
                             try {
-                                $cSum = intval(cli::designInput());
+                                $cSum = (int)cli::designInput();
                             } catch (Exception $e) {
                                 $cSum = null;
                                 ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
@@ -68,41 +68,42 @@ while ($command != "exit") {
                             echo "Please enter the column restrictions \n";
                             $val = cli::designInput();
                             $pair = [$key => $val];
-                            array_push($rows, $pair);
+                            $rows[] = $pair;
                         }
-                        Migration::createMigration($mName, "create", $tName, $rows, null, null);
+                        Migration::createMigration($mName, 'create', $tName, $rows, null, null);
                         echo "\n";
-                        echo "Migration created!";
+                        echo 'Migration created!';
                         echo "\n";
                         break;
 
-                    case "help":
+                    case 'help':
                         cli::designHelp($helpC);
                         break;
 
                     default:
-                        echo "Please enter a valid mode";
+                        echo 'Please enter a valid mode';
                         break;
                 }
 
             }
             break;
 
-        case "check":
+        case 'check':
             echo "\n";
             if ($obj = Migration::checkFiredMigrations()) {
                 foreach ($obj as $key => $value) {
-                    foreach ($value as $item)
-                    echo $key . " : " . $item . "\n";
+                    foreach ($value as $item) {
+                        echo $key . ' : ' . $item . "\n";
+                    }
                 }
                 echo "done\n";
                 break;
-            } else {
-                echo "check failed!\n";
-                break;
             }
 
-        case "migrate":
+            echo "check failed!\n";
+            break;
+
+        case 'migrate':
             echo "\n";
             if (Migration::loadMigrations()) {
                 echo "\n Migrations done! \n";
@@ -111,19 +112,19 @@ while ($command != "exit") {
             }
             break;
 
-        case "list":
+        case 'list':
             echo "\n";
             echo "List: \n";
             Migration::listMigrations();
             break;
 
-        case "exit":
-            $command = "exit";
+        case 'exit':
+            $command = 'exit';
             break;
 
         default:
             cli::designLine();
-            echo "Please use a valid command!";
+            echo 'Please use a valid command!';
             break;
     }
 }

@@ -6,6 +6,7 @@ Title: false;
 */
 
 
+use webapp_php_sample_class\DatabaseHandler;
 use webapp_php_sample_class\UserConfig;
 
 if (!isset($_SESSION['login_User'])) {
@@ -13,6 +14,5 @@ if (!isset($_SESSION['login_User'])) {
 } else {
     echo '<h2>User Config Page</h2>';
     UserConfig::userDataRequest();
-    UserConfig::passwordRequest();
     UserConfig::loadConfigTable();
 }

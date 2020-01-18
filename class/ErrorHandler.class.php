@@ -46,6 +46,12 @@ class ErrorHandler
         echo "<script>Swal.fire({type: 'warning', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "', animation: true})</script>";
     }
 
+    public static function FireSuccess($type, $message): void
+    {
+        self::CreateLog($type, $message);
+        echo "<script>Swal.fire({type: 'success', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "', animation: true})</script>";
+    }
+
     public static function CreateError($type, $message, $weight, $isFatal): void
     {
         if ($weight >= 3 && $isFatal) {

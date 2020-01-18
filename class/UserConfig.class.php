@@ -141,7 +141,7 @@ class UserConfig
                placeholder="Enter ' . $key . '"
                type="password"
                required type="text">';
-                echo '<small id="old_password" class="form-text text-muted">* Zum erstellen eines neuen Passworts ist das alte notwendig!</small>';
+                echo '<small id="old_password" class="form-text text-muted">* Zum Erstellen eines neuen Passworts ist das alte notwendig!</small>';
                 echo '</div>';
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-key"></i> Neues Passwort</label>';
@@ -169,38 +169,57 @@ class UserConfig
 
     public static function userDataRequest(): void
     {
-        $requestMode = Main::checkRequest('post','requestMode');
-        $username = Main::checkRequest('post','userName');
-        $firstName = Main::checkRequest('post','firstName');
-        $lastName = Main::checkRequest('post','lastName');
-        $email = Main::checkRequest('post','email');
+        $requestMode = Main::checkRequest('post', 'requestMode');
+        $username = Main::checkRequest('post', 'userName');
+        $firstName = Main::checkRequest('post', 'firstName');
+        $lastName = Main::checkRequest('post', 'lastName');
+        $email = Main::checkRequest('post', 'email');
+        $requestMode = Main::checkRequest('post', 'requestMode');
+        $old_passwort = Main::checkRequest('post', 'old_passwort');
+        $passwort = Main::checkRequest('post', 'passwort');
 
-        if ($username !== null && $firstName !== null && $lastName !== null && $email !== null) {
-
-        }
-        //ErrorHandler::FireWarning('Invalid Input', 'all input fields are required');
-    }
-
-    public static function passwordRequest(): void
-    {
-        $requestMode = Main::checkRequest('post','requestMode');
-        $old_passwort = Main::checkRequest('post','old_passwort');
-        $passwort = Main::checkRequest('post','passwort');
-
-        if ($requestMode === 'password') {
-            if ($result = DatabaseHandler::createSqlRequest('select', 'usr LEFT JOIN passWd ON usr.UID = passWd.UID', ['userName', 'passwort'], null, "userName = '" . filter_var($_SESSION['login_User'], FILTER_SANITIZE_STRING))) {
-                while ($result) {
-                    $trust = password_verify($old_passwort, $result['passwort']);
-                    if ($trust === true) {
-                        DatabaseHandler::createSqlRequest('update', 'usr LEFT JOIN passWd ON usr.UID = passWd.UID', null, ['passwort'=> password_hash($passwort, PASSWORD_DEFAULT)], "userName = '" . filter_var($_SESSION['login_User'], FILTER_SANITIZE_STRING));
-                        ErrorHandler::FireWarning("Done", "Request done!");
-                        echo $old_passwort . ' | ' . $result['passwort'];
-                    }
-
-                    $error = 'Your Password is invalid';
-                    ErrorHandler::FireError('Password', $error);
+        switch ($requestMode) {
+            case 'userData':
+                if ($username !== null && $firstName !== null && $lastName !== null && $email !== null) {
+                    DatabaseHandler::createSqlRequest('update', 'usr', null, [
+                        'userName' => $username,
+                        'firstName' => $firstName,
+                        'lastName' => $lastName,
+                        'email' => $email
+                    ], 'UID = "' . $_SESSION['UID'] . '"');
+                    $_SESSION['login_User'] = $username;
+                    return;
                 }
-            }
+                ErrorHandler::FireWarning('Invalid Input', 'all input fields are required');
+                break;
+
+            case 'password':
+                if ($old_passwort !== null && $passwort !== null && $result = DatabaseHandler::createSqlRequest(
+                        'select',
+                        'passWd',
+                        '*',
+                        null,
+                        "UID = '" . $_SESSION['UID'] . "'")) {
+
+                    $trust = password_verify($old_passwort, $result[0]['passwort']);
+                    if ($trust) {
+                        $pwHash = password_hash($passwort, PASSWORD_DEFAULT);
+                        if (DatabaseHandler::createSqlRequest(
+                            'update',
+                            'passWd',
+                            null,
+                            ['passwort' => $pwHash],
+                            'passWd.UID = "' . $_SESSION['UID'] . '"'
+                        )) {
+                            //ErrorHandler::FireSuccess('', 'Request done!');
+                            break;
+                        }
+                    }
+                }
+
+                $error = 'Your Password is invalid';
+                ErrorHandler::FireError('Password', $error);
+                break;
         }
     }
 }

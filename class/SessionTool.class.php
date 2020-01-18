@@ -7,14 +7,15 @@ class SessionTool
 
     public static function LoginUser($db): void
     {
-        $myUsername = Main::checkRequest('post','username');
-        $myPassword = Main::checkRequest('post','password');
-        $queryCheck = "SELECT userName, passwort FROM usr LEFT JOIN passWd ON usr.UID = passWd.UID WHERE userName = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
+        $myUsername = Main::checkRequest('post', 'username');
+        $myPassword = Main::checkRequest('post', 'password');
+        $queryCheck = "SELECT userName, usr.UID, passwort FROM usr LEFT JOIN passWd ON usr.UID = passWd.UID WHERE userName = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
         if ($result = $db->query($queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $trust = password_verify($myPassword, $rArray['passwort']);
                 if ($trust === true) {
                     $_SESSION['login_User'] = $myUsername;
+                    $_SESSION['UID'] = $rArray['UID'];
                     header('Location: Home');
                     exit;
                 }
@@ -31,13 +32,19 @@ class SessionTool
         if (isset($_SESSION['login_User'])) {
             $username = $_SESSION['login_User'];
             echo '<form method= "post"  id= "userLogin">';
-            echo "<label id= \"greetings\" class='greeting'>Herzlich Willkommen $username </label>" . '   ';
-            echo '<button id= "logout" type="submit" class="btn btn-danger button logging-btn" name= "logout" value= "TRUE">Logout</button>';
+            echo '<div class="dropdown">';
+            echo '<button class="btn btn-secondary dropdown-toggle nav-link button btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nutzermenü</button>';
+            echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+            echo "<label id= \"greetings\" class='greeting dropdown-item'>Herzlich Willkommen, $username </label>" . '   ';
+            echo '<li class="nav-item"><a class="dropdown-item" href="/Config"> Einstellungen</a></li>';
+            echo '<button id= "logout" type="submit" class="btn btn-danger button logging-btn dropdown-item" name= "logout" value= "TRUE">Logout</button>';
+            echo '</div>';
+            echo '</div>';
             echo '</form>';
         } else {
             echo "<a href=\"/Login\" class='logging-btn-a nav-link'><button class=\"logging-btn\">Login/Registration</button></a>";
         }
-        $logoutCheck = Main::checkRequest('post','logout');
+        $logoutCheck = Main::checkRequest('post', 'logout');
         if ($logoutCheck === 'TRUE') {
             session_destroy();
             header('Location: Home');
@@ -47,13 +54,13 @@ class SessionTool
 
     public static function AddUser($db_link): void
     {
-        $username = filter_var(Main::checkRequest('post','username'), FILTER_SANITIZE_STRING);
-        $firstName = filter_var(Main::checkRequest('post','firstName'), FILTER_SANITIZE_STRING);
-        $secondName = filter_var(Main::checkRequest('post','lastName'), FILTER_SANITIZE_STRING);
-        $email = filter_var(Main::checkRequest('post','email'), FILTER_SANITIZE_EMAIL);
-        $age = filter_var(Main::checkRequest('post','age'), FILTER_SANITIZE_NUMBER_INT);
-        $password = filter_var(Main::checkRequest('post','pw'), FILTER_SANITIZE_STRING);
-        $check = Main::checkRequest('post','check');
+        $username = filter_var(Main::checkRequest('post', 'username'), FILTER_SANITIZE_STRING);
+        $firstName = filter_var(Main::checkRequest('post', 'firstName'), FILTER_SANITIZE_STRING);
+        $secondName = filter_var(Main::checkRequest('post', 'lastName'), FILTER_SANITIZE_STRING);
+        $email = filter_var(Main::checkRequest('post', 'email'), FILTER_SANITIZE_EMAIL);
+        $age = filter_var(Main::checkRequest('post', 'age'), FILTER_SANITIZE_NUMBER_INT);
+        $password = filter_var(Main::checkRequest('post', 'pw'), FILTER_SANITIZE_STRING);
+        $check = Main::checkRequest('post', 'check');
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
         if ($check === "on") {
             if ($age >= 18) {

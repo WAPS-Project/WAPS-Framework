@@ -67,14 +67,16 @@ class DatabaseHandler
                         return $obj;
                     }
                 }
+                ErrorHandler::FireWarning('Database Warning', 'The SELECT request failed');
 
                 break;
             case 'update':
                 foreach ($values as $key => $value) {
-                    $setValue = $key . ' = ' . $value;
+                    $setValue = $key . ' = "' . $value . '"';
                     $requestString = 'UPDATE ' . $tableName . ' SET ' . $setValue . ' WHERE ' . $valueString;
                     $db_link->query($requestString, MYSQLI_USE_RESULT);
                 }
+                return true;
                 break;
             default:
                 ErrorHandler::FireWarning('Database Warning', 'No Sql request mode chosen');

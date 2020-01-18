@@ -35,7 +35,7 @@ Title: false;
                placeholder="Enter Age" required>
     </div>
     <div class="form-group">
-        <label class="label" for="InputPassword"><i class="fas fa-lock"></i> Password</label>
+        <label class="label" for="InputPassword"><i class="fas fa-key"></i> Passwort</label>
         <input type="password" name="pw" class="form-control input" id="InputPassword" placeholder="Enter Password"
                required>
         <small id="password" class="form-text text-muted">Bitte achte darauf, dass dein Passwort mindestens 10 Zeichen

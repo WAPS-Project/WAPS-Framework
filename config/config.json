@@ -12,7 +12,8 @@
     "page_title": "Web Application PHP",
     "copyright": "WAPS-Team",
     "fav_icon": "/content/dist/img/fav.ico",
-    "logo": "/content/dist/img/fav.svg"
+    "logo": "/content/dist/img/fav.svg",
+    "domain": "localhost"
   },
   "database": {
     "mysql_host": "localhost:3306",

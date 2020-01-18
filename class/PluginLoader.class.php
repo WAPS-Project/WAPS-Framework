@@ -8,9 +8,9 @@ use webapp_php_sample_obj\pluginConfigBundle;
 
 class PluginLoader
 {
-    private const PLUGIN_PATH = './custom/plugin/';
+    const PLUGIN_PATH = './custom/plugin/';
 
-    public static function loadPlugins(): void
+    public static function loadPlugins()
     {
         self::loadPluginConfig();
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
@@ -21,7 +21,7 @@ class PluginLoader
         }
     }
 
-    public static function loadPluginConfig(): void
+    public static function loadPluginConfig()
     {
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
         $configBundle = new pluginConfigBundle();

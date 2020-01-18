@@ -5,7 +5,7 @@ namespace webapp_php_sample_class;
 class SessionTool
 {
 
-    public static function LoginUser($db): void
+    public static function LoginUser($db)
     {
         $myUsername = Main::checkRequest('post', 'username');
         $myPassword = Main::checkRequest('post', 'password');
@@ -27,7 +27,7 @@ class SessionTool
         mysqli_close($db);
     }
 
-    public static function UserWelcome(): void
+    public static function UserWelcome()
     {
         if (isset($_SESSION['login_User'])) {
             $username = $_SESSION['login_User'];
@@ -52,7 +52,7 @@ class SessionTool
         }
     }
 
-    public static function AddUser($db_link): void
+    public static function AddUser($db_link)
     {
         $username = filter_var(Main::checkRequest('post', 'username'), FILTER_SANITIZE_STRING);
         $firstName = filter_var(Main::checkRequest('post', 'firstName'), FILTER_SANITIZE_STRING);

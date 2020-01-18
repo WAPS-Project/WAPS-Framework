@@ -7,13 +7,13 @@ class ErrorHandler
 
     private const FOOTER = '<span>For help ask at <a href="https://gitlab.com/webapp-php-sample/framework">https://gitlab.com/JosunLP/webapp_php_sample</a></span>';
 
-    public static function FireError($type, $message): void
+    public static function FireError($type, $message)
     {
         self::CreateLog($type, $message);
         echo "<script>Swal.fire({type: 'error', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>";
     }
 
-    protected static function CreateLog($key, $message): void
+    protected static function CreateLog($key, $message)
     {
         $logPath = './custom/log/crashlog/';
         $files = array_diff(scandir($logPath), DEFAULT_FILE_FILTER);
@@ -40,19 +40,19 @@ class ErrorHandler
         return '[' . $currentDate . ']:  (' . $clientIp . '/' . $ip . ') - Error Key: ' . $key . ' | Error Message: ' . $message . ' ;';
     }
 
-    public static function FireWarning($type, $message): void
+    public static function FireWarning($type, $message)
     {
         self::CreateLog($type, $message);
         echo "<script>Swal.fire({type: 'warning', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "', animation: true})</script>";
     }
 
-    public static function FireSuccess($type, $message): void
+    public static function FireSuccess($type, $message)
     {
         self::CreateLog($type, $message);
         echo "<script>Swal.fire({type: 'success', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "', animation: true})</script>";
     }
 
-    public static function CreateError($type, $message, $weight, $isFatal): void
+    public static function CreateError($type, $message, $weight, $isFatal)
     {
         if ($weight >= 3 && $isFatal) {
             self::CreateLog($type, $message);
@@ -65,13 +65,13 @@ class ErrorHandler
         }
     }
 
-    public static function FireJsonError($type, $message): void
+    public static function FireJsonError($type, $message)
     {
         JsonHandler::FireSimpleJson($type, $message);
         self::CreateLog($type, $message);
     }
 
-    public static function FireCLIError($type, $message): void
+    public static function FireCLIError($type, $message)
     {
         echo '[' . date('YmdHis') . '|' . $type . ']' . '{' . $message . '}';
         self::CreateLog($type, $message);

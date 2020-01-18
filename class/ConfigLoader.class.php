@@ -6,7 +6,7 @@ namespace webapp_php_sample_class;
 
 class ConfigLoader
 {
-    public static function loadConfig($path): void
+    public static function loadConfig($path)
     {
         $config = self::validateConfig($path);
 

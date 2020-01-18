@@ -4,7 +4,7 @@ namespace webapp_php_sample_class;
 
 class SearchEngine
 {
-    public static function SearchQuest($searchGlobal, $link): void
+    public static function SearchQuest($searchGlobal, $link)
     {
         $words = explode(' ', $searchGlobal);
         $wordList = implode(', ', $words);
@@ -25,7 +25,7 @@ class SearchEngine
                     $array_link = $obj[2];
                     $array_img = $obj[3];
                     //var_dump($array_link);
-                    printf("<figure class='product_gallery' > <a href='%s' target='_selfe'><img src=%s class='img_gallery' ><figcaption>%s</figcaption></a></figure>", $array_link, $array_img, $array_name);
+                    //printf("<figure class='product_gallery' > <a href='%s' target='_selfe'><img src=%s class='img_gallery'  alt=""><figcaption>%s</figcaption></a></figure>", $array_link, $array_img, $array_name);
                 }
             }
             mysqli_free_result($result);

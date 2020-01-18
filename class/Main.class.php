@@ -5,7 +5,7 @@ namespace webapp_php_sample_class;
 
 class Main
 {
-    public static function main($pagePath, $pageName, $pageMap): void
+    public static function main($pagePath, $pageName, $pageMap)
     {
         $pageList = json_decode($pageMap, false, 512, JSON_THROW_ON_ERROR);
         echo '<div class="content">';
@@ -51,7 +51,7 @@ class Main
 
     }
 
-    public static function navigation($pageMap, $pageName): void
+    public static function navigation($pageMap, $pageName)
     {
         $pageList = json_decode($pageMap, false, 512, JSON_THROW_ON_ERROR);
 
@@ -119,7 +119,7 @@ class Main
         return 'Error_404';
     }
 
-    public static function validateName($pageName): ?string
+    public static function validateName($pageName): string
     {
         if ($pageName === 'NO ENTRY') {
             return 'Home';
@@ -161,7 +161,7 @@ class Main
         return $page;
     }
 
-    public static function ipCheck($database_link): void
+    public static function ipCheck($database_link)
     {
         $clientIp = self::checkRequest('post','ip');
         self::ipPush($database_link, $clientIp);
@@ -180,7 +180,7 @@ class Main
         return null;
     }
 
-    protected static function ipPush($link, $clientIp): void
+    protected static function ipPush($link, $clientIp)
     {
         $timestamp = date('H:i:s');
         $date = date('Y-m-d');

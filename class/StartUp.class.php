@@ -50,7 +50,7 @@ class StartUp
         return $fileJSON;
     }
 
-    private static function dirCheck($dir)
+    private static function dirCheck($dir): array
     {
         $dirPath = $dir . '/';
         $files = array_diff(scandir($dirPath), DEFAULT_FILE_FILTER);
@@ -69,7 +69,7 @@ class StartUp
         return $files;
     }
 
-    public static function checkDatabaseStatus(): void
+    public static function checkDatabaseStatus()
     {
         $databaseLink = self::loadDatabase();
         $sqlFile = fopen('core/database/setup/webapp_php_sample.sql', 'rb');

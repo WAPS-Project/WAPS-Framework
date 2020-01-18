@@ -54,9 +54,16 @@ class Main
     public static function navigation($pageMap, $pageName)
     {
         $pageList = json_decode($pageMap, false, 512, JSON_THROW_ON_ERROR);
+        $pageContainer = [];
 
         echo "<div class='collapse navbar-collapse' id='navbarSupportedContent'>";
         echo '<ul class="navbar-nav mr-auto">';
+
+        foreach ($pageList as $pageObj) {
+            if ($pageObj->Master !== 'null') {
+                $pageContainer[] = [$pageObj->Master => $pageObj];
+            }
+        }
 
         foreach ($pageList as $pageObj) {
             $active = '';
@@ -71,12 +78,45 @@ class Main
                 $active = 'active';
             }
 
-            echo "<li class='nav-item'>";
-
-            echo '<a class="nav-link ' . $active . " \" href='/" . $pageObj->Name . "' >" . $pageObj->Name . ' ' . $current . '</a>';
-            echo '</li>';
+            self::createPageEntry($pageObj, $active, $current);
         }
         SessionTool::UserWelcome();
+    }
+
+    private static function createPageEntry($pageObj, $active, $current, $pageContainer) {
+        $master = null;
+        if (in_array($pageObj->Name, $pageContainer, true)) {
+            $master = 'dropdown';
+        } else {
+            $master = 'simple';
+        }
+
+        switch ($master) {
+            case 'simple':
+                echo "<li class='nav-item'>";
+                echo '<a class="nav-link ' . $active . " \" href='/" . $pageObj->Name . "' >" . $pageObj->Name . ' ' . $current . '</a>';
+                echo '</li>';
+
+            case 'dropdown':
+                echo '<div class="dropdown show">';
+                echo '<a class="btn btn-secondary dropdown-toggle" 
+                            href="#" 
+                            role="button" 
+                            id="dropdownMenuLink" 
+                            data-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">' . $pageObj->Name . '</a>';
+                echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
+                foreach ($pageContainer as $key => $value) {
+                    if ($key === $pageObj->Name) {
+                        foreach ($value as $item) {
+                            echo '<a class="dropdown-item nav-link ' . $active . " \" href='/" . $item["Name"] . "' >" . $pageObj->Name . ' ' . $current . '</a>';
+                        }
+                    }
+                }
+                echo '</div>';
+                echo '</div>';
+        }
     }
 
     public static function validatePage($pageName): string

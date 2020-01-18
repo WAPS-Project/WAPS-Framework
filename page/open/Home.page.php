@@ -1,8 +1,9 @@
 <?php
 
 /*
-PageInfo:
+PAGEINFO
 Title: true;
+Master: null;
 */
 
 echo '<p>Willkommen zu Hause</p>';

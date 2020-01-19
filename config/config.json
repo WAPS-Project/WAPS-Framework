@@ -1,5 +1,5 @@
 {
-  "head": { 
+  "head": {
     "title": "configFile",
     "version": "1.3.0"
   },
@@ -9,7 +9,7 @@
     "description": "Example Web App",
     "keywords": "PHP,HTMl,XML,JavaScript,CSS,APP",
     "author": "Jonas Pfalzgraf",
-    "page_title": "Web-Application PHP",
+    "page_title": "Web Application PHP",
     "copyright": "WAPS-Team",
     "fav_icon": "/content/dist/img/fav.ico",
     "logo": "/content/dist/img/fav.svg",

@@ -36,6 +36,7 @@ class SessionTool
             echo '<button class="btn btn-secondary dropdown-toggle nav-link button btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nutzermenü</button>';
             echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
             echo "<label id= \"greetings\" class='greeting dropdown-item'>Herzlich Willkommen, $username </label>" . '   ';
+            echo '<div class="dropdown-divider"></div>';
             echo '<li class="nav-item"><a class="dropdown-item" href="/Config"> Einstellungen</a></li>';
             echo '<button id= "logout" type="submit" class="btn btn-danger button logging-btn dropdown-item" name= "logout" value= "TRUE">Logout</button>';
             echo '</div>';

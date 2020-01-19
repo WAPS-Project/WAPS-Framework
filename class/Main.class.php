@@ -78,14 +78,15 @@ class Main
                 $active = 'active';
             }
 
-            self::createPageEntry($pageObj, $active, $current);
+            self::createPageEntry($pageObj, $active, $current, $pageContainer);
         }
         SessionTool::UserWelcome();
     }
 
-    private static function createPageEntry($pageObj, $active, $current, $pageContainer) {
+    private static function createPageEntry($pageObj, $active, $current, $pageContainer): void
+    {
         $master = null;
-        if (in_array($pageObj->Name, $pageContainer, true)) {
+        if (array_key_exists($pageObj->Name, $pageContainer[0])) {
             $master = 'dropdown';
         } else {
             $master = 'simple';
@@ -93,29 +94,39 @@ class Main
 
         switch ($master) {
             case 'simple':
-                echo "<li class='nav-item'>";
-                echo '<a class="nav-link ' . $active . " \" href='/" . $pageObj->Name . "' >" . $pageObj->Name . ' ' . $current . '</a>';
-                echo '</li>';
+                if ($pageContainer[0]['Example']->Name !== $pageObj->Name) {
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link ' . $active . " \" href='/" . $pageObj->Name . "' >" . $pageObj->Name . ' ' . $current . '</a>';
+                    echo '</li>';
+                }
+                break;
 
             case 'dropdown':
-                echo '<div class="dropdown show">';
-                echo '<a class="btn btn-secondary dropdown-toggle" 
-                            href="#" 
+                echo '<div class="dropdown">';
+                echo '<div class="btn-group">';
+                echo '<a href="/' . $pageObj->Name . '">';
+                echo '<button class="btn btn-secondary nav-link button btn-danger" 
                             role="button" 
-                            id="dropdownMenuLink" 
-                            data-toggle="dropdown" 
-                            aria-haspopup="true" 
-                            aria-expanded="false">' . $pageObj->Name . '</a>';
+                            id="dropdownMenuLink' . $pageObj->Name . '" 
+                            >' . $pageObj->Name . '</button>';
+                echo '</a>';
+                echo '<button type="button" class="btn nav-link button btn-danger btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>';
                 echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
-                foreach ($pageContainer as $key => $value) {
+                foreach ($pageContainer[0] as $key => $value) {
                     if ($key === $pageObj->Name) {
-                        foreach ($value as $item) {
-                            echo '<a class="dropdown-item nav-link ' . $active . " \" href='/" . $item["Name"] . "' >" . $pageObj->Name . ' ' . $current . '</a>';
+                        foreach ($value as $item => $tile) {
+                            if ($item === 'Name') {
+                                echo "<li class='nav-item'>";
+                                echo '<a class="dropdown-item nav-link ' . $active . " \" href='/" . $tile . "' >" . $tile . ' ' . $current . '</a>';
+                                echo '</li>';
+                            }
                         }
                     }
                 }
                 echo '</div>';
                 echo '</div>';
+                echo '</div>';
+                break;
         }
     }
 
@@ -203,13 +214,13 @@ class Main
 
     public static function ipCheck($database_link)
     {
-        $clientIp = self::checkRequest('post','ip');
+        $clientIp = self::checkRequest('post', 'ip');
         self::ipPush($database_link, $clientIp);
     }
 
     public static function checkRequest($mode, $key)
     {
-        switch($mode) {
+        switch ($mode) {
             case 'post':
                 return $_POST[$key] ?? null;
 

@@ -13,4 +13,6 @@ class pageObj
     public string $Path;
 
     public bool $IsSet;
+
+    public string $Master;
 }

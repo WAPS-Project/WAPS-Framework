@@ -26,13 +26,13 @@ class ConfigLoader
         $files = scandir($path);
 
         foreach ($files as $file) {
-            $fileParts = explode(".", $file);
+            $fileParts = explode('.', $file);
 
-            if ($fileParts[0] === "config" && $fileParts[1] === "json") {
+            if ($fileParts[0] === 'config' && $fileParts[1] === 'json') {
                 $config = file_get_contents($path . $file);
-                $configObj = json_decode($config, true);
+                $configObj = json_decode($config, true, 512, JSON_THROW_ON_ERROR);
 
-                if ($configObj["head"]["title"] === "configFile") {
+                if ($configObj['head']['title'] === 'configFile') {
                     return $configObj;
                 }
             }

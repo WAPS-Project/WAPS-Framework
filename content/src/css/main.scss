@@ -10,7 +10,6 @@
 @import "scaleMixin";
 @import "navbar";
 @import "footer";
-@import "gallery";
 @import "accessFormular";
 @import "form";
 
@@ -123,6 +122,7 @@ p {
 
 a {
   color: $main-font-color;
+
   &:hover {
     color: $main-font-color-hover;
   }

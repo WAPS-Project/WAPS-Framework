@@ -2,17 +2,18 @@
 
 use webapp_php_sample_class\Main;
 
-include 'core/loader.php';
-
 ?>
 <!DOCTYPE html>
+<?php
+include 'core/loader/UI.loader.php';
+?>
 <html lang="<?php echo LANGUAGE ?>" dir="ltr">
 <?php
-include 'page/view/head.php';                                                             // adding the page head
+include 'page/view/head.php';
 ?>
 <body>
 <?php
-include 'page/view/header.php';                                                           //adding the header
+include 'page/view/header.php';
 
 Main::main($pagePath, $pageName, $pageMap);
 

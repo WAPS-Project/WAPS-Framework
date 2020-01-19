@@ -6,11 +6,16 @@ class GalleryBuilder
 {
     public static function GalleryGenerator($path)
     {
-        $images = array_diff(scandir($path), DEFAULT_FILE_FILTER);
+        $images = scandir($path);
         $count = count($images);
         echo "<div class='gallery'>";
         foreach ($images as $value) {
-            print("<img src='" . $path . $value . "' class='gallery-item' >");
+            if ($value == ".." or $value == ".") {
+                echo "";
+            } else {
+                print("<img src='" . $path . $value . "' class='gallery-item' >");
+
+            }
         }
         echo "</div>";
     }

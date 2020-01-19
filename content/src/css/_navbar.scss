@@ -39,26 +39,6 @@
       margin-top: 0;
     }
 
-    .greeting {
-      margin-bottom: 0 !important;
-      margin-top: 0.5rem;
-      color: $main-font-color;
-      @include respond-to(handhelds) {
-        font-size: 4rem;
-        padding-left: 1rem;
-      }
-    }
-
-    #logout {
-      @include respond-to(handhelds) {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        font-size: 4rem;
-        padding-left: 1rem;
-      }
-    }
-
     li {
       @include respond-to(handhelds) {
         width: 100%;
@@ -92,20 +72,15 @@
   .logging-btn-a {
     .logging-btn {
       color: rgba(0, 0, 0, 0.5) !important;
-
       &:hover {
         color: black !important;
       }
-
       padding: 0;
       text-decoration: none;
       background-color: rgba(0, 0, 0, 0) !important;
       border-style: none !important;
       @include partialButton;
       @include respond-to(handhelds) {
-        width: 100%;
-        height: 100%;
-        display: flex;
         font-size: 4rem;
         padding-left: 1rem;
       }

@@ -6,9 +6,10 @@ Title: false;
 */
 
 
-if (isset($_SESSION["login_User"])) {
+if(isset($_SESSION["login_User"])) {
     echo "<h2>Du bist bereits eingeloggt!</h2>";
-} else {
+}
+else {
     echo "
     <div class=\"login\">
     <div class=\"choice\">

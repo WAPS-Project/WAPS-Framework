@@ -7,20 +7,21 @@ class SessionTool
 
     public static function LoginUser($db)
     {
-        $myUsername = Main::checkPost("username");
-        $myPassword = Main::checkPost("password");
-        $queryCheck = "SELECT username, passwort FROM usr LEFT JOIN passwd ON usr.UID = passwd.UID WHERE username = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
-        if ($result = mysqli_query($db, $queryCheck, MYSQLI_USE_RESULT)) {
+        $myUsername = Main::checkRequest('post', 'username');
+        $myPassword = Main::checkRequest('post', 'password');
+        $queryCheck = "SELECT userName, usr.UID, passwort FROM usr LEFT JOIN passWd ON usr.UID = passWd.UID WHERE userName = '" . filter_var($myUsername, FILTER_SANITIZE_STRING) . "';";
+        if ($result = $db->query($queryCheck, MYSQLI_USE_RESULT)) {
             while ($rArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                $trust = password_verify($myPassword, $rArray["passwort"]);
-                if ($trust == true) {
+                $trust = password_verify($myPassword, $rArray['passwort']);
+                if ($trust === true) {
                     $_SESSION['login_User'] = $myUsername;
-                    header( "Location: Home" );
+                    $_SESSION['UID'] = $rArray['UID'];
+                    header('Location: Home');
                     exit;
-                } else {
-                    $error = "Your Login Name or Password is invalid";
-                    ErrorHandler::FireWarning("Login failed", $error);
                 }
+
+                $error = 'Your Login Name or Password is invalid';
+                ErrorHandler::FireWarning('Login failed', $error);
             }
         }
         mysqli_close($db);
@@ -30,32 +31,38 @@ class SessionTool
     {
         if (isset($_SESSION['login_User'])) {
             $username = $_SESSION['login_User'];
-            echo "<form method= \"post\"  id= \"userLogin\">";
-            echo "<label id= \"greetings\" class='greeting'>Herzlich Willkommen $username </label>" . "   ";
-            echo "<button id= \"logout\" type=\"submit\" class=\"btn btn-danger button logging-btn\" name= \"logout\" value= \"TRUE\">Logout</button>";
-            echo "</form>";
+            echo '<form method= "post"  id= "userLogin">';
+            echo '<div class="dropdown">';
+            echo '<button class="btn btn-secondary dropdown-toggle nav-link button btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nutzermenü</button>';
+            echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+            echo "<label id= \"greetings\" class='greeting dropdown-item'>Herzlich Willkommen, $username </label>" . '   ';
+            echo '<li class="nav-item"><a class="dropdown-item" href="/Config"> Einstellungen</a></li>';
+            echo '<button id= "logout" type="submit" class="btn btn-danger button logging-btn dropdown-item" name= "logout" value= "TRUE">Logout</button>';
+            echo '</div>';
+            echo '</div>';
+            echo '</form>';
         } else {
             echo "<a href=\"/Login\" class='logging-btn-a nav-link'><button class=\"logging-btn\">Login/Registration</button></a>";
         }
-        $logoutCheck = Main::checkPost("logout");
-        if ($logoutCheck == "TRUE") {
+        $logoutCheck = Main::checkRequest('post', 'logout');
+        if ($logoutCheck === 'TRUE') {
             session_destroy();
-            header( "Location: Home" );
+            header('Location: Home');
             exit;
         }
     }
 
     public static function AddUser($db_link)
     {
-        $username = filter_var(Main::checkPost("username"), FILTER_SANITIZE_STRING);
-        $firstName = filter_var(Main::checkPost("firstName"), FILTER_SANITIZE_STRING);
-        $secondName = filter_var(Main::checkPost("lastName"), FILTER_SANITIZE_STRING);
-        $email = filter_var(Main::checkPost("email"), FILTER_SANITIZE_EMAIL);
-        $age = filter_var(Main::checkPost("age"), FILTER_SANITIZE_NUMBER_INT);
-        $password = filter_var(Main::checkPost("pw"), FILTER_SANITIZE_STRING);
-        $check = Main::checkPost("check");
+        $username = filter_var(Main::checkRequest('post', 'username'), FILTER_SANITIZE_STRING);
+        $firstName = filter_var(Main::checkRequest('post', 'firstName'), FILTER_SANITIZE_STRING);
+        $secondName = filter_var(Main::checkRequest('post', 'lastName'), FILTER_SANITIZE_STRING);
+        $email = filter_var(Main::checkRequest('post', 'email'), FILTER_SANITIZE_EMAIL);
+        $age = filter_var(Main::checkRequest('post', 'age'), FILTER_SANITIZE_NUMBER_INT);
+        $password = filter_var(Main::checkRequest('post', 'pw'), FILTER_SANITIZE_STRING);
+        $check = Main::checkRequest('post', 'check');
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
-        if ($check == "on") {
+        if ($check === "on") {
             if ($age >= 18) {
                 $ageID = 5;
             } elseif ($age >= 16 && $age < 18) {
@@ -74,13 +81,13 @@ class SessionTool
 
                 while ($obj = mysqli_fetch_array($result)) {
 
-                    $USID = $obj["ID"] + 1;
-                    $query = "INSERT INTO usr ( username, firstname, lastname, email, userrank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";
+                    $USID = $obj['ID'] + 1;
+                    $query = "INSERT INTO usr ( userName, firstName, lastName, email, userRank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";
 
-                    $query2 = "INSERT INTO passwd ( passwort, UID) VALUES ( '$pwSave', $USID);";
+                    $query2 = "INSERT INTO passWd ( passwort, UID) VALUES ( '$pwSave', $USID);";
 
-                    mysqli_query($db_link, $query);
-                    mysqli_query($db_link, $query2);
+                    $db_link->query($query);
+                    $db_link->query($query2);
                 }
             }
         }

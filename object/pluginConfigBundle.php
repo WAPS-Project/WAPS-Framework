@@ -6,5 +6,5 @@ namespace webapp_php_sample_obj;
 
 class pluginConfigBundle
 {
-    public $configList = [];
+    public array $configList = [];
 }

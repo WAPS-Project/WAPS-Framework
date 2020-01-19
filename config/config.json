@@ -10,12 +10,13 @@
     "keywords": "PHP,HTMl,XML,JavaScript,CSS,APP",
     "author": "Jonas Pfalzgraf",
     "page_title": "Web Application PHP",
-    "copyright": "WebApp-Example-Team",
+    "copyright": "WAPS-Team",
     "fav_icon": "/content/dist/img/fav.ico",
-    "logo": "/content/dist/img/fav.svg"
+    "logo": "/content/dist/img/fav.svg",
+    "domain": "localhost"
   },
   "database": {
-    "mysql_host": "localhost",
+    "mysql_host": "localhost:3306",
     "mysql_database": "webapp_php_sample",
     "mysql_user": "root",
     "mysql_keyword": "",
@@ -31,5 +32,23 @@
     "infoMail": "info",
     "autoMail": "auto",
     "supportMail": "support"
+  },
+  "defaultConfig": {
+    "default_string": "DEFAULT",
+    "default_int": 42,
+    "default_bool": true,
+    "default_array": [
+      "1",
+      2,
+      true
+    ],
+    "default_file_filter": [
+      ".",
+      "..",
+      ".gitkeep"
+    ]
+  },
+  "migrationConfig": {
+    "migration_path": "./core/database/migrations/"
   }
 }

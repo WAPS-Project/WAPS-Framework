@@ -22,14 +22,22 @@ class StartUp
                 $filePart = explode('.', $file);
                 $fileObj->Path = 'page/open/' . $file;
                 $fileLines = file($fileObj->Path);
+
                 $titleCheckLine = $fileLines[4];
                 $titleCheckParts = explode(':', $titleCheckLine);
                 $titleCheckParts = explode(';', $titleCheckParts[1]);
+
                 $titleCheck = filter_var(
                     str_replace(' ', '', $titleCheckParts[0]),
                     FILTER_VALIDATE_BOOLEAN);
                 $fileObj->Name = $filePart[0];
                 $fileObj->File = $file;
+
+                $masterCheckLine = $fileLines[5];
+                $masterCheckParts = explode(':', $masterCheckLine);
+                $masterCheckParts = explode(';', $masterCheckParts[1]);
+
+                $fileObj->Master = str_replace(' ', '', $masterCheckParts[0]);
 
                 if ($titleCheck === true) {
                     $fileObj->IsSet = TRUE;

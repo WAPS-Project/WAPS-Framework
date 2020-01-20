@@ -308,10 +308,10 @@ composer.phar
 
 # End of https://www.gitignore.io/api/node
 
-var/*
+framework.dist/*
+framework.scr/config/pagemap.config.json
+framework.scr/config/plugin.config.json
 
-config/pagemap.config.json
-config/plugin.config.json
-
-content/dist/js/*
-content/dist/css/*
+framework.scr/content/dist/js/*
+framework.scr/content/dist/css/*
+framework.scr/node_modules/

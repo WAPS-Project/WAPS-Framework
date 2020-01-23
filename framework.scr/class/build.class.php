@@ -31,7 +31,7 @@ class build
 
     public static function setupDir($dirPath) {
         if (! is_dir($dirPath)) {
-            mkdir($dirPath, 0777, true);
+            mkdir($dirPath, 0755, true);
         }
         $it = new RecursiveDirectoryIterator($dirPath, RecursiveDirectoryIterator::SKIP_DOTS);
         $files = new RecursiveIteratorIterator($it,
@@ -45,7 +45,7 @@ class build
         }
         rmdir($dirPath);
         if (!file_exists($dirPath)) {
-            mkdir($dirPath, 0777, true);
+            mkdir($dirPath, 0755, true);
         }
     }
 

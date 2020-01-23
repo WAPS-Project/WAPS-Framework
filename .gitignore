@@ -312,6 +312,6 @@ framework.dist/*
 framework.scr/config/pagemap.config.json
 framework.scr/config/plugin.config.json
 
-framework.scr/content/dist/js/*
-framework.scr/content/dist/css/*
+framework.scr/dist/js/*
+framework.scr/dist/css/*
 framework.scr/node_modules/

@@ -8,7 +8,7 @@ use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Main;
 use webapp_php_sample_class\StartUp;
 
-include 'basic.loader.php';
+include 'core.loader.php';
 
 try {
     $database_link = StartUp::loadDatabase();

@@ -4,28 +4,50 @@
 namespace webapp_php_sample_class;
 
 
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+
 class build
 {
     public static function copyFiles($source, $dest)
     {
         if(is_dir($source)) {
-            $dir_handle=opendir($source);
-            while($file=readdir($dir_handle)){
-                if($file!="." && $file!=".."){
-                    if(is_dir($source."/".$file)){
-                        if(!is_dir($dest."/".$file)){
-                            mkdir($dest."/".$file);
-                        }
-                        copy($source."/".$file, $dest."/".$file);
+            $dir = opendir($source);
+            @mkdir($dest);
+            while (($file = readdir($dir))) {
+                if (($file != '.') && ($file != '..')) {
+                    if (is_dir($source . '/' . $file)) {
+                        self::copyFiles($source . '/' . $file, $dest . '/' . $file);
                     } else {
-                        copy($source."/".$file, $dest."/".$file);
+                        copy($source . '/' . $file, $dest . '/' . $file);
                     }
                 }
             }
-            closedir($dir_handle);
+            closedir($dir);
         } else {
             copy($source, $dest);
         }
     }
+
+    public static function setupDir($dirPath) {
+        if (! is_dir($dirPath)) {
+            mkdir($dirPath, 0777, true);
+        }
+        $it = new RecursiveDirectoryIterator($dirPath, RecursiveDirectoryIterator::SKIP_DOTS);
+        $files = new RecursiveIteratorIterator($it,
+            RecursiveIteratorIterator::CHILD_FIRST);
+        foreach($files as $file) {
+            if ($file->isDir()){
+                rmdir($file->getRealPath());
+            } else {
+                unlink($file->getRealPath());
+            }
+        }
+        rmdir($dirPath);
+        if (!file_exists($dirPath)) {
+            mkdir($dirPath, 0777, true);
+        }
+    }
+
 
 }

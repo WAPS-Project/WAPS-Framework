@@ -5,12 +5,11 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "sass framework.scr/content/src/css/main.scss framework.scr/content/dist/css/main.css --style compressed",
-    "build-css-w": "sass framework.scr/content/src/css/main.scss framework.scr/content/dist/css/main.css --watch",
+    "build-css": "sass framework.scr/src/css/main.scss framework.scr/dist/css/main.css --style compressed",
+    "build-css-w": "sass framework.scr/src/css/main.scss framework.scr/dist/css/main.css --watch",
     "build-js": "webpack",
     "build": "npm run build-css; npm run build-js",
-    "build-win": "npm run build-css && npm run build-js",
-    "cli": "php framework.scr/CLI.php"
+    "build-win": "npm run build-css && npm run build-js"
   },
   "repository": {
     "type": "git",
@@ -30,7 +29,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.4",
     "jquery": "^3.4.1",
-    "popper.js": "^1.16.0",
+    "popper.js": "^1.16.1",
     "sass": "^1.25.0",
     "sweetalert2": "^8.19.0"
   },

@@ -5,15 +5,15 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "sass framework.scr/src/css/main.scss framework.scr/dist/css/main.css --style compressed",
-    "build-css-w": "sass framework.scr/src/css/main.scss framework.scr/dist/css/main.css --watch",
+    "build-css": "sass framework.src/src/css/main.scss framework.src/dist/css/main.css --style compressed",
+    "build-css-w": "sass framework.src/src/css/main.scss framework.src/dist/css/main.css --watch",
     "build-js": "webpack",
     "build": "npm run build-css; npm run build-js",
     "build-win": "npm run build-css && npm run build-js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/JosunLP/webapp_php_sample.git"
+    "url": "git+ssh://git@gitlab.com/webapp_php_sample/framework.git"
   },
   "author": "Jonas Pfalzgraf",
   "license": "MIT",

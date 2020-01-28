@@ -13,9 +13,11 @@ class build
     {
         if(is_dir($source)) {
             $dir = opendir($source);
-            @mkdir($dest);
+            if (!mkdir($dest) && !is_dir($dest)) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $dest));
+            }
             while (($file = readdir($dir))) {
-                if (($file != '.') && ($file != '..')) {
+                if (($file !== '.') && ($file !== '..')) {
                     if (is_dir($source . '/' . $file)) {
                         self::copyFiles($source . '/' . $file, $dest . '/' . $file);
                     } else {
@@ -30,8 +32,8 @@ class build
     }
 
     public static function setupDir($dirPath) {
-        if (! is_dir($dirPath)) {
-            mkdir($dirPath, 0755, true);
+        if (!is_dir($dirPath) && !mkdir($dirPath, 0755, true) && !is_dir($dirPath)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $dirPath));
         }
         $it = new RecursiveDirectoryIterator($dirPath, RecursiveDirectoryIterator::SKIP_DOTS);
         $files = new RecursiveIteratorIterator($it,
@@ -44,8 +46,8 @@ class build
             }
         }
         rmdir($dirPath);
-        if (!file_exists($dirPath)) {
-            mkdir($dirPath, 0755, true);
+        if (!file_exists($dirPath) && !mkdir($dirPath, 0755, true) && !is_dir($dirPath)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $dirPath));
         }
     }
 

@@ -19,13 +19,13 @@ class ErrorHandler
         $files = array_diff(scandir($logPath), DEFAULT_FILE_FILTER);
         $currentDate = date('Y_m_d');
         $newLine = self::WriteLogLine($key, $message);
-        if (!in_array($currentDate . '.txt', $files, true)) {
-            $file = fopen($logPath . $currentDate . '.txt', 'wb') or die('Unable to create log file!');
+        if (!in_array($currentDate . '.log', $files, true)) {
+            $file = fopen($logPath . $currentDate . '.log', 'wb') or die('Unable to create log file!');
             fclose($file);
         }
         foreach ($files as $file) {
             if ($file === $currentDate) {
-                $logFile = fopen($currentDate . '.txt', 'ab') or die('Unable to open log file!');
+                $logFile = fopen($currentDate . '.log', 'ab') or die('Unable to open log file!');
                 fwrite($logFile, $newLine);
                 fclose($logFile);
             }

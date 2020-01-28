@@ -11,8 +11,8 @@
     "author": "Jonas Pfalzgraf",
     "page_title": "Web Application PHP",
     "copyright": "WAPS-Team",
-    "fav_icon": "/content/dist/img/fav.ico",
-    "logo": "/content/dist/img/fav.svg",
+    "fav_icon": "/dist/img/fav.ico",
+    "logo": "/dist/img/fav.svg",
     "domain": "localhost"
   },
   "database": {

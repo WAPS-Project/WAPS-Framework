@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.4.0
+
+### Various bug fixes
+
+### Adding migration system
+Adding a Migration System to automize Database migrations.
+
+### User Config Page
+Adding a User Config System the enables Users to manage their Data.
+It was built dynamically and can be expanded quickly if necessary.
+
+### A new Loader System
+Due to the necessity of asynchronous commands, the loader system was adapted to different scripts.
+
+### Crash Log System for the Error Handler
+Adding a Crash log system, that writes Log files.
+
+### Deploy CLI
+We have added the option for the automated deployment of projects, which required changes to the structure of the project folder.
+
+### Menue Wrapper
+Adding a function based on the Page Files Meta head to automatically generate Sub Menu's.
+
+
 ## 1.3.0
 
 ### Add heading selector

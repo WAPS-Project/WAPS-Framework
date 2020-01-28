@@ -6,7 +6,7 @@ Free spaces, cleaner syntax, comments, writing documentation as MD
 
 No one works on the Master Branch, results are only merged in these!
 
-###FEATURE
+### FEATURE
 It works with the ```FEATURE``` system, new sections are developed in features and as
 ```FEATURE/FeatureName``` created, upon completion, will be a pull request on the ```dev/main/unstable``` branch
 created. From this the ```TASKs``` of the ```FEATURE``` are created, in which the tasks are divided and done. Once enough features have been collected and tested in the unstable branch, a pull request will be applied to the

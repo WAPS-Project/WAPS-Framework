@@ -1,10 +1,10 @@
-# Webshop_PHP_Sample
+# WebApp_PHP_Sample
 
-<img src="./content/dist/img/fav.png" alt="FrameWork Logo" width="200" />
+<img src="./framework.src/dist/img/fav.png" alt="FrameWork Logo" width="200" />
 
 [![Generic badge](https://img.shields.io/badge/Lead_Developer-JosunLP-black.svg)](https://josunlp.de/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://gitlab.com/JosunLP)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://gitlab.com/JosunLP/webapp_php_sample/blob/master/LICENSE)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://gitlab.com/webapp-php-sample/framework/blob/master/LICENSE)
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Josunlp/webapp_php_sample/graphs/commit-activity)
 [![GitHub release](https://img.shields.io/github/tag/JosunLP/webapp_php_sample.svg)](https://github.com/JosunLP/webapp_php_sample/releases)

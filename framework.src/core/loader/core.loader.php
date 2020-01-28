@@ -2,9 +2,9 @@
 
 use webapp_php_sample_class\ConfigLoader;
 
-$classString = 'class/';
-$modelString = 'object/';
-$configString = 'config/';
+$classString = './class/';
+$modelString = './object/';
+$configString = './config/';
 
 $objFiles = array_diff(scandir($modelString), array('.', '..'));
 $classFiles = array_diff(scandir($classString), array('.', '..'));

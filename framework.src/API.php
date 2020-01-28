@@ -3,7 +3,7 @@
 use webapp_php_sample_class\JsonHandler;
 use webapp_php_sample_class\Main;
 
-include 'core/loader/basic.loader.php';
+include 'core/loader/core.loader.php';
 
 $APIString = 'core/API/';
 

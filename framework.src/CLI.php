@@ -2,7 +2,7 @@
 
 use webapp_php_sample_class\cli;
 
-include "core/loader/basic.loader.php";
+include "core/loader/core.loader.php";
 
 $CLIString = "./core/CLI/";
 

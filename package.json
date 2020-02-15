@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "sass framework.src/src/css/main.scss framework.src/dist/css/main.css --style compressed",
-    "build-css-w": "sass framework.src/src/css/main.scss framework.src/dist/css/main.css --watch",
+    "build-css": "sass framework.src/src/sass/main.sass framework.src/dist/css/main.css --style compressed",
+    "build-css-w": "sass framework.src/src/sass/main.sass framework.src/dist/css/main.css --watch",
     "build-js": "webpack",
     "build": "npm run build-css; npm run build-js",
     "build-win": "npm run build-css && npm run build-js"

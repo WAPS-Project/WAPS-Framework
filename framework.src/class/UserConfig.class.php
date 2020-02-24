@@ -153,6 +153,17 @@ class UserConfig
                 echo '</div>';
                 break;
 
+            case 'age':
+                echo '<div class="form-group">';
+                echo '<label class="label" for="Input' . $key . '"><i class="fas fa-user-tie"></i> ' . $key . ' </label>';
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                    name="' . $key . '"
+                    placeholder="Enter ' . $key . '"
+                    value="' . $value . '"
+                    required type="date">';
+                echo '</div>';
+                break;
+
             default:
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-user-tie"></i> ' . $key . ' </label>';

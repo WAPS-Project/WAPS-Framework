@@ -4,7 +4,7 @@ namespace webapp_php_sample_class;
 
 class SearchEngine
 {
-    public static function SearchQuest($searchGlobal, $link)
+    public static function SearchQuest($searchGlobal, $link): void
     {
         $words = explode(' ', $searchGlobal);
         $wordList = implode(', ', $words);
@@ -14,7 +14,8 @@ class SearchEngine
     }
 
 
-    public static function FormSearch($type, $name, $check, $link)
+    public static function FormSearch($type, $name, $check, $link): void
+
     {
         if ($check == "on") {
             $query = 'SELECT ' . $name . ' FROM ' . $type;

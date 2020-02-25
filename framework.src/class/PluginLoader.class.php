@@ -10,7 +10,7 @@ class PluginLoader
 {
     const PLUGIN_PATH = './custom/plugin/';
 
-    public static function loadPlugins()
+    public static function loadPlugins(): void
     {
         self::loadPluginConfig();
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
@@ -21,7 +21,7 @@ class PluginLoader
         }
     }
 
-    public static function loadPluginConfig()
+    public static function loadPluginConfig(): void
     {
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
         $configBundle = new pluginConfigBundle();

@@ -313,6 +313,6 @@ framework.dist/*
 framework.src/config/pagemap.config.json
 framework.src/config/plugin.config.json
 
-framework.src/dist/js/*
-framework.src/dist/css/*
+framework.src/content/js/*
+framework.src/content/css/*
 framework.src/node_modules/

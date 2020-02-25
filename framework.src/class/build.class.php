@@ -9,7 +9,7 @@ use RecursiveIteratorIterator;
 
 class build
 {
-    public static function copyFiles($source, $dest)
+    public static function copyFiles($source, $dest): void
     {
         if(is_dir($source)) {
             $dir = opendir($source);
@@ -31,7 +31,8 @@ class build
         }
     }
 
-    public static function setupDir($dirPath) {
+    public static function setupDir($dirPath): void
+    {
         if (!is_dir($dirPath) && !mkdir($dirPath, 0755, true) && !is_dir($dirPath)) {
             throw new \RuntimeException(sprintf('Directory "%s" was not created', $dirPath));
         }

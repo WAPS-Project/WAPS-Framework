@@ -6,13 +6,13 @@ namespace webapp_php_sample_class;
 
 class UserConfig
 {
-    public static function loadConfigTable()
+    public static function loadConfigTable(): void
     {
         self::tableGenerator();
         echo '<script>console.log("Config Page loaded")</script>';
     }
 
-    private static function tableGenerator()
+    private static function tableGenerator(): void
     {
         $userData = self::getUserData($_SESSION['login_User']);
 
@@ -85,7 +85,7 @@ class UserConfig
         return $userDataArray;
     }
 
-    private static function tableModule($key, $value)
+    private static function tableModule($key, $value): void
     {
 
         switch ($key) {
@@ -178,7 +178,7 @@ class UserConfig
         }
     }
 
-    public static function userDataRequest()
+    public static function userDataRequest(): void
     {
         $requestMode = Main::checkRequest('post', 'requestMode');
         $username = Main::checkRequest('post', 'userName');

@@ -6,7 +6,7 @@ namespace webapp_php_sample_class;
 
 class JsonHandler
 {
-    public static function FireSimpleJson($key, $value)
+    public static function FireSimpleJson($key, $value): void
     {
         $array = [[$key => $value]];
         $json = self::BuildJson($array);
@@ -22,7 +22,7 @@ class JsonHandler
         return json_encode($arrayMaster, JSON_THROW_ON_ERROR, 512);
     }
 
-    public static function FireComplexResponse($array)
+    public static function FireComplexResponse($array): void
     {
 
     }

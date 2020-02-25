@@ -30,7 +30,7 @@ Title: false;
     </div>
     <div class="form-group">
         <label class="label" for="InputAge"><i class="fas fa-birthday-cake"></i> Alter</label>
-        <input type="number" name="age" min="1" max="150" class="form-control input" id="InputAge"
+        <input type="date" name="age" min="1" max="150" class="form-control input" id="InputAge"
                aria-describedby="age"
                placeholder="Enter Age" required>
     </div>

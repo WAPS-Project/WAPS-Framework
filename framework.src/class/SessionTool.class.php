@@ -59,37 +59,26 @@ class SessionTool
         $firstName = filter_var(Main::checkRequest('post', 'firstName'), FILTER_SANITIZE_STRING);
         $secondName = filter_var(Main::checkRequest('post', 'lastName'), FILTER_SANITIZE_STRING);
         $email = filter_var(Main::checkRequest('post', 'email'), FILTER_SANITIZE_EMAIL);
-        $age = filter_var(Main::checkRequest('post', 'age'), FILTER_SANITIZE_NUMBER_INT);
+        $age = Main::checkRequest('post', 'age');
         $password = filter_var(Main::checkRequest('post', 'pw'), FILTER_SANITIZE_STRING);
-        $check = Main::checkRequest('post', 'check');
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
-        if ($check === "on") {
-            if ($age >= 18) {
-                $ageID = 5;
-            } elseif ($age >= 16 && $age < 18) {
-                $ageID = 4;
-            } elseif ($age >= 12 && $age < 16) {
-                $ageID = 3;
-            } elseif ($age >= 6 && $age < 12) {
-                $ageID = 2;
-            } elseif ($age >= 0 && $age < 6) {
-                $ageID = 1;
-            }
 
-            $queryUSID = "SELECT MAX(UID) AS 'ID' FROM usr;";
+        $age = implode('-', array_reverse(explode('.', $age)));
 
-            if ($result = mysqli_query($db_link, $queryUSID)) {
+        $queryUSID = "SELECT MAX(UID) AS 'ID' FROM usr;";
 
-                while ($obj = mysqli_fetch_array($result)) {
+        if ($result = mysqli_query($db_link, $queryUSID)) {
 
-                    $USID = $obj['ID'] + 1;
-                    $query = "INSERT INTO usr ( userName, firstName, lastName, email, userRank, AID ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', $ageID );";
+            while ($obj = mysqli_fetch_array($result)) {
 
-                    $query2 = "INSERT INTO passWd ( passwort, UID) VALUES ( '$pwSave', $USID);";
+                $USID = $obj['ID'] + 1;
+                $query = "INSERT INTO usr ( userName, firstName, lastName, email, userRank, age ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', '$age' );";
 
-                    $db_link->query($query);
-                    $db_link->query($query2);
-                }
+                $query2 = "INSERT INTO passWd ( passwort, UID) VALUES ( '$pwSave', $USID);";
+
+                $db_link->query($query);
+                $db_link->query($query2);
+
             }
         }
         mysqli_close($db_link);

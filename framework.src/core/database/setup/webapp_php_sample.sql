@@ -1,7 +1,4 @@
 USE `webapp_php_sample`;
-
-
-
 -- --------------------------------------------------------
 
 --
@@ -19,16 +16,6 @@ CREATE TABLE ipLogg
     PRIMARY KEY (IPID)
 );
 
---
--- Tabellenstruktur für Tabelle `FSK_Table`
---
-
-CREATE TABLE fsk_table
-(
-    AID int NOT NULL AUTO_INCREMENT,
-    FSK int,
-    PRIMARY KEY (AID)
-);
 
 --
 -- Tabellenstruktur für Tabelle `user`
@@ -81,25 +68,12 @@ CREATE TABLE migrations
 -- --------------------------------------------------------
 
 --
--- Einfügen der FSK werte
---
-
-INSERT INTO fsk_table (FSK)
-VALUES (0),
-       (6),
-       (12),
-       (16),
-       (18)
-;
-
-
---
 -- Einfügen des Admin Acounts
 --
 
 INSERT INTO usr (UID, userName, firstName, lastName, email, userRank, age)
-VALUES (1, 'Admin', 'Admin', 'Admin', 'admin@email.de', 'Admin', '01.01.1111'),
-       (2, 'Tester1', 'Tester1', 'Tester1', 'test1@email.de', 'User', '01.01.1111')
+VALUES (1, 'Admin', 'Admin', 'Admin', 'admin@email.de', 'Admin', '1997-03-06'),
+       (2, 'Tester1', 'Tester1', 'Tester1', 'test1@email.de', 'User', '1997-03-06')
 ;
 
 --

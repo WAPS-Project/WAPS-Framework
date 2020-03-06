@@ -11,7 +11,7 @@ use webapp_php_sample_class\PluginLoader;
     <meta name="viewport" content="user-scalable=no">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo FAV_ICON ?>">
     <title><?php echo PAGE_TITLE . ' - ' . $pageName; ?></title>
-    <script src="/dist/js/main.js"></script>
-    <link rel="stylesheet" href="/dist/css/main.css">
+    <script src="/content/js/main.js"></script>
+    <link rel="stylesheet" href="/content/css/main.css">
     <?php PluginLoader::loadPlugins(); ?>
 </head>

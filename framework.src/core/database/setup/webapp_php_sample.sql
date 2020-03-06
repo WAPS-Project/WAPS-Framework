@@ -1,7 +1,4 @@
 USE `webapp_php_sample`;
-
-
-
 -- --------------------------------------------------------
 
 --
@@ -19,16 +16,6 @@ CREATE TABLE ipLogg
     PRIMARY KEY (IPID)
 );
 
---
--- Tabellenstruktur für Tabelle `FSK_Table`
---
-
-CREATE TABLE fsk_table
-(
-    AID int NOT NULL AUTO_INCREMENT,
-    FSK int,
-    PRIMARY KEY (AID)
-);
 
 --
 -- Tabellenstruktur für Tabelle `user`
@@ -42,9 +29,8 @@ CREATE TABLE usr
     lastName  text CHARACTER SET utf8 NOT NULL,
     email     text CHARACTER SET utf8 NOT NULL,
     userRank  text CHARACTER SET utf8 NOT NULL,
-    AID       int(5)                  NOT NULL,
-    PRIMARY KEY (UID),
-    CONSTRAINT FK_AID FOREIGN KEY (AID) REFERENCES fsk_table (AID)
+    age       date                 NOT NULL,
+    PRIMARY KEY (UID)
 );
 
 
@@ -82,25 +68,12 @@ CREATE TABLE migrations
 -- --------------------------------------------------------
 
 --
--- Einfügen der FSK werte
---
-
-INSERT INTO fsk_table (FSK)
-VALUES (0),
-       (6),
-       (12),
-       (16),
-       (18)
-;
-
-
---
 -- Einfügen des Admin Acounts
 --
 
-INSERT INTO usr (UID, userName, firstName, lastName, email, userRank, AID)
-VALUES (1, "Admin", "Admin", "Admin", 'admin@email.de', "Admin", 5),
-       (2, "Tester1", "Tester1", "Tester1", 'test1@email.de', "User", 1)
+INSERT INTO usr (UID, userName, firstName, lastName, email, userRank, age)
+VALUES (1, 'Admin', 'Admin', 'Admin', 'admin@email.de', 'Admin', '1997-03-06'),
+       (2, 'Tester1', 'Tester1', 'Tester1', 'test1@email.de', 'User', '1997-03-06')
 ;
 
 --
@@ -108,6 +81,6 @@ VALUES (1, "Admin", "Admin", "Admin", 'admin@email.de', "Admin", 5),
 --
 
 INSERT INTO passWd (PWID, UID, passwort)
-VALUES (1, 1, "$2y$10$BtaQ1/t3pcDlT1kRb8j79eeSGpW0QINqG6vEtwvvKk17o1ASn7vaq"),
-       (2, 2, "$2y$10$BFL5Qd.ETHD9KvADTQ3o8OHbXBvLJJJSzmvFkS8P76.bPrYz4mrQ6")
+VALUES (1, 1, '$2y$10$BtaQ1/t3pcDlT1kRb8j79eeSGpW0QINqG6vEtwvvKk17o1ASn7vaq'),
+       (2, 2, '$2y$10$BFL5Qd.ETHD9KvADTQ3o8OHbXBvLJJJSzmvFkS8P76.bPrYz4mrQ6')
 ;

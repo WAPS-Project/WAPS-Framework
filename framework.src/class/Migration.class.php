@@ -8,7 +8,7 @@ use Exception;
 
 class Migration
 {
-    public static function listMigrations()
+    public static function listMigrations(): void
     {
         $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
         if ($files !== null) {
@@ -22,7 +22,7 @@ class Migration
         echo "\n";
     }
 
-    public static function createSimpleModelMigration()
+    public static function createSimpleModelMigration(): void
     {
         $path = './core/database/model/';
         $migrationPath = './core/database/migrations/';
@@ -82,7 +82,7 @@ class Migration
         }
     }
 
-    public static function createMigration($migrationName, $mode, $tableName, $rows, $values, $valueString)
+    public static function createMigration($migrationName, $mode, $tableName, $rows, $values, $valueString): void
     {
         $migrationPreset = date('YmdHis');
         $migrationFileName = $migrationPreset . '_' . $migrationName . '.migration.json';

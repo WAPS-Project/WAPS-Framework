@@ -32,7 +32,7 @@ while ($command !== 'exit') {
             build::setupDir('../framework.dist');
             build::copyFiles('../framework.src/class', '../framework.dist/class');
             build::copyFiles('../framework.src/config', '../framework.dist/config');
-            build::copyFiles('../framework.src/dist', '../framework.dist/dist');
+            build::copyFiles('../framework.src/content', '../framework.dist/content');
             build::copyFiles('../framework.src/core', '../framework.dist/core');
             build::copyFiles('../framework.src/custom', '../framework.dist/custom');
             build::copyFiles('../framework.src/object', '../framework.dist/object');

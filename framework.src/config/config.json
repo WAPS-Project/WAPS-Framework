@@ -12,7 +12,7 @@
     "page_title": "Web Application PHP",
     "copyright": "WAPS-Team",
     "fav_icon": "/dist/img/fav.ico",
-    "logo": "/dist/img/fav.svg",
+    "logo": "/content/img/fav.svg",
     "domain": "localhost"
   },
   "database": {

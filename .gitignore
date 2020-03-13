@@ -316,3 +316,5 @@ framework.src/config/plugin.config.json
 framework.src/content/js/*
 framework.src/content/css/*
 framework.src/node_modules/
+
+package-lock.json

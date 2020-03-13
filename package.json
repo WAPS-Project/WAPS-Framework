@@ -8,8 +8,8 @@
     "build-css": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --style compressed",
     "build-css-w": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --watch",
     "build-js": "webpack",
-    "build": "npm run build-css; npm run build-js",
-    "build-win": "npm run build-css && npm run build-js"
+    "build": "npm run build-css && npm run build-js",
+    "deploy": "deploy.sh"
   },
   "repository": {
     "type": "git",
@@ -22,15 +22,9 @@
   },
   "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
   "dependencies": {
-    "@types/bootstrap": "^4.3.1",
-    "@types/jquery": "^3.3.33",
-    "@types/node": "^12.12.30",
-    "@types/popper.js": "^1.11.0",
     "bootstrap": "^4.4.1",
-    "core-js": "^3.6.4",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
-    "sass": "^1.26.3",
     "sweetalert2": "^8.19.0"
   },
   "devDependencies": {
@@ -39,9 +33,15 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-typescript": "^7.8.3",
     "@fortawesome/fontawesome-free": "^5.12.1",
+    "@types/bootstrap": "^4.3.1",
+    "@types/jquery": "^3.3.33",
+    "@types/node": "^12.12.30",
+    "@types/popper.js": "^1.11.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "core-js": "^3.6.4",
+    "sass": "^1.26.3",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.0",

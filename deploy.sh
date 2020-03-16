@@ -1,4 +1,4 @@
-DEPLOY_TARGET=./framework.dist
+DEPLOY_TARGET=../../../../../opt/lampp/htdocs
 
 rm -rf $DEPLOY_TARGET
 mkdir $DEPLOY_TARGET

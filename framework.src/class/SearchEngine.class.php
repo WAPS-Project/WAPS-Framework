@@ -4,35 +4,39 @@ namespace webapp_php_sample_class;
 
 class SearchEngine
 {
-    public static function search($searchString): object {
-        $searchList = self::searchQuest($searchString);
+    public static function search($searchString): void
+    {
+        $searchList = self::searchFilter($searchString);
         $pageContent = self::pageQuery();
     }
 
-    private static function searchQuest($searchGlobal): array
+    private static function searchFilter($searchGlobal): array
     {
-        $words = explode(' ', $searchGlobal);
-        return explode(', ',
+        return explode('|',
             implode('',
                 array_diff(
                     str_split(
                         filter_var(
-                            implode(', ', $words), FILTER_SANITIZE_STRING)),
-                        DEFAULT_SEARCH_FILTER)));
+                            implode('|', explode(' ', $searchGlobal)), FILTER_SANITIZE_STRING)),
+                    DEFAULT_SEARCH_FILTER)));
     }
 
-    private static function pageQuery() {
+    private static function pageQuery(): array
+    {
         $path = './page/open/';
         $pages = array_diff(scandir($path), DEFAULT_FILE_FILTER);
-        $firstResult = [];
+        $result = [];
 
         foreach ($pages as $page) {
-            $pageParts = explode('.', $page);
-            $pageName = $pageParts[0];
-            $fileContent = self::searchQuest(file_get_contents($path . $page));
-            $firstResult[] = [$pageName => $fileContent];
+            $pParts = explode('.', $page);
+            $pName = $pParts[0];
+
+            $f = fopen($path . $page, 'rb');
+            $fContent = self::searchFilter(fread($f, filesize($path . $page)));
+            $result[] = [$pName => $fContent];
+            fclose($f);
         }
 
-        return $firstResult;
+        return $result;
     }
 }

@@ -4,32 +4,35 @@ namespace webapp_php_sample_class;
 
 class SearchEngine
 {
-    public static function SearchQuest($searchGlobal, $link): void
-    {
-        $words = explode(' ', $searchGlobal);
-        $wordList = implode(', ', $words);
-        $wordCheck = implode(' ', $words);
-        $query = 'SELECT * FROM Generator WHERE ' . $wordList . ' LIKE ' . $wordCheck;
-        //var_dump($query);
+    public static function search($searchString): object {
+        $searchList = self::searchQuest($searchString);
+        $pageContent = self::pageQuery();
     }
 
-
-    public static function FormSearch($type, $name, $check, $link): void
-
+    private static function searchQuest($searchGlobal): array
     {
-        if ($check == "on") {
-            $query = 'SELECT ' . $name . ' FROM ' . $type;
-            if ($result = mysqli_query($link, $query)) {
-                /* fetch associative array */
-                while ($obj = mysqli_fetch_array($result)) {
-                    $array_name = $obj[1];
-                    $array_link = $obj[2];
-                    $array_img = $obj[3];
-                    //var_dump($array_link);
-                    //printf("<figure class='product_gallery' > <a href='%s' target='_selfe'><img src=%s class='img_gallery'  alt=""><figcaption>%s</figcaption></a></figure>", $array_link, $array_img, $array_name);
-                }
-            }
-            mysqli_free_result($result);
+        $words = explode(' ', $searchGlobal);
+        return explode(', ',
+            implode('',
+                array_diff(
+                    str_split(
+                        filter_var(
+                            implode(', ', $words), FILTER_SANITIZE_STRING)),
+                        DEFAULT_SEARCH_FILTER)));
+    }
+
+    private static function pageQuery() {
+        $path = './page/open/';
+        $pages = array_diff(scandir($path), DEFAULT_FILE_FILTER);
+        $firstResult = [];
+
+        foreach ($pages as $page) {
+            $pageParts = explode('.', $page);
+            $pageName = $pageParts[0];
+            $fileContent = self::searchQuest(file_get_contents($path . $page));
+            $firstResult[] = [$pageName => $fileContent];
         }
+
+        return $firstResult;
     }
 }

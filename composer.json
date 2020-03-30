@@ -1,9 +1,9 @@
 {
   "name": "webapp_php_sample/framework",
-  "description": "A framework based on PHP and Apache for quickly setting up small website projects",
+  "description": "A framework for developing WebApps based on PHP and Apache",
   "license": "MIT",
   "type": "framework",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "homepage": "https://gitlab.com/webapp_php_sample/framework#readme",
   "scripts": {
     "cli": "php CLI.php"

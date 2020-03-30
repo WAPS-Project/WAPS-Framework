@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.5.0
+
+### Various bug fixes
+
+### New Config File Head
+Changed structure of the config file head.
+
+### XML/JSON converter
+A class, that provides methods for 
+converting `json` strings into `xml` strings and back.
+
+### SCSS to SASS rework
+Reworking `SCSS` code to `SASS` code.
+
+### Removal of the sample age system
+
+
 ## 1.4.0
 
 ### Various bug fixes

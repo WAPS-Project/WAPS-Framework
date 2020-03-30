@@ -22,6 +22,7 @@ It's designed to make small future projects faster and easier. This entire frame
     - [Packet management](#packet-management)
         - [NPM](#npm)
 - [Set up a project](#set-up-a-project)
+- [Wiki](#Wiki)
 
 ## Dependencies
 ### Server
@@ -103,3 +104,6 @@ At the same time, menu entries are automatically generated from the pages in the
 
 To create a new class, it must be created in the ```./class``` folder. Classes are loaded automatically, it is not necessary to do anymore. The namespace of the classes is ```webapp_php_sample_class```.
 
+
+#### Wiki
+You can find more details about the framework in the -> [Wiki](#) (under construction)

@@ -6,13 +6,13 @@ namespace webapp_php_sample_class;
 
 class UserConfig
 {
-    public static function loadConfigTable()
+    public static function loadConfigTable(): void
     {
         self::tableGenerator();
         echo '<script>console.log("Config Page loaded")</script>';
     }
 
-    private static function tableGenerator()
+    private static function tableGenerator(): void
     {
         $userData = self::getUserData($_SESSION['login_User']);
 
@@ -85,7 +85,7 @@ class UserConfig
         return $userDataArray;
     }
 
-    private static function tableModule($key, $value)
+    private static function tableModule($key, $value): void
     {
 
         switch ($key) {
@@ -153,6 +153,17 @@ class UserConfig
                 echo '</div>';
                 break;
 
+            case 'age':
+                echo '<div class="form-group">';
+                echo '<label class="label" for="Input' . $key . '"><i class="fas fa-user-tie"></i> ' . $key . ' </label>';
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                    name="' . $key . '"
+                    placeholder="Enter ' . $key . '"
+                    value="' . $value . '"
+                    required type="date">';
+                echo '</div>';
+                break;
+
             default:
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-user-tie"></i> ' . $key . ' </label>';
@@ -167,7 +178,7 @@ class UserConfig
         }
     }
 
-    public static function userDataRequest()
+    public static function userDataRequest(): void
     {
         $requestMode = Main::checkRequest('post', 'requestMode');
         $username = Main::checkRequest('post', 'userName');

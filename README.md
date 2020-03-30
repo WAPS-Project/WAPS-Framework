@@ -1,14 +1,13 @@
 # WebApp_PHP_Sample
 
-<img src="./framework.src/dist/img/fav.png" alt="FrameWork Logo" width="200" />
+<img src="./framework.src/content/img/fav.png" alt="FrameWork Logo" width="200" />
 
-[![Generic badge](https://img.shields.io/badge/Lead_Developer-JosunLP-black.svg)](https://josunlp.de/)
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://gitlab.com/JosunLP)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://gitlab.com/webapp-php-sample/framework/blob/master/LICENSE)
-[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Josunlp/webapp_php_sample/graphs/commit-activity)
-[![GitHub release](https://img.shields.io/github/tag/JosunLP/webapp_php_sample.svg)](https://github.com/JosunLP/webapp_php_sample/releases)
-[![Generic badge](https://img.shields.io/badge/Made_with-PHP-blue.svg)](https://www.php.net/)
+[![Generic badge](https://img.shields.io/badge/Lead_Developer-JosunLP-black.svg?style=for-the-badge)](https://josunlp.de/)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg?style=for-the-badge)](https://gitlab.com/JosunLP)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://gitlab.com/webapp-php-sample/framework/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/WebApp-PHP-Sample-Project/WepApp-PHP-Sample-Framework/graphs/commit-activity)
+[![GitHub release](https://img.shields.io/github/tag/JosunLP/webapp_php_sample.svg?style=for-the-badge)](https://github.com/WebApp-PHP-Sample-Project/WepApp-PHP-Sample-Framework/releases)
+[![Generic badge](https://img.shields.io/badge/Made_with-PHP-blue.svg?style=for-the-badge)](https://www.php.net/)
 
 ### A PHP web app framework.
 
@@ -23,6 +22,7 @@ It's designed to make small future projects faster and easier. This entire frame
     - [Packet management](#packet-management)
         - [NPM](#npm)
 - [Set up a project](#set-up-a-project)
+- [Wiki](#Wiki)
 
 ## Dependencies
 ### Server
@@ -104,3 +104,6 @@ At the same time, menu entries are automatically generated from the pages in the
 
 To create a new class, it must be created in the ```./class``` folder. Classes are loaded automatically, it is not necessary to do anymore. The namespace of the classes is ```webapp_php_sample_class```.
 
+
+#### Wiki
+You can find more details about the framework in the -> [Wiki](#) (under construction)

@@ -1,18 +1,24 @@
 {
   "head": {
     "title": "configFile",
-    "version": "1.4.0"
+    "version": "1.0.0",
+    "app_name": "Example Web App",
+    "framework_info": {
+      "framework_name": "WAPS-Framework",
+      "framework_version": "1.5.0",
+      "framework_repository": "https://gitlab.com/webapp-php-sample/framework"
+    }
   },
   "metaData": {
     "charset": "utf8",
     "language": "de_DE",
     "description": "Example Web App",
     "keywords": "PHP,HTMl,XML,JavaScript,CSS,APP",
-    "author": "Jonas Pfalzgraf",
+    "author": "Max Mustermann",
     "page_title": "Web Application PHP",
     "copyright": "WAPS-Team",
-    "fav_icon": "/dist/img/fav.ico",
-    "logo": "/dist/img/fav.svg",
+    "fav_icon": "/content/img/fav.ico",
+    "logo": "/content/img/fav.svg",
     "domain": "localhost"
   },
   "database": {
@@ -22,10 +28,8 @@
     "mysql_keyword": "",
     "database_table_list": [
       "iplogg",
-      "fsk_table",
       "usr",
-      "passwd",
-      "fsk_table"
+      "passwd"
     ]
   },
   "mailConfig": {

@@ -6,7 +6,7 @@ namespace webapp_php_sample_class;
 
 class cli
 {
-    public static function designLine()
+    public static function designLine(): void
     {
         echo "\n--------------------------------------------------------------\n";
     }
@@ -17,7 +17,7 @@ class cli
         return readline('$ ');
     }
 
-    public static function designHelp($helpEntries)
+    public static function designHelp($helpEntries): void
     {
         echo "\n";
         foreach ($helpEntries as $helpName => $helpEntry) {
@@ -25,7 +25,7 @@ class cli
         }
     }
 
-    public static function checkIfCli()
+    public static function checkIfCli(): void
     {
         if (PHP_SAPI !== 'cli') {
             ErrorHandler::FireCLIError('No CLI Error', 'The Interface you use isn\'t a valid CL');

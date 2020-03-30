@@ -9,7 +9,7 @@ use webapp_php_sample_obj\pageObj;
 
 class StartUp
 {
-    public static function loadPages()
+    public static function loadPages(): string
     {
         $files = self::dirCheck('page/open/');
 
@@ -77,7 +77,7 @@ class StartUp
         return $files;
     }
 
-    public static function checkDatabaseStatus()
+    public static function checkDatabaseStatus(): void
     {
         $databaseLink = self::loadDatabase();
         $sqlFile = fopen('core/database/setup/webapp_php_sample.sql', 'rb');

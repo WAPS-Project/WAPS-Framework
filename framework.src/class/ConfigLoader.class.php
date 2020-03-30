@@ -6,11 +6,11 @@ namespace webapp_php_sample_class;
 
 class ConfigLoader
 {
-    public static function loadConfig($path)
+    public static function loadConfig($path): void
     {
         $config = self::validateConfig($path);
 
-        if ($config != false) {
+        if ($config !== false) {
 
             foreach ($config as $firstLevel) {
                 foreach ($firstLevel as $key => $value) {

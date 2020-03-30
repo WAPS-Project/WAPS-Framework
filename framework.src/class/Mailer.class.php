@@ -8,7 +8,7 @@ use Exception;
 
 class Mailer
 {
-    public static function createMail($targetAddress, $subject, $message, $mode)
+    public static function createMail($targetAddress, $subject, $message, $mode): void
     {
         $header = "MIME-Version: 1.0\r\n";
         $header .= "Content-type: text/html; charset=utf-8\r\n";
@@ -27,7 +27,7 @@ class Mailer
 
             case MAIL_SUPPORT:
             {
-                $header .= 'From: ' . MAIL_SUPPORT . '@' .DOMAIN . "\r\n";
+                $header .= 'From: ' . MAIL_SUPPORT . '@' . DOMAIN . "\r\n";
                 $header .= 'Reply-To: ' . MAIL_SUPPORT . '@' . DOMAIN . "\r\n";
             }
         }

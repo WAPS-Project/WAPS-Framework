@@ -29,7 +29,7 @@ CREATE TABLE usr
     lastName  text CHARACTER SET utf8 NOT NULL,
     email     text CHARACTER SET utf8 NOT NULL,
     userRank  text CHARACTER SET utf8 NOT NULL,
-    age       date                 NOT NULL,
+    age       date                    NOT NULL,
     PRIMARY KEY (UID)
 );
 

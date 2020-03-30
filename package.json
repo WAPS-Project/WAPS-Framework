@@ -9,7 +9,7 @@
     "build-css-w": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --watch",
     "build-js": "webpack",
     "build": "npm run build-css && npm run build-js",
-    "deploy": "deploy.sh"
+    "deploy": "npm run build && deploy.sh"
   },
   "repository": {
     "type": "git",
@@ -33,9 +33,9 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-typescript": "^7.8.3",
     "@fortawesome/fontawesome-free": "^5.12.1",
-    "@types/bootstrap": "^4.3.1",
-    "@types/jquery": "^3.3.33",
-    "@types/node": "^12.12.30",
+    "@types/bootstrap": "^4.3.2",
+    "@types/jquery": "^3.3.34",
+    "@types/node": "^12.12.32",
     "@types/popper.js": "^1.11.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",

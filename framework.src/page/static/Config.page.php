@@ -6,7 +6,6 @@ Title: false;
 */
 
 
-use webapp_php_sample_class\DatabaseHandler;
 use webapp_php_sample_class\UserConfig;
 
 if (!isset($_SESSION['login_User'])) {

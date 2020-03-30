@@ -1,5 +1,8 @@
 <?php
+
 namespace webapp_php_sample_class;
+
+use RuntimeException;
 
 /**
  * Class ErrorHandler
@@ -61,7 +64,7 @@ class ErrorHandler
      */
     private static function WriteLogLine($key, $message): string
     {
-        $clientIp = Main::checkRequest('post','ip');
+        $clientIp = Main::checkRequest('post', 'ip');
         $ip = Main::getRealIp();
         $currentDate = date('Y.m.d_H:i:s');
         return '[' . $currentDate . ']:  (' . $clientIp . '/' . $ip . ') - Error Key: ' . $key . ' | Error Message: ' . $message . ' ;';
@@ -105,7 +108,7 @@ class ErrorHandler
     {
         if ($weight >= 3 && $isFatal) {
             self::CreateLog($type, $message);
-            throw new \RuntimeException("<script>Swal.fire({type: 'error', title: '$type', text: '$message . This is a fatal Error!', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>");
+            throw new RuntimeException("<script>Swal.fire({type: 'error', title: '$type', text: '$message . This is a fatal Error!', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>");
         }
 
         if ($weight <= 3 && !$isFatal) {

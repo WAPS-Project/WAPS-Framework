@@ -3,8 +3,8 @@
     "title": "configFile",
     "version": "1.0.0",
     "app_name": "Example Web App",
-    "framework_info" : {
-      "framework_name" : "WAPS-Framework",
+    "framework_info": {
+      "framework_name": "WAPS-Framework",
       "framework_version": "1.4.0"
     }
   },

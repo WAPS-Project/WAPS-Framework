@@ -27,7 +27,7 @@ class Mailer
 
             case MAIL_SUPPORT:
             {
-                $header .= 'From: ' . MAIL_SUPPORT . '@' .DOMAIN . "\r\n";
+                $header .= 'From: ' . MAIL_SUPPORT . '@' . DOMAIN . "\r\n";
                 $header .= 'Reply-To: ' . MAIL_SUPPORT . '@' . DOMAIN . "\r\n";
             }
         }

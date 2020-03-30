@@ -6,15 +6,16 @@ namespace webapp_php_sample_class;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use RuntimeException;
 
 class build
 {
     public static function copyFiles($source, $dest): void
     {
-        if(is_dir($source)) {
+        if (is_dir($source)) {
             $dir = opendir($source);
             if (!mkdir($dest) && !is_dir($dest)) {
-                throw new \RuntimeException(sprintf('Directory "%s" was not created', $dest));
+                throw new RuntimeException(sprintf('Directory "%s" was not created', $dest));
             }
             while (($file = readdir($dir))) {
                 if (($file !== '.') && ($file !== '..')) {
@@ -34,13 +35,13 @@ class build
     public static function setupDir($dirPath): void
     {
         if (!is_dir($dirPath) && !mkdir($dirPath, 0755, true) && !is_dir($dirPath)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $dirPath));
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $dirPath));
         }
         $it = new RecursiveDirectoryIterator($dirPath, RecursiveDirectoryIterator::SKIP_DOTS);
         $files = new RecursiveIteratorIterator($it,
             RecursiveIteratorIterator::CHILD_FIRST);
-        foreach($files as $file) {
-            if ($file->isDir()){
+        foreach ($files as $file) {
+            if ($file->isDir()) {
                 rmdir($file->getRealPath());
             } else {
                 unlink($file->getRealPath());
@@ -48,7 +49,7 @@ class build
         }
         rmdir($dirPath);
         if (!file_exists($dirPath) && !mkdir($dirPath, 0755, true) && !is_dir($dirPath)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $dirPath));
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $dirPath));
         }
     }
 

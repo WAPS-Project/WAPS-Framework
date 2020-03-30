@@ -1,7 +1,7 @@
 {
-  "name": "webapp_php_sample",
-  "version": "1.4.0",
-  "description": "Ein auf PHP und Apache Basierendes System zum schnellen aufsetzen von kleinen Website Projekten",
+  "name": "webapp_php_sample-framework",
+  "version": "1.5.0",
+  "description": "Ein auf PHP und Apache basierendes Framework zum Entwickeln von WebApps",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

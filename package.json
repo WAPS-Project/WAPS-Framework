@@ -8,7 +8,7 @@
     "build-css": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --style compressed",
     "build-css-w": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --watch",
     "build-js": "webpack",
-    "build": "npm run build-css && npm run build-js",
+    "build": "npm run build-css && webpack",
     "deploy": "npm run build && deploy.sh"
   },
   "repository": {

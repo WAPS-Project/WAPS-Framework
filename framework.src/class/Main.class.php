@@ -147,14 +147,6 @@ class Main
             return 'Home';
         }
 
-        if ($name === 'Impressum') {
-            return 'Impressum';
-        }
-
-        if ($name === 'Login') {
-            return 'Login';
-        }
-
         foreach ($pageFiles as $file) {
             $f = explode('.', $file);
             if ($name === $f[0]) {

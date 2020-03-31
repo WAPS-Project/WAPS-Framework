@@ -4,7 +4,7 @@
 namespace webapp_php_sample_class;
 
 
-class cli
+class Cli
 {
     public static function designLine(): void
     {

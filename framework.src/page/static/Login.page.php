@@ -1,5 +1,10 @@
 <?php
 
+/*
+PAGEINFO
+Title: false;
+*/
+
 use webapp_php_sample_class\Main;
 use webapp_php_sample_class\SessionTool;
 use webapp_php_sample_class\StartUp;

@@ -8,7 +8,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RuntimeException;
 
-class build
+class Build
 {
     public static function copyFiles($source, $dest): void
     {

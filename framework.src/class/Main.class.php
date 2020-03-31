@@ -69,7 +69,6 @@ class Main
             $active = '';
             $current = '';
 
-
             if ($pageName === $pageObj->Name) {
                 echo "<span class='sr-only'>(current)</span>";
             }
@@ -130,45 +129,38 @@ class Main
         }
     }
 
-    public static function validatePage($pageName): string
+    public static function getPageNameFromPath($pagePath): string
     {
-        if ($pageName === 'NO ENTRY') {
-            return 'page/open/Home.page.php';
-        }
-
-        return 'page/open/' . $pageName . '.page.php';
+        $parts = explode('/', $pagePath);
+        $file = $parts[2];
+        $parts = explode('.', $file);
+        return $parts[0];
     }
 
     public static function validateHome($name): string
     {
-        $pageFiles = scandir('page/open/');
-        $pageFilesStatic = scandir('page/static/');
+        $open = 'page/open/';
+        $static = 'page/static/';
+        $fileEnding = '.page.php';
+        $pageFiles = scandir($open);
+        $pageFilesStatic = scandir($static);
         if ($name === '') {
-            return 'Home';
+            return $open . 'Home' . $fileEnding;
         }
 
         foreach ($pageFiles as $file) {
             $f = explode('.', $file);
             if ($name === $f[0]) {
-                return $name;
+                return $open . $name . $fileEnding;
             }
         }
         foreach ($pageFilesStatic as $file) {
             $f = explode('.', $file);
             if ($name === $f[0]) {
-                return $name;
+                return $static . $name . $fileEnding;
             }
         }
-        return 'Error_404';
-    }
-
-    public static function validateName($pageName): string
-    {
-        if ($pageName === 'NO ENTRY') {
-            return 'Home';
-        }
-
-        return $pageName;
+        return $static . 'Error_404' . $fileEnding;
     }
 
     public static function validateFile($path): array

@@ -2,14 +2,14 @@ class ConfigMapLoader {
 
     async main() {
         while (true) {
-            await this.wait(50000);
+            await this.wait(500000);
             this.request("pageList");
             this.request("pluginList");
-            await this.wait(50000);
+            await this.wait(500000);
         }
     }
 
-    wait(time) {
+    wait(time:number) {
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve();
@@ -17,7 +17,7 @@ class ConfigMapLoader {
         });
     }
 
-    request(command) {
+    request(command:string) {
         $.post('/API.php?apiMode=service', {svmode: command}, function (data) {
             console.log('Event: ' + data);
         })

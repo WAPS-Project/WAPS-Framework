@@ -26,5 +26,8 @@ Title: false;
         <label class="label-small form-check-label input" for="Check"><a href="#">Nutzungsbedingungen</a>
             zustimmen.</label>
     </div>
+    <label hidden>
+        <input name="requestMode" value="login" hidden>
+    </label>
     <button type="submit" class="btn btn-primary">Bestätigen</button>
 </form>

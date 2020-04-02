@@ -2,7 +2,7 @@
 
 window.$ = require('jquery');
 window.jQuery = require('jquery');
-require('popper.js');
+require('@popperjs/core');
 require('@fortawesome/fontawesome-free/js/all');
 require('bootstrap');
 window.Swal = require('sweetalert2');

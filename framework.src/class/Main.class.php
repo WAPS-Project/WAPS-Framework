@@ -184,7 +184,7 @@ class Main
     {
         $url = $_SERVER['REQUEST_URI'];
         $url = explode('/', $url);
-        $page = $url[1];
+        $page = ucfirst($url[1]);
         if (isset($url[2])) {
             return 'Error_404';
         }

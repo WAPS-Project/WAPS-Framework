@@ -13,8 +13,20 @@ $lg = 'page/private/Lg.page.php';
 $rg = 'page/private/Pg.page.php';
 $lc = 'page/private/Lchoice.page.php';
 $st = Main::checkRequest('post', 'st');
-SessionTool::LoginUser(StartUp::loadDatabase());
-SessionTool::AddUser(StartUp::loadDatabase());
+
+switch (Main::checkRequest('post', 'requestMode')) {
+    case 'login':
+        SessionTool::LoginUser(StartUp::loadDatabase());
+        break;
+
+    case 'add':
+        SessionTool::AddUser(StartUp::loadDatabase());
+        break;
+
+    default:
+        break;
+}
+
 
 if ($st === 'login') {
     include $lg;

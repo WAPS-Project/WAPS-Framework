@@ -1,6 +1,6 @@
 <?php
 
-use webapp_php_sample_class\cli;
+use webapp_php_sample_class\Cli;
 
 include "core/loader/core.loader.php";
 
@@ -8,7 +8,7 @@ $CLIString = "./core/CLI/";
 
 $CLIFiles = array_diff(scandir($CLIString), DEFAULT_FILE_FILTER);
 
-cli::checkIfCli();
+Cli::checkIfCli();
 
 $command = null;
 
@@ -26,7 +26,7 @@ $mode = readline("Please insert the cli mode you want to use: \n");
 while (!in_array($mode . ".CLI.php", $CLIFiles)) {
     echo "The command you used is invalid \n";
 
-    $mode = cli::designInput();
+    $mode = Cli::designInput();
 }
 
 foreach ($CLIFiles as $file) {

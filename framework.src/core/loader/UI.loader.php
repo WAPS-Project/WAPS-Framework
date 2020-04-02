@@ -17,8 +17,8 @@ try {
 } catch (Exception $e) {
     ErrorHandler::FireError($e->getCode(), $e->getMessage());
 }
-$pageName = Main::validateHome(Main::getUrlInterpreter());
-$pagePath = Main::validatePage($pageName);
+$pagePath = Main::validateHome(Main::getUrlInterpreter());
 $pageList = Main::validateFile('page/open/');
+$pageName = Main::getPageNameFromPath($pagePath);
 
 Main::ipCheck($database_link);

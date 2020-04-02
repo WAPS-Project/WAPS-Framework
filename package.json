@@ -1,6 +1,6 @@
 {
   "name": "webapp_php_sample-framework",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Ein auf PHP und Apache basierendes Framework zum Entwickeln von WebApps",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "build-css": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --style compressed",
     "build-css-w": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --watch",
     "build-js": "webpack",
-    "build": "npm run build-css && npm run build-js",
+    "build": "npm run build-css && webpack",
     "deploy": "npm run build && deploy.sh"
   },
   "repository": {
@@ -22,9 +22,9 @@
   },
   "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
   "dependencies": {
+    "@popperjs/core": "^2.1.1",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
-    "popper.js": "^1.16.1",
     "sweetalert2": "^8.19.0"
   },
   "devDependencies": {
@@ -36,7 +36,6 @@
     "@types/bootstrap": "^4.3.2",
     "@types/jquery": "^3.3.34",
     "@types/node": "^12.12.32",
-    "@types/popper.js": "^1.11.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",

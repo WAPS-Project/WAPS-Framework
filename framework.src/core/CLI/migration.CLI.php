@@ -1,6 +1,6 @@
 <?php
 
-use webapp_php_sample_class\cli;
+use webapp_php_sample_class\Cli;
 use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Migration;
 
@@ -21,15 +21,15 @@ $helpC = [
     'alter table' => 'is used to update/ad table entries',
     'update table' => 'is used to update table columns'
 ];
-cli::designHelp($help);
+Cli::designHelp($help);
 while ($command !== 'exit') {
-    cli::designLine();
-    $command = str_replace('/\s+/', '', cli::designInput());
+    Cli::designLine();
+    $command = str_replace('/\s+/', '', Cli::designInput());
 
     switch ($command) {
 
         case 'help':
-            cli::designHelp($help);
+            Cli::designHelp($help);
             break;
 
         case 'create':
@@ -38,22 +38,22 @@ while ($command !== 'exit') {
 
         case 'custom':
             echo "What kind of migration do you want to create? \n";
-            cli::designHelp($helpC);
+            Cli::designHelp($helpC);
             $migrateMode = null;
             while ($migrateMode !== "exit") {
-                $migrateMode = cli::designInput();
+                $migrateMode = Cli::designInput();
 
                 switch ($migrateMode) {
                     case 'create table':
                         echo "What is the name of your Migration? \n";
-                        $mName = cli::designInput();
+                        $mName = Cli::designInput();
                         echo "What is the name of your Table? \n";
-                        $tName = cli::designInput();
+                        $tName = Cli::designInput();
                         echo "How many columns do you want to ad? \n";
                         $cSum = null;
                         while ($cSum === null) {
                             try {
-                                $cSum = (int)cli::designInput();
+                                $cSum = (int)Cli::designInput();
                             } catch (Exception $e) {
                                 $cSum = null;
                                 ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
@@ -64,9 +64,9 @@ while ($command !== 'exit') {
 
                         for ($i = 0; $i < $cSum; $i++) {
                             echo "Please enter the column Name: \n";
-                            $key = cli::designInput();
+                            $key = Cli::designInput();
                             echo "Please enter the column restrictions \n";
-                            $val = cli::designInput();
+                            $val = Cli::designInput();
                             $pair = [$key => $val];
                             $rows[] = $pair;
                         }
@@ -77,7 +77,7 @@ while ($command !== 'exit') {
                         break;
 
                     case 'help':
-                        cli::designHelp($helpC);
+                        Cli::designHelp($helpC);
                         break;
 
                     default:
@@ -123,7 +123,7 @@ while ($command !== 'exit') {
             break;
 
         default:
-            cli::designLine();
+            Cli::designLine();
             echo 'Please use a valid command!';
             break;
     }

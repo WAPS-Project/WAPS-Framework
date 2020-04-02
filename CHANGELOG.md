@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.5.1
+
+### Webpack optimization
+
+A few optimizations were made to the Webpack config to improve the compilation, in addition packets were updated
+
+### Routing Bug
+
+A routing bug was fixed, which prevented the login and the user settings page from loading
+
+
 ## 1.5.0
 
 ### Various bug fixes

@@ -73,6 +73,12 @@
           border-width: 0
           color: $main-font-color
 
+  .nav-link
+    @include respond-to(handhelds)
+      font-size: 5rem
+      break-before: left
+
+
   .logging-btn-a
     .logging-btn
       color: rgba(0, 0, 0, 0.5) !important

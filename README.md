@@ -1,6 +1,6 @@
-# WebApp_PHP_Sample
+# WAPS Framework
 
-<img src="./framework.src/content/img/fav.png" alt="FrameWork Logo" width="200" />
+<img src="./framework.src/content/img/waps.png" alt="FrameWork Logo" width="400" />
 
 [![Generic badge](https://img.shields.io/badge/Lead_Developer-JosunLP-black.svg?style=for-the-badge)](https://josunlp.de/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg?style=for-the-badge)](https://gitlab.com/JosunLP)
@@ -38,27 +38,34 @@ As long as only one Apache web server is used, the project can be used without a
 ##### NGINX
 For the operation of the framework under NGINX the following changes have to be made to the nginx config!
 
-    if (!-f $request_filename){
-    	set $rule_0 1;
-    }
-    if ($rule_0 = "1"){
-    	rewrite ^/([\w]+)? /index.php?pagename=$1 ;
-    }
-    location ~* /?\.htaccess$ {
-    	break;
-    }
-    location ~* ^/?config/config\.json$ {
-    	break;
-    }
-    location ~* ^/?config/plugin.config\.json$ {
-    	break;
-    }
-    error_page 400 /Error_400;
-    error_page 401 /Error_401;
-    error_page 402 /Error_402;
-    error_page 403 /Error_403;
-    error_page 404 /Error_404;
+    autoindex off;
+    
     error_page 500 /Error_500;
+    
+    error_page 404 /Error_404;
+    
+    error_page 403 /Error_403;
+    
+    location ~ /?\.htaccess$ {
+      return 403;
+    }
+    
+    location ~ ^/?config/config\.json$ {
+      return 403;
+    }
+    
+    location ~ ^/?config/plugin\.config\.json$ {
+      return 403;
+    }
+    
+    autoindex off;
+    
+    location / {
+      rewrite ^(.*)$ https://$http_host/$1 redirect;
+      if (!-e $request_filename){
+        rewrite ^/([\w]+)? /index.php?pagename=$1;
+      }
+    }
    
  It replaces the corresponding part that would otherwise be set by the htaccess.
  

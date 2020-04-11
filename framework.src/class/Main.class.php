@@ -101,23 +101,21 @@ class Main
                 break;
 
             case 'dropdown':
-                echo '<div class="dropdown">';
+                echo '<div class="dropdown nav-item">';
                 echo '<div class="btn-group">';
                 echo '<a href="/' . $pageObj->Name . '">';
-                echo '<button class="btn btn-secondary nav-link button btn-danger" 
+                echo '<button class="btn nav-link" 
                             role="button" 
                             id="dropdownMenuLink' . $pageObj->Name . '" 
                             >' . $pageObj->Name . '</button>';
                 echo '</a>';
-                echo '<button type="button" class="btn nav-link button btn-danger btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>';
+                echo '<button type="button" class="btn nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>';
                 echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
                 foreach ($pageContainer[0] as $key => $value) {
                     if ($key === $pageObj->Name) {
                         foreach ($value as $item => $tile) {
                             if ($item === 'Name') {
-                                echo "<li class='nav-item'>";
                                 echo '<a class="dropdown-item nav-link ' . $active . " \" href='/" . $tile . "' >" . $tile . ' ' . $current . '</a>';
-                                echo '</li>';
                             }
                         }
                     }

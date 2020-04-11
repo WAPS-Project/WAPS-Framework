@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.2
+
+### Mobile display Bug
+
+Fixed an issue that prevented scaling of menu items.
+
 ## 1.5.1
 
 ### Webpack optimization

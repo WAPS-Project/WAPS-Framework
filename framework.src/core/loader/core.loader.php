@@ -3,7 +3,7 @@
 use webapp_php_sample_class\ConfigLoader;
 
 $classString = './class/';
-$modelString = './object/';
+$modelString = './model/';
 $configString = './config/';
 
 $objFiles = array_diff(scandir($modelString), array('.', '..'));

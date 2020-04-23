@@ -58,8 +58,6 @@ For the operation of the framework under NGINX the following changes have to be 
       return 403;
     }
     
-    autoindex off;
-    
     location / {
       rewrite ^(.*)$ https://$http_host/$1 redirect;
       if (!-e $request_filename){
@@ -113,4 +111,4 @@ To create a new class, it must be created in the ```./class``` folder. Classes a
 
 
 #### Wiki
-You can find more details about the framework in the -> [Wiki](#) (under construction)
+You can find more details about the framework in the -> [Wiki](https://waps-framework.info) (under construction)

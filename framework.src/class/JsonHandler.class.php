@@ -22,8 +22,4 @@ class JsonHandler
         return json_encode($arrayMaster, JSON_THROW_ON_ERROR, 512);
     }
 
-    public static function FireComplexResponse($array): void
-    {
-
-    }
 }

@@ -35,7 +35,7 @@ while ($command !== 'exit') {
             Build::copyFiles('../framework.src/content', '../framework.dist/content');
             Build::copyFiles('../framework.src/core', '../framework.dist/core');
             Build::copyFiles('../framework.src/custom', '../framework.dist/custom');
-            Build::copyFiles('../framework.src/object', '../framework.dist/object');
+            Build::copyFiles('../framework.src/model', '../framework.dist/model');
             Build::copyFiles('../framework.src/page', '../framework.dist/page');
             Build::copyFiles('../framework.src/.htaccess', '../framework.dist/.htaccess');
             Build::copyFiles('../framework.src/API.php', '../framework.dist/API.php');

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.3
+
+### Clean up
+
+Cleaning up some small code issues and adding Wiki link.
+
 ## 1.5.2
 
 ### Mobile display Bug

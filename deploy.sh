@@ -1,4 +1,4 @@
-DEPLOY_TARGET=c:/xampp/htdocs
+DEPLOY_TARGET=framework.dist
 
 rm -rf $DEPLOY_TARGET
 mkdir $DEPLOY_TARGET

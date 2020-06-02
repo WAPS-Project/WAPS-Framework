@@ -1,5 +1,12 @@
 # Changelog
 
+
+## 1.5.4
+
+### Updates
+
+Update the npm frameworks and clean up the URL rewrite to fix some security holes.
+
 ## 1.5.3
 
 ### Clean up
@@ -31,7 +38,7 @@ A routing bug was fixed, which prevented the login and the user settings page fr
 Changed structure of the config file head.
 
 ### XML/JSON converter
-A class, that provides methods for 
+A class, that provides methods for
 converting `json` strings into `xml` strings and back.
 
 ### SCSS to SASS rework
@@ -77,7 +84,7 @@ There were some sql query improvements made.
 
 ### Style improvements
 A complete new Style and Logo added.
- 
+
 ### Plugin Support
 A new Plugin System was added, external plugins can now be implemented easy by just drag and drop them.
 

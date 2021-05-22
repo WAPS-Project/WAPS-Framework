@@ -62,6 +62,8 @@ class SessionTool
         $age = Main::checkRequest('post', 'age');
         $password = filter_var(Main::checkRequest('post', 'pw'), FILTER_SANITIZE_STRING);
         $pwSave = password_hash($password, PASSWORD_DEFAULT);
+		$USERID = Helper::GUID();
+		$PASSWORD_WID = Helper::GUID();
 
         $age = implode('-', array_reverse(explode('.', $age)));
 
@@ -71,10 +73,9 @@ class SessionTool
 
             while ($obj = mysqli_fetch_array($result)) {
 
-                $USID = $obj['ID'] + 1;
-                $query = "INSERT INTO usr ( userName, firstName, lastName, email, userRank, age ) VALUES (  '$username' , '$firstName', '$secondName', '$email', 'User', '$age' );";
+                $query = "INSERT INTO usr ( UID, userName, firstName, lastName, email, userRank, age ) VALUES ( '$USERID', '$username' , '$firstName', '$secondName', '$email', 'User', '$age' );";
 
-                $query2 = "INSERT INTO passWd ( passwort, UID) VALUES ( '$pwSave', $USID);";
+                $query2 = "INSERT INTO passWd ( PWID, passwort, UID) VALUES ( '$PASSWORD_WID', '$pwSave', '$USERID');";
 
                 $db_link->query($query);
                 $db_link->query($query2);

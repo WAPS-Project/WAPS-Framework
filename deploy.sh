@@ -1,7 +1,9 @@
-DEPLOY_TARGET=c:/xampp/htdocs
+DEPLOY_TARGET=./framework.dist
+#C:\xampp\htdocs
+#./framework.dist
 
 rm -rf $DEPLOY_TARGET
-mkdir $DEPLOY_TARGET
+mkdir -p $DEPLOY_TARGET
 cp -rf ./framework.src/class $DEPLOY_TARGET/class
 cp -rf ./framework.src/config $DEPLOY_TARGET/config
 cp -rf ./framework.src/content $DEPLOY_TARGET/content

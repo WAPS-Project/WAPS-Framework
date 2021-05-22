@@ -318,3 +318,5 @@ framework.src/content/css/*
 framework.src/node_modules/
 
 package-lock.json
+
+vendor

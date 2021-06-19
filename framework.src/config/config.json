@@ -5,7 +5,7 @@
         "app_name": "Example Web App",
         "framework_info": {
             "framework_name": "WAPS-Framework",
-            "framework_version": "1.5.5",
+            "framework_version": "1.5.6",
             "framework_repository": "https://gitlab.com/webapp-php-sample/framework",
             "framework_wiki": "https://waps-framework.info"
         }

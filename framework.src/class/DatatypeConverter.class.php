@@ -6,27 +6,31 @@ use DOMDocument;
 
 class DatatypeConverter
 {
-    public static function xml2json($xml)
-    {
+	/**
+	 * @param $xml
+	 * @return bool|string
+	 */
+	public static function xml2json($xml): bool|string
+	{
         return json_encode(simplexml_load_string($xml));
     }
 
-    public static function json2xml($json)
-    {
+	/**
+	 * @param $json
+	 * @return bool|string
+	 */
+	public static function json2xml($json): bool|string
+	{
         $a = json_decode($json);
         $d = new DOMDocument();
         $c = $d->createElement("root");
         $d->appendChild($c);
         $t = function ($v) {
             $type = gettype($v);
-            switch ($type) {
-                case 'integer':
-                    return 'number';
-                case 'double':
-                    return 'number';
-                default:
-                    return strtolower($type);
-            }
+			return match ($type) {
+				'integer', 'double' => 'number',
+				default => strtolower($type),
+			};
         };
         $f = function ($f, $c, $a, $s = false) use ($t, $d) {
             $c->setAttribute('type', $t($a));

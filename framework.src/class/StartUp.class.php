@@ -3,13 +3,18 @@
 
 namespace webapp_php_sample_class;
 
+use JsonException;
 use mysqli;
 use webapp_php_sample_obj\pageMap;
 use webapp_php_sample_obj\pageObj;
 
 class StartUp
 {
-    public static function loadPages(): string
+	/**
+	 * @return string
+	 * @throws JsonException
+	 */
+	public static function loadPages(): string
     {
         $files = self::dirCheck('page/open/');
 
@@ -58,7 +63,11 @@ class StartUp
         return $fileJSON;
     }
 
-    private static function dirCheck($dir): array
+	/**
+	 * @param $dir
+	 * @return array
+	 */
+	private static function dirCheck($dir): array
     {
         $dirPath = $dir . '/';
         $files = array_diff(scandir($dirPath), DEFAULT_FILE_FILTER);
@@ -77,7 +86,10 @@ class StartUp
         return $files;
     }
 
-    public static function checkDatabaseStatus(): void
+	/**
+	 *
+	 */
+	public static function checkDatabaseStatus(): void
     {
         $databaseLink = self::loadDatabase();
         $sqlFile = fopen('core/database/setup/webapp_php_sample.sql', 'rb');
@@ -96,7 +108,10 @@ class StartUp
         fclose($sqlFile);
     }
 
-    public static function loadDatabase(): mysqli
+	/**
+	 * @return mysqli
+	 */
+	public static function loadDatabase(): mysqli
     {
         $db_link = new mysqli(
             MYSQL_HOST,

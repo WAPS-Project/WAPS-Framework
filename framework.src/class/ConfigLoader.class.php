@@ -4,9 +4,15 @@
 namespace webapp_php_sample_class;
 
 
+use JsonException;
+
 class ConfigLoader
 {
-    public static function loadConfig($path): void
+	/**
+	 * @param $path
+	 * @throws JsonException
+	 */
+	public static function loadConfig($path): void
     {
         $config = self::validateConfig($path);
 
@@ -21,8 +27,13 @@ class ConfigLoader
         }
     }
 
-    private static function validateConfig($path)
-    {
+	/**
+	 * @param $path
+	 * @return mixed
+	 * @throws JsonException
+	 */
+	private static function validateConfig($path): mixed
+	{
         $files = scandir($path);
 
         foreach ($files as $file) {

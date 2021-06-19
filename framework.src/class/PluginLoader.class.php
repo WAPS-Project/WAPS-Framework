@@ -4,13 +4,17 @@
 namespace webapp_php_sample_class;
 
 
+use JsonException;
 use webapp_php_sample_obj\pluginConfigBundle;
 
 class PluginLoader
 {
     const PLUGIN_PATH = './custom/plugin/';
 
-    public static function loadPlugins(): void
+	/**
+	 * @throws JsonException
+	 */
+	public static function loadPlugins(): void
     {
         self::loadPluginConfig();
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
@@ -21,7 +25,10 @@ class PluginLoader
         }
     }
 
-    public static function loadPluginConfig(): void
+	/**
+	 * @throws JsonException
+	 */
+	public static function loadPluginConfig(): void
     {
         $pluginList = array_diff(scandir(self::PLUGIN_PATH), DEFAULT_FILE_FILTER);
         $configBundle = new pluginConfigBundle();
@@ -37,7 +44,11 @@ class PluginLoader
         file_put_contents('./config/plugin.config.json', $configFile);
     }
 
-    protected static function checkPluginManifest($pluginName): bool
+	/**
+	 * @param $pluginName
+	 * @return bool
+	 */
+	protected static function checkPluginManifest($pluginName): bool
     {
         $pluginContent = scandir(self::PLUGIN_PATH . $pluginName);
         foreach ($pluginContent as $pluginPart) {

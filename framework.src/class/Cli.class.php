@@ -6,18 +6,27 @@ namespace webapp_php_sample_class;
 
 class Cli
 {
-    public static function designLine(): void
+	/**
+	 *
+	 */
+	public static function designLine(): void
     {
         echo "\n--------------------------------------------------------------\n";
     }
 
-    public static function designInput(): string
+	/**
+	 * @return string
+	 */
+	public static function designInput(): string
     {
         echo "\nPlease enter a command: \n";
         return readline('$ ');
     }
 
-    public static function designHelp($helpEntries): void
+	/**
+	 * @param $helpEntries
+	 */
+	public static function designHelp($helpEntries): void
     {
         echo "\n";
         foreach ($helpEntries as $helpName => $helpEntry) {
@@ -25,7 +34,10 @@ class Cli
         }
     }
 
-    public static function checkIfCli(): void
+	/**
+	 *
+	 */
+	public static function checkIfCli(): void
     {
         if (PHP_SAPI !== 'cli') {
             ErrorHandler::FireCLIError('No CLI Error', 'The Interface you use isn\'t a valid CL');

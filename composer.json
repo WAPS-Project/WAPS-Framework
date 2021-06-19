@@ -3,7 +3,7 @@
     "description": "A framework for developing WebApps based on PHP and Apache",
     "license": "MIT",
     "type": "framework",
-    "version": "1.5.5",
+    "version": "1.5.6",
     "homepage": "https://gitlab.com/webapp_php_sample/framework#readme",
     "scripts": {
         "cli": "php CLI.php"

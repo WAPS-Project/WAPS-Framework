@@ -6,6 +6,9 @@ namespace webapp_php_sample_class;
 
 class Helper
 {
+	/**
+	 * @return string
+	 */
 	public static function GUID(): string
 	{
 		if (function_exists('com_create_guid') === true)

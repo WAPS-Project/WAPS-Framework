@@ -4,17 +4,29 @@
 namespace webapp_php_sample_class;
 
 
+use JsonException;
+
 class JsonHandler
 {
-    public static function FireSimpleJson($key, $value): void
+	/**
+	 * @param $key
+	 * @param $value
+	 * @throws JsonException
+	 */
+	public static function FireSimpleJson($key, $value): void
     {
         $array = [[$key => $value]];
         $json = self::BuildJson($array);
         echo $json;
     }
 
-    public static function BuildJson($objectArray)
-    {
+	/**
+	 * @param $objectArray
+	 * @return bool|string
+	 * @throws JsonException
+	 */
+	public static function BuildJson($objectArray): bool|string
+	{
         $arrayMaster = [];
         foreach ($objectArray as $value) {
             $arrayMaster[] = $value;

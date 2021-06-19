@@ -6,13 +6,28 @@ namespace webapp_php_sample_obj;
 
 class pageObj
 {
-    public string $Name;
+	/**
+	 * @var string
+	 */
+	public string $Name;
 
-    public string $File;
+	/**
+	 * @var string
+	 */
+	public string $File;
 
-    public string $Path;
+	/**
+	 * @var string
+	 */
+	public string $Path;
 
-    public bool $IsSet;
+	/**
+	 * @var bool
+	 */
+	public bool $IsSet;
 
-    public string $Master;
+	/**
+	 * @var string
+	 */
+	public string $Master;
 }

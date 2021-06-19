@@ -3,9 +3,18 @@
 
 namespace webapp_php_sample_class;
 
+use JetBrains\PhpStorm\ArrayShape;
+use JsonException;
+
 class Main
 {
-    public static function main($pagePath, $pageName, $pageMap): void
+	/**
+	 * @param $pagePath
+	 * @param $pageName
+	 * @param $pageMap
+	 * @throws JsonException
+	 */
+	public static function main($pagePath, $pageName, $pageMap): void
     {
         $pageList = json_decode($pageMap, false, 512, JSON_THROW_ON_ERROR);
         echo '<div class="content">';
@@ -51,7 +60,12 @@ class Main
 
     }
 
-    public static function navigation($pageMap, $pageName): void
+	/**
+	 * @param $pageMap
+	 * @param $pageName
+	 * @throws JsonException
+	 */
+	public static function navigation($pageMap, $pageName): void
     {
         $pageList = json_decode($pageMap, false, 512, JSON_THROW_ON_ERROR);
         $pageContainer = [];
@@ -82,7 +96,13 @@ class Main
         SessionTool::UserWelcome();
     }
 
-    private static function createPageEntry($pageObj, $active, $current, $pageContainer): void
+	/**
+	 * @param $pageObj
+	 * @param $active
+	 * @param $current
+	 * @param $pageContainer
+	 */
+	private static function createPageEntry($pageObj, $active, $current, $pageContainer): void
     {
         $master = null;
         if (array_key_exists($pageObj->Name, $pageContainer[0])) {
@@ -104,9 +124,9 @@ class Main
                 echo '<div class="dropdown nav-item">';
                 echo '<div class="btn-group">';
                 echo '<a href="/' . $pageObj->Name . '">';
-                echo '<button class="btn nav-link" 
-                            role="button" 
-                            id="dropdownMenuLink' . $pageObj->Name . '" 
+                echo '<button class="btn nav-link"
+                            role="button"
+                            id="dropdownMenuLink' . $pageObj->Name . '"
                             >' . $pageObj->Name . '</button>';
                 echo '</a>';
                 echo '<button type="button" class="btn nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>';
@@ -127,7 +147,11 @@ class Main
         }
     }
 
-    public static function getPageNameFromPath($pagePath): string
+	/**
+	 * @param $pagePath
+	 * @return string
+	 */
+	public static function getPageNameFromPath($pagePath): string
     {
         $parts = explode('/', $pagePath);
         $file = $parts[2];
@@ -135,7 +159,11 @@ class Main
         return $parts[0];
     }
 
-    public static function validateHome($name): string
+	/**
+	 * @param $name
+	 * @return string
+	 */
+	public static function validateHome($name): string
     {
         $open = 'page/open/';
         $static = 'page/static/';
@@ -161,7 +189,11 @@ class Main
         return $static . 'Error_404' . $fileEnding;
     }
 
-    public static function validateFile($path): array
+	/**
+	 * @param $path
+	 * @return array[]
+	 */
+	#[ArrayShape(['page' => "array"])] public static function validateFile($path): array
     {
         $files = array_diff(scandir($path), DEFAULT_FILE_FILTER);
 
@@ -178,8 +210,11 @@ class Main
         return $fileList;
     }
 
-    public static function getUrlInterpreter()
-    {
+	/**
+	 * @return string
+	 */
+	public static function getUrlInterpreter(): string
+	{
         $url = $_SERVER['REQUEST_URI'];
         $url = explode('/', $url);
         $page = ucfirst($url[1]);
@@ -194,14 +229,22 @@ class Main
         return $page;
     }
 
-    public static function ipCheck($database_link): void
+	/**
+	 * @param $database_link
+	 */
+	public static function ipCheck($database_link): void
     {
         $clientIp = self::checkRequest('post', 'ip');
         self::ipPush($database_link, $clientIp);
     }
 
-    public static function checkRequest($mode, $key)
-    {
+	/**
+	 * @param $mode
+	 * @param $key
+	 * @return mixed
+	 */
+	public static function checkRequest($mode, $key): mixed
+	{
         switch ($mode) {
             case 'post':
                 return $_POST[$key] ?? null;
@@ -213,7 +256,11 @@ class Main
         return null;
     }
 
-    protected static function ipPush($link, $clientIp): void
+	/**
+	 * @param $link
+	 * @param $clientIp
+	 */
+	protected static function ipPush($link, $clientIp): void
     {
         $timestamp = date('H:i:s');
         $date = date('Y-m-d');
@@ -223,8 +270,11 @@ class Main
         $link->query($query);
     }
 
-    public static function getRealIp()
-    {
+	/**
+	 * @return string
+	 */
+	public static function getRealIp(): string
+	{
         $ip = 'undefined';
         if (isset($_SERVER)) {
             $ip = $_SERVER['REMOTE_ADDR'];
@@ -241,7 +291,6 @@ class Main
                 $ip = getenv('HTTP_CLIENT_IP');
             }
         }
-        $ip = htmlspecialchars($ip, ENT_QUOTES, 'UTF-8');
-        return $ip;
+		return htmlspecialchars($ip, ENT_QUOTES, 'UTF-8');
     }
 }

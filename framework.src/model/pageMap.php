@@ -6,5 +6,8 @@ namespace webapp_php_sample_obj;
 
 class pageMap
 {
-    public static array $PageMap = [];
+	/**
+	 * @var array
+	 */
+	public static array $PageMap = [];
 }

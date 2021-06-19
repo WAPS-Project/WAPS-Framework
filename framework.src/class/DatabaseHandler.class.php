@@ -4,10 +4,20 @@
 namespace webapp_php_sample_class;
 
 
+use mysqli_result;
+
 class DatabaseHandler
 {
-    public static function createSqlRequest($mode, $tableName, $rows, $values, $valueString)
-    {
+	/**
+	 * @param $mode
+	 * @param $tableName
+	 * @param $rows
+	 * @param $values
+	 * @param $valueString
+	 * @return mixed
+	 */
+	public static function createSqlRequest($mode, $tableName, $rows, $values, $valueString): mixed
+	{
         $db_link = StartUp::loadDatabase();
         switch ($mode) {
             case 'insert':

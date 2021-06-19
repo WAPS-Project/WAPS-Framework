@@ -23,7 +23,7 @@ Title: false;
     </div>
     <div class="form-check">
         <input type="checkbox" class="form-check-input check" id="Check" required>
-        <label class="label-small form-check-label input" for="Check"><a href="#">Nutzungsbedingungen</a>
+        <label class="label-small form-check-label input" for="Check"><a href="/Termsofuse">Nutzungsbedingungen</a>
             zustimmen.</label>
     </div>
     <label hidden>

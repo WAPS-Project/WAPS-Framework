@@ -2,6 +2,8 @@
 
 namespace webapp_php_sample_class;
 
+use JetBrains\PhpStorm\Pure;
+use JsonException;
 use RuntimeException;
 
 /**
@@ -62,7 +64,7 @@ class ErrorHandler
      * The method returns a string, containing the log message and timestamp
      * @return string
      */
-    private static function WriteLogLine($key, $message): string
+    #[Pure] private static function WriteLogLine($key, $message): string
     {
         $clientIp = Main::checkRequest('post', 'ip');
         $ip = Main::getRealIp();
@@ -117,12 +119,13 @@ class ErrorHandler
         }
     }
 
-    /**
-     * The message type
-     * @param $type
-     * The message content
-     * @param $message
-     */
+	/**
+	 * The message type
+	 * @param $type
+	 * The message content
+	 * @param $message
+	 * @throws JsonException
+	 */
     public static function FireJsonError($type, $message): void
     {
         self::CreateLog($type, $message);

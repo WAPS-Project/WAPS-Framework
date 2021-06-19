@@ -5,10 +5,14 @@ namespace webapp_php_sample_class;
 
 
 use Exception;
+use JsonException;
 
 class Migration
 {
-    public static function listMigrations(): void
+	/**
+	 *
+	 */
+	public static function listMigrations(): void
     {
         $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
         if ($files !== null) {
@@ -22,7 +26,10 @@ class Migration
         echo "\n";
     }
 
-    public static function createSimpleModelMigration(): void
+	/**
+	 * @throws JsonException
+	 */
+	public static function createSimpleModelMigration(): void
     {
         $path = './core/database/model/';
         $migrationPath = './core/database/migrations/';
@@ -47,6 +54,7 @@ class Migration
                 $class = new $fileParts[0];
             } catch (Exception $e) {
                 ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
+                return;
             }
 
             $classVars = get_class_vars(get_class($class));
@@ -82,7 +90,10 @@ class Migration
         }
     }
 
-    public static function createMigration($migrationName, $mode, $tableName, $rows, $values, $valueString): void
+	/**
+	 * @throws JsonException
+	 */
+	public static function createMigration($migrationName, $mode, $tableName, $rows, $values, $valueString): void
     {
         $migrationPreset = date('YmdHis');
         $migrationFileName = $migrationPreset . '_' . $migrationName . '.migration.json';
@@ -105,7 +116,10 @@ class Migration
         }
     }
 
-    public static function loadMigrations(): bool
+	/**
+	 * @return bool
+	 */
+	public static function loadMigrations(): bool
     {
         $files = array_diff(scandir(MIGRATION_PATH), DEFAULT_FILE_FILTER);
         if ($files !== null) {
@@ -141,8 +155,11 @@ class Migration
         return false;
     }
 
-    public static function checkFiredMigrations()
-    {
+	/**
+	 * @return mixed
+	 */
+	public static function checkFiredMigrations(): mixed
+	{
         return DatabaseHandler::createSqlRequest(
             'select',
             'migrations',

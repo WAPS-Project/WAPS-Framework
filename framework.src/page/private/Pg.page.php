@@ -44,7 +44,7 @@ Title: false;
     <div class="form-check">
         <input type="checkbox" class="form-check-input check" name="check" id="Check" required>
         <label class="label-small form-check-label" for="Check">Ich bin mit den <a
-                    href="index.php?pagename=Termsofuse">Nutzungsbedingungen</a> einverstanden!</label>
+                    href="/Termsofuse">Nutzungsbedingungen</a> einverstanden!</label>
     </div>
     <label hidden>
         <input name="requestMode" value="add" hidden>

@@ -6,13 +6,19 @@ namespace webapp_php_sample_class;
 
 class UserConfig
 {
-    public static function loadConfigTable(): void
+	/**
+	 *
+	 */
+	public static function loadConfigTable(): void
     {
         self::tableGenerator();
         echo '<script>console.log("Config Page loaded")</script>';
     }
 
-    private static function tableGenerator(): void
+	/**
+	 *
+	 */
+	private static function tableGenerator(): void
     {
         $userData = self::getUserData($_SESSION['login_User']);
 
@@ -48,7 +54,11 @@ class UserConfig
         echo '</form>';
     }
 
-    private static function getUserData($userName): array
+	/**
+	 * @param $userName
+	 * @return array
+	 */
+	private static function getUserData($userName): array
     {
         $userDataArray = [];
         $userData = DatabaseHandler::createSqlRequest(
@@ -85,14 +95,18 @@ class UserConfig
         return $userDataArray;
     }
 
-    private static function tableModule($key, $value): void
+	/**
+	 * @param $key
+	 * @param $value
+	 */
+	private static function tableModule($key, $value): void
     {
 
         switch ($key) {
             case 'userName':
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-user-tie"></i> Username </label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
                value="' . $value . '"
@@ -103,7 +117,7 @@ class UserConfig
             case 'firstName':
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '">Vorname</label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
                value="' . $value . '"
@@ -114,7 +128,7 @@ class UserConfig
             case 'lastName':
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '">Nachname</label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
                value="' . $value . '"
@@ -125,7 +139,7 @@ class UserConfig
             case 'email':
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="far fa-envelope"></i> E-Mail</label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
                value="' . $value . '"
@@ -136,7 +150,7 @@ class UserConfig
             case 'passwort':
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-key"></i> Altes Passwort *</label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="old' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="old' . $key . 'Input"
                name="old_' . $key . '"
                placeholder="Enter ' . $key . '"
                type="password"
@@ -145,7 +159,7 @@ class UserConfig
                 echo '</div>';
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-key"></i> Neues Passwort</label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
                type="password"
@@ -156,7 +170,7 @@ class UserConfig
             case 'age':
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-user-tie"></i> ' . $key . ' </label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                     name="' . $key . '"
                     placeholder="Enter ' . $key . '"
                     value="' . $value . '"
@@ -167,7 +181,7 @@ class UserConfig
             default:
                 echo '<div class="form-group">';
                 echo '<label class="label" for="Input' . $key . '"><i class="fas fa-user-tie"></i> ' . $key . ' </label>';
-                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input" 
+                echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
                value="' . $value . '"
@@ -178,7 +192,10 @@ class UserConfig
         }
     }
 
-    public static function userDataRequest(): void
+	/**
+	 *
+	 */
+	public static function userDataRequest(): void
     {
         $requestMode = Main::checkRequest('post', 'requestMode');
         $username = Main::checkRequest('post', 'userName');

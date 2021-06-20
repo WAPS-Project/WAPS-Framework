@@ -1,13 +1,16 @@
 # WAPS Framework
 
-<img src="./framework.src/content/img/waps.png" alt="FrameWork Logo" width="400" />
+<img src="https://raw.githubusercontent.com/WAPS-Project/WAPS-Framework/master/framework.src/content/img/waps.png" alt="FrameWork Logo" width="400" />
 
-[![Generic badge](https://img.shields.io/badge/Lead_Developer-JosunLP-black.svg?style=for-the-badge)](https://josunlp.de/)
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg?style=for-the-badge)](https://gitlab.com/JosunLP)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://gitlab.com/webapp-php-sample/framework/blob/master/LICENSE)
+[![Generic badge](https://img.shields.io/badge/Lead_Developer-JosunLP-black.svg?style=for-the-badge&logo=github)](https://josunlp.de/)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg?style=for-the-badge)](https://github.com/JosunLP)
+[![license](https://img.shields.io/github/license/WebApp-PHP-Sample-Project/WepApp-PHP-Sample-Framework.svg?style=for-the-badge)](https://gitlab.com/webapp-php-sample/framework/blob/master/LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/WebApp-PHP-Sample-Project/WepApp-PHP-Sample-Framework/graphs/commit-activity)
-[![GitHub release](https://img.shields.io/github/tag/JosunLP/webapp_php_sample.svg?style=for-the-badge)](https://github.com/WebApp-PHP-Sample-Project/WepApp-PHP-Sample-Framework/releases)
+[![GitHub release](https://img.shields.io/github/v/tag/WAPS-Project/WAPS-Framework.svg?style=for-the-badge&logo=github.svg?style=for-the-badge&logo=github)](https://github.com/WebApp-PHP-Sample-Project/WepApp-PHP-Sample-Framework/releases)
 [![Generic badge](https://img.shields.io/badge/Made_with-PHP-blue.svg?style=for-the-badge)](https://www.php.net/)
+[![Stars](https://img.shields.io/github/stars/WAPS-Project/WAPS-Framework?style=for-the-badge)](https://github.com/WAPS-Project/WAPS-Framework)
+[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/WebApp-PHP-Sample-Project/WepApp-PHP-Sample-Framework.svg?style=for-the-badge)](https://app.snyk.io/org/webapp-php-sample-project)
+[![Documentation](https://img.shields.io/badge/Documentation-Waps--Framework.info-green.svg?style=for-the-badge)](http://waps-framework.info/)
 
 ### A PHP web app framework.
 
@@ -39,34 +42,34 @@ As long as only one Apache web server is used, the project can be used without a
 For the operation of the framework under NGINX the following changes have to be made to the nginx config!
 
     autoindex off;
-    
+
     error_page 500 /Error_500;
-    
+
     error_page 404 /Error_404;
-    
+
     error_page 403 /Error_403;
-    
+
     location ~ /?\.htaccess$ {
       return 403;
     }
-    
+
     location ~ ^/?config/config\.json$ {
       return 403;
     }
-    
+
     location ~ ^/?config/plugin\.config\.json$ {
       return 403;
     }
-    
+
     location / {
       rewrite ^(.*)$ https://$http_host/$1 redirect;
       if (!-e $request_filename){
         rewrite ^/([\w]+)? /index.php?pagename=$1;
       }
     }
-   
+
  It replaces the corresponding part that would otherwise be set by the htaccess.
- 
+
 #### Database Server
 A MySql server was used to develop the framework, but it is no problem to use MariaDB as an alternative. For other database systems, slight changes have to be made to the framework.
 
@@ -95,7 +98,7 @@ To create a new page, simply create a new file after the schema fileName_page_ph
 The File Head of the new page must look like this:
 
     1 <?php
-    2 
+    2
     3 /*
     4 PageInfo:
     5 Title: true;
@@ -111,4 +114,4 @@ To create a new class, it must be created in the ```./class``` folder. Classes a
 
 
 #### Wiki
-You can find more details about the framework in the -> [Wiki](https://waps-framework.info) (under construction)
+You can find more details about the framework in the -> [Wiki](https://waps-framework.info)

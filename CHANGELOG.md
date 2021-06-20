@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.5.8
+
+### Readme Update
+
+Updating the readme File
+
+## 1.5.6 & 1.5.7
+
+### Dependency Updates and Code Cleaning
+
+I just updated some dependencies and cleaned the code.
+
+### Updates & More
+
+Hi everyone, I have reactivated this project and with the 1.5.5 update I have made a security patch available. On the one hand, this contains updates of the supplied packages, on the other hand, it also introduces GUIDs natively for user accounts. I can't say when the next content update will be available, but I'll try to keep delivering security updates in a timely manner. Have fun and keep coding ^^
+
+## 1.5.5
+
+### Updates & More
+
+Hi everyone, I have reactivated this project and with the 1.5.5 update I have made a security patch available. On the one hand, this contains updates of the supplied packages, on the other hand, it also introduces GUIDs natively for user accounts. I can't say when the next content update will be available, but I'll try to keep delivering security updates in a timely manner. Have fun and keep coding ^^
 
 ## 1.5.4
 

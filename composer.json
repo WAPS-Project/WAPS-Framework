@@ -1,9 +1,9 @@
 {
-    "name": "webapp_php_sample/framework",
+    "name": "waps/framework",
     "description": "A framework for developing WebApps based on PHP and Apache",
     "license": "MPL-2.0",
     "type": "framework",
-    "version": "1.5.7",
+    "version": "1.5.8",
     "homepage": "https://gitlab.com/webapp_php_sample/framework#readme",
     "scripts": {
         "cli": "php CLI.php"

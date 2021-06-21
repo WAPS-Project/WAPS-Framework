@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0
+
+### Revision of the graphical user interface
+
+Moin, I took the time to revise the basic UI. It looks a lot better now on the whole. In addition, the development language was finally set to English.
+
 ## 1.5.8
 
 ### Readme Update

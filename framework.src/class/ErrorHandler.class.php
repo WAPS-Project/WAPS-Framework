@@ -15,7 +15,7 @@ class ErrorHandler
     /** Constant Footer
      *  The Footer String that is used for each Sweet Alert Popup
      */
-    private const FOOTER = '<span>For help ask at <a href="https://gitlab.com/webapp-php-sample/framework">https://gitlab.com/JosunLP/webapp_php_sample</a></span>';
+    private const FOOTER = '<span>For help ask at <a href="https://gitlab.com/waps/framework">https://gitlab.com/waps/framework</a></span>';
 
     /**
      * The message type

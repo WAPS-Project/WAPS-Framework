@@ -6,6 +6,11 @@ Title: true;
 Master: Example;
 */
 
+use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\GalleryBuilder;
 
-GalleryBuilder::GalleryGenerator('./custom/plugin/GalleryBuilder/img/');
+try {
+	GalleryBuilder::GalleryGenerator('./custom/plugin/GalleryBuilder/content/img/');
+} catch (Error $e) {
+	ErrorHandler::FireError($e->getCode(), $e->getMessage());
+}

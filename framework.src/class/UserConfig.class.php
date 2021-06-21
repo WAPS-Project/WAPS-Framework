@@ -32,7 +32,7 @@ class UserConfig
             }
         }
         echo '<input type="text" name="requestMode" value="userData" hidden />';
-        echo "<button type='submit' class='btn btn-success'>Speichern</button>";
+        echo "<button type='submit' class='btn btn-success'>Save</button>";
         echo ' | ';
         echo "<button type='reset' class='btn btn-danger'>Reset</button>";
         echo '</form>';
@@ -48,7 +48,7 @@ class UserConfig
         }
 
         echo '<input type="text" name="requestMode" value="password" hidden />';
-        echo "<button type='submit' class='btn btn-success'>Speichern</button>";
+        echo "<button type='submit' class='btn btn-success'>Save</button>";
         echo ' | ';
         echo "<button type='reset' class='btn btn-danger'>Reset</button>";
         echo '</form>';
@@ -116,7 +116,7 @@ class UserConfig
 
             case 'firstName':
                 echo '<div class="form-group">';
-                echo '<label class="label" for="Input' . $key . '">Vorname</label>';
+                echo '<label class="label" for="Input' . $key . '">First name</label>';
                 echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
@@ -127,7 +127,7 @@ class UserConfig
 
             case 'lastName':
                 echo '<div class="form-group">';
-                echo '<label class="label" for="Input' . $key . '">Nachname</label>';
+                echo '<label class="label" for="Input' . $key . '">Surname</label>';
                 echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"
@@ -149,16 +149,16 @@ class UserConfig
 
             case 'passwort':
                 echo '<div class="form-group">';
-                echo '<label class="label" for="Input' . $key . '"><i class="fas fa-key"></i> Altes Passwort *</label>';
+                echo '<label class="label" for="Input' . $key . '"><i class="fas fa-key"></i> Old password *</label>';
                 echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="old' . $key . 'Input"
                name="old_' . $key . '"
                placeholder="Enter ' . $key . '"
                type="password"
                required type="text">';
-                echo '<small id="old_password" class="form-text text-muted">* Zum Erstellen eines neuen Passworts ist das alte notwendig!</small>';
+                echo '<small id="old_password" class="form-text text-muted">* The old one is required to create a new password!</small>';
                 echo '</div>';
                 echo '<div class="form-group">';
-                echo '<label class="label" for="Input' . $key . '"><i class="fas fa-key"></i> Neues Passwort</label>';
+                echo '<label class="label" for="Input' . $key . '"><i class="fas fa-key"></i> New Password</label>';
                 echo '<input aria-describedby="' . $key . 'Input" class="form-control input" id="' . $key . 'Input"
                name="' . $key . '"
                placeholder="Enter ' . $key . '"

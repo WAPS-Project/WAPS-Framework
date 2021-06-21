@@ -19,35 +19,34 @@ Title: false;
                placeholder="Enter Username" required>
     </div>
     <div class="form-group">
-        <label class="label" for="InputFirstName">Vorname</label>
+        <label class="label" for="InputFirstName">First name</label>
         <input type="text" name="firstName" class="form-control input" id="InputFirstName" aria-describedby="firstName"
                placeholder="Enter first Name" required>
     </div>
     <div class="form-group">
-        <label class="label" for="InputLastName">Nachname</label>
+        <label class="label" for="InputLastName">Surname</label>
         <input type="text" name="lastName" class="form-control input" id="InputLastName" aria-describedby="lastName"
                placeholder="Enter last Name" required>
     </div>
     <div class="form-group">
-        <label class="label" for="InputAge"><i class="fas fa-birthday-cake"></i> Alter</label>
+        <label class="label" for="InputAge"><i class="fas fa-birthday-cake"></i> Age</label>
         <input type="date" name="age" class="form-control input" id="InputAge"
                aria-describedby="age"
                placeholder="Enter Age" required>
     </div>
     <div class="form-group">
-        <label class="label" for="InputPassword"><i class="fas fa-key"></i> Passwort</label>
+        <label class="label" for="InputPassword"><i class="fas fa-key"></i> Password</label>
         <input type="password" name="pw" class="form-control input" id="InputPassword" placeholder="Enter Password"
                required>
-        <small id="password" class="form-text text-muted">Bitte achte darauf, dass dein Passwort mindestens 10 Zeichen
-            lang ist!</small>
+        <small id="password" class="form-text text-muted">Please make sure that your password is at least 10 characters long!</small>
     </div>
     <div class="form-check">
         <input type="checkbox" class="form-check-input check" name="check" id="Check" required>
-        <label class="label-small form-check-label" for="Check">Ich bin mit den <a
-                    href="/Termsofuse">Nutzungsbedingungen</a> einverstanden!</label>
+        <label class="label-small form-check-label" for="Check">I agree with the <a
+                    href="/Termsofuse">Terms of Use</a>!</label>
     </div>
     <label hidden>
         <input name="requestMode" value="add" hidden>
     </label>
-    <button type="submit" class="btn btn-success">Absenden</button>
+    <button type="submit" class="btn btn-success">Submit</button>
 </form>

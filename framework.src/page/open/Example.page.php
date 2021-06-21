@@ -6,4 +6,4 @@ Title: false;
 Master: null;
 */
 
-echo "<p>Das hier ist nur ein Beispiel</p>";
+echo "<p>This is an example without a heading</p>";

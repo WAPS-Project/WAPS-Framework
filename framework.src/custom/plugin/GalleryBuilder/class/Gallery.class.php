@@ -9,9 +9,9 @@ class GalleryBuilder
         $images = array_diff(scandir($path), DEFAULT_FILE_FILTER);
         echo "<div class='gallery'>";
         foreach ($images as $value) {
-            print("<img src='" . $path . $value . "' class='gallery-item' >");
+            print("<a href='https://fontawesome.com/' target='_blank'><img src='" . $path . $value . "' class='gallery-item' ></a>");
         }
-        echo "</div>";
+        echo '</div>';
     }
 
 }

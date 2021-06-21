@@ -1,4 +1,4 @@
-DEPLOY_TARGET=./framework.dist
+DEPLOY_TARGET=C:/xampp/htdocs
 #C:/xampp/htdocs
 #./framework.dist
 

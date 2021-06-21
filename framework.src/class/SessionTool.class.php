@@ -39,11 +39,11 @@ class SessionTool
             $username = $_SESSION['login_User'];
             echo '<form method= "post"  id= "userLogin">';
             echo '<div class="dropdown">';
-            echo '<button class="btn btn-secondary dropdown-toggle nav-link button btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nutzermenü</button>';
+            echo '<button class="btn btn-secondary dropdown-toggle nav-link button btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User menu</button>';
             echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
-            echo "<label id= \"greetings\" class='greeting dropdown-item'>Herzlich Willkommen, $username </label>" . '   ';
+            echo "<label id= \"greetings\" class='greeting dropdown-item'>Welcome, $username </label>" . '   ';
             echo '<div class="dropdown-divider"></div>';
-            echo '<li class="nav-item"><a class="dropdown-item" href="/Settings"> Einstellungen</a></li>';
+            echo '<li class="nav-item"><a class="dropdown-item" href="/Settings"> Settings</a></li>';
             echo '<button id= "logout" type="submit" class="btn btn-danger button logging-btn dropdown-item" name= "logout" value= "TRUE">Logout</button>';
             echo '</div>';
             echo '</div>';

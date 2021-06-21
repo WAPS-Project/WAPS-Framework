@@ -1,1 +1,1 @@
-<h1>Die nice Seite konnte nicht gefunden werden!</h1>
+<h1>The nice page could not be found!</h1>

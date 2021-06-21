@@ -13,8 +13,7 @@ Title: false;
         <input aria-describedby="InputUsername" class="form-control input" id="InputUsername" name="username"
                placeholder="Enter Username"
                required type="text">
-        <small id="usernameHelp" class="form-text text-muted">Wir werden niemals deine Daten mit jemandem
-            teilen.</small>
+        <small id="usernameHelp" class="form-text text-muted">We will never share your data with anyone share.</small>
     </div>
     <div class="form-group">
         <label class="label" for="InputPassword"><i class="fas fa-lock"></i> Password</label>
@@ -23,11 +22,10 @@ Title: false;
     </div>
     <div class="form-check">
         <input type="checkbox" class="form-check-input check" id="Check" required>
-        <label class="label-small form-check-label input" for="Check"><a href="/Termsofuse">Nutzungsbedingungen</a>
-            zustimmen.</label>
+        <label class="label-small form-check-label input" for="Check">Agree to the <a href="/Termsofuse">Terms of Use</a>.</label>
     </div>
     <label hidden>
         <input name="requestMode" value="login" hidden>
     </label>
-    <button type="submit" class="btn btn-primary">Bestätigen</button>
+    <button type="submit" class="btn btn-primary">Confirm</button>
 </form>

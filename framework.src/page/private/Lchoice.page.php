@@ -7,7 +7,7 @@ Title: false;
 
 
 if (isset($_SESSION['login_User'])) {
-    echo '<h2>Du bist bereits eingeloggt!</h2>';
+    echo '<h2>You are already logged in!</h2>';
 } else {
     echo '
     <div class="login">
@@ -18,7 +18,7 @@ if (isset($_SESSION['login_User'])) {
     </form>
     <form class="formular register-form" target="_self" method="post">
         <input type="hidden" name="pagename" value="Login">
-        <button type="submit" class="btn button" name="st" value="register">Registrieren</button>
+        <button type="submit" class="btn button" name="st" value="register">Register</button>
     </form>
     </div>
     <hr>

@@ -6,6 +6,6 @@ Title: true;
 Master: null;
 */
 
-echo '<p>Willkommen zu Hause</p>';
+echo '<p>Welcome Home</p>';
 
 echo 'PHP Version: ' . PHP_VERSION;

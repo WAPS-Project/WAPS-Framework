@@ -2,6 +2,8 @@
 
 namespace webapp_php_sample_class;
 
+use Exception;
+
 class SessionTool
 {
 
@@ -61,6 +63,7 @@ class SessionTool
 
 	/**
 	 * @param $db_link
+	 * @throws Exception
 	 */
 	public static function AddUser($db_link): void
     {

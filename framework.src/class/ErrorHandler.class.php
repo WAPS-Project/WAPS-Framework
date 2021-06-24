@@ -2,6 +2,7 @@
 
 namespace webapp_php_sample_class;
 
+use Error;
 use JetBrains\PhpStorm\Pure;
 use JsonException;
 use RuntimeException;
@@ -25,7 +26,11 @@ class ErrorHandler
      */
     public static function FireError($type, $message): void
     {
-        self::CreateLog($type, $message);
+    	try {
+			self::CreateLog($type, $message);
+		} catch (Error $e) {
+    		self::FireError($e->getCode(), $e->getMessage());
+		}
         echo "<script>Swal.fire({type: 'error', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>";
     }
 
@@ -80,7 +85,11 @@ class ErrorHandler
      */
     public static function FireWarning($type, $message): void
     {
-        self::CreateLog($type, $message);
+		try {
+			self::CreateLog($type, $message);
+		} catch (Error $e) {
+			self::FireError($e->getCode(), $e->getMessage());
+		}
         echo "<script>Swal.fire({type: 'warning', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "', animation: true})</script>";
     }
 
@@ -92,7 +101,11 @@ class ErrorHandler
      */
     public static function FireSuccess($type, $message): void
     {
-        self::CreateLog($type, $message);
+		try {
+			self::CreateLog($type, $message);
+		} catch (Error $e) {
+			self::FireError($e->getCode(), $e->getMessage());
+		}
         echo "<script>Swal.fire({type: 'success', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "', animation: true})</script>";
     }
 
@@ -109,12 +122,20 @@ class ErrorHandler
     public static function CreateError($type, $message, $weight, $isFatal): void
     {
         if ($weight >= 3 && $isFatal) {
-            self::CreateLog($type, $message);
+			try {
+				self::CreateLog($type, $message);
+			} catch (Error $e) {
+				self::FireError($e->getCode(), $e->getMessage());
+			}
             throw new RuntimeException("<script>Swal.fire({type: 'error', title: '$type', text: '$message . This is a fatal Error!', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>");
         }
 
         if ($weight <= 3 && !$isFatal) {
-            self::CreateLog($type, $message);
+			try {
+				self::CreateLog($type, $message);
+			} catch (Error $e) {
+				self::FireError($e->getCode(), $e->getMessage());
+			}
             echo "<script>Swal.fire({type: 'error', title: '$type', text: '$message', showCloseButton: true, footer: '" . self::FOOTER . "'})</script>";
         }
     }
@@ -128,7 +149,11 @@ class ErrorHandler
 	 */
     public static function FireJsonError($type, $message): void
     {
-        self::CreateLog($type, $message);
+		try {
+			self::CreateLog($type, $message);
+		} catch (Error $e) {
+			self::FireError($e->getCode(), $e->getMessage());
+		}
         JsonHandler::FireSimpleJson($type, $message);
     }
 
@@ -140,7 +165,11 @@ class ErrorHandler
      */
     public static function FireCLIError($type, $message): void
     {
-        self::CreateLog($type, $message);
+		try {
+			self::CreateLog($type, $message);
+		} catch (Error $e) {
+			self::FireError($e->getCode(), $e->getMessage());
+		}
         echo '[' . date('YmdHis') . '|' . $type . ']' . '{' . $message . '}';
     }
 }

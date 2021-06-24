@@ -1,5 +1,6 @@
 <?php
 
+use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Main;
 
 ?>
@@ -15,7 +16,11 @@ include 'page/view/head.php';
 <?php
 include 'page/view/header.php';
 
-Main::main($pagePath, $pageName, $pageMap);
+try {
+	Main::main($pagePath, $pageName, $pageMap);
+} catch (JsonException $e) {
+	ErrorHandler::FireError($e->getCode(), $e->getMessage());
+}
 
 include 'page/view/footer.php';
 ?>

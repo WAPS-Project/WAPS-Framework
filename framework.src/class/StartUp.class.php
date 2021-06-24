@@ -81,7 +81,7 @@ class StartUp
             }
 
             echo "<script>console.log('$file')</script>";
-            die("Nicht alle Files im Folder entsprechen dem 'expample." . $dir . ".php' Muster!");
+            die("Not all files in the folder correspond to the 'expample." . $dir . ".php' pattern!");
         }
         return $files;
     }

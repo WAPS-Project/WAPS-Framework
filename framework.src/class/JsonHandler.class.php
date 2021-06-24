@@ -16,8 +16,12 @@ class JsonHandler
 	public static function FireSimpleJson($key, $value): void
     {
         $array = [[$key => $value]];
-        $json = self::BuildJson($array);
-        echo $json;
+        try {
+			$json = self::BuildJson($array);
+			echo $json;
+		} catch (JsonException $e) {
+        	ErrorHandler::FireJsonError($e->getCode(), $e->getMessage());
+		}
     }
 
 	/**

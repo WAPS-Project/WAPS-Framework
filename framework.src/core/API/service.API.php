@@ -1,5 +1,6 @@
 <?php
 
+use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\JsonHandler;
 use webapp_php_sample_class\Main;
 use webapp_php_sample_class\PluginLoader;
@@ -29,6 +30,6 @@ try {
             break;
     }
 
-} catch (Error $e) {
-    JsonHandler::FireSimpleJson($e->getCode(), $e->getMessage());
+} catch (JsonException $e) {
+	ErrorHandler::FireJsonError($e->getCode(), $e->getMessage());
 }

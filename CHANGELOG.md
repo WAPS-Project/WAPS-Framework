@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.1
+
+### Security Update
+
+Just a small security update, adding new try catch units and updating packages.
+
 ## 1.6.0
 
 ### Revision of the graphical user interface

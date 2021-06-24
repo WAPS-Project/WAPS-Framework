@@ -23,7 +23,7 @@ echo "\n\n";
 
 $mode = readline("Please insert the cli mode you want to use: \n");
 
-while (!in_array($mode . ".CLI.php", $CLIFiles)) {
+while (!in_array($mode . ".CLI.php", $CLIFiles, true)) {
     echo "The command you used is invalid \n";
 
     $mode = Cli::designInput();

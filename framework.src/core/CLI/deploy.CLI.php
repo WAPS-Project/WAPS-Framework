@@ -3,6 +3,7 @@
 
 use webapp_php_sample_class\Build;
 use webapp_php_sample_class\Cli;
+use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Migration;
 
 $command = 'start';
@@ -24,8 +25,12 @@ while ($command !== 'exit') {
             break;
 
         case 'create':
-            Migration::createSimpleModelMigration();
-            break;
+			try {
+				Migration::createSimpleModelMigration();
+			} catch (JsonException $e) {
+				ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
+			}
+			break;
 
         case 'run':
             Cli::designLine();

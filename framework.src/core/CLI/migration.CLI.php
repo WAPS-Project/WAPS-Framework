@@ -33,8 +33,12 @@ while ($command !== 'exit') {
             break;
 
         case 'create':
-            Migration::createSimpleModelMigration();
-            break;
+			try {
+				Migration::createSimpleModelMigration();
+			} catch (JsonException $e) {
+				ErrorHandler::FireCLIError($e->getCode(), $e->getMessage());
+			}
+			break;
 
         case 'custom':
             echo "What kind of migration do you want to create? \n";

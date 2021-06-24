@@ -1,5 +1,6 @@
 <?php
 
+use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\JsonHandler;
 use webapp_php_sample_class\Main;
 
@@ -15,6 +16,10 @@ foreach ($APIFiles as $singleAPI) {
     if ($command === $fileParts[0]) {
         include $APIString . $singleAPI;
     } elseif ($command === null) {
-        JsonHandler::FireSimpleJson('No content warning', 'Your request contains no valid Data');
-    }
+		try {
+			JsonHandler::FireSimpleJson('No content warning', 'Your request contains no valid Data');
+		} catch (JsonException $e) {
+			ErrorHandler::FireJsonError($e->getCode(), $e->getMessage());
+		}
+	}
 }

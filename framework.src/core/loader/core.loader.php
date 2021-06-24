@@ -1,6 +1,7 @@
 <?php
 
 use webapp_php_sample_class\ConfigLoader;
+use webapp_php_sample_class\ErrorHandler;
 
 $classString = './class/';
 $modelString = './model/';
@@ -20,4 +21,8 @@ foreach ($classFiles as $singleClass) {
     }
 }
 
-ConfigLoader::loadConfig($configString);
+try {
+	ConfigLoader::loadConfig($configString);
+} catch (JsonException $e) {
+	ErrorHandler::FireError($e->getCode(), $e->getMessage());
+}

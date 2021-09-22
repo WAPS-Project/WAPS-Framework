@@ -1,6 +1,6 @@
 {
     "name": "waps-framework",
-    "version": "1.6.1",
+    "version": "1.7.0",
     "description": "Ein auf PHP und Apache basierendes Framework zum Entwickeln von WebApps",
     "private": true,
     "scripts": {
@@ -13,17 +13,17 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@gitlab.com/webapp_php_sample/framework.git"
+        "url": "git+ssh://git@gitlab.com/waps/framework.git"
     },
     "author": "Jonas Pfalzgraf",
     "license": "MPL-2.0",
     "bugs": {
-        "url": "https://gitlab.com/JosunLP/webapp_php_sample/issues"
+        "url": "https://gitlab.com/waps/framework/issues"
     },
-    "homepage": "https://gitlab.com/JosunLP/webapp_php_sample#readme",
+    "homepage": "https://gitlab.com/waps/framework#readme",
     "dependencies": {
         "@popperjs/core": "^2.4.0",
-        "bootstrap": "^4.5.0",
+        "bootstrap": "^4.6.0",
         "jquery": "^3.5.1",
         "sweetalert2": "^8.19.0"
     },

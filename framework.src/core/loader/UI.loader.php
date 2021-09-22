@@ -10,6 +10,8 @@ use webapp_php_sample_class\StartUp;
 
 include 'core.loader.php';
 
+$_ErrorHandler = new ErrorHandler("basic");
+
 try {
     $database_link = StartUp::loadDatabase();
     StartUp::checkDatabaseStatus();

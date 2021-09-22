@@ -8,6 +8,8 @@ include 'core/loader/core.loader.php';
 
 $APIString = 'core/API/';
 
+$_ErrorHandler = new ErrorHandler("json");
+
 $APIFiles = array_diff(scandir($APIString), array('.', '..'));
 $command = Main::checkRequest('get', 'apiMode');
 

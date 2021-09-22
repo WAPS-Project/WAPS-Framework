@@ -18,6 +18,26 @@ class ErrorHandler
      */
     private const FOOTER = '<span>For help ask at <a href="https://gitlab.com/waps/framework">https://gitlab.com/waps/framework</a></span>';
 
+	function __construct(string $mode) {
+		switch ($mode) {
+			case 'json':
+				set_error_handler('self::FireJsonError');
+				break;
+
+			case 'basic':
+				set_error_handler('self::FireError');
+				break;
+
+			case 'cli':
+				set_error_handler('self::FireCLIError');
+				break;
+
+			default:
+				set_error_handler('self::FireError');
+				break;
+		}
+	}
+
     /**
      * The message type
      * @param $type

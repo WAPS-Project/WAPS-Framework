@@ -1,10 +1,13 @@
 <?php
 
+use webapp_php_sample_class\ErrorHandler;
 use webapp_php_sample_class\Cli;
 
 include "core/loader/core.loader.php";
 
 $CLIString = "./core/CLI/";
+
+$_ErrorHandler = new ErrorHandler("cli");
 
 $CLIFiles = array_diff(scandir($CLIString), DEFAULT_FILE_FILTER);
 

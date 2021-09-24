@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.1
+
+### Code cleaning
+
+Some code cleaning
+
 ## 1.7.0
 
 ### Global Error handling
@@ -140,7 +146,7 @@ A new Plugin System was added, external plugins can now be implemented easy by j
 
 ### View/Core Refactoring
 
-The view Pages for the Header, Head and Footer are now in the ```./page/view/``` folder, future views will be stored there.
+The view Pages for the Header, Head and Footer are now in the `./page/view/` folder, future views will be stored there.
 
 ### Documentation rewrite
 

@@ -140,7 +140,7 @@ A new Plugin System was added, external plugins can now be implemented easy by j
 
 ### View/Core Refactoring
 
-The view Pages for the Header, Head and Footer are now in the ```./page/view/``` folder, future views will be stored there.
+The view Pages for the Header, Head and Footer are now in the `./page/view/` folder, future views will be stored there.
 
 ### Documentation rewrite
 

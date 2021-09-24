@@ -12,17 +12,19 @@ include 'core/loader/UI.loader.php';
 <?php
 include 'page/view/head.php';
 ?>
+
 <body>
-<?php
-include 'page/view/header.php';
+	<?php
+	include 'page/view/header.php';
 
-try {
-	Main::main($pagePath, $pageName, $pageMap);
-} catch (JsonException $e) {
-	ErrorHandler::FireError($e->getCode(), $e->getMessage());
-}
+	try {
+		Main::main($pagePath, $pageName, $pageMap);
+	} catch (JsonException $e) {
+		ErrorHandler::FireError($e->getCode(), $e->getMessage());
+	}
 
-include 'page/view/footer.php';
-?>
+	include 'page/view/footer.php';
+	?>
 </body>
+
 </html>

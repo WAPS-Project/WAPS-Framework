@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.1
+
+### Code cleaning
+
+Some code cleaning
+
 ## 1.7.0
 
 ### Global Error handling

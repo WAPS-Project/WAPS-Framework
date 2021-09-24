@@ -1,6 +1,6 @@
 {
     "name": "waps-framework",
-    "version": "1.7.1",
+    "version": "1.7.2",
     "description": "Ein auf PHP und Apache basierendes Framework zum Entwickeln von WebApps",
     "private": true,
     "scripts": {

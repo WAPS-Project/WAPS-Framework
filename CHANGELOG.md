@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.2
+
+### Implementation of Frontend Version info
+
+An interface was implemented with which the version and information of the framework are returned in the frontend.
+
 ## 1.7.1
 
 ### Code cleaning

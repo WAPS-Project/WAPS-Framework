@@ -128,7 +128,7 @@ class Main
                             id="dropdownMenuLink' . $pageObj->Name . '"
                             >' . $pageObj->Name . '</button>';
 				echo '</a>';
-				echo '<button type="button" class="btn nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>';
+				echo '<button type="button" class="btn nav-link dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>';
 				echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
 				foreach ($pageContainer[0] as $key => $value) {
 					if ($key === $pageObj->Name) {

@@ -9,7 +9,8 @@
         "build-css-w": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --watch",
         "build-js": "webpack",
         "build": "npm run build-css && webpack",
-        "deploy": "npm run build && php deploy.php"
+        "deploy": "npm run build && php ./tools/deploy.php",
+        "watch": "php ./tools/watcher.php"
     },
     "repository": {
         "type": "git",

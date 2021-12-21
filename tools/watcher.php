@@ -1,6 +1,9 @@
 <?php
 
-function watcher($path, $callback) {
+print("Starting watcher...");
+print("\n");
+
+function watcher($path, $callback): void {
 	$files = array();
 	$dirs = array();
 	$dir = opendir($path);
@@ -22,13 +25,14 @@ function watcher($path, $callback) {
 	}
 }
 
-function run($command) {
+function run($command): void {
 	echo "Running: $command\n";
 	system($command);
 }
 
-function file_watcher($file, $callback) {
+function file_watcher($file, $callback): void {
 	$mtime = filemtime($file);
+	print("Watching $file\n");
 	while (true) {
 		if (filemtime($file) != $mtime) {
 			$mtime = filemtime($file);
@@ -38,8 +42,9 @@ function file_watcher($file, $callback) {
 	}
 }
 
-function dir_watcher($dir, $callback) {
+function dir_watcher($dir, $callback): void {
 	$mtime = filemtime($dir);
+	print("Watching $dir\n");
 	while (true) {
 		if (filemtime($dir) != $mtime) {
 			$mtime = filemtime($dir);
@@ -49,7 +54,7 @@ function dir_watcher($dir, $callback) {
 	}
 }
 
-function fiber($callback) {
+function fiber($callback): void {
 	$fiber = new Fiber(function() use ($callback) {
 		$callback();
 	});
@@ -58,15 +63,17 @@ function fiber($callback) {
 
 watcher('./framework.src', function ($files, $dirs) {
 	foreach ($files as $file) {
-		fiber(function() use ($file) {
+		fiber(function() use ($file): void {
 			file_watcher($file, function() use ($file) {
+				print("$file changed\n");
 				run('npm run deploy');
 			});
 		});
 	}
 	foreach ($dirs as $dir) {
-		fiber(function() use ($dir) {
+		fiber(function() use ($dir): void {
 			dir_watcher($dir, function() use ($dir) {
+				print("$dir changed\n");
 				run('npm run deploy');
 			});
 		});

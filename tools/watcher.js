@@ -32,7 +32,8 @@ watchDir(src)();
 function command(cmd) {
 	return () => {
 		console.log(`Running: ${cmd}`);
-		child.execSync(cmd);
+		let result = child.execSync(cmd);
+		console.log(result.toString());
 	};
 }
 

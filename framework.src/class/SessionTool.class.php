@@ -41,7 +41,7 @@ class SessionTool
 			$username = $_SESSION['login_User'];
 			echo '<form method= "post"  id= "userLogin">';
 			echo '<div class="dropdown">';
-			echo '<button class="btn btn-secondary dropdown-toggle nav-link button btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User menu</button>';
+			echo '<button class="btn btn-secondary dropdown-toggle nav-link button btn-danger" data-bs-toggle="dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User menu</button>';
 			echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
 			echo "<label id= \"greetings\" class='greeting dropdown-item'>Welcome, $username </label>" . '   ';
 			echo '<div class="dropdown-divider"></div>';

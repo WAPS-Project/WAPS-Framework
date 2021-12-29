@@ -1,23 +1,25 @@
 {
-    "name": "waps/framework",
-    "description": "A framework for developing WebApps based on PHP and Apache",
-    "license": "MPL-2.0",
-    "type": "framework",
-    "version": "1.7.2",
-    "homepage": "https://waps-framework.info/",
-    "scripts": {
-        "cli": "php CLI.php"
-    },
-    "authors": [{
-        "name": "Jonas Pfalzgraf",
-        "email": "info@josunlp.de"
-    }],
-    "minimum-stability": "stable",
-    "require": {
-        "ext-mysqli": "*",
-        "ext-readline": "*",
-        "ext-json": "*",
-        "ext-dom": "*",
-        "ext-simplexml": "*"
+  "name": "waps/framework",
+  "description": "A framework for developing Web Apps, APIs and Console Apps based on PHP 8.1 and Apache",
+  "license": "MPL-2.0",
+  "type": "framework",
+  "version": "2.0.0-beta-291221",
+  "homepage": "https://waps-framework.info",
+  "scripts": {
+    "cli": "php CLI.php"
+  },
+  "authors": [
+    {
+      "name": "Jonas Pfalzgraf",
+      "email": "info@josunlp.de"
     }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "ext-mysqli": "*",
+    "ext-readline": "*",
+    "ext-json": "*",
+    "ext-dom": "*",
+    "ext-simplexml": "*"
+  }
 }

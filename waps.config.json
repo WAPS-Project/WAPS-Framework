@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0-beta-291221",
+	"description": "A framework for developing Web Apps, APIs and Console Apps based on PHP 8.1 and Apache",
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@gitlab.com/waps/framework.git"
+	},
+	"authors": [
+		{
+			"name": "Jonas Pfalzgraf",
+			"email": "info@josunlp.de"
+		}
+	],
+	"license": "MPL-2.0",
+	"bugs": {
+		"url": "https://gitlab.com/waps/framework/issues"
+	},
+	"homepage": "https://waps-framework.info",
+	"minimum-stability": "stable"
+}

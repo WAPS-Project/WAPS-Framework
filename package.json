@@ -1,6 +1,6 @@
 {
     "name": "waps-framework",
-    "version": "1.7.2",
+    "version": "2.0.0-beta-291221",
     "description": "Ein auf PHP und Apache basierendes Framework zum Entwickeln von WebApps",
     "private": true,
     "scripts": {
@@ -10,7 +10,7 @@
         "build-js": "webpack",
         "build": "npm run build-css && webpack",
         "deploy": "npm run build && php ./tools/deploy.php",
-        "watch": "php ./tools/watcher.php"
+        "watch": "node ./tools/watcher.js"
     },
     "repository": {
         "type": "git",

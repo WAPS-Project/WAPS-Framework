@@ -3,7 +3,7 @@
   "description": "A framework for developing Web Apps, APIs and Console Apps based on PHP 8.1 and Apache",
   "license": "MPL-2.0",
   "type": "framework",
-  "version": "2.0.0-beta-291221",
+  "version": "2.0.0-beta-080722",
   "homepage": "https://waps-framework.info",
   "scripts": {
     "cli": "php CLI.php"
@@ -11,7 +11,7 @@
   "authors": [
     {
       "name": "Jonas Pfalzgraf",
-      "email": "info@josunlp.de"
+      "email": "support@josunlp.de"
     }
   ],
   "minimum-stability": "stable",

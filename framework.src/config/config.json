@@ -5,7 +5,7 @@
     "app_name": "Example Web App",
     "framework_info": {
       "framework_name": "WAPS-Framework",
-      "framework_version": "2.0.0-beta-291221",
+      "framework_version": "2.0.0-beta-080722",
       "framework_repository": "git+ssh://git@gitlab.com/waps/framework.git",
       "framework_wiki": "https://waps-framework.info",
       "framework_description": "A framework for developing Web Apps, APIs and Console Apps based on PHP 8.1 and Apache",

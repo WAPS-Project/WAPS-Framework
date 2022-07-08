@@ -1,6 +1,6 @@
 {
   "name": "waps-framework",
-  "version": "2.0.0-beta-291221",
+  "version": "2.0.0-beta-080722",
   "description": "A framework for developing Web Apps, APIs and Console Apps based on PHP 8.1 and Apache",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "build-css-w": "sass framework.src/src/sass/main.sass framework.src/content/css/main.css --watch",
     "build-js": "webpack",
     "build": "npm run build-css && webpack",
-    "deploy": "npm run sync && npm run build && php ./tools/deploy.php",
+    "deploy": "npm run sync && npm run build && node ./tools/deploy.js",
     "watch": "node ./tools/watcher.js",
     "sync": "node ./tools/syncConfig.js"
   },
@@ -20,7 +20,7 @@
   "authors": [
     {
       "name": "Jonas Pfalzgraf",
-      "email": "info@josunlp.de"
+      "email": "support@josunlp.de"
     }
   ],
   "license": "MPL-2.0",

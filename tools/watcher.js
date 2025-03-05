@@ -18,7 +18,7 @@ async function watch(file) {
 				command(commandStr)();
 			} else {
 				console.log(`${filename} changed`);
-				command("php ./tools/deploy.php")();
+				command("node ./tools/deploy.js")();
 			}
 		}
 

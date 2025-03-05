@@ -6,48 +6,43 @@ use webapp_php_sample_class\Main;
 
 include 'core/loader/core.loader.php';
 
-$APIString = 'core/API/';
-
-$_ErrorHandler = new ErrorHandler("json");
-
 try {
-    // Validiere API-Verzeichnis
-    if (!is_dir($APIString) || !is_readable($APIString)) {
-        throw new \RuntimeException("API-Verzeichnis nicht gefunden oder nicht lesbar");
-    }
+	$APIString = 'core/API/';
+	$apiDir = realpath($APIString);
+	if ($apiDir === false || !is_dir($apiDir) || !is_readable($apiDir)) {
+		throw new \RuntimeException("API-Verzeichnis nicht gefunden oder nicht lesbar");
+	}
 
-    $APIFiles = array_diff(scandir($APIString), array('.', '..'));
-    $command = Main::checkRequest('get', 'apiMode');
+	$APIFiles = array_diff(scandir($apiDir), array('.', '..'));
+	// Trimme den API-Befehl, um unerwünschte Leerzeichen zu entfernen.
+	$command = trim(Main::checkRequest('get', 'apiMode'));
+	// Frühzeitige Prüfung auf leeren API-Befehl
+	if ($command === '') {
+		JsonHandler::FireSimpleJson('No content warning', 'Your request contains no valid Data');
+		exit;
+	}
 
-    $validApiFound = false;
+	$validApiFound = false;
 
-    // Suche nach der passenden API-Datei
-    foreach ($APIFiles as $singleAPI) {
-        if (!is_file($APIString . $singleAPI) || !is_readable($APIString . $singleAPI)) {
-            continue;
-        }
+	// Suche nach der passenden API-Datei
+	foreach ($APIFiles as $singleAPI) {
+		if (!is_file($apiDir . DIRECTORY_SEPARATOR . $singleAPI) || !is_readable($apiDir . DIRECTORY_SEPARATOR . $singleAPI)) {
+			continue;
+		}
+		// Validierung und Extraktion des API-Befehls via Regex (case-insensitive)
+		if (preg_match('/^([a-zA-Z0-9_-]+)\.API\.php$/i', $singleAPI, $matches)) {
+			if ($command === $matches[1]) {
+				require_once $apiDir . DIRECTORY_SEPARATOR . $singleAPI;
+				$validApiFound = true;
+				break;
+			}
+		}
+	}
 
-        // Validiere Dateinamen und Erweiterung
-        $fileParts = explode('.', $singleAPI);
-        if (count($fileParts) != 2 || $fileParts[1] !== 'API.php') {
-            continue;
-        }
-
-        if ($command === $fileParts[0]) {
-            include $APIString . $singleAPI;
-            $validApiFound = true;
-            break;
-        }
-    }
-
-    if (!$validApiFound) {
-        if ($command === null) {
-            JsonHandler::FireSimpleJson('No content warning', 'Your request contains no valid Data');
-        } else {
-            JsonHandler::FireSimpleJson('Invalid API', 'The requested API endpoint does not exist');
-        }
-    }
+	if (!$validApiFound) {
+		JsonHandler::FireSimpleJson('Invalid API', 'The requested API endpoint does not exist');
+	}
 
 } catch (\Throwable $e) {
-    ErrorHandler::FireJsonError('API Error', $e->getMessage());
+	ErrorHandler::FireJsonError('API Error', $e->getMessage());
 }

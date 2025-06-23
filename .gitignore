@@ -309,14 +309,14 @@ composer.lock
 
 # End of https://www.gitignore.io/api/node
 
-framework.dist
-framework.dist/*
-framework.src/config/pagemap.config.json
-framework.src/config/plugin.config.json
+dist
+dist/*
+src/config/pagemap.config.json
+src/config/plugin.config.json
 
-framework.src/content/js/*
-framework.src/content/css/*
-framework.src/node_modules/
+src/content/js/*
+src/content/css/*
+src/node_modules/
 
 package-lock.json
 

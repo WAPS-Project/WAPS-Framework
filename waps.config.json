@@ -17,5 +17,5 @@
 	},
 	"homepage": "https://waps-framework.info",
 	"minimum-stability": "stable",
-	"deploy-target": "./framework.dist"
+	"deploy-target": "./dist"
 }

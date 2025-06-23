@@ -1,11 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const src = './framework.src/';
-const commandStr = 'npm run deploy';
-const child = require('child_process');
+const fs = require("fs");
+const path = require("path");
+const src = "./src/";
+const commandStr = "npm run deploy";
+const child = require("child_process");
 
 async function watch(file) {
-
 	// get file type
 	const ext = path.extname(file);
 	// get file name
@@ -13,7 +12,12 @@ async function watch(file) {
 
 	fs.watch(file, (event, filename) => {
 		if (filename) {
-			if (ext === '.js' || ext === '.sass' || ext === '.scss' || ext === '.ts') {
+			if (
+				ext === ".js" ||
+				ext === ".sass" ||
+				ext === ".scss" ||
+				ext === ".ts"
+			) {
 				console.log(`${filename} changed`);
 				command(commandStr)();
 			} else {
@@ -21,13 +25,11 @@ async function watch(file) {
 				command("node ./tools/deploy.js")();
 			}
 		}
-
 	});
 }
 
 // generate a function that runs 'npm run deploy'
 watchDir(src)();
-
 
 function command(cmd) {
 	return () => {
@@ -39,7 +41,7 @@ function command(cmd) {
 
 function watchDir(dir) {
 	return () => {
-		fs.readdirSync(dir).forEach(file => {
+		fs.readdirSync(dir).forEach((file) => {
 			const fullPath = path.resolve(dir, file);
 			if (fs.statSync(fullPath).isDirectory()) {
 				watchDir(fullPath)();
@@ -54,5 +56,5 @@ watchDir(src)();
 
 console.log(`Node version: ${process.version}\n \n`);
 
-console.log('Watching...\n');
-console.log('Press Ctrl+C to exit.\n');
+console.log("Watching...\n");
+console.log("Press Ctrl+C to exit.\n");

@@ -1,11 +1,12 @@
 const fs = require("fs").promises;
 const fse = require("fs-extra");
 
-const DEPLOY_TARGET = "./framework.dist";
+const DEPLOY_TARGET = "./dist";
 
 // Check OS
 const platform = process.platform;
-const osName = platform === "win32" ? "windows" : platform === "darwin" ? "mac" : "linux";
+const osName =
+	platform === "win32" ? "windows" : platform === "darwin" ? "mac" : "linux";
 
 // Check Node.js version
 const nodeVersion = parseFloat(process.version.slice(1));
@@ -19,13 +20,16 @@ console.log(`Deploying to ${DEPLOY_TARGET}`);
 
 async function deploy() {
 	try {
-		await fs.access(DEPLOY_TARGET).then(() => {
-			fs.rm(DEPLOY_TARGET, { recursive: true });
-		}).catch(() =>{
-			fs.mkdir(DEPLOY_TARGET);
-		});
+		await fs
+			.access(DEPLOY_TARGET)
+			.then(() => {
+				fs.rm(DEPLOY_TARGET, { recursive: true });
+			})
+			.catch(() => {
+				fs.mkdir(DEPLOY_TARGET);
+			});
 		fs.unlink(`${DEPLOY_TARGET}/deploy.js`);
-		await fse.copy("framework.src", DEPLOY_TARGET, { recursive: true });
+		await fse.copy("src", DEPLOY_TARGET, { recursive: true });
 	} catch (error) {
 		console.error(`Error: ${error.message}`);
 	}

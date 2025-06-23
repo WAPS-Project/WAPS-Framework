@@ -26,9 +26,9 @@ if ($os == 'win') {
 	$os_name = 'linux';
 }
 
-$DEPLOY_TARGET = '"./framework.dist"';
+$DEPLOY_TARGET = '"./dist"';
 // C:/xampp/htdocs
-// ./framework.dist
+// ./dist
 
 echo "Identifyed OS: $os_name\n";
 echo "Deploying to $DEPLOY_TARGET\n";
@@ -38,15 +38,15 @@ switch ($os) {
 
 		system("mkdir $DEPLOY_TARGET");
 
-		echo "Copy folder contents of framework.src to deploy target: $DEPLOY_TARGET\n";
-		system("xcopy framework.src $DEPLOY_TARGET /s /e /y");
+		echo "Copy folder contents of src to deploy target: $DEPLOY_TARGET\n";
+		system("xcopy src $DEPLOY_TARGET /s /e /y");
 		break;
 	case 'nix':
 		system("rm -rf $DEPLOY_TARGET");
 
 		system("mkdir $DEPLOY_TARGET");
 
-		echo "Copy folder contents of framework.src to deploy target: $DEPLOY_TARGET\n";
-		system("cp -r framework.src $DEPLOY_TARGET");
+		echo "Copy folder contents of src to deploy target: $DEPLOY_TARGET\n";
+		system("cp -r src $DEPLOY_TARGET");
 		break;
 }

@@ -5,12 +5,12 @@
 		"moduleResolution": "Node",
 		"lib": ["dom", "ESNext", "dom.iterable", "scripthost"],
 		"sourceMap": true,
-		"outDir": "./framework.src/content/js",
+		"outDir": "./src/content/js",
 		"removeComments": true,
 		"strict": true,
 		"esModuleInterop": true,
 		"paths": {
-			"~/*": ["./framework.src/content/js/*"],
+			"~/*": ["./src/content/js/*"],
 		}
 	},
 	"exclude": ["node_modules"]

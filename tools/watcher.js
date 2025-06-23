@@ -1,13 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const src = './framework.src/';
+const commandStr = 'npm run deploy';
 const child = require('child_process');
 
-/**
- *
- * @param {string} file
- */
-function watch(file) {
+async function watch(file) {
 
 	// get file type
 	const ext = path.extname(file);
@@ -15,39 +12,34 @@ function watch(file) {
 	const name = path.basename(file, ext);
 
 	fs.watch(file, (event, filename) => {
-		console.log(event);
 		if (filename) {
-			if (ext === '.sass' || ext === '.scss' || ext === '.ts') {
+			if (ext === '.js' || ext === '.sass' || ext === '.scss' || ext === '.ts') {
 				console.log(`${filename} changed`);
-				command("npm run deploy")();
+				command(commandStr)();
 			} else {
 				console.log(`${filename} changed`);
 				command("node ./tools/deploy.js")();
 			}
 		}
+
 	});
 }
 
-/**
- *
- * @param {string} cmd
- * @returns void
- */
+// generate a function that runs 'npm run deploy'
+watchDir(src)();
+
+
 function command(cmd) {
 	return () => {
 		console.log(`Running: ${cmd}`);
-		console.log(child.execSync(cmd).toString());
+		let result = child.execSync(cmd);
+		console.log(result.toString());
 	};
 }
 
-/**
- *
- * @param {string} dir
- * @returns void
- */
 function watchDir(dir) {
 	return () => {
-		fs.readdirSync(dir, 'utf-8').forEach(file => {
+		fs.readdirSync(dir).forEach(file => {
 			const fullPath = path.resolve(dir, file);
 			if (fs.statSync(fullPath).isDirectory()) {
 				watchDir(fullPath)();

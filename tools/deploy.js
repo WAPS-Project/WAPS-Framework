@@ -1,35 +1,34 @@
-const os = require('os');
-const fs = require('fs');
+const fs = require("fs").promises;
+const fse = require("fs-extra");
 
-let whatOs = os.platform().toString();
+const DEPLOY_TARGET = "./framework.dist";
 
-let wapsConfig = JSON.parse(fs.readFileSync('./waps.config.json'));
+// Check OS
+const platform = process.platform;
+const osName = platform === "win32" ? "windows" : platform === "darwin" ? "mac" : "linux";
 
-let deployTarget = wapsConfig['deploy-target'];
-
-console.log(`Identified OS: ${whatOs}`);
-console.log(`Deploying to ${deployTarget}`);
-
-if (fs.existsSync(deployTarget)) {
-	fs.rmSync(deployTarget, { recursive: true });
+// Check Node.js version
+const nodeVersion = parseFloat(process.version.slice(1));
+if (nodeVersion < 18) {
+	console.error("Node.js 18 or higher is required!");
+	process.exit(1);
 }
 
-fs.mkdirSync(deployTarget);
+console.log(`Identified OS: ${osName}`);
+console.log(`Deploying to ${DEPLOY_TARGET}`);
 
-copyFiles('./framework.src', deployTarget, ['src']);
-
-function copyFiles(src, dest, ignoreDirs) {
-	fs.readdirSync(src).forEach(file => {
-		let srcPath = `${src}/${file}`;
-		let destPath = `${dest}/${file}`;
-		let stats = fs.statSync(srcPath);
-		if (stats.isFile()) {
-			fs.copyFileSync(srcPath, destPath);
-		} else if (stats.isDirectory() && ignoreDirs.indexOf(file) === -1) {
-			if (!fs.existsSync(destPath)) {
-				fs.mkdirSync(destPath);
-			}
-			copyFiles(srcPath, destPath, ignoreDirs);
-		}
-	});
+async function deploy() {
+	try {
+		await fs.access(DEPLOY_TARGET).then(() => {
+			fs.rm(DEPLOY_TARGET, { recursive: true });
+		}).catch(() =>{
+			fs.mkdir(DEPLOY_TARGET);
+		});
+		fs.unlink(`${DEPLOY_TARGET}/deploy.js`);
+		await fse.copy("framework.src", DEPLOY_TARGET, { recursive: true });
+	} catch (error) {
+		console.error(`Error: ${error.message}`);
+	}
 }
+
+deploy();

@@ -3,7 +3,6 @@
 
 namespace webapp_php_sample_class;
 
-use JetBrains\PhpStorm\ArrayShape;
 use JsonException;
 
 class Main
@@ -192,7 +191,7 @@ class Main
 	 * @param $path
 	 * @return array[]
 	 */
-	#[ArrayShape(['page' => "array"])] public static function validateFile($path): array
+	public static function validateFile($path): array
 	{
 		$files = array_diff(scandir($path), DEFAULT_FILE_FILTER);
 

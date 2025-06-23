@@ -39,7 +39,7 @@ class DatabaseHandler
 
 					return false;
 				}
-				break;
+				return false;
 			case 'create':
 				$check = null;
 				$tableRows = [];
@@ -59,8 +59,9 @@ class DatabaseHandler
 				}
 				if ($check === false) {
 					echo "something went wrong \n";
+					return false;
 				}
-				break;
+				return true;
 			case 'select':
 				if (is_array($rows)) {
 					$rows = implode(', ', $rows);
@@ -77,8 +78,7 @@ class DatabaseHandler
 					}
 				}
 				ErrorHandler::FireWarning('Database Warning', 'The SELECT request failed');
-
-				break;
+				return false;
 
 			case 'update':
 				foreach ($values as $key => $value) {
@@ -89,7 +89,7 @@ class DatabaseHandler
 				return true;
 			default:
 				ErrorHandler::FireWarning('Database Warning', 'No Sql request mode chosen');
-				break;
+				return false;
 		}
 	}
 }

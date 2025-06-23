@@ -1,2 +1,6 @@
-<h1>User: {{ user.name }}</h1>
-<p>Email: {{ user.email }}</p>
+<h1>User-Seite (Twig)</h1>
+{% if userId %}
+    <p>User-ID: {{ userId|e }}</p>
+{% else %}
+    <p>Keine User-ID angegeben.</p>
+{% endif %}

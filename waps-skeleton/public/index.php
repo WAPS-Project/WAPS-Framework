@@ -7,9 +7,10 @@ use Waps\Framework\Controller\Router;
 
 try {
     // Initialisiere die Anwendung
-    // Hier ggf. weitere Projekt-Initialisierung
+    include __DIR__ . '/../src/core/loader/UI.loader.php';
     $language = defined('LANGUAGE') ? LANGUAGE : 'en';
 } catch (\Throwable $e) {
+    // Kritischer Fehler beim Laden der Core-Komponenten
     die('Kritischer Fehler: ' . $e->getMessage());
 }
 
@@ -23,22 +24,25 @@ try {
     ErrorHandler::FireError('Template Error', 'Could not load head template: ' . $e->getMessage());
 }
 ?>
+
 <body>
-<?php
-try {
-    include __DIR__ . '/../src/page/view/header.php';
-} catch (\Throwable $e) {
-    ErrorHandler::FireError('Template Error', 'Could not load header template: ' . $e->getMessage());
-}
+	<?php
+	try {
+	    include __DIR__ . '/../src/page/view/header.php';
+	} catch (\Throwable $e) {
+	    ErrorHandler::FireError('Template Error', 'Could not load header template: ' . $e->getMessage());
+	}
 
-$router = new Router();
-$router->route();
+	// Routing übernimmt jetzt die Router-Klasse
+	$router = new Router();
+	$router->route();
 
-try {
-    include __DIR__ . '/../src/page/view/footer.php';
-} catch (\Throwable $e) {
-    ErrorHandler::FireError('Template Error', 'Could not load footer template: ' . $e->getMessage());
-}
-?>
+	try {
+	    include __DIR__ . '/../src/page/view/footer.php';
+	} catch (\Throwable $e) {
+	    ErrorHandler::FireError('Template Error', 'Could not load footer template: ' . $e->getMessage());
+	}
+	?>
 </body>
+
 </html>

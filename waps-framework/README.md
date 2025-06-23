@@ -1,34 +1,72 @@
 # WAPS Framework
 
-Das WAPS Framework ist ein modernes, modulares PHP-Framework für Webanwendungen, APIs und CLI-Tools.
+Ein modernes PHP-Framework mit PSR-4 Autoloading, Composer-Integration und modernen Standards.
 
 ## Installation
-
-Füge das Framework als Abhängigkeit zu deinem Projekt hinzu:
 
 ```bash
 composer require waps/framework
 ```
 
+## Verwendung
+
+### Web-Anwendung
+
+Das Framework stellt die Core-Komponenten bereit. Für eine Web-Anwendung verwenden Sie das `waps-skeleton` Projekt als Basis.
+
+### API-Endpoints
+
+Das Framework stellt einen API-Entry-Point bereit:
+
+```php
+// In Ihrer Anwendung
+require_once 'vendor/waps/framework/src/API.php';
+```
+
+API-Endpoints werden über den `apiMode` Parameter aufgerufen:
+
+```
+https://your-domain.com/api.php?apiMode=yourEndpoint
+```
+
+### CLI-Befehle
+
+Das Framework stellt einen CLI-Entry-Point bereit:
+
+```bash
+php vendor/waps/framework/src/CLI.php
+```
+
+Verfügbare CLI-Befehle werden automatisch erkannt und angezeigt.
+
+## Struktur
+
+```
+src/
+├── Waps/Framework/Controller/  # Core Controller-Klassen
+├── core/                       # Core-Komponenten
+│   ├── API/                   # API-Endpoints
+│   ├── CLI/                   # CLI-Befehle
+│   ├── database/              # Database-Komponenten
+│   └── loader/                # Loader-Komponenten
+├── model/                     # Model-Klassen
+├── API.php                    # API-Entry-Point
+└── CLI.php                    # CLI-Entry-Point
+```
+
 ## Features
 
 -   PSR-4 Autoloading
--   Zentrales Routing & Controller-System
--   Request/Response-Objekte
--   Fehlerbehandlung
--   Migration & Datenbankabstraktion
+-   Composer-Integration
+-   Router-System
+-   Request/Response-Handling
+-   Error-Handling
+-   Session-Management
+-   Database-Integration
 -   Plugin-System
--   CLI-Tools
--   u.v.m.
+-   API-Framework
+-   CLI-Framework
 
-## Verzeichnisstruktur
+## Lizenz
 
--   `src/Waps/Framework/` – Kernklassen & Controller
--   `src/core/` – Loader, CLI, API, Datenbank
--   `src/model/` – Framework-Modelle
-
-## Einstieg
-
-Binde das Framework in deinem Projekt ein und starte mit deinem eigenen Skeleton-Projekt.
-
-Weitere Infos: [Dokumentation folgt]
+Siehe LICENSE-Datei für Details.

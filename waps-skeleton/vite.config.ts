@@ -1,11 +1,11 @@
-import { defineConfig } from "vite";
 import path from "path";
+import { defineConfig } from "vite";
 
 export default defineConfig({
 	build: {
 		outDir: path.resolve(__dirname, "./src/content/js"),
 		rollupOptions: {
-			input: "./src/src/ts/index.ts",
+			input: "./src/frontend/ts/index.ts",
 			output: {
 				entryFileNames: "main.js",
 				format: "es",

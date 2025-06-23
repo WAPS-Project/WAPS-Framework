@@ -1,6 +1,6 @@
 <?php
 
-namespace webapp_php_sample_class;
+namespace Plugin\GalleryBuilder;
 
 class GalleryBuilder
 {
@@ -15,6 +15,3 @@ class GalleryBuilder
     }
 
 }
-
-
-

@@ -1,8 +1,8 @@
 <?php
 
-use Waps\Framework\Controller\ErrorHandler;
-use Waps\Framework\Controller\JsonHandler;
-use Waps\Framework\Controller\Main;
+use Waps\Framework\Core\ErrorHandler;
+use Waps\Framework\Support\JsonHandler;
+use Waps\Framework\Core\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -15,7 +15,7 @@ try {
 
 	$APIFiles = array_diff(scandir($apiDir), array('.', '..'));
 	// Trimme den API-Befehl, um unerwünschte Leerzeichen zu entfernen.
-	$command = trim(Main::checkRequest('get', 'apiMode'));
+	$command = trim(Application::checkRequest('get', 'apiMode'));
 	// Frühzeitige Prüfung auf leeren API-Befehl
 	if ($command === '') {
 		JsonHandler::FireSimpleJson('No content warning', 'Your request contains no valid Data');

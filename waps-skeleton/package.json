@@ -21,7 +21,7 @@
       "email": "info@josunlp.de"
     }
   ],
-  "license": "MPL-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/waps/framework/issues"
   },

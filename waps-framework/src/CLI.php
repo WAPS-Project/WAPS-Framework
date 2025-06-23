@@ -1,7 +1,7 @@
 <?php
 
-use Waps\Framework\Controller\ErrorHandler;
-use Waps\Framework\Controller\Cli;
+use Waps\Framework\Core\ErrorHandler;
+use Waps\Framework\Console\Command;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -11,7 +11,7 @@ $_ErrorHandler = new ErrorHandler("cli");
 
 $CLIFiles = array_diff(scandir($CLIString), array('.', '..'));
 
-Cli::checkIfCli();
+Command::checkIfCli();
 
 $command = null;
 
@@ -29,7 +29,7 @@ $mode = readline("Please insert the cli mode you want to use: \n");
 while (!in_array($mode . ".CLI.php", $CLIFiles, true)) {
 	echo "The command you used is invalid \n";
 
-	$mode = Cli::designInput();
+	$mode = Command::designInput();
 }
 
 foreach ($CLIFiles as $file) {

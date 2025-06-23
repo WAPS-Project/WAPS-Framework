@@ -1,74 +1,120 @@
 # WAPS Skeleton
 
-Dies ist das offizielle Projekt-Skeleton für das WAPS PHP-Framework.
+Ein Starter-Template für neue WAPS Framework Projekte.
 
-## Schnellstart
+## Features
 
-1. **Framework installieren**
+-   **Modernes PHP Framework**: Basierend auf PHP 8.0+ mit PSR-4 Autoloading
+-   **Frontend Build System**: Vite mit TypeScript und SASS
+-   **Bootstrap 5**: Responsive UI Framework
+-   **FontAwesome**: Icon Library
+-   **Plugin System**: Erweiterbare Architektur
+-   **Database Integration**: MySQL/MariaDB Support
+-   **Twig Templates**: Template Engine
 
-    Stelle sicher, dass das Framework-Paket (`waps/framework`) über Composer verfügbar ist (z.B. via Packagist oder VCS).
+## Installation
 
-2. **Projekt initialisieren**
+```bash
+# Repository klonen
+git clone <repository-url>
+cd waps-skeleton
 
-    ```bash
-    composer install
-    ```
+# PHP Dependencies installieren
+composer install
 
-3. **Lokalen Webserver starten**
+# Node.js Dependencies installieren
+npm install
 
-    ```bash
-    php -S localhost:8000 -t public
-    ```
+# Frontend Assets kompilieren
+npm run build
+```
 
-    oder mit Apache/Nginx das `public/`-Verzeichnis als Webroot einrichten.
+## Entwicklung
 
-4. **Projektstruktur**
+### Frontend Development
 
-    - `public/index.php` – Einstiegspunkt (Front-Controller)
-    - `src/config/config.json` – Konfiguration
-    - `src/page/` – Seiten (open, static, view)
-    - `src/plugin/` – Plugins (Beispiel: ExamplePlugin)
-    - `src/frontend/sass/` – SASS-Quellcode (Beispiel: `main.sass`)
-    - `src/frontend/ts/` – TypeScript-Quellcode (Beispiel: `index.ts`)
-    - `templates/` – Twig-Templates
+```bash
+# Development Server starten (Watch Mode)
+npm run build-w
 
-5. **Eigene Seiten und Controller**
+# Oder manuell kompilieren
+npm run build
+```
 
-    Lege neue Seiten in `src/page/open/` oder Controller im Framework an.
+### Deployment
 
-## Beispielseiten für Features
+```bash
+# Vollständiges Deployment (Sync + Build + Deploy)
+npm run deploy
 
--   **Plugin-Demo:** `src/page/open/Example.page.php`
--   **Twig-Demo:** `src/page/open/TwigDemo.page.php`
--   **Request-Demo:** `src/page/open/RequestDemo.page.php`
--   **Response-Demo:** `src/page/open/ResponseDemo.page.php`
--   **Config-Demo:** `src/page/open/ConfigDemo.page.php`
--   **Session-Demo:** `src/page/open/SessionDemo.page.php`
--   **Error-Demo:** `src/page/open/ErrorDemo.page.php`
+# Nur Konfiguration synchronisieren
+npm run sync
+
+# Datei-Watcher für automatisches Rebuilding
+npm run watch
+```
+
+## Projektstruktur
+
+```
+waps-skeleton/
+├── public/                 # Web-Root
+│   └── index.php          # Entry Point
+├── src/
+│   ├── config/            # Konfigurationsdateien
+│   ├── content/           # Statische Assets (CSS, JS, Images)
+│   ├── frontend/          # Source Files (SASS, TypeScript)
+│   ├── page/              # Seiten und Templates
+│   └── plugin/            # Plugin-Verzeichnis
+├── tools/                 # Build und Deployment Tools
+├── vendor/                # Composer Dependencies
+└── node_modules/          # NPM Dependencies
+```
+
+## Konfiguration
+
+Die Hauptkonfiguration befindet sich in `src/config/config.json`. Wichtige Einstellungen:
+
+-   **Database**: MySQL-Verbindungsdaten
+-   **Meta**: SEO und Meta-Informationen
+-   **Framework**: Framework-spezifische Einstellungen
 
 ## Plugins
 
--   Beispiel-Plugin: `src/plugin/ExamplePlugin/`
-    -   `ExamplePlugin.php` – Plugin-Klasse
-    -   `manifest.php` – Plugin-Metadaten
-    -   `config/config.json` – Plugin-Konfiguration
+Plugins können im `src/plugin/` Verzeichnis erstellt werden. Jedes Plugin benötigt:
 
-Plugins können einfach in das Verzeichnis `src/plugin/` gelegt werden und von Seiten oder dem Framework geladen werden.
+-   `manifest.php`: Plugin-Metadaten
+-   `config/config.json`: Plugin-Konfiguration
+-   Hauptklasse (optional)
 
-## Frontend (SASS & TypeScript)
+### Beispiel Plugin
 
--   **SASS:**
-    -   Beispiel: `src/frontend/sass/main.sass`
-    -   Kompiliere SASS zu CSS (z.B. mit `sass src/frontend/sass/main.sass public/content/css/main.css`)
--   **TypeScript:**
-    -   Beispiel: `src/frontend/ts/index.ts`
-    -   Kompiliere TypeScript zu JavaScript (z.B. mit `tsc src/frontend/ts/index.ts --outDir public/content/js`)
+```php
+// src/plugin/MyPlugin/MyPlugin.php
+namespace Plugin\MyPlugin;
 
-## Hinweise
+class MyPlugin {
+    public function run() {
+        echo '<p>Mein Plugin läuft!</p>';
+    }
+}
+```
 
--   Das Framework wird per Composer als Abhängigkeit geladen.
--   Passe die Konfiguration und Views nach Bedarf an.
+## Build System
 
----
+Das Projekt verwendet Vite für das Frontend-Build-System:
 
-**Viel Spaß mit WAPS!**
+-   **TypeScript**: Moderne JavaScript-Entwicklung
+-   **SASS**: CSS-Preprocessor
+-   **Hot Reload**: Automatisches Neuladen bei Änderungen
+-   **Optimization**: Automatische Optimierung für Production
+
+## Lizenz
+
+MIT License - siehe LICENSE Datei für Details.
+
+## Support
+
+-   **Homepage**: https://waps-framework.info
+-   **Repository**: https://gitlab.com/waps/framework
+-   **Issues**: https://gitlab.com/waps/framework/issues

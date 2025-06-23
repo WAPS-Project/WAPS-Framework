@@ -4,9 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-use webapp_php_sample_class\ErrorHandler;
-use webapp_php_sample_class\Main;
-use webapp_php_sample_class\StartUp;
+use Waps\Framework\Controller\ErrorHandler;
+use Waps\Framework\Controller\Main;
+use Waps\Framework\Controller\StartUp;
 
 include 'core.loader.php';
 

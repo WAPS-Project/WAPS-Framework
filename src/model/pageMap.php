@@ -1,8 +1,6 @@
 <?php
 
-
-namespace webapp_php_sample_obj;
-
+namespace Waps\Framework\Obj;
 
 class pageMap
 {
